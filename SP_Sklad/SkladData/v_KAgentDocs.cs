@@ -34,5 +34,8 @@ namespace SP_Sklad.SkladData
         public Nullable<decimal> Balans { get; set; }
         public Nullable<int> FromKaId { get; set; }
         public Nullable<int> ToKaId { get; set; }
+        public Nullable<int> PTypeId { get; set; }
+        public string PayTypeName { get; set; }
+        public Nullable<decimal> TurnoverSumm { get; set; }
     }
 }

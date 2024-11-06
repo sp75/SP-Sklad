@@ -278,6 +278,12 @@
     <Compile Include="frmIncompleteUserDoc.Designer.cs">
       <DependentUpon>frmIncompleteUserDoc.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmUserSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUserSettings.Designer.cs">
+      <DependentUpon>frmUserSettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmPosMatTurn.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2642,6 +2648,9 @@
     <EmbeddedResource Include="frmIncompleteUserDoc.resx">
       <DependentUpon>frmIncompleteUserDoc.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmUserSettings.resx">
+      <DependentUpon>frmUserSettings.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmPosMatTurn.resx">
       <DependentUpon>frmPosMatTurn.cs</DependentUpon>
     </EmbeddedResource>
@@ -4028,6 +4037,7 @@
     <None Include="Resources\delivery.png" />
     <None Include="Resources\money_edit.png" />
     <None Include="Resources\user_documens.png" />
+    <None Include="Resources\user_settings.png" />
     <Content Include="TempLate\FontsForBilling\FREE3OF9.TXT" />
     <Content Include="warehouse.ico" />
   </ItemGroup>

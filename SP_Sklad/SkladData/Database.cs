@@ -47,7 +47,7 @@ namespace SP_Sklad.SkladData
                     .First() as ObjectQuery;
             var parameters = object_query.Parameters.Select(p => new SqlParameter(p.Name, p.Value)).ToArray();
 
-            db.Database.ExecuteSqlCommand(delete_sql, parameters);
+            var result = db.Database.ExecuteSqlCommand(delete_sql, parameters);
 
             return db;
         }

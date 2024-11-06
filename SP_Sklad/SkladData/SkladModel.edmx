@@ -2178,7 +2178,7 @@ warning 6002: The table/view 'sp_base.dbo.MaterialsList' does not have a primary
           <Property Name="Archived" Type="int" />
           <Property Name="AutoCalcRecipe" Type="bit" />
           <Property Name="GrpId" Type="int" />
-          <Property Name="GroupName" Type="nvarchar" MaxLength="128" />
+          <Property Name="GroupName" Type="varchar" MaxLength="64" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.UserTreeAccess' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -2682,7 +2682,7 @@ warning 6002: The table/view 'sp_base.dbo.v_IntermediateWeighing' does not have 
           <Property Name="WbOnDate" Type="datetime" Nullable="false" />
           <Property Name="RecipeCount" Type="int" />
           <Property Name="GrpId" Type="int" Nullable="false" />
-          <Property Name="GroupName" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="GroupName" Type="varchar" MaxLength="64" Nullable="false" />
           <Property Name="MsrName" Type="nvarchar" MaxLength="6" Nullable="false" />
           <Property Name="MatId" Type="int" Nullable="false" />
           <Property Name="AmountByRecipe" Type="numeric" Precision="15" Scale="4" />
@@ -2731,7 +2731,7 @@ warning 6002: The table/view 'sp_base.dbo.v_IntermediateWeighingInterface' does 
             <PropertyRef Name="UserId" />
           </Key>
           <Property Name="WbillId" Type="int" Nullable="false" />
-          <Property Name="WbNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="WbNum" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="RecipeName" Type="nvarchar" MaxLength="255" />
           <Property Name="WbOnDate" Type="nvarchar" MaxLength="4000" />
           <Property Name="RecipeCount" Type="int" />
@@ -2768,7 +2768,7 @@ warning 6002: The table/view 'sp_base.dbo.v_IntermediateWeighingSummary' does no
           <Property Name="Total" Type="numeric" Precision="15" Scale="4" />
           <Property Name="Checked" Type="int" Nullable="false" />
           <Property Name="RecipeName" Type="nvarchar" MaxLength="255" />
-          <Property Name="WbNum" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="WbNum" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="IntermediateWeighingNum" Type="nvarchar" MaxLength="50" />
           <Property Name="IntermediateWeighingAmount" Type="numeric" Precision="15" Scale="4" />
           <Property Name="RecipeCount" Type="int" />
@@ -2964,7 +2964,7 @@ warning 6002: The table/view 'sp_base.dbo.v_KAgentAdjustmentDet' does not have a
           </Key>
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="WType" Type="int" />
-          <Property Name="Num" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Num" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="OnDate" Type="datetime" />
           <Property Name="Name" Type="nvarchar" MaxLength="100" />
           <Property Name="SummAll" Type="numeric" Precision="21" Scale="8" />
@@ -3007,6 +3007,9 @@ warning 6002: The table/view 'sp_base.dbo.v_KAgentDocs' does not have a primary 
           <Property Name="Balans" Type="numeric" Precision="35" Scale="8" />
           <Property Name="FromKaId" Type="int" />
           <Property Name="ToKaId" Type="int" />
+          <Property Name="PTypeId" Type="int" />
+          <Property Name="PayTypeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="TurnoverSumm" Type="numeric" Precision="38" Scale="6" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_KagentMaterilPrices' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -3225,7 +3228,7 @@ warning 6002: The table/view 'sp_base.dbo.v_MatRecipe' does not have a primary k
           <Property Name="Amount" Type="numeric" Precision="15" Scale="4" Nullable="false" />
           <Property Name="ShortName" Type="nvarchar" MaxLength="6" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="255" />
-          <Property Name="GrpName" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="GrpName" Type="varchar" MaxLength="64" Nullable="false" />
           <Property Name="Out" Type="numeric" Precision="15" Scale="4" Nullable="false" />
           <Property Name="RType" Type="int" />
           <Property Name="Archived" Type="bit" Nullable="false" />
@@ -3363,7 +3366,7 @@ warning 6002: The table/view 'sp_base.dbo.v_PlannedCalculationDetDet' does not h
           <Property Name="Profitability" Type="numeric" Precision="15" Scale="2" />
           <Property Name="PlansPrice" Type="numeric" Precision="15" Scale="2" />
           <Property Name="MatId" Type="int" Nullable="false" />
-          <Property Name="MatGroupName" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="MatGroupName" Type="varchar" MaxLength="64" Nullable="false" />
           <Property Name="GrpId" Type="int" Nullable="false" />
           <Property Name="Artikul" Type="nvarchar" MaxLength="255" />
         </EntityType>
@@ -3437,7 +3440,7 @@ warning 6002: The table/view 'sp_base.dbo.v_PriceListDet' does not have a primar
           <Property Name="MsrName" Type="nvarchar" MaxLength="6" Nullable="false" />
           <Property Name="Price" Type="numeric" Precision="15" Scale="4" />
           <Property Name="PlDetType" Type="int" />
-          <Property Name="GrpName" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="GrpName" Type="nvarchar" MaxLength="64" Nullable="false" />
           <Property Name="MatId" Type="int" />
           <Property Name="GrpId" Type="int" />
           <Property Name="BarCode" Type="nvarchar" MaxLength="80" />
@@ -4049,7 +4052,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WaybillDet' does not have a primary 
           <Property Name="AvgInPrice" Type="numeric" Precision="15" Scale="4" />
           <Property Name="Notes" Type="nvarchar" MaxLength="100" />
           <Property Name="UpdateAt" Type="datetime" />
-          <Property Name="GrpName" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="GrpName" Type="varchar" MaxLength="64" Nullable="false" />
           <Property Name="MsrName" Type="nvarchar" MaxLength="6" Nullable="false" />
           <Property Name="MatName" Type="nvarchar" MaxLength="255" />
           <Property Name="GrpId" Type="int" Nullable="false" />
@@ -4169,7 +4172,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WayBillInDet' does not have a primar
           <Property Name="Total" Type="numeric" Precision="15" Scale="2" />
           <Property Name="BasePrice" Type="numeric" Precision="15" Scale="4" />
           <Property Name="SumNds" Type="numeric" Precision="35" Scale="10" />
-          <Property Name="GrpName" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="GrpName" Type="nvarchar" MaxLength="64" Nullable="false" />
           <Property Name="DiscountPrice" Type="numeric" Precision="38" Scale="6" />
           <Property Name="Notes" Type="nvarchar" MaxLength="1000" />
           <Property Name="UpdateAt" Type="datetime" />
@@ -4538,7 +4541,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WayBillOutDet' does not have a prima
           <Property Name="CardNum" Type="varchar" MaxLength="24" />
           <Property Name="Holder" Type="nvarchar" MaxLength="100" />
           <Property Name="SerialNo" Type="nvarchar" MaxLength="64" />
-          <Property Name="GroupName" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="GroupName" Type="nvarchar" MaxLength="64" Nullable="false" />
           <Property Name="BasePrice" Type="numeric" Precision="15" Scale="4" />
           <Property Name="Total" Type="numeric" Precision="15" Scale="2" />
           <Property Name="SumNds" Type="numeric" Precision="35" Scale="10" />
@@ -4603,7 +4606,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WayBillReturnCustomerDet' does not h
           <Property Name="Total" Type="numeric" Precision="15" Scale="2" />
           <Property Name="BasePrice" Type="numeric" Precision="15" Scale="4" />
           <Property Name="SumNds" Type="numeric" Precision="35" Scale="10" />
-          <Property Name="GrpName" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="GrpName" Type="varchar" MaxLength="64" Nullable="false" />
           <Property Name="DiscountPrice" Type="numeric" Precision="38" Scale="6" />
           <Property Name="Notes" Type="nvarchar" MaxLength="100" />
           <Property Name="UpdateAt" Type="datetime" />
@@ -4725,7 +4728,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WaybillTemplateDet' does not have a 
           </Key>
           <Property Name="Num" Type="int" />
           <Property Name="MatName" Type="nvarchar" MaxLength="255" />
-          <Property Name="GrpName" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="GrpName" Type="varchar" MaxLength="64" Nullable="false" />
           <Property Name="GrpNum" Type="numeric" Precision="5" Scale="1" />
           <Property Name="Artikul" Type="nvarchar" MaxLength="255" />
           <Property Name="WaybillTemplateId" Type="uniqueidentifier" Nullable="false" />
@@ -8389,7 +8392,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <Property Name="UserId" Type="int" />
                 <Property Name="OriginatorId" Type="uniqueidentifier" />
                 <Property Name="FunName" Type="nvarchar" MaxLength="255" Nullable="false" />
-                <Property Name="ClassName" Type="varchar" MaxLength="24" Nullable="false" />
+                <Property Name="ClassName" Type="varchar" MaxLength="50" Nullable="false" />
                 <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
                 <Property Name="DocType" Type="int" />
               </RowType>
@@ -9022,7 +9025,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <Property Name="WhName" Type="nvarchar" MaxLength="64" />
                 <Property Name="wid" Type="int" />
                 <Property Name="GrpId" Type="int" />
-                <Property Name="GroupName" Type="nvarchar" MaxLength="128" Nullable="false" />
+                <Property Name="GroupName" Type="varchar" MaxLength="64" Nullable="false" />
                 <Property Name="BasePrice" Type="numeric" Precision="15" Scale="4" />
                 <Property Name="Total" Type="numeric" Precision="15" Scale="2" />
                 <Property Name="AmountByRecipe" Type="numeric" Precision="15" Scale="4" />
@@ -9539,11 +9542,11 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <Property Name="MatName" Type="nvarchar" MaxLength="255" />
                 <Property Name="GrpId" Type="int" />
                 <Property Name="GrpName" Type="varchar" MaxLength="64" Nullable="false" />
-                <Property Name="AmountOrd" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="AmountOrd" Type="numeric" Precision="38" Scale="8" />
                 <Property Name="TotalOrd" Type="numeric" Precision="38" Scale="2" />
                 <Property Name="MsrName" Type="nvarchar" MaxLength="6" Nullable="false" />
                 <Property Name="BarCode" Type="nvarchar" MaxLength="64" />
-                <Property Name="AmountOut" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="AmountOut" Type="numeric" Precision="38" Scale="8" />
                 <Property Name="TotalOut" Type="numeric" Precision="38" Scale="2" />
               </RowType>
             </CollectionType>
@@ -10955,7 +10958,10 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_KAgentDocs].[DocTypeName] AS [DocTypeName], 
     [v_KAgentDocs].[Balans] AS [Balans], 
     [v_KAgentDocs].[FromKaId] AS [FromKaId], 
-    [v_KAgentDocs].[ToKaId] AS [ToKaId]
+    [v_KAgentDocs].[ToKaId] AS [ToKaId], 
+    [v_KAgentDocs].[PTypeId] AS [PTypeId], 
+    [v_KAgentDocs].[PayTypeName] AS [PayTypeName], 
+    [v_KAgentDocs].[TurnoverSumm] AS [TurnoverSumm]
     FROM [dbo].[v_KAgentDocs] AS [v_KAgentDocs]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_KagentMaterilPrices" EntityType="Self.v_KagentMaterilPrices" store:Type="Views" store:Schema="dbo">
@@ -15177,7 +15183,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <End Role="UserInterfaces" EntitySet="UserInterfaces" />
           </AssociationSet>
           <FunctionImport Name="GetUserInterfaces" IsComposable="true" ReturnType="Collection(BaseModel.GetUserInterfaces_Result)">
-            <Parameter Name="user_id" Mode="In" Type="Int32" />
+          <Parameter Name="user_id" Mode="In" Type="Int32" />
           </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
@@ -16530,7 +16536,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="Archived" Type="Int32" />
           <Property Name="AutoCalcRecipe" Type="Boolean" />
           <Property Name="GrpId" Type="Int32" />
-          <Property Name="GroupName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="GroupName" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
         </EntityType>
         <ComplexType Name="GetServiceTree_Result">
           <Property Type="Int32" Name="Id" Nullable="false" />
@@ -18990,7 +18996,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="Decimal" Name="Profitability" Precision="15" Scale="2" />
           <Property Type="Decimal" Name="PlansPrice" Precision="15" Scale="2" />
           <Property Type="Int32" Name="MatId" Nullable="false" />
-          <Property Type="String" Name="MatGroupName" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="MatGroupName" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
           <Property Type="Int32" Name="GrpId" Nullable="false" />
           <Property Name="Artikul" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
         </EntityType>
@@ -19043,7 +19049,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="Decimal" Name="Amount" Nullable="false" Precision="15" Scale="4" />
           <Property Type="String" Name="ShortName" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Name" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="GrpName" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="GrpName" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
           <Property Type="Decimal" Name="Out" Nullable="false" Precision="15" Scale="4" />
           <Property Type="Int32" Name="RType" />
           <Property Type="Boolean" Name="Archived" Nullable="false" />
@@ -19645,6 +19651,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="Balans" Type="Decimal" Precision="35" Scale="8" />
           <Property Name="FromKaId" Type="Int32" />
           <Property Name="ToKaId" Type="Int32" />
+          <Property Name="PTypeId" Type="Int32" />
+          <Property Name="PayTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TurnoverSumm" Type="Decimal" Precision="38" Scale="6" />
         </EntityType>
         <EntityType Name="v_KAgentAdjustmentDet">
           <Key>
@@ -19653,7 +19662,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           </Key>
           <Property Name="Id" Type="Guid" Nullable="false" />
           <Property Name="WType" Type="Int32" />
-          <Property Name="Num" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Num" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="OnDate" Type="DateTime" Precision="3" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="SummAll" Type="Decimal" Precision="21" Scale="8" />
@@ -20632,7 +20641,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="WbOnDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="RecipeCount" Type="Int32" />
           <Property Name="GrpId" Type="Int32" Nullable="false" />
-          <Property Name="GroupName" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="GroupName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
           <Property Name="MsrName" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
           <Property Name="MatId" Type="Int32" Nullable="false" />
           <Property Name="AmountByRecipe" Type="Decimal" Precision="15" Scale="4" />
@@ -20710,7 +20719,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="AvgInPrice" Type="Decimal" Precision="15" Scale="4" />
           <Property Name="Notes" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="UpdateAt" Type="DateTime" Precision="3" />
-          <Property Name="GrpName" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="GrpName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
           <Property Name="MsrName" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
           <Property Name="MatName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="GrpId" Type="Int32" Nullable="false" />
@@ -20753,7 +20762,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="Total" Type="Decimal" Precision="15" Scale="4" />
           <Property Name="Checked" Type="Int32" Nullable="false" />
           <Property Name="RecipeName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="WbNum" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="WbNum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IntermediateWeighingNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IntermediateWeighingAmount" Type="Decimal" Precision="15" Scale="4" />
           <Property Name="MsrName" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
@@ -20789,7 +20798,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <PropertyRef Name="UserId" />
           </Key>
           <Property Name="WbillId" Type="Int32" Nullable="false" />
-          <Property Name="WbNum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WbNum" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="RecipeName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="WbOnDate" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
           <Property Name="RecipeCount" Type="Int32" />
@@ -20867,7 +20876,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="MsrName" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
           <Property Name="Price" Type="Decimal" Precision="15" Scale="4" />
           <Property Name="PlDetType" Type="Int32" />
-          <Property Name="GrpName" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="GrpName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
           <Property Name="MatId" Type="Int32" />
           <Property Name="GrpId" Type="Int32" />
           <Property Name="BarCode" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
@@ -21590,7 +21599,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           </Key>
           <Property Name="Num" Type="Int32" />
           <Property Name="MatName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="GrpName" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="GrpName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
           <Property Name="GrpNum" Type="Decimal" Precision="5" Scale="1" />
           <Property Name="Artikul" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="WaybillTemplateId" Type="Guid" Nullable="false" />
@@ -23579,7 +23588,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="Total" Type="Decimal" Precision="15" Scale="2" />
           <Property Name="BasePrice" Type="Decimal" Precision="15" Scale="4" />
           <Property Name="SumNds" Type="Decimal" Precision="35" Scale="10" />
-          <Property Name="GrpName" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="GrpName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
           <Property Name="DiscountPrice" Type="Decimal" Precision="38" Scale="6" />
           <Property Name="Notes" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
           <Property Name="UpdateAt" Type="DateTime" Precision="3" />
@@ -23731,7 +23740,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="CardNum" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
           <Property Name="Holder" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="SerialNo" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Name="GroupName" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="GroupName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
           <Property Name="BasePrice" Type="Decimal" Precision="15" Scale="4" />
           <Property Name="Total" Type="Decimal" Precision="15" Scale="2" />
           <Property Name="SumNds" Type="Decimal" Precision="35" Scale="10" />
@@ -24295,7 +24304,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="Total" Type="Decimal" Precision="15" Scale="2" />
           <Property Name="BasePrice" Type="Decimal" Precision="15" Scale="4" />
           <Property Name="SumNds" Type="Decimal" Precision="35" Scale="10" />
-          <Property Name="GrpName" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="GrpName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
           <Property Name="DiscountPrice" Type="Decimal" Precision="38" Scale="6" />
           <Property Name="Notes" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="UpdateAt" Type="DateTime" Precision="3" />
@@ -28067,6 +28076,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_KAgentDocs">
             <EntityTypeMapping TypeName="BaseModel.v_KAgentDocs">
               <MappingFragment StoreEntitySet="v_KAgentDocs">
+                <ScalarProperty Name="TurnoverSumm" ColumnName="TurnoverSumm" />
+                <ScalarProperty Name="PayTypeName" ColumnName="PayTypeName" />
+                <ScalarProperty Name="PTypeId" ColumnName="PTypeId" />
                 <ScalarProperty Name="ToKaId" ColumnName="ToKaId" />
                 <ScalarProperty Name="FromKaId" ColumnName="FromKaId" />
                 <ScalarProperty Name="Balans" ColumnName="Balans" />

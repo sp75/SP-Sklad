@@ -117,9 +117,7 @@ namespace SP_Sklad.UserControls
                     var wb = _db.WaybillList.FirstOrDefault(w => w.WbillId == wb_focused_row.WbillId && (w.SessionId == null || w.SessionId == UserSession.SessionId) && w.Checked == 0);
                     if (wb != null)
                     {
-                        _db.WaybillList.Remove(wb);
-
-                        _db.SaveChanges();
+                        _db.DeleteWhere<WaybillList>(w => w.WbillId == wb_focused_row.WbillId && (w.SessionId == null || w.SessionId == UserSession.SessionId) && w.Checked == 0);
                     }
                     else
                     {

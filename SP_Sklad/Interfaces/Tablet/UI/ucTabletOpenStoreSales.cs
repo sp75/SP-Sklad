@@ -124,6 +124,9 @@ namespace SP_Sklad.Interfaces.Tablet.UI
                 KagentList.EditValue = -1;
 
                 PeriodComboBoxEdit.SelectedIndex = 1;
+
+                var user_settings = new UserSettingsRepository(DBHelper.CurrentUser.UserId, new BaseEntities());
+                gridView1.Appearance.Row.Font = new Font(user_settings.GridFontName, (float)user_settings.GridFontSize);
             }
         }
         private void PeriodComboBoxEdit_EditValueChanged(object sender, EventArgs e)

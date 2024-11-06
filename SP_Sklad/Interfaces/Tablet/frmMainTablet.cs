@@ -118,7 +118,11 @@ namespace SP_Sklad.Interfaces.Tablet
         {
             var date = new FileInfo(Assembly.GetExecutingAssembly().Location).LastWriteTime;
             Text = $"Кабінет регіонального менеджера [Користувач: {DBHelper.CurrentUser.Name}, Підприємство: {(DBHelper.CurrentEnterprise != null ? DBHelper.CurrentEnterprise.Name : "")}] [v.{ date }]";
+        }
 
+        private void accordionControlElement47_Click(object sender, EventArgs e)
+        {
+            new frmUserSettings().ShowDialog();
         }
     }
 }

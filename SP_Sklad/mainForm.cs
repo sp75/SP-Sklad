@@ -419,5 +419,10 @@ namespace SP_Sklad
         {
             new frmIncompleteUserDoc(DBHelper.CurrentUser.KaId).ShowDialog();
         }
+
+        private void barButtonItem6_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            new frmUserSettings().ShowDialog();
+        }
     }
 }

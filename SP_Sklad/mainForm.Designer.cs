@@ -60,7 +60,9 @@
             this.WbCorrListBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem4 = new DevExpress.XtraBars.BarSubItem();
+            this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem6 = new DevExpress.XtraBars.BarSubItem();
             this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
@@ -95,7 +97,6 @@
             this.tradeUserControl1 = new SP_Sklad.MainTabs.TradeUserControl();
             this.OpenStoreTabPage = new DevExpress.XtraTab.XtraTabPage();
             this.openStoreUserControl = new SP_Sklad.MainTabs.OpenStoreUserControl();
-            this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
@@ -165,9 +166,10 @@
             this.WbCorrBtn,
             this.WbCorrListBtn,
             this.barButtonItem2,
-            this.barButtonItem5});
+            this.barButtonItem5,
+            this.barButtonItem6});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 42;
+            this.barManager1.MaxItemId = 43;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTimeEdit1,
             this.repositoryItemCalcEdit1,
@@ -455,8 +457,17 @@
             this.barSubItem4.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem5, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem10)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem10),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem6, true)});
             this.barSubItem4.Name = "barSubItem4";
+            // 
+            // barButtonItem5
+            // 
+            this.barButtonItem5.Caption = "Не завершені документи";
+            this.barButtonItem5.Id = 41;
+            this.barButtonItem5.ImageOptions.ImageIndex = 18;
+            this.barButtonItem5.Name = "barButtonItem5";
+            this.barButtonItem5.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem5_ItemClick);
             // 
             // barButtonItem10
             // 
@@ -465,6 +476,14 @@
             this.barButtonItem10.ImageOptions.ImageIndex = 11;
             this.barButtonItem10.Name = "barButtonItem10";
             this.barButtonItem10.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem10_ItemClick_1);
+            // 
+            // barButtonItem6
+            // 
+            this.barButtonItem6.Caption = "Налаштування";
+            this.barButtonItem6.Id = 42;
+            this.barButtonItem6.ImageOptions.ImageIndex = 19;
+            this.barButtonItem6.Name = "barButtonItem6";
+            this.barButtonItem6.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem6_ItemClick);
             // 
             // barSubItem6
             // 
@@ -582,6 +601,8 @@
             this.imageCollection1.Images.SetKeyName(17, "refresh_2.png");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.new_document, "new_document", typeof(global::SP_Sklad.Properties.Resources), 18);
             this.imageCollection1.Images.SetKeyName(18, "new_document");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.user_settings, "user_settings", typeof(global::SP_Sklad.Properties.Resources), 19);
+            this.imageCollection1.Images.SetKeyName(19, "user_settings");
             // 
             // repositoryItemTimeEdit1
             // 
@@ -821,14 +842,6 @@
             this.openStoreUserControl.Size = new System.Drawing.Size(1319, 591);
             this.openStoreUserControl.TabIndex = 0;
             // 
-            // barButtonItem5
-            // 
-            this.barButtonItem5.Caption = "Не завершені документи";
-            this.barButtonItem5.Id = 41;
-            this.barButtonItem5.ImageOptions.ImageIndex = 18;
-            this.barButtonItem5.Name = "barButtonItem5";
-            this.barButtonItem5.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem5_ItemClick);
-            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -945,6 +958,7 @@
         private DevExpress.XtraTab.XtraTabPage OpenStoreTabPage;
         public MainTabs.OpenStoreUserControl openStoreUserControl;
         private DevExpress.XtraBars.BarButtonItem barButtonItem5;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem6;
     }
 }
 
