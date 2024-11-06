@@ -423,6 +423,7 @@
           <Property Name="ShortName" Type="nvarchar" MaxLength="50" />
           <Property Name="FunId" Type="int" />
           <Property Name="TemlateName" Type="nvarchar" MaxLength="128" />
+          <Property Name="UseCalcSaldo" Type="bit" />
         </EntityType>
         <EntityType Name="EmployeeKagent">
           <Key>
@@ -15750,6 +15751,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="String" Name="ShortName" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="Int32" Name="FunId" />
           <Property Name="TemlateName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UseCalcSaldo" Type="Boolean" />
         </EntityType>
         <EntityType Name="UserAccess">
           <Key>
@@ -25444,6 +25446,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="DocType">
             <EntityTypeMapping TypeName="BaseModel.DocType">
               <MappingFragment StoreEntitySet="DocType">
+                <ScalarProperty Name="UseCalcSaldo" ColumnName="UseCalcSaldo" />
                 <ScalarProperty Name="TemlateName" ColumnName="TemlateName" />
                 <ScalarProperty Name="FunId" ColumnName="FunId" />
                 <ScalarProperty Name="ShortName" ColumnName="ShortName" />

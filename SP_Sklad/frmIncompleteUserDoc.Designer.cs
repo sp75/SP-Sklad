@@ -492,6 +492,8 @@
             // colOnDate
             // 
             this.colOnDate.Caption = "Дата";
+            this.colOnDate.DisplayFormat.FormatString = "g";
+            this.colOnDate.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.colOnDate.FieldName = "OnDate";
             this.colOnDate.Name = "colOnDate";
             this.colOnDate.OptionsColumn.AllowEdit = false;

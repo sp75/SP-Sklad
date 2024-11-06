@@ -53,7 +53,7 @@ namespace SP_Sklad.EditForm
             tree.Add(new CatalogTreeList { Id = 9, ParentId = 255, Text = "Примітка", ImgIdx = 4, TabIdx = 7 });
             TreeListBS.DataSource = tree;
 
-            KAgentPricesGroupControl.Enabled = (IHelper.GetUserAccess(31)?.CanModify == 1);
+            KAgentPricesGroupControl.Enabled = (IHelper.GetUserAccess(31)?.CanModify == 1); // Якщо включено редагування довідника цінових категорій
 
             if (_ka_id == null)
             {
@@ -197,8 +197,8 @@ namespace SP_Sklad.EditForm
                 lookUpEdit14.Properties.DataSource = lookUpEdit13.Properties.DataSource;
                 lookUpEdit8.Properties.DataSource = lookUpEdit5.Properties.DataSource;
                 lookUpEdit15.Properties.DataSource = lookUpEdit5.Properties.DataSource;
-                lookUpEdit9.Properties.DataSource = MatLookUpEdit.Properties.DataSource;
-                lookUpEdit11.Properties.DataSource = GroupLookUpEdit.Properties.DataSource;
+                lookUpEdit9.Properties.DataSource = DB.SkladBase().v_Materials.AsNoTracking().Where(w => w.Archived == 0).ToList();
+                lookUpEdit11.Properties.DataSource = DB.SkladBase().MatGroup.ToList(); 
 
                 GetAccounts();
                 GetPersons();
@@ -1073,7 +1073,28 @@ namespace SP_Sklad.EditForm
             }
         }
 
+        private void GroupLookUpEdit_ButtonClick(object sender, ButtonPressedEventArgs e)
+        {
+            if(e.Button.Index == 1)
+            {
+                GroupLookUpEdit.EditValue = IHelper.ShowDirectList(GroupLookUpEdit.EditValue, 19);
+            }
+        }
 
+        private void lookUpEdit11_ButtonClick(object sender, ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                lookUpEdit11.EditValue = IHelper.ShowDirectList(lookUpEdit11.EditValue, 19);
+            }
+        }
 
+        private void lookUpEdit9_ButtonClick(object sender, ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                lookUpEdit9.EditValue = IHelper.ShowDirectList(lookUpEdit9.EditValue, 5);
+            }
+        }
     }
 }

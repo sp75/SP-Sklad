@@ -10,6 +10,7 @@ using DevExpress.Data;
 using SP_Sklad.WBForm;
 using System.ComponentModel;
 using SP_Sklad.ViewsForm;
+using System.Collections.Generic;
 
 namespace SP_Sklad.MainTabs
 {
@@ -517,7 +518,8 @@ namespace SP_Sklad.MainTabs
 
         private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            using (var frm = new frmDocumentViews(null, ka_id: focused_kagent.KaId))
+            var doc_saldo_list = DB.SkladBase().DocType.Where(w => w.UseCalcSaldo == true).Select(s => s.Id).ToList().Select(s => (int?)s).ToList();
+            using (var frm = new frmDocumentViews(doc_saldo_list, ka_id: focused_kagent.KaId))
             {
                 if (frm.ShowDialog() == DialogResult.OK)
                 {

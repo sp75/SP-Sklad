@@ -103,6 +103,11 @@
             // 
             this.DocumentGridControl.DataSource = this.KagentListSource;
             this.DocumentGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DocumentGridControl.EmbeddedNavigator.Buttons.Append.Visible = false;
+            this.DocumentGridControl.EmbeddedNavigator.Buttons.CancelEdit.Visible = false;
+            this.DocumentGridControl.EmbeddedNavigator.Buttons.Edit.Visible = false;
+            this.DocumentGridControl.EmbeddedNavigator.Buttons.EndEdit.Visible = false;
+            this.DocumentGridControl.EmbeddedNavigator.Buttons.Remove.Visible = false;
             this.DocumentGridControl.Location = new System.Drawing.Point(0, 24);
             this.DocumentGridControl.MainView = this.DocumentGridView;
             this.DocumentGridControl.Name = "DocumentGridControl";
@@ -110,6 +115,7 @@
             this.repositoryItemImageComboBox1});
             this.DocumentGridControl.Size = new System.Drawing.Size(1392, 492);
             this.DocumentGridControl.TabIndex = 19;
+            this.DocumentGridControl.UseEmbeddedNavigator = true;
             this.DocumentGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.DocumentGridView});
             this.DocumentGridControl.Click += new System.EventHandler(this.DocumentGridControl_Click);
@@ -126,7 +132,7 @@
             // 
             this.DocumentGridView.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 10F);
             this.DocumentGridView.Appearance.HeaderPanel.Options.UseFont = true;
-            this.DocumentGridView.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.DocumentGridView.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 10F);
             this.DocumentGridView.Appearance.Row.Options.UseFont = true;
             this.DocumentGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colWType,
@@ -138,7 +144,10 @@
             this.gridColumn2,
             this.gridColumn3});
             this.DocumentGridView.GridControl = this.DocumentGridControl;
+            this.DocumentGridView.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "TurnoverSumm", this.gridColumn3, "")});
             this.DocumentGridView.Name = "DocumentGridView";
+            this.DocumentGridView.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseDownFocused;
             this.DocumentGridView.OptionsBehavior.ReadOnly = true;
             this.DocumentGridView.OptionsView.ShowDetailButtons = false;
             this.DocumentGridView.OptionsView.ShowFooter = true;
@@ -150,7 +159,6 @@
             this.colWType.ColumnEdit = this.repositoryItemImageComboBox1;
             this.colWType.FieldName = "WType";
             this.colWType.Name = "colWType";
-            this.colWType.OptionsColumn.AllowEdit = false;
             this.colWType.Visible = true;
             this.colWType.VisibleIndex = 0;
             this.colWType.Width = 244;
@@ -170,7 +178,11 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Акти списання товару", -5, 17),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Акти наданих послуг", 29, 15),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Продажі", -25, 6),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Повернення продаж", 25, 7)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Повернення продаж", 25, 7),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Повернення постачальнику", -6, 5),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Повернення від клієнта", 6, 4),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Початковий баланс с контрагентом", 100, -1),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Початковий баланс с контрагентом", -100, -1)});
             this.repositoryItemImageComboBox1.Name = "repositoryItemImageComboBox1";
             this.repositoryItemImageComboBox1.SmallImages = this.GridImageList;
             // 
@@ -229,6 +241,8 @@
             // colOnDate
             // 
             this.colOnDate.Caption = "Дата";
+            this.colOnDate.DisplayFormat.FormatString = "g";
+            this.colOnDate.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.colOnDate.FieldName = "OnDate";
             this.colOnDate.Name = "colOnDate";
             this.colOnDate.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.Date;
@@ -241,7 +255,6 @@
             this.colName.Caption = "Контрагент";
             this.colName.FieldName = "Name";
             this.colName.Name = "colName";
-            this.colName.OptionsColumn.AllowEdit = false;
             this.colName.Visible = true;
             this.colName.VisibleIndex = 4;
             this.colName.Width = 309;
@@ -253,9 +266,6 @@
             this.colSummInCurr.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colSummInCurr.FieldName = "SummInCurr";
             this.colSummInCurr.Name = "colSummInCurr";
-            this.colSummInCurr.OptionsColumn.AllowEdit = false;
-            this.colSummInCurr.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "SummInCurr", "{0:0.00}")});
             this.colSummInCurr.Visible = true;
             this.colSummInCurr.VisibleIndex = 5;
             this.colSummInCurr.Width = 133;
@@ -282,6 +292,8 @@
             // gridColumn3
             // 
             this.gridColumn3.Caption = "Сума операції";
+            this.gridColumn3.DisplayFormat.FormatString = "0.00";
+            this.gridColumn3.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn3.FieldName = "TurnoverSumm";
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
