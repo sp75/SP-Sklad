@@ -117,8 +117,6 @@ namespace SP_Sklad.WBForm
 
         private void EditMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var row = ProjectManagementDetGridView.GetFocusedRow() as v_KAgentAdjustmentDet;
-
             RefreshDet();
         }
 
@@ -157,7 +155,7 @@ namespace SP_Sklad.WBForm
 
             if (is_new_record)
             {
-                _db.DeleteWhere<KAgentAdjustment>(w => w.Id == _doc_id);
+                _db.DeleteWhere<ProjectManagement>(w => w.Id == _doc_id);
             }
 
             _db.Dispose();

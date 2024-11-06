@@ -59,8 +59,6 @@ namespace SP_Sklad.ViewsForm
 
         private void KagentMaterilPricesGridView_AsyncCompleted(object sender, EventArgs e)
         {
-            KagentMaterilPricesGridView.ExpandAllGroups();
-
             if (!find_id.HasValue)
             {
                 return;
