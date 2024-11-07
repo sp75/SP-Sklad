@@ -22,6 +22,7 @@ using SP_Sklad.WBForm;
 using DevExpress.XtraGrid;
 using DevExpress.Utils.DragDrop;
 using DevExpress.XtraEditors;
+using SP_Sklad.ViewsForm;
 
 namespace SP_Sklad.MainTabs
 {
@@ -1413,6 +1414,12 @@ namespace SP_Sklad.MainTabs
 
                 db.SaveChanges();
             }
+        }
+
+        private void barButtonItem10_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var row = (PriceTypesGridView.GetFocusedRow() as PriceTypesView);
+            new frmMaterilPrices(row?.PTypeId).ShowDialog();
         }
     }
 }

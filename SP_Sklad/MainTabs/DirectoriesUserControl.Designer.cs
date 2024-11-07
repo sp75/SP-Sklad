@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DirectoriesUserControl));
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode3 = new DevExpress.XtraGrid.GridLevelNode();
             DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.GridImageList = new DevExpress.Utils.ImageCollection(this.components);
             this.repositoryItemImageComboBox2 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
@@ -275,6 +275,7 @@
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             this.dragDropEvents1 = new DevExpress.Utils.DragDrop.DragDropEvents(this.components);
             this.dragDropEvents2 = new DevExpress.Utils.DragDrop.DragDropEvents(this.components);
+            this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridImageList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
@@ -517,8 +518,9 @@
             this.PrintRecipeBtn,
             this.barButtonItem7,
             this.SetPriceBtnItem,
-            this.barButtonItem9});
-            this.barManager1.MaxItemId = 49;
+            this.barButtonItem9,
+            this.barButtonItem10});
+            this.barManager1.MaxItemId = 50;
             // 
             // bar1
             // 
@@ -1396,9 +1398,9 @@
             // 
             this.MatRecipeGridControl.DataSource = this.MatRecipeDS;
             this.MatRecipeGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            gridLevelNode3.RelationName = "Level1";
+            gridLevelNode1.RelationName = "Level1";
             this.MatRecipeGridControl.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode3});
+            gridLevelNode1});
             this.MatRecipeGridControl.Location = new System.Drawing.Point(0, 0);
             this.MatRecipeGridControl.MainView = this.MatRecipeGridView;
             this.MatRecipeGridControl.Name = "MatRecipeGridControl";
@@ -2430,9 +2432,9 @@
             // PreparationMatRecipeGridControl
             // 
             this.PreparationMatRecipeGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            gridLevelNode1.RelationName = "Level1";
+            gridLevelNode2.RelationName = "Level1";
             this.PreparationMatRecipeGridControl.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode1});
+            gridLevelNode2});
             this.PreparationMatRecipeGridControl.Location = new System.Drawing.Point(0, 0);
             this.PreparationMatRecipeGridControl.MainView = this.PreparationMatRecipeGridView;
             this.PreparationMatRecipeGridControl.Name = "PreparationMatRecipeGridControl";
@@ -2976,7 +2978,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.NewItemBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.EditItemBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.DeleteItemBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.SetPriceBtnItem, true)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.SetPriceBtnItem, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem10)});
             this.PriceTypesPopupMenu.Manager = this.barManager1;
             this.PriceTypesPopupMenu.Name = "PriceTypesPopupMenu";
             this.PriceTypesPopupMenu.BeforePopup += new System.ComponentModel.CancelEventHandler(this.PriceTypesPopupMenu_BeforePopup);
@@ -2991,6 +2994,13 @@
             this.dragDropEvents2.DragOver += new DevExpress.Utils.DragDrop.DragOverEventHandler(this.dragDropEvents2_DragOver);
             this.dragDropEvents2.DragDrop += new DevExpress.Utils.DragDrop.DragDropEventHandler(this.dragDropEvents2_DragDrop);
             this.dragDropEvents2.EndDragDrop += new DevExpress.Utils.DragDrop.EndDragDropEventHandler(this.dragDropEvents2_EndDragDrop);
+            // 
+            // barButtonItem10
+            // 
+            this.barButtonItem10.Caption = "Ціни на товри";
+            this.barButtonItem10.Id = 49;
+            this.barButtonItem10.Name = "barButtonItem10";
+            this.barButtonItem10.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem10_ItemClick);
             // 
             // DirectoriesUserControl
             // 
@@ -3379,5 +3389,6 @@
         public DevExpress.XtraTreeList.TreeList MatGroupTreeList;
         private DevExpress.Utils.ImageCollection TreeImageCollection;
         private DevExpress.Utils.DragDrop.DragDropEvents dragDropEvents2;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem10;
     }
 }
