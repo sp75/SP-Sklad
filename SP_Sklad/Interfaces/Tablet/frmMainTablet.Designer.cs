@@ -151,7 +151,6 @@
             this.accordionControlElement1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionControlElement1.ImageOptions.Image")));
             this.accordionControlElement1.Name = "accordionControlElement1";
             this.accordionControlElement1.Text = "Документи";
-            this.accordionControlElement1.Visible = false;
             // 
             // accordionControlElement3
             // 
@@ -162,6 +161,7 @@
             this.accordionControlElement3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionControlElement3.ImageOptions.Image")));
             this.accordionControlElement3.Name = "accordionControlElement3";
             this.accordionControlElement3.Text = "Накладні";
+            this.accordionControlElement3.Visible = false;
             this.accordionControlElement3.Click += new System.EventHandler(this.accordionControlElement3_Click);
             // 
             // accordionControlElement4
@@ -192,6 +192,7 @@
             this.accordionControlElement5.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionControlElement5.ImageOptions.Image")));
             this.accordionControlElement5.Name = "accordionControlElement5";
             this.accordionControlElement5.Text = "Платіжні документи";
+            this.accordionControlElement5.Visible = false;
             // 
             // accordionControlElement10
             // 
@@ -220,6 +221,7 @@
             this.accordionControlElement6.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionControlElement6.ImageOptions.Image")));
             this.accordionControlElement6.Name = "accordionControlElement6";
             this.accordionControlElement6.Text = "Накладні повернення";
+            this.accordionControlElement6.Visible = false;
             // 
             // accordionControlElement13
             // 
@@ -245,15 +247,18 @@
             // 
             // accordionControlElement15
             // 
+            this.accordionControlElement15.ImageOptions.Image = global::SP_Sklad.Properties.Resources.wb_order_in;
             this.accordionControlElement15.Name = "accordionControlElement15";
             this.accordionControlElement15.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accordionControlElement15.Text = "Замовлення від клієнта";
+            this.accordionControlElement15.Click += new System.EventHandler(this.accordionControlElement15_Click);
             // 
             // accordionControlElement16
             // 
             this.accordionControlElement16.Name = "accordionControlElement16";
             this.accordionControlElement16.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accordionControlElement16.Text = "Замовлення постачальникам";
+            this.accordionControlElement16.Visible = false;
             this.accordionControlElement16.Click += new System.EventHandler(this.accordionControlElement16_Click);
             // 
             // accordionControlElement17

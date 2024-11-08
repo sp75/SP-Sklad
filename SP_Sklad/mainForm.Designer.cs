@@ -59,6 +59,7 @@
             this.WbMatTemplateBtn = new DevExpress.XtraBars.BarButtonItem();
             this.WbCorrListBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem4 = new DevExpress.XtraBars.BarSubItem();
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
@@ -167,9 +168,10 @@
             this.WbCorrListBtn,
             this.barButtonItem2,
             this.barButtonItem5,
-            this.barButtonItem6});
+            this.barButtonItem6,
+            this.barButtonItem7});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 43;
+            this.barManager1.MaxItemId = 44;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTimeEdit1,
             this.repositoryItemCalcEdit1,
@@ -416,12 +418,13 @@
             // 
             // barSubItem5
             // 
-            this.barSubItem5.Caption = "Інструменти";
+            this.barSubItem5.Caption = "Сервіс";
             this.barSubItem5.Id = 37;
             this.barSubItem5.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.WbMatTemplateBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.WbCorrListBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem7),
             new DevExpress.XtraBars.LinkPersistInfo(this.CashierWorkplaceBtn)});
             this.barSubItem5.Name = "barSubItem5";
             // 
@@ -450,9 +453,17 @@
             this.barButtonItem2.Name = "barButtonItem2";
             this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
             // 
+            // barButtonItem7
+            // 
+            this.barButtonItem7.Caption = "Монітор синхронизаціїї кас";
+            this.barButtonItem7.Id = 43;
+            this.barButtonItem7.ImageOptions.ImageIndex = 20;
+            this.barButtonItem7.Name = "barButtonItem7";
+            this.barButtonItem7.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem7_ItemClick);
+            // 
             // barSubItem4
             // 
-            this.barSubItem4.Caption = "Сервіс";
+            this.barSubItem4.Caption = "Інструменти";
             this.barSubItem4.Id = 14;
             this.barSubItem4.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem5, true),
@@ -603,6 +614,8 @@
             this.imageCollection1.Images.SetKeyName(18, "new_document");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.user_settings, "user_settings", typeof(global::SP_Sklad.Properties.Resources), 19);
             this.imageCollection1.Images.SetKeyName(19, "user_settings");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.system_report, "system_report", typeof(global::SP_Sklad.Properties.Resources), 20);
+            this.imageCollection1.Images.SetKeyName(20, "system_report");
             // 
             // repositoryItemTimeEdit1
             // 
@@ -959,6 +972,7 @@
         public MainTabs.OpenStoreUserControl openStoreUserControl;
         private DevExpress.XtraBars.BarButtonItem barButtonItem5;
         private DevExpress.XtraBars.BarButtonItem barButtonItem6;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem7;
     }
 }
 

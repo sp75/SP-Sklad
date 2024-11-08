@@ -101,17 +101,15 @@ namespace SP_Sklad.Interfaces.Tablet
 
         private void accordionControlElement45_Click(object sender, EventArgs e)
         {
-       //     mainLabelControl.ImageOptions.ImageIndex = 7;
-        //    accordionControl1.SelectElement((AccordionControlElement)sender);
+            var control = mainContainer.Controls["ucTabletOpenStoreSales"];
 
-        //    mainLabelControl.Text = $"{accordionControlElement44.Text} / {accordionControlElement45.Text}";
-
-            if (!mainContainer.Controls.Contains(mainContainer.Controls["ucTabletOpenStoreSales"]))
+            if (!mainContainer.Controls.Contains(control))
             {
-                mainContainer.Controls.Add(new ucTabletOpenStoreSales() { Dock = DockStyle.Fill });
+                control = new ucTabletOpenStoreSales() { Dock = DockStyle.Fill };
+                mainContainer.Controls.Add(control);
             }
 
-            
+            control.BringToFront();
         }
 
         private void frmMainTablet_Load(object sender, EventArgs e)
@@ -123,6 +121,18 @@ namespace SP_Sklad.Interfaces.Tablet
         private void accordionControlElement47_Click(object sender, EventArgs e)
         {
             new frmUserSettings().ShowDialog();
+        }
+
+        private void accordionControlElement15_Click(object sender, EventArgs e)
+        {
+            var control = mainContainer.Controls["ucWayBillCustomerOrder"];
+            if (!mainContainer.Controls.Contains(control))
+            {
+                control = new ucWayBillCustomerOrder() { Dock = DockStyle.Fill };
+                mainContainer.Controls.Add(control);
+            }
+
+            control.BringToFront();
         }
     }
 }

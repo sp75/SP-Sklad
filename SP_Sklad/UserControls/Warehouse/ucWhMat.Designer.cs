@@ -344,7 +344,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.MatTurnInfoBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.RsvInfoBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.RefreshWhBtn, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem17, true)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem17, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem7)});
             this.bar2.OptionsBar.AllowQuickCustomization = false;
             this.bar2.OptionsBar.DrawBorder = false;
             this.bar2.OptionsBar.DrawDragBorder = false;
@@ -716,6 +717,7 @@
             // 
             // barButtonItem7
             // 
+            this.barButtonItem7.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
             this.barButtonItem7.Caption = "Встановити налаштування сітки по замовчуванню";
             this.barButtonItem7.Id = 35;
             this.barButtonItem7.ImageOptions.ImageIndex = 11;

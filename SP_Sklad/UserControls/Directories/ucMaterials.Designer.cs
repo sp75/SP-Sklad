@@ -45,6 +45,7 @@
             this.barButtonItem11 = new DevExpress.XtraBars.BarButtonItem();
             this.barEditItem2 = new DevExpress.XtraBars.BarEditItem();
             this.BarCodeBtnEdit = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.DelItem = new DevExpress.XtraBars.BarButtonItem();
             this.AddItem = new DevExpress.XtraBars.BarButtonItem();
@@ -68,7 +69,6 @@
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.CopyCellContentsBtn = new DevExpress.XtraBars.BarButtonItem();
             this.SelectAllBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.ChangeMatGrpBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
@@ -326,7 +326,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.DeleteItemBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.RefrechItemBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem11, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barEditItem2)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barEditItem2),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2, true)});
             this.bar1.OptionsBar.AllowQuickCustomization = false;
             this.bar1.OptionsBar.DrawDragBorder = false;
             this.bar1.OptionsBar.UseWholeRow = true;
@@ -399,6 +400,15 @@
             this.BarCodeBtnEdit.Name = "BarCodeBtnEdit";
             this.BarCodeBtnEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.BarCodeBtnEdit_ButtonClick);
             this.BarCodeBtnEdit.KeyDown += new System.Windows.Forms.KeyEventHandler(this.BarCodeBtnEdit_KeyDown);
+            // 
+            // barButtonItem2
+            // 
+            this.barButtonItem2.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.barButtonItem2.Caption = "Встановити налаштування сітки по замовчуванню";
+            this.barButtonItem2.Id = 57;
+            this.barButtonItem2.ImageOptions.ImageIndex = 33;
+            this.barButtonItem2.Name = "barButtonItem2";
+            this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
             // 
             // bar2
             // 
@@ -678,14 +688,6 @@
             this.SelectAllBtn.Name = "SelectAllBtn";
             this.SelectAllBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.SelectAllBtn_ItemClick);
             // 
-            // barButtonItem2
-            // 
-            this.barButtonItem2.Caption = "Встановити налаштування сітки по замовчуванню";
-            this.barButtonItem2.Id = 57;
-            this.barButtonItem2.ImageOptions.ImageIndex = 33;
-            this.barButtonItem2.Name = "barButtonItem2";
-            this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
-            // 
             // ChangeMatGrpBtn
             // 
             this.ChangeMatGrpBtn.Caption = "Змінити групу";
@@ -793,6 +795,7 @@
             this.MatGridView.FocusedRowObjectChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventHandler(this.MatGridView_FocusedRowObjectChanged);
             this.MatGridView.ColumnFilterChanged += new System.EventHandler(this.MatGridView_ColumnFilterChanged);
             this.MatGridView.AsyncCompleted += new System.EventHandler(this.MatGridView_AsyncCompleted);
+            this.MatGridView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MatGridView_KeyDown);
             this.MatGridView.DoubleClick += new System.EventHandler(this.MatGridView_DoubleClick);
             // 
             // gridColumn22

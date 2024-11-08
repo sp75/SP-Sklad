@@ -43,6 +43,7 @@
             this.DeleteItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.RefrechItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem11 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.TreeListBar = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
@@ -63,6 +64,8 @@
             this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.CopyCellContentsBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.splitContainerControl2 = new DevExpress.XtraEditors.SplitContainerControl();
             this.KaGridControl = new DevExpress.XtraGrid.GridControl();
@@ -273,8 +276,11 @@
             this.barButtonItem7,
             this.barButtonItem9,
             this.barButtonItem1,
-            this.barButtonItem2});
-            this.barManager1.MaxItemId = 51;
+            this.barButtonItem2,
+            this.CopyCellContentsBtn,
+            this.barSubItem1,
+            this.barButtonItem4});
+            this.barManager1.MaxItemId = 54;
             // 
             // bar1
             // 
@@ -289,7 +295,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.EditItemBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.DeleteItemBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.RefrechItemBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem11, true)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem11, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem4)});
             this.bar1.OptionsBar.AllowQuickCustomization = false;
             this.bar1.OptionsBar.DrawDragBorder = false;
             this.bar1.OptionsBar.UseWholeRow = true;
@@ -343,6 +350,15 @@
             this.barButtonItem11.ImageOptions.ImageIndex = 5;
             this.barButtonItem11.Name = "barButtonItem11";
             this.barButtonItem11.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem11_ItemClick_1);
+            // 
+            // barButtonItem4
+            // 
+            this.barButtonItem4.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.barButtonItem4.Caption = "Встановити налаштування сітки по замовчуванню";
+            this.barButtonItem4.Id = 53;
+            this.barButtonItem4.ImageOptions.ImageIndex = 13;
+            this.barButtonItem4.Name = "barButtonItem4";
+            this.barButtonItem4.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem4_ItemClick);
             // 
             // bar2
             // 
@@ -482,6 +498,12 @@
             this.BarImageList.Images.SetKeyName(10, "pricing");
             this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.user_documens, "user_documens", typeof(global::SP_Sklad.Properties.Resources), 11);
             this.BarImageList.Images.SetKeyName(11, "user_documens");
+            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.copy_16x16, "copy_16x16", typeof(global::SP_Sklad.Properties.Resources), 12);
+            this.BarImageList.Images.SetKeyName(12, "copy_16x16");
+            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.def_settings_grid, "def_settings_grid", typeof(global::SP_Sklad.Properties.Resources), 13);
+            this.BarImageList.Images.SetKeyName(13, "def_settings_grid");
+            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.table, "table", typeof(global::SP_Sklad.Properties.Resources), 14);
+            this.BarImageList.Images.SetKeyName(14, "table");
             // 
             // KagentBalansBtn
             // 
@@ -544,6 +566,25 @@
             this.barButtonItem2.ImageOptions.ImageIndex = 11;
             this.barButtonItem2.Name = "barButtonItem2";
             this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
+            // 
+            // CopyCellContentsBtn
+            // 
+            this.CopyCellContentsBtn.Caption = "Скопіювати вміст клітинки";
+            this.CopyCellContentsBtn.Id = 51;
+            this.CopyCellContentsBtn.ImageOptions.ImageIndex = 12;
+            this.CopyCellContentsBtn.Name = "CopyCellContentsBtn";
+            this.CopyCellContentsBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.CopyCellContentsBtn_ItemClick);
+            // 
+            // barSubItem1
+            // 
+            this.barSubItem1.Caption = "Таблиця";
+            this.barSubItem1.Id = 52;
+            this.barSubItem1.ImageOptions.ImageIndex = 14;
+            this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.CopyCellContentsBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem11),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem4)});
+            this.barSubItem1.Name = "barSubItem1";
             // 
             // panelControl1
             // 
@@ -629,6 +670,7 @@
             this.KaGridView.GridControl = this.KaGridControl;
             this.KaGridView.Name = "KaGridView";
             this.KaGridView.OptionsBehavior.AllowIncrementalSearch = true;
+            this.KaGridView.OptionsBehavior.Editable = false;
             this.KaGridView.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseDownFocused;
             this.KaGridView.OptionsBehavior.ReadOnly = true;
             this.KaGridView.OptionsCustomization.CustomizationFormSnapMode = DevExpress.Utils.Controls.SnapMode.None;
@@ -639,6 +681,7 @@
             this.KaGridView.FocusedRowObjectChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventHandler(this.KaGridView_FocusedRowObjectChanged);
             this.KaGridView.ColumnFilterChanged += new System.EventHandler(this.KaGridView_ColumnFilterChanged);
             this.KaGridView.AsyncCompleted += new System.EventHandler(this.KaGridView_AsyncCompleted);
+            this.KaGridView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KaGridView_KeyDown);
             this.KaGridView.DoubleClick += new System.EventHandler(this.KaGridView_DoubleClick);
             // 
             // gridColumn1
@@ -1224,7 +1267,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem9),
             new DevExpress.XtraBars.LinkPersistInfo(this.MoveKagentArchiveBtnItem, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.ShowKagentArchiveRecordBarCheckItem),
-            new DevExpress.XtraBars.LinkPersistInfo(this.EditItemBtn, true)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.EditItemBtn, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1)});
             this.KAgentPopupMenu.Manager = this.barManager1;
             this.KAgentPopupMenu.Name = "KAgentPopupMenu";
             // 
@@ -1395,5 +1439,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
+        private DevExpress.XtraBars.BarButtonItem CopyCellContentsBtn;
+        private DevExpress.XtraBars.BarSubItem barSubItem1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem4;
     }
 }

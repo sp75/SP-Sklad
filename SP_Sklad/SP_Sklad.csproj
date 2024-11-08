@@ -1974,6 +1974,12 @@
     <Compile Include="ViewsForm\frmMaterilPrices.Designer.cs">
       <DependentUpon>frmMaterilPrices.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewsForm\frmOpenStoreCashRegisterSyncMonitor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewsForm\frmOpenStoreCashRegisterSyncMonitor.Designer.cs">
+      <DependentUpon>frmOpenStoreCashRegisterSyncMonitor.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewsForm\frmWaybillDetView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2968,6 +2974,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ViewsForm\frmMaterilPrices.resx">
       <DependentUpon>frmMaterilPrices.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewsForm\frmOpenStoreCashRegisterSyncMonitor.resx">
+      <DependentUpon>frmOpenStoreCashRegisterSyncMonitor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewsForm\frmWaybillDetView.resx">
       <DependentUpon>frmWaybillDetView.cs</DependentUpon>

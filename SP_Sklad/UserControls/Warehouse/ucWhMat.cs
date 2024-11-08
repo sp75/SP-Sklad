@@ -980,15 +980,7 @@ namespace SP_Sklad.UserControls.Warehouse
 
         private void WhMatGridView_KeyDown(object sender, KeyEventArgs e)
         {
-            GridView view = sender as GridView;
-            if (e.Control && e.KeyCode == Keys.C)
-            {
-                if (view.GetRowCellValue(view.FocusedRowHandle, view.FocusedColumn) != null && view.GetRowCellValue(view.FocusedRowHandle, view.FocusedColumn).ToString() != String.Empty)
-                    Clipboard.SetText(view.GetRowCellValue(view.FocusedRowHandle, view.FocusedColumn).ToString());
-                else
-                    MessageBox.Show("The value in the selected cell is null or empty!");
-                e.Handled = true;
-            }
+            IHelper.CopyCellValueToClipboard(sender , e);
         }
     }
 }

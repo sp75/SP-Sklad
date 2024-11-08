@@ -656,5 +656,10 @@ namespace SP_Sklad.MainTabs
 
             MatGridView.RestoreLayoutFromStream(wh_layout_stream);
         }
+
+        private void MatGridView_KeyDown(object sender, KeyEventArgs e)
+        {
+            IHelper.CopyCellValueToClipboard(sender, e);
+        }
     }
 }

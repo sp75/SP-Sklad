@@ -350,7 +350,8 @@ namespace SP_Sklad.MainTabs
                           k.RouteName,
                           k.WhName,
                           k.WId,
-                          k.Notes
+                          k.Notes,
+                          k.KAU
                       }).Distinct();
 
             if (KType >= 0)
@@ -382,7 +383,8 @@ namespace SP_Sklad.MainTabs
                 WebUserName = s.WebUserName,
                 WhName = s.WhName,
                 WId = s.WId,
-                Notes = s.Notes
+                Notes = s.Notes,
+                KAU = s.KAU
             });
 
             e.Tag = _db;
@@ -408,6 +410,7 @@ namespace SP_Sklad.MainTabs
             public string WhName { get; set; }
             public int? WId { get; set; }
             public string Notes { get; set; }
+            public string KAU { get; set; }
         }
 
         private void KaGridView_AsyncCompleted(object sender, EventArgs e)
@@ -526,6 +529,23 @@ namespace SP_Sklad.MainTabs
 
                 }
             }
+        }
+
+        private void CopyCellContentsBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Clipboard.SetText(KaGridView.GetFocusedDisplayText());
+        }
+
+        private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            wh_layout_stream.Seek(0, System.IO.SeekOrigin.Begin);
+
+            KaGridView.RestoreLayoutFromStream(wh_layout_stream);
+        }
+
+        private void KaGridView_KeyDown(object sender, KeyEventArgs e)
+        {
+            IHelper.CopyCellValueToClipboard(sender, e);
         }
     }
 }

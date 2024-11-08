@@ -77,6 +77,7 @@ namespace SP_Sklad
             AddDeboningBtn.Enabled = IHelper.GetUserAccess(72)?.CanInsert == 1;
 
             OpenStoreTabPage.PageVisible = (DBHelper.is_buh || DBHelper.is_admin) && setting_repo.ShowOpenStoreApp;
+            barButtonItem7.Enabled = setting_repo.ShowOpenStoreApp;
         }
 
         private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -423,6 +424,11 @@ namespace SP_Sklad
         private void barButtonItem6_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             new frmUserSettings().ShowDialog();
+        }
+
+        private void barButtonItem7_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+          new frmOpenStoreCashRegisterSyncMonitor().ShowDialog() ;
         }
     }
 }
