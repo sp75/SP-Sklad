@@ -193,7 +193,7 @@ namespace SP_Sklad.MainTabs
                 wbContentTab.SelectedTabPageIndex = focused_tree_node.GType.Value;
             }
 
-            if(focused_tree_node.FunId == 97 || focused_tree_node.FunId == 106)
+            if(focused_tree_node.FunId == 97 || focused_tree_node.FunId == 106 || focused_tree_node.FunId == 64)
             {
                 bar1.Visible = false;
             }
@@ -545,12 +545,9 @@ namespace SP_Sklad.MainTabs
                 return;
             }
 
-      //      bar1.Visible = true;
-
             switch (focused_tree_node.GType)
             {
                 case 0:
-               //     bar1.Visible = false;
                     break;
 
                 case 1:
@@ -639,7 +636,6 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 12:
-            //        bar1.Visible = false;
                     settingMaterialPricesUserControl1.GetData();
                     break;
 

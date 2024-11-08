@@ -52,7 +52,12 @@ namespace SP_Sklad.UserControls
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.wbEndDate = new DevExpress.XtraEditors.DateEdit();
             this.wbStartDate = new DevExpress.XtraEditors.DateEdit();
-            this.imageCollection2 = new DevExpress.Utils.ImageCollection(this.components);
+            this.mainLabelControl = new DevExpress.XtraEditors.LabelControl();
+            this.panelLabelControl = new DevExpress.XtraEditors.PanelControl();
+            this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
+            this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
+            this.panelControl5 = new DevExpress.XtraEditors.PanelControl();
+            this.panelControl6 = new DevExpress.XtraEditors.PanelControl();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
@@ -66,7 +71,16 @@ namespace SP_Sklad.UserControls
             ((System.ComponentModel.ISupportInitialize)(this.wbEndDate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wbStartDate.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wbStartDate.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageCollection2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelLabelControl)).BeginInit();
+            this.panelLabelControl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
+            this.panelControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
+            this.panelControl4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).BeginInit();
+            this.panelControl5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl6)).BeginInit();
+            this.panelControl6.SuspendLayout();
             this.SuspendLayout();
             // 
             // imageCollection1
@@ -82,34 +96,30 @@ namespace SP_Sklad.UserControls
             // 
             this.panelControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.panelControl2.Controls.Add(this.KagentPanel);
-            this.panelControl2.Controls.Add(this.PeriodComboBoxEdit);
-            this.panelControl2.Controls.Add(this.wbStatusList);
-            this.panelControl2.Controls.Add(this.labelControl4);
-            this.panelControl2.Controls.Add(this.wbEndDate);
-            this.panelControl2.Controls.Add(this.wbStartDate);
+            this.panelControl2.Controls.Add(this.panelControl4);
+            this.panelControl2.Controls.Add(this.panelControl3);
+            this.panelControl2.Controls.Add(this.panelLabelControl);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl2.Location = new System.Drawing.Point(0, 0);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(1293, 54);
+            this.panelControl2.Size = new System.Drawing.Size(1468, 50);
             this.panelControl2.TabIndex = 2;
             // 
             // KagentPanel
             // 
-            this.KagentPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.KagentPanel.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.KagentPanel.Controls.Add(this.wbKagentList);
-            this.KagentPanel.Controls.Add(this.kaListLabelControl);
-            this.KagentPanel.Location = new System.Drawing.Point(495, 0);
+            this.KagentPanel.Controls.Add(this.panelControl6);
+            this.KagentPanel.Controls.Add(this.panelControl5);
+            this.KagentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.KagentPanel.Location = new System.Drawing.Point(683, 0);
             this.KagentPanel.Name = "KagentPanel";
-            this.KagentPanel.Size = new System.Drawing.Size(526, 54);
+            this.KagentPanel.Size = new System.Drawing.Size(524, 50);
             this.KagentPanel.TabIndex = 22;
             // 
             // wbKagentList
             // 
-            this.wbKagentList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.wbKagentList.Location = new System.Drawing.Point(101, 14);
+            this.wbKagentList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.wbKagentList.Location = new System.Drawing.Point(5, 14);
             this.wbKagentList.Name = "wbKagentList";
             editorButtonImageOptions1.ImageIndex = 0;
             editorButtonImageOptions1.ImageList = this.imageCollection1;
@@ -124,7 +134,7 @@ namespace SP_Sklad.UserControls
             this.wbKagentList.Properties.ShowHeader = false;
             this.wbKagentList.Properties.ValueMember = "KaId";
             this.wbKagentList.Properties.MouseUp += new System.Windows.Forms.MouseEventHandler(this.wbKagentList_Properties_MouseUp);
-            this.wbKagentList.Size = new System.Drawing.Size(408, 24);
+            this.wbKagentList.Size = new System.Drawing.Size(416, 24);
             this.wbKagentList.StyleController = this.styleController1;
             this.wbKagentList.TabIndex = 6;
             this.wbKagentList.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.wbKagentList_ButtonClick);
@@ -137,7 +147,7 @@ namespace SP_Sklad.UserControls
             // 
             // kaListLabelControl
             // 
-            this.kaListLabelControl.Location = new System.Drawing.Point(12, 18);
+            this.kaListLabelControl.Location = new System.Drawing.Point(12, 17);
             this.kaListLabelControl.Name = "kaListLabelControl";
             this.kaListLabelControl.Size = new System.Drawing.Size(83, 16);
             this.kaListLabelControl.StyleController = this.styleController1;
@@ -147,7 +157,7 @@ namespace SP_Sklad.UserControls
             // PeriodComboBoxEdit
             // 
             this.PeriodComboBoxEdit.EditValue = "Довільний період";
-            this.PeriodComboBoxEdit.Location = new System.Drawing.Point(10, 15);
+            this.PeriodComboBoxEdit.Location = new System.Drawing.Point(12, 14);
             this.PeriodComboBoxEdit.Name = "PeriodComboBoxEdit";
             this.PeriodComboBoxEdit.Properties.AllowMouseWheel = false;
             this.PeriodComboBoxEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
@@ -173,7 +183,7 @@ namespace SP_Sklad.UserControls
             // wbStatusList
             // 
             this.wbStatusList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.wbStatusList.Location = new System.Drawing.Point(1086, 15);
+            this.wbStatusList.Location = new System.Drawing.Point(54, 14);
             this.wbStatusList.Name = "wbStatusList";
             this.wbStatusList.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -190,7 +200,7 @@ namespace SP_Sklad.UserControls
             // labelControl4
             // 
             this.labelControl4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelControl4.Location = new System.Drawing.Point(1041, 18);
+            this.labelControl4.Location = new System.Drawing.Point(9, 17);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(39, 16);
             this.labelControl4.StyleController = this.styleController1;
@@ -200,7 +210,7 @@ namespace SP_Sklad.UserControls
             // wbEndDate
             // 
             this.wbEndDate.EditValue = null;
-            this.wbEndDate.Location = new System.Drawing.Point(342, 15);
+            this.wbEndDate.Location = new System.Drawing.Point(344, 14);
             this.wbEndDate.Name = "wbEndDate";
             this.wbEndDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -221,7 +231,7 @@ namespace SP_Sklad.UserControls
             // wbStartDate
             // 
             this.wbStartDate.EditValue = null;
-            this.wbStartDate.Location = new System.Drawing.Point(196, 15);
+            this.wbStartDate.Location = new System.Drawing.Point(198, 14);
             this.wbStartDate.Name = "wbStartDate";
             this.wbStartDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -239,14 +249,76 @@ namespace SP_Sklad.UserControls
             this.wbStartDate.TabIndex = 1;
             this.wbStartDate.EditValueChanged += new System.EventHandler(this.wbStartDate_EditValueChanged);
             // 
-            // imageCollection2
+            // mainLabelControl
             // 
-            this.imageCollection2.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection2.ImageStream")));
-            this.imageCollection2.TransparentColor = System.Drawing.Color.White;
-            this.imageCollection2.InsertImage(global::SP_Sklad.Properties.Resources.kontragents_folder, "kontragents_folder", typeof(global::SP_Sklad.Properties.Resources), 0);
-            this.imageCollection2.Images.SetKeyName(0, "kontragents_folder");
-            this.imageCollection2.InsertImage(global::SP_Sklad.Properties.Resources.supplier, "supplier", typeof(global::SP_Sklad.Properties.Resources), 1);
-            this.imageCollection2.Images.SetKeyName(1, "supplier");
+            this.mainLabelControl.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.mainLabelControl.Appearance.Options.UseFont = true;
+            this.mainLabelControl.ImageAlignToText = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.mainLabelControl.ImageOptions.Alignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.mainLabelControl.ImageOptions.ImageIndex = 1;
+            this.mainLabelControl.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("mainLabelControl.ImageOptions.SvgImage")));
+            this.mainLabelControl.Location = new System.Drawing.Point(4, 7);
+            this.mainLabelControl.Name = "mainLabelControl";
+            this.mainLabelControl.Size = new System.Drawing.Size(180, 36);
+            this.mainLabelControl.TabIndex = 27;
+            this.mainLabelControl.Text = "OpenStore/Продажі";
+            // 
+            // panelLabelControl
+            // 
+            this.panelLabelControl.AutoSize = true;
+            this.panelLabelControl.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelLabelControl.Controls.Add(this.mainLabelControl);
+            this.panelLabelControl.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panelLabelControl.Location = new System.Drawing.Point(0, 0);
+            this.panelLabelControl.Name = "panelLabelControl";
+            this.panelLabelControl.Size = new System.Drawing.Size(187, 50);
+            this.panelLabelControl.TabIndex = 23;
+            this.panelLabelControl.Visible = false;
+            // 
+            // panelControl3
+            // 
+            this.panelControl3.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl3.Controls.Add(this.PeriodComboBoxEdit);
+            this.panelControl3.Controls.Add(this.wbStartDate);
+            this.panelControl3.Controls.Add(this.wbEndDate);
+            this.panelControl3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panelControl3.Location = new System.Drawing.Point(187, 0);
+            this.panelControl3.Name = "panelControl3";
+            this.panelControl3.Size = new System.Drawing.Size(496, 50);
+            this.panelControl3.TabIndex = 24;
+            // 
+            // panelControl4
+            // 
+            this.panelControl4.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl4.Controls.Add(this.labelControl4);
+            this.panelControl4.Controls.Add(this.wbStatusList);
+            this.panelControl4.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panelControl4.Location = new System.Drawing.Point(1207, 0);
+            this.panelControl4.Name = "panelControl4";
+            this.panelControl4.Size = new System.Drawing.Size(261, 50);
+            this.panelControl4.TabIndex = 25;
+            // 
+            // panelControl5
+            // 
+            this.panelControl5.AutoSize = true;
+            this.panelControl5.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl5.Controls.Add(this.kaListLabelControl);
+            this.panelControl5.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panelControl5.Location = new System.Drawing.Point(0, 0);
+            this.panelControl5.Name = "panelControl5";
+            this.panelControl5.Size = new System.Drawing.Size(98, 50);
+            this.panelControl5.TabIndex = 7;
+            // 
+            // panelControl6
+            // 
+            this.panelControl6.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl6.Controls.Add(this.wbKagentList);
+            this.panelControl6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelControl6.Location = new System.Drawing.Point(98, 0);
+            this.panelControl6.Name = "panelControl6";
+            this.panelControl6.Padding = new System.Windows.Forms.Padding(5, 14, 5, 0);
+            this.panelControl6.Size = new System.Drawing.Size(426, 50);
+            this.panelControl6.TabIndex = 8;
             // 
             // ucDocumentFilterPanel
             // 
@@ -254,7 +326,7 @@ namespace SP_Sklad.UserControls
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panelControl2);
             this.Name = "ucDocumentFilterPanel";
-            this.Size = new System.Drawing.Size(1293, 54);
+            this.Size = new System.Drawing.Size(1468, 50);
             this.Load += new System.EventHandler(this.ucWBFilterPanel_Load);
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
@@ -271,7 +343,19 @@ namespace SP_Sklad.UserControls
             ((System.ComponentModel.ISupportInitialize)(this.wbEndDate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.wbStartDate.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.wbStartDate.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageCollection2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelLabelControl)).EndInit();
+            this.panelLabelControl.ResumeLayout(false);
+            this.panelLabelControl.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
+            this.panelControl3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).EndInit();
+            this.panelControl4.ResumeLayout(false);
+            this.panelControl4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).EndInit();
+            this.panelControl5.ResumeLayout(false);
+            this.panelControl5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl6)).EndInit();
+            this.panelControl6.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -288,7 +372,12 @@ namespace SP_Sklad.UserControls
         public DevExpress.XtraEditors.DateEdit wbStartDate;
         private DevExpress.XtraEditors.StyleController styleController1;
         private DevExpress.Utils.ImageCollection imageCollection1;
-        private DevExpress.Utils.ImageCollection imageCollection2;
         private DevExpress.XtraEditors.PanelControl KagentPanel;
+        private DevExpress.XtraEditors.PanelControl panelControl3;
+        private DevExpress.XtraEditors.PanelControl panelLabelControl;
+        private DevExpress.XtraEditors.LabelControl mainLabelControl;
+        private DevExpress.XtraEditors.PanelControl panelControl4;
+        private DevExpress.XtraEditors.PanelControl panelControl6;
+        private DevExpress.XtraEditors.PanelControl panelControl5;
     }
 }

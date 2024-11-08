@@ -875,11 +875,6 @@
             // ucWBOrdersIn
             // 
             this.ucWBOrdersIn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucWBOrdersIn.ExtCopyBtn = this.CopyItemBtn;
-            this.ucWBOrdersIn.ExtDeleteBtn = this.DeleteItemBtn;
-            this.ucWBOrdersIn.ExtEditBtn = this.EditItemBtn;
-            this.ucWBOrdersIn.ExtExecuteBtn = this.ExecuteItemBtn;
-            this.ucWBOrdersIn.ExtPrintBtn = this.PrintItemBtn;
             this.ucWBOrdersIn.Location = new System.Drawing.Point(0, 0);
             this.ucWBOrdersIn.Name = "ucWBOrdersIn";
             this.ucWBOrdersIn.Size = new System.Drawing.Size(1138, 695);

@@ -1,4 +1,5 @@
-﻿using DevExpress.XtraEditors;
+﻿using DevExpress.Utils;
+using DevExpress.XtraEditors;
 using SP_Sklad.Common;
 using SP_Sklad.SkladData;
 using System;
@@ -51,6 +52,26 @@ namespace SP_Sklad.UserControls
             set => KagentPanel.Visible = value;
         }
 
+        [Browsable(true)]
+        public bool panelLabelControlVisible
+        {
+            get => panelLabelControl.Visible;
+            set => panelLabelControl.Visible = value;
+        }
+
+        [Browsable(true)]
+        public string mainLabelControlText
+        {
+            get => mainLabelControl.Text;
+            set => mainLabelControl.Text = value;
+        }
+
+        [Browsable(true)]
+        public object mainLabelControlImageOptions
+        {
+            get => mainLabelControl.ImageOptions.Images;
+            set => mainLabelControl.ImageOptions.Images = value;
+        }
 
         private void ucWBFilterPanel_Load(object sender, EventArgs e)
         {
