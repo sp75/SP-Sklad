@@ -949,7 +949,7 @@ namespace SP_Sklad.EditForm
                 KaId = _ka_id.Value,
                 ValueType = 0,
                 PricingType = 0,
-                PTypeId = DB.SkladBase().PriceTypes.Select(s => s.PTypeId).FirstOrDefault()
+                PTypeId = _ka.PTypeId ?? DB.SkladBase().PriceTypes.FirstOrDefault(a => a.Def == 1).PTypeId
             });
 
             _db.SaveChanges();
@@ -968,7 +968,7 @@ namespace SP_Sklad.EditForm
                 KaId = _ka_id.Value,
                 ValueType = 0,
                 PricingType = 0,
-                PTypeId = DB.SkladBase().PriceTypes.Select(s => s.PTypeId).FirstOrDefault()
+                PTypeId = _ka.PTypeId ?? DB.SkladBase().PriceTypes.FirstOrDefault(a=> a.Def == 1).PTypeId
             });
 
             _db.SaveChanges();
@@ -1095,6 +1095,11 @@ namespace SP_Sklad.EditForm
             {
                 lookUpEdit9.EditValue = IHelper.ShowDirectList(lookUpEdit9.EditValue, 5);
             }
+        }
+
+        private void dropDownButton6_Click(object sender, EventArgs e)
+        {
+            barButtonItem5.PerformClick();
         }
     }
 }

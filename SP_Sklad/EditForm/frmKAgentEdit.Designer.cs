@@ -802,6 +802,8 @@
             this.barButtonItem5.Caption = "Ціноутворення групи товарів";
             this.barButtonItem5.Id = 6;
             this.barButtonItem5.ImageOptions.ImageIndex = 8;
+            this.barButtonItem5.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.barButtonItem5.ItemAppearance.Normal.Options.UseFont = true;
             this.barButtonItem5.Name = "barButtonItem5";
             this.barButtonItem5.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem5_ItemClick);
             // 
@@ -4016,6 +4018,7 @@
             this.dropDownButton6.Size = new System.Drawing.Size(117, 23);
             this.dropDownButton6.TabIndex = 13;
             this.dropDownButton6.Text = "Додати...";
+            this.dropDownButton6.Click += new System.EventHandler(this.dropDownButton6_Click);
             // 
             // popupMenu2
             // 

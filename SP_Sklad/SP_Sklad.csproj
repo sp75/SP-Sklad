@@ -1605,6 +1605,12 @@
     <Compile Include="UserControls\Documents\ucRoutesManagement.Designer.cs">
       <DependentUpon>ucRoutesManagement.cs</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\Tablet\UI\ucTabletWayBillCustomerOrder.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Tablet\UI\ucTabletWayBillCustomerOrder.Designer.cs">
+      <DependentUpon>ucTabletWayBillCustomerOrder.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\OpenStore\ucOpenStoreCashRegisterSyncMonitor.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -2794,6 +2800,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Documents\ucRoutesManagement.resx">
       <DependentUpon>ucRoutesManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Tablet\UI\ucTabletWayBillCustomerOrder.resx">
+      <DependentUpon>ucTabletWayBillCustomerOrder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\OpenStore\ucOpenStoreCashRegisterSyncMonitor.resx">
       <DependentUpon>ucOpenStoreCashRegisterSyncMonitor.cs</DependentUpon>

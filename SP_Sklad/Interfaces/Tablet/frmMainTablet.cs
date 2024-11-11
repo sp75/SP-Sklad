@@ -125,10 +125,10 @@ namespace SP_Sklad.Interfaces.Tablet
 
         private void accordionControlElement15_Click(object sender, EventArgs e)
         {
-            var control = mainContainer.Controls["ucWayBillCustomerOrder"];
+            var control = mainContainer.Controls["ucTabletWayBillCustomerOrder"];
             if (!mainContainer.Controls.Contains(control))
             {
-                control = new ucWayBillCustomerOrder() { Dock = DockStyle.Fill };
+                control = new ucTabletWayBillCustomerOrder() { Dock = DockStyle.Fill };
                 mainContainer.Controls.Add(control);
             }
 

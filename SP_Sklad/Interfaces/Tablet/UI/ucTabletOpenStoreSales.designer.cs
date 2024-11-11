@@ -29,9 +29,9 @@
         ///
         private void InitializeComponent()
         {
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions1 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions13 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucTabletOpenStoreSales));
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions2 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions14 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
             this.windowsUIButtonPanel = new DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -87,12 +87,12 @@
             this.windowsUIButtonPanel.AppearanceButton.Pressed.Options.UseFont = true;
             this.windowsUIButtonPanel.AppearanceButton.Pressed.Options.UseForeColor = true;
             this.windowsUIButtonPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(73)))), ((int)(((byte)(88)))));
-            windowsUIButtonImageOptions1.ImageUri.Uri = "Refresh;Size32x32;GrayScaled";
-            windowsUIButtonImageOptions1.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions1.SvgImage")));
-            windowsUIButtonImageOptions2.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions2.SvgImage")));
+            windowsUIButtonImageOptions13.ImageUri.Uri = "Refresh;Size32x32;GrayScaled";
+            windowsUIButtonImageOptions13.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions13.SvgImage")));
+            windowsUIButtonImageOptions14.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions14.SvgImage")));
             this.windowsUIButtonPanel.Buttons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Оновити список", true, windowsUIButtonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", 0, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Експорт в Excel", true, windowsUIButtonImageOptions2, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", 1, true, null, true, false, true, null, -1, false)});
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Оновити список", true, windowsUIButtonImageOptions13, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", 0, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Експорт в Excel", true, windowsUIButtonImageOptions14, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", 1, true, null, true, false, true, null, -1, false)});
             this.windowsUIButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.windowsUIButtonPanel.EnableImageTransparency = true;
             this.windowsUIButtonPanel.Location = new System.Drawing.Point(0, 540);
@@ -109,7 +109,7 @@
             // gridControl1
             // 
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl1.Location = new System.Drawing.Point(0, 78);
+            this.gridControl1.Location = new System.Drawing.Point(0, 74);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
@@ -118,7 +118,7 @@
             this.repositoryItemCalcEdit1,
             this.repositoryItemComboBox1,
             this.repositoryItemPopupContainerEdit1});
-            this.gridControl1.Size = new System.Drawing.Size(1266, 462);
+            this.gridControl1.Size = new System.Drawing.Size(1266, 466);
             this.gridControl1.TabIndex = 7;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -154,7 +154,6 @@
             this.gridView1.OptionsCustomization.AllowGroup = false;
             this.gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.gridView1.OptionsView.ColumnHeaderAutoHeight = DevExpress.Utils.DefaultBoolean.True;
-            this.gridView1.OptionsView.EnableAppearanceEvenRow = true;
             this.gridView1.OptionsView.RowAutoHeight = true;
             this.gridView1.OptionsView.ShowFooter = true;
             this.gridView1.OptionsView.ShowIndicator = false;
@@ -277,8 +276,8 @@
             this.panelControl3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl3.Location = new System.Drawing.Point(0, 0);
             this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Padding = new System.Windows.Forms.Padding(3, 3, 3, 15);
-            this.panelControl3.Size = new System.Drawing.Size(1266, 78);
+            this.panelControl3.Padding = new System.Windows.Forms.Padding(3, 3, 3, 10);
+            this.panelControl3.Size = new System.Drawing.Size(1266, 74);
             this.panelControl3.TabIndex = 8;
             // 
             // mainLabelControl
@@ -289,7 +288,7 @@
             this.mainLabelControl.ImageOptions.Alignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.mainLabelControl.ImageOptions.ImageIndex = 1;
             this.mainLabelControl.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("mainLabelControl.ImageOptions.SvgImage")));
-            this.mainLabelControl.Location = new System.Drawing.Point(18, 20);
+            this.mainLabelControl.Location = new System.Drawing.Point(8, 19);
             this.mainLabelControl.Name = "mainLabelControl";
             this.mainLabelControl.Size = new System.Drawing.Size(180, 36);
             this.mainLabelControl.TabIndex = 26;
@@ -299,7 +298,7 @@
             // 
             this.KagentList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.KagentList.Location = new System.Drawing.Point(771, 19);
+            this.KagentList.Location = new System.Drawing.Point(755, 19);
             this.KagentList.Name = "KagentList";
             this.KagentList.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.KagentList.Properties.Appearance.Options.UseFont = true;
@@ -313,14 +312,14 @@
             this.KagentList.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoSuggest;
             this.KagentList.Properties.ShowHeader = false;
             this.KagentList.Properties.ValueMember = "SAREAID";
-            this.KagentList.Size = new System.Drawing.Size(477, 22);
+            this.KagentList.Size = new System.Drawing.Size(497, 38);
             this.KagentList.TabIndex = 25;
             this.KagentList.EditValueChanged += new System.EventHandler(this.KagentList_EditValueChanged);
             // 
             // PeriodComboBoxEdit
             // 
             this.PeriodComboBoxEdit.EditValue = "Довільний період";
-            this.PeriodComboBoxEdit.Location = new System.Drawing.Point(227, 19);
+            this.PeriodComboBoxEdit.Location = new System.Drawing.Point(208, 19);
             this.PeriodComboBoxEdit.Name = "PeriodComboBoxEdit";
             this.PeriodComboBoxEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.PeriodComboBoxEdit.Properties.Appearance.Options.UseFont = true;
@@ -335,14 +334,14 @@
             "З початку місяця",
             "З початку року"});
             this.PeriodComboBoxEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.PeriodComboBoxEdit.Size = new System.Drawing.Size(175, 22);
+            this.PeriodComboBoxEdit.Size = new System.Drawing.Size(175, 38);
             this.PeriodComboBoxEdit.TabIndex = 22;
             this.PeriodComboBoxEdit.EditValueChanged += new System.EventHandler(this.PeriodComboBoxEdit_EditValueChanged);
             // 
             // wbEndDate
             // 
             this.wbEndDate.EditValue = null;
-            this.wbEndDate.Location = new System.Drawing.Point(581, 19);
+            this.wbEndDate.Location = new System.Drawing.Point(562, 19);
             this.wbEndDate.Name = "wbEndDate";
             this.wbEndDate.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.wbEndDate.Properties.Appearance.Options.UseFont = true;
@@ -357,14 +356,14 @@
             this.wbEndDate.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.wbEndDate.Properties.MaskSettings.Set("mask", "g");
             this.wbEndDate.Properties.VistaDisplayMode = DevExpress.Utils.DefaultBoolean.False;
-            this.wbEndDate.Size = new System.Drawing.Size(167, 22);
+            this.wbEndDate.Size = new System.Drawing.Size(167, 38);
             this.wbEndDate.TabIndex = 3;
             this.wbEndDate.EditValueChanged += new System.EventHandler(this.wbEndDate_EditValueChanged);
             // 
             // wbStartDate
             // 
             this.wbStartDate.EditValue = null;
-            this.wbStartDate.Location = new System.Drawing.Point(408, 19);
+            this.wbStartDate.Location = new System.Drawing.Point(389, 19);
             this.wbStartDate.Name = "wbStartDate";
             this.wbStartDate.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.wbStartDate.Properties.Appearance.Options.UseFont = true;
@@ -379,7 +378,7 @@
             this.wbStartDate.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.wbStartDate.Properties.MaskSettings.Set("mask", "g");
             this.wbStartDate.Properties.VistaDisplayMode = DevExpress.Utils.DefaultBoolean.False;
-            this.wbStartDate.Size = new System.Drawing.Size(167, 22);
+            this.wbStartDate.Size = new System.Drawing.Size(167, 38);
             this.wbStartDate.TabIndex = 1;
             this.wbStartDate.EditValueChanged += new System.EventHandler(this.wbStartDate_EditValueChanged);
             // 
@@ -393,6 +392,7 @@
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.panelControl3);
             this.Controls.Add(this.windowsUIButtonPanel);
+            this.LookAndFeel.TouchUIMode = DevExpress.Utils.DefaultBoolean.True;
             this.Name = "ucTabletOpenStoreSales";
             this.Size = new System.Drawing.Size(1266, 600);
             this.Load += new System.EventHandler(this.ucCurrentReturned_Load);

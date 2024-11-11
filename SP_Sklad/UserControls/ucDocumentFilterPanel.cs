@@ -67,10 +67,10 @@ namespace SP_Sklad.UserControls
         }
 
         [Browsable(true)]
-        public object mainLabelControlImageOptions
+        public int mainLabelControlImageIndex
         {
-            get => mainLabelControl.ImageOptions.Images;
-            set => mainLabelControl.ImageOptions.Images = value;
+            get => mainLabelControl.ImageOptions.ImageIndex;
+            set => mainLabelControl.ImageOptions.ImageIndex = value;
         }
 
         private void ucWBFilterPanel_Load(object sender, EventArgs e)
