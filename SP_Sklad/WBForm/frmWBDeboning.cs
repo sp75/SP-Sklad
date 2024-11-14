@@ -62,6 +62,7 @@ namespace SP_Sklad.WBForm
                 MatName = s.Materials.Name,
                 s.MatId
             }).ToList();
+            RecipeComboBox.Properties.Buttons[1].Enabled = _db.UserTreeAccess.Any(w => w.Id == 42 && w.UserId == DBHelper.CurrentUser.UserId && w.CanView == 1);
 
             if (_wbill_id == null)
             {
@@ -127,21 +128,21 @@ namespace SP_Sklad.WBForm
             RefreshDeboningDet();
         }
 
-      /*  private void UpdLockWB()
-        {
-            if (wb != null)
-            {
-                _db.Entry<WaybillList>(wb).State = EntityState.Detached;
-            }
+        /*  private void UpdLockWB()
+          {
+              if (wb != null)
+              {
+                  _db.Entry<WaybillList>(wb).State = EntityState.Detached;
+              }
 
-            wb = _db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK, NOWAIT) where WbillId = {0}", _wbill_id).FirstOrDefault();
-            if (wb != null)
-            {
-                wb.WayBillMake = _db.WayBillMake.Find(_wbill_id);
-            }
+              wb = _db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK, NOWAIT) where WbillId = {0}", _wbill_id).FirstOrDefault();
+              if (wb != null)
+              {
+                  wb.WayBillMake = _db.WayBillMake.Find(_wbill_id);
+              }
 
-            _db.Entry<WaybillList>(wb).State = EntityState.Modified;
-        }*/
+              _db.Entry<WaybillList>(wb).State = EntityState.Modified;
+          }*/
 
         private void RefreshDet()
         {
@@ -252,13 +253,13 @@ namespace SP_Sklad.WBForm
         {
             if (wbd_row != null)
             {
-               using( var frm = new frmWriteOffDet(_db, wbd_row.PosId, wb))
-               {
-                   frm.ShowDialog();
-               }
+                using (var frm = new frmWriteOffDet(_db, wbd_row.PosId, wb))
+                {
+                    frm.ShowDialog();
+                }
 
-            //    current_transaction = current_transaction.CommitRetaining(_db);
-            //    UpdLockWB();
+                //    current_transaction = current_transaction.CommitRetaining(_db);
+                //    UpdLockWB();
                 RefreshDeboningDet(true);
                 RefreshDet();
             }
@@ -266,7 +267,7 @@ namespace SP_Sklad.WBForm
 
         private void DelMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            switch(xtraTabControl1.SelectedTabPageIndex)
+            switch (xtraTabControl1.SelectedTabPageIndex)
             {
                 case 0:
                     if (wbd_row != null)
@@ -306,8 +307,8 @@ namespace SP_Sklad.WBForm
             var r = new ObjectParameter("RSV", typeof(Int32));
 
             _db.ReservedPosition(wbd_row.PosId, r, DBHelper.CurrentUser.UserId);
-         //   current_transaction = current_transaction.CommitRetaining(_db);
-         //   UpdLockWB();
+            //   current_transaction = current_transaction.CommitRetaining(_db);
+            //   UpdLockWB();
 
             if (r.Value != null)
             {
@@ -323,8 +324,8 @@ namespace SP_Sklad.WBForm
             if (wbd_row.Rsv == 1 && wbd_row.PosId > 0)
             {
                 _db.DeleteWhere<WMatTurn>(w => w.SourceId == wbd_row.PosId);
-            //    current_transaction = current_transaction.CommitRetaining(_db);
-           //     UpdLockWB();
+                //    current_transaction = current_transaction.CommitRetaining(_db);
+                //     UpdLockWB();
                 wbd_row.Rsv = 0;
                 WaybillDetOutGridView.RefreshRow(WaybillDetOutGridView.FocusedRowHandle);
             }
@@ -343,7 +344,7 @@ namespace SP_Sklad.WBForm
 
         private void NowDateBtn_Click(object sender, EventArgs e)
         {
-          
+
         }
 
         private void NumEdit_EditValueChanged(object sender, EventArgs e)
@@ -360,19 +361,19 @@ namespace SP_Sklad.WBForm
                 xtraTabControl1.SelectedTabPageIndex = 1;
             }
         }
-/*
-        public class DeboningDetList
-        {
-            public int DebId { get; set; }
-            public int WBillId { get; set; }
-            public int MatId { get; set; }
-            public decimal Amount { get; set; }
-            public decimal Price { get; set; }
-            public int WId { get; set; }
-            public string MatName { get; set; }
-            public decimal Total { get; set; }
-            public string WhName { get; set; }
-        }*/
+        /*
+                public class DeboningDetList
+                {
+                    public int DebId { get; set; }
+                    public int WBillId { get; set; }
+                    public int MatId { get; set; }
+                    public decimal Amount { get; set; }
+                    public decimal Price { get; set; }
+                    public int WId { get; set; }
+                    public string MatName { get; set; }
+                    public decimal Total { get; set; }
+                    public string WhName { get; set; }
+                }*/
 
         private void RefreshDeboningDet(bool reset = false)
         {
@@ -449,30 +450,6 @@ namespace SP_Sklad.WBForm
             PrintDoc.Show(wb.Id, wb.WType, _db);
         }
 
-        private void WhInBtn_Click(object sender, EventArgs e)
-        {
-          
-         }
-
-        private void simpleButton2_Click(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void simpleButton3_Click(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void simpleButton4_Click(object sender, EventArgs e)
-        {
-          
-        }
-
-        private void ReceptBtn_Click(object sender, EventArgs e)
-        {
-           
-        }
 
         private void MatInfoBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -528,7 +505,7 @@ namespace SP_Sklad.WBForm
 
         private void OnDateDBEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
-            if(e.Button.Index == 1)
+            if (e.Button.Index == 1)
             {
                 wb.OnDate = DBHelper.ServerDateTime();
                 OnDateDBEdit.DateTime = wb.OnDate;
@@ -555,7 +532,7 @@ namespace SP_Sklad.WBForm
 
         private void PersonMakeComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
- if (e.Button.Index == 1)
+            if (e.Button.Index == 1)
             {
                 PersonMakeComboBox.EditValue = IHelper.ShowDirectList(PersonMakeComboBox.EditValue, 3);
             }
@@ -563,7 +540,7 @@ namespace SP_Sklad.WBForm
 
         private void KagentComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
- if (e.Button.Index == 1)
+            if (e.Button.Index == 1)
             {
                 KagentComboBox.EditValue = IHelper.ShowDirectList(KagentComboBox.EditValue, 3);
             }
@@ -571,7 +548,7 @@ namespace SP_Sklad.WBForm
 
         private void PersonComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
- if (e.Button.Index == 1)
+            if (e.Button.Index == 1)
             {
                 PersonComboBox.EditValue = IHelper.ShowDirectList(PersonComboBox.EditValue, 3);
             }

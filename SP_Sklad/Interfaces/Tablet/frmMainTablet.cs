@@ -101,6 +101,8 @@ namespace SP_Sklad.Interfaces.Tablet
 
         private void accordionControlElement45_Click(object sender, EventArgs e)
         {
+            accordionControl1.SelectElement((AccordionControlElement)sender);
+
             var control = mainContainer.Controls["ucTabletOpenStoreSales"];
 
             if (!mainContainer.Controls.Contains(control))
@@ -125,6 +127,8 @@ namespace SP_Sklad.Interfaces.Tablet
 
         private void accordionControlElement15_Click(object sender, EventArgs e)
         {
+            accordionControl1.SelectElement((AccordionControlElement)sender);
+
             var control = mainContainer.Controls["ucTabletWayBillCustomerOrder"];
             if (!mainContainer.Controls.Contains(control))
             {
@@ -133,6 +137,16 @@ namespace SP_Sklad.Interfaces.Tablet
             }
 
             control.BringToFront();
+        }
+
+        private void accordionControl1_ElementClick(object sender, ElementClickEventArgs e)
+        {
+            AccordionControl accordionControl = sender as AccordionControl;
+            if (e.MouseButton == MouseButtons.Left && accordionControl.IsPopupFormShown)
+            {
+                accordionControl.ClosePopupForm();
+                e.Handled = true;
+            }
         }
     }
 }

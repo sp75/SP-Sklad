@@ -97,9 +97,6 @@ namespace SP_Sklad.WBDetForm
                     var w_mat_turn = _db.WMatTurn.AsNoTracking().Where(w => w.SourceId == _wbd.PosId).ToList();
                     if (w_mat_turn.Count > 0)
                     {
-                        // _db.WMatTurn.RemoveRange(w_mat_turn);
-                        //   _db.SaveChanges();
-
                         _db.DeleteWhere<WMatTurn>(w => w.SourceId == _wbd.PosId);
 
                         GetContent();
@@ -313,32 +310,35 @@ namespace SP_Sklad.WBDetForm
                 if (DBHelper.CheckIntermediateWeighing(_wb.WbillId, _db))
                 {
 
-                    foreach (var item in pos_in.Where(w => w.Amount > 0))
+                    using (var db = new BaseEntities())
                     {
-                        _db.WMatTurn.Add(new WMatTurn
+                        foreach (var item in pos_in.Where(w => w.Amount > 0))
                         {
-                            PosId = item.PosId,
-                            WId = item.WId,
-                            MatId = item.MatId,
-                            OnDate = _wbd.OnDate.Value,
-                            TurnType = 2,
-                            Amount = Convert.ToDecimal(item.Amount),
-                            SourceId = _wbd.PosId
-                        });
+                            db.WMatTurn.Add(new WMatTurn
+                            {
+                                PosId = item.PosId,
+                                WId = item.WId,
+                                MatId = item.MatId,
+                                OnDate = _wbd.OnDate.Value,
+                                TurnType = 2,
+                                Amount = Convert.ToDecimal(item.Amount),
+                                SourceId = _wbd.PosId
+                            });
+                        }
+
+                        try
+                        {
+                            db.SaveChanges();
+                        }
+                        catch (System.Data.Entity.Infrastructure.DbUpdateException exp)
+                        {
+                            db.UndoAllChanges();
+                            var b_exp = exp.GetBaseException();
+
+                            XtraMessageBox.Show((b_exp != null ? b_exp.Message : exp.Message), "Залишки по партіям не актуальні", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
                     }
                 }
-            }
-
-            try
-            {
-                _db.SaveChanges();
-            }
-            catch (System.Data.Entity.Infrastructure.DbUpdateException exp)
-            {
-                _db.UndoAllChanges();
-                var b_exp = exp.GetBaseException();
-
-                XtraMessageBox.Show((b_exp != null ? b_exp.Message : exp.Message), "Залишки по партіям не актуальні", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
             Close();

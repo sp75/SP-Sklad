@@ -334,7 +334,7 @@
             this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 217);
             this.standaloneBarDockControl1.Manager = this.barManager1;
             this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
-            this.standaloneBarDockControl1.Size = new System.Drawing.Size(958, 24);
+            this.standaloneBarDockControl1.Size = new System.Drawing.Size(963, 24);
             this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
             // 
             // barDockControlTop
@@ -343,7 +343,7 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(958, 24);
+            this.barDockControlTop.Size = new System.Drawing.Size(963, 24);
             // 
             // barDockControlBottom
             // 
@@ -351,7 +351,7 @@
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 571);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(958, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(963, 0);
             // 
             // barDockControlLeft
             // 
@@ -365,7 +365,7 @@
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(958, 24);
+            this.barDockControlRight.Location = new System.Drawing.Point(963, 24);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 547);
             // 
@@ -430,7 +430,7 @@
             this.panelControl3.Location = new System.Drawing.Point(0, 24);
             this.panelControl3.Name = "panelControl3";
             this.panelControl3.Padding = new System.Windows.Forms.Padding(5);
-            this.panelControl3.Size = new System.Drawing.Size(958, 193);
+            this.panelControl3.Size = new System.Drawing.Size(963, 193);
             this.panelControl3.TabIndex = 10;
             // 
             // panelControl1
@@ -449,7 +449,7 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(5, 5);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(555, 183);
+            this.panelControl1.Size = new System.Drawing.Size(560, 183);
             this.panelControl1.TabIndex = 4;
             // 
             // ToDateEdit
@@ -488,6 +488,7 @@
             this.WhComboBox.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
             this.WhComboBox.Properties.DisplayMember = "Name";
+            this.WhComboBox.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoSearch;
             this.WhComboBox.Properties.ShowFooter = false;
             this.WhComboBox.Properties.ShowHeader = false;
             this.WhComboBox.Properties.ValueMember = "WId";
@@ -510,6 +511,7 @@
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("MatName", "Назва"),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Amount", "К-сть")});
             this.RecipeComboBox.Properties.DisplayMember = "MatName";
+            this.RecipeComboBox.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoSearch;
             this.RecipeComboBox.Properties.ShowFooter = false;
             this.RecipeComboBox.Properties.ShowHeader = false;
             this.RecipeComboBox.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
@@ -604,7 +606,7 @@
             // 
             this.panel1.Controls.Add(this.panelControl4);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(560, 5);
+            this.panel1.Location = new System.Drawing.Point(565, 5);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.panel1.Size = new System.Drawing.Size(393, 183);
@@ -650,6 +652,8 @@
             // 
             // ReasonEdit
             // 
+            this.ReasonEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ReasonEdit.Location = new System.Drawing.Point(88, 109);
             this.ReasonEdit.MenuManager = this.barManager1;
             this.ReasonEdit.Name = "ReasonEdit";
@@ -763,13 +767,13 @@
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelControl2.Location = new System.Drawing.Point(0, 519);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(958, 52);
+            this.panelControl2.Size = new System.Drawing.Size(963, 52);
             this.panelControl2.TabIndex = 17;
             // 
             // OkButton
             // 
             this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.OkButton.Location = new System.Drawing.Point(736, 10);
+            this.OkButton.Location = new System.Drawing.Point(741, 10);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(100, 30);
             this.OkButton.TabIndex = 1;
@@ -779,7 +783,7 @@
             // CancelBtn
             // 
             this.CancelBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CancelBtn.Location = new System.Drawing.Point(846, 10);
+            this.CancelBtn.Location = new System.Drawing.Point(851, 10);
             this.CancelBtn.Name = "CancelBtn";
             this.CancelBtn.Size = new System.Drawing.Size(100, 30);
             this.CancelBtn.TabIndex = 0;
@@ -792,7 +796,7 @@
             this.xtraTabControl1.Location = new System.Drawing.Point(0, 241);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(958, 278);
+            this.xtraTabControl1.Size = new System.Drawing.Size(963, 278);
             this.xtraTabControl1.TabIndex = 18;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -803,7 +807,7 @@
             this.xtraTabPage1.Controls.Add(this.WaybillDetOutGridControl);
             this.xtraTabPage1.ImageOptions.Image = global::SP_Sklad.Properties.Resources.mat_pos_wh_1;
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(956, 250);
+            this.xtraTabPage1.Size = new System.Drawing.Size(961, 250);
             this.xtraTabPage1.Text = "Використані партії";
             // 
             // WaybillDetOutGridControl
@@ -816,7 +820,7 @@
             this.WaybillDetOutGridControl.Name = "WaybillDetOutGridControl";
             this.WaybillDetOutGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox2});
-            this.WaybillDetOutGridControl.Size = new System.Drawing.Size(956, 250);
+            this.WaybillDetOutGridControl.Size = new System.Drawing.Size(961, 250);
             this.WaybillDetOutGridControl.TabIndex = 2;
             this.WaybillDetOutGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.WaybillDetOutGridView});
@@ -942,7 +946,7 @@
             this.xtraTabPage2.Controls.Add(this.DeboningDetGridControl);
             this.xtraTabPage2.ImageOptions.Image = global::SP_Sklad.Properties.Resources.product;
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(956, 250);
+            this.xtraTabPage2.Size = new System.Drawing.Size(961, 250);
             this.xtraTabPage2.Text = "Вихід";
             // 
             // DeboningDetGridControl
@@ -955,7 +959,7 @@
             this.DeboningDetGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemWhEdit,
             this.repositoryItemCalcEdit1});
-            this.DeboningDetGridControl.Size = new System.Drawing.Size(956, 250);
+            this.DeboningDetGridControl.Size = new System.Drawing.Size(961, 250);
             this.DeboningDetGridControl.TabIndex = 3;
             this.DeboningDetGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.DeboningDetGridView});
@@ -1071,7 +1075,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(958, 571);
+            this.ClientSize = new System.Drawing.Size(963, 571);
             this.Controls.Add(this.xtraTabControl1);
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.standaloneBarDockControl1);

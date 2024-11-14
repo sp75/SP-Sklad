@@ -97,6 +97,10 @@ namespace SP_Sklad.MainTabs
                 var tool = new ReportPrintTool(report);
                 tool.ShowPreview();
             }
+            else if (report_row.RepId == 58)
+            {
+                new frmReport58().ShowDialog();
+            }
             else
             {
 

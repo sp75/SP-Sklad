@@ -32,14 +32,14 @@ namespace SP_Sklad.Interfaces.Tablet.UI
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucTabletWayBillCustomerOrder));
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions4 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject13 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject14 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject15 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject16 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions10 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions11 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions12 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions4 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions5 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions6 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
             this.splitContainerControl2 = new DevExpress.XtraEditors.SplitContainerControl();
             this.WBGridControl = new DevExpress.XtraGrid.GridControl();
             this.WayBillOutSource = new DevExpress.Data.Linq.LinqInstantFeedbackSource();
@@ -53,20 +53,12 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.WbSummPayGridColumn = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.WbBalansGridColumn = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn40 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn42 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn44 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn45 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn104 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn108 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn109 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn110 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn113 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn114 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colPersonName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox42 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
@@ -200,7 +192,6 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             // 
             this.splitContainerControl2.CollapsePanel = DevExpress.XtraEditors.SplitCollapsePanel.Panel2;
             this.splitContainerControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerControl2.Horizontal = false;
             this.splitContainerControl2.Location = new System.Drawing.Point(0, 0);
             this.splitContainerControl2.Name = "splitContainerControl2";
             // 
@@ -216,8 +207,8 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             // 
             this.splitContainerControl2.Panel2.Controls.Add(this.xtraTabControl2);
             this.splitContainerControl2.Panel2.Text = "Panel2";
-            this.splitContainerControl2.Size = new System.Drawing.Size(1375, 599);
-            this.splitContainerControl2.SplitterPosition = 323;
+            this.splitContainerControl2.Size = new System.Drawing.Size(1473, 599);
+            this.splitContainerControl2.SplitterPosition = 895;
             this.splitContainerControl2.TabIndex = 1;
             this.splitContainerControl2.Text = "splitContainerControl2";
             // 
@@ -237,9 +228,8 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             this.repositoryItemImageComboBox1,
             this.CheckedItemImageComboBox,
             this.repositoryItemImageComboBox42});
-            this.WBGridControl.Size = new System.Drawing.Size(1375, 249);
+            this.WBGridControl.Size = new System.Drawing.Size(895, 525);
             this.WBGridControl.TabIndex = 2;
-            this.WBGridControl.UseEmbeddedNavigator = true;
             this.WBGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.WbGridView});
             // 
@@ -254,8 +244,22 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             // 
             // WbGridView
             // 
+            this.WbGridView.Appearance.FooterPanel.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.WbGridView.Appearance.FooterPanel.Options.UseFont = true;
+            this.WbGridView.Appearance.GroupPanel.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.WbGridView.Appearance.GroupPanel.Options.UseFont = true;
+            this.WbGridView.Appearance.GroupRow.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.WbGridView.Appearance.GroupRow.Options.UseFont = true;
+            this.WbGridView.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.WbGridView.Appearance.HeaderPanel.Options.UseFont = true;
             this.WbGridView.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 10F);
             this.WbGridView.Appearance.Row.Options.UseFont = true;
+            this.WbGridView.AppearancePrint.FooterPanel.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.WbGridView.AppearancePrint.FooterPanel.Options.UseFont = true;
+            this.WbGridView.AppearancePrint.GroupFooter.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.WbGridView.AppearancePrint.GroupFooter.Options.UseFont = true;
+            this.WbGridView.AppearancePrint.GroupRow.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.WbGridView.AppearancePrint.GroupRow.Options.UseFont = true;
             this.WbGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn1,
             this.gridColumn2,
@@ -263,28 +267,23 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             this.gridColumn4,
             this.gridColumn5,
             this.gridColumn6,
-            this.WbSummPayGridColumn,
-            this.WbBalansGridColumn,
-            this.gridColumn7,
             this.gridColumn40,
             this.gridColumn42,
-            this.gridColumn44,
-            this.gridColumn45,
-            this.gridColumn104,
             this.gridColumn108,
             this.gridColumn109,
             this.gridColumn110,
             this.gridColumn113,
-            this.gridColumn114,
-            this.colPersonName,
             this.gridColumn8});
             this.WbGridView.GridControl = this.WBGridControl;
+            this.WbGridView.GroupCount = 1;
             this.WbGridView.Name = "WbGridView";
             this.WbGridView.OptionsBehavior.AllowIncrementalSearch = true;
             this.WbGridView.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseDownFocused;
             this.WbGridView.OptionsBehavior.ReadOnly = true;
             this.WbGridView.OptionsView.ShowFooter = true;
             this.WbGridView.OptionsView.ShowGroupPanel = false;
+            this.WbGridView.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn5, DevExpress.Data.ColumnSortOrder.Ascending)});
             this.WbGridView.FocusedRowObjectChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventHandler(this.WbGridView_FocusedRowObjectChanged);
             this.WbGridView.ColumnFilterChanged += new System.EventHandler(this.WbGridView_ColumnFilterChanged);
             this.WbGridView.AsyncCompleted += new System.EventHandler(this.WbGridView_AsyncCompleted);
@@ -396,7 +395,7 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "Num", "{0}")});
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 2;
-            this.gridColumn3.Width = 63;
+            this.gridColumn3.Width = 103;
             // 
             // gridColumn4
             // 
@@ -408,7 +407,7 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             this.gridColumn4.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.Date;
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 3;
-            this.gridColumn4.Width = 137;
+            this.gridColumn4.Width = 155;
             // 
             // gridColumn5
             // 
@@ -425,29 +424,8 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             this.gridColumn6.FieldName = "SummAll";
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 5;
-            this.gridColumn6.Width = 86;
-            // 
-            // WbSummPayGridColumn
-            // 
-            this.WbSummPayGridColumn.Caption = "Оплачено";
-            this.WbSummPayGridColumn.FieldName = "SummPay";
-            this.WbSummPayGridColumn.Name = "WbSummPayGridColumn";
-            this.WbSummPayGridColumn.Width = 82;
-            // 
-            // WbBalansGridColumn
-            // 
-            this.WbBalansGridColumn.Caption = "Баланс";
-            this.WbBalansGridColumn.FieldName = "Balans";
-            this.WbBalansGridColumn.Name = "WbBalansGridColumn";
-            this.WbBalansGridColumn.Width = 67;
-            // 
-            // gridColumn7
-            // 
-            this.gridColumn7.Caption = "Підприємство";
-            this.gridColumn7.FieldName = "EntName";
-            this.gridColumn7.Name = "gridColumn7";
-            this.gridColumn7.Width = 73;
+            this.gridColumn6.VisibleIndex = 4;
+            this.gridColumn6.Width = 107;
             // 
             // gridColumn40
             // 
@@ -455,8 +433,8 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             this.gridColumn40.FieldName = "Notes";
             this.gridColumn40.Name = "gridColumn40";
             this.gridColumn40.Visible = true;
-            this.gridColumn40.VisibleIndex = 6;
-            this.gridColumn40.Width = 94;
+            this.gridColumn40.VisibleIndex = 5;
+            this.gridColumn40.Width = 161;
             // 
             // gridColumn42
             // 
@@ -464,69 +442,30 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             this.gridColumn42.FieldName = "KagentGroupName";
             this.gridColumn42.Name = "gridColumn42";
             // 
-            // gridColumn44
-            // 
-            this.gridColumn44.Caption = "Сума у нац. валюті";
-            this.gridColumn44.FieldName = "SummInCurr";
-            this.gridColumn44.Name = "gridColumn44";
-            this.gridColumn44.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "SummInCurr", "{0:0.##}")});
-            this.gridColumn44.Width = 86;
-            // 
-            // gridColumn45
-            // 
-            this.gridColumn45.Caption = "Валюта";
-            this.gridColumn45.FieldName = "CurrName";
-            this.gridColumn45.Name = "gridColumn45";
-            this.gridColumn45.Width = 64;
-            // 
-            // gridColumn104
-            // 
-            this.gridColumn104.Caption = "Вид оплати";
-            this.gridColumn104.FieldName = "PTypeName";
-            this.gridColumn104.Name = "gridColumn104";
-            // 
             // gridColumn108
             // 
             this.gridColumn108.Caption = "Маршрут";
             this.gridColumn108.FieldName = "RouteName";
             this.gridColumn108.Name = "gridColumn108";
-            this.gridColumn108.Visible = true;
-            this.gridColumn108.VisibleIndex = 9;
+            this.gridColumn108.Width = 116;
             // 
             // gridColumn109
             // 
             this.gridColumn109.Caption = "Машина";
             this.gridColumn109.FieldName = "CarName";
             this.gridColumn109.Name = "gridColumn109";
-            this.gridColumn109.Visible = true;
-            this.gridColumn109.VisibleIndex = 8;
             // 
             // gridColumn110
             // 
             this.gridColumn110.Caption = "Водій";
             this.gridColumn110.FieldName = "Received";
             this.gridColumn110.Name = "gridColumn110";
-            this.gridColumn110.Visible = true;
-            this.gridColumn110.VisibleIndex = 7;
             // 
             // gridColumn113
             // 
             this.gridColumn113.Caption = "Дата відвантаження";
             this.gridColumn113.FieldName = "ShipmentDate";
             this.gridColumn113.Name = "gridColumn113";
-            // 
-            // gridColumn114
-            // 
-            this.gridColumn114.Caption = "Дата звітності";
-            this.gridColumn114.FieldName = "ReportingDate";
-            this.gridColumn114.Name = "gridColumn114";
-            // 
-            // colPersonName
-            // 
-            this.colPersonName.Caption = "Виконавець";
-            this.colPersonName.FieldName = "PersonName";
-            this.colPersonName.Name = "colPersonName";
             // 
             // gridColumn8
             // 
@@ -536,7 +475,8 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             this.gridColumn8.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "TotalAmount", "{0:0.##}")});
             this.gridColumn8.Visible = true;
-            this.gridColumn8.VisibleIndex = 10;
+            this.gridColumn8.VisibleIndex = 6;
+            this.gridColumn8.Width = 121;
             // 
             // repositoryItemImageComboBox42
             // 
@@ -560,7 +500,7 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             this.panelControl3.Location = new System.Drawing.Point(0, 0);
             this.panelControl3.Name = "panelControl3";
             this.panelControl3.Padding = new System.Windows.Forms.Padding(3, 3, 3, 10);
-            this.panelControl3.Size = new System.Drawing.Size(1375, 74);
+            this.panelControl3.Size = new System.Drawing.Size(895, 74);
             this.panelControl3.TabIndex = 9;
             // 
             // mainLabelControl
@@ -573,15 +513,15 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             this.mainLabelControl.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("mainLabelControl.ImageOptions.SvgImage")));
             this.mainLabelControl.Location = new System.Drawing.Point(8, 19);
             this.mainLabelControl.Name = "mainLabelControl";
-            this.mainLabelControl.Size = new System.Drawing.Size(198, 36);
+            this.mainLabelControl.Size = new System.Drawing.Size(124, 36);
             this.mainLabelControl.TabIndex = 26;
-            this.mainLabelControl.Text = "Замовлення магазинів";
+            this.mainLabelControl.Text = "Замовлення";
             // 
             // KagentList
             // 
             this.KagentList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.KagentList.Location = new System.Drawing.Point(752, 19);
+            this.KagentList.Location = new System.Drawing.Point(656, 19);
             this.KagentList.Name = "KagentList";
             this.KagentList.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.KagentList.Properties.Appearance.Options.UseFont = true;
@@ -595,14 +535,14 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             this.KagentList.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoSuggest;
             this.KagentList.Properties.ShowHeader = false;
             this.KagentList.Properties.ValueMember = "KaId";
-            this.KagentList.Size = new System.Drawing.Size(606, 38);
+            this.KagentList.Size = new System.Drawing.Size(223, 38);
             this.KagentList.TabIndex = 25;
             this.KagentList.EditValueChanged += new System.EventHandler(this.KagentList_EditValueChanged);
             // 
             // PeriodComboBoxEdit
             // 
             this.PeriodComboBoxEdit.EditValue = "Довільний період";
-            this.PeriodComboBoxEdit.Location = new System.Drawing.Point(212, 19);
+            this.PeriodComboBoxEdit.Location = new System.Drawing.Point(146, 19);
             this.PeriodComboBoxEdit.Name = "PeriodComboBoxEdit";
             this.PeriodComboBoxEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.PeriodComboBoxEdit.Properties.Appearance.Options.UseFont = true;
@@ -624,7 +564,7 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             // wbEndDate
             // 
             this.wbEndDate.EditValue = null;
-            this.wbEndDate.Location = new System.Drawing.Point(562, 19);
+            this.wbEndDate.Location = new System.Drawing.Point(484, 19);
             this.wbEndDate.Name = "wbEndDate";
             this.wbEndDate.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.wbEndDate.Properties.Appearance.Options.UseFont = true;
@@ -639,14 +579,14 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             this.wbEndDate.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.wbEndDate.Properties.MaskSettings.Set("mask", "g");
             this.wbEndDate.Properties.VistaDisplayMode = DevExpress.Utils.DefaultBoolean.False;
-            this.wbEndDate.Size = new System.Drawing.Size(167, 38);
+            this.wbEndDate.Size = new System.Drawing.Size(155, 38);
             this.wbEndDate.TabIndex = 3;
             this.wbEndDate.EditValueChanged += new System.EventHandler(this.wbEndDate_EditValueChanged);
             // 
             // wbStartDate
             // 
             this.wbStartDate.EditValue = null;
-            this.wbStartDate.Location = new System.Drawing.Point(389, 19);
+            this.wbStartDate.Location = new System.Drawing.Point(323, 19);
             this.wbStartDate.Name = "wbStartDate";
             this.wbStartDate.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.wbStartDate.Properties.Appearance.Options.UseFont = true;
@@ -661,7 +601,7 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             this.wbStartDate.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.wbStartDate.Properties.MaskSettings.Set("mask", "g");
             this.wbStartDate.Properties.VistaDisplayMode = DevExpress.Utils.DefaultBoolean.False;
-            this.wbStartDate.Size = new System.Drawing.Size(167, 38);
+            this.wbStartDate.Size = new System.Drawing.Size(155, 38);
             this.wbStartDate.TabIndex = 1;
             this.wbStartDate.EditValueChanged += new System.EventHandler(this.wbStartDate_EditValueChanged);
             // 
@@ -673,7 +613,7 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 0);
             this.standaloneBarDockControl1.Manager = this.barManager1;
             this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
-            this.standaloneBarDockControl1.Size = new System.Drawing.Size(1375, 0);
+            this.standaloneBarDockControl1.Size = new System.Drawing.Size(895, 0);
             this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
             // 
             // barManager1
@@ -707,7 +647,7 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1375, 0);
+            this.barDockControlTop.Size = new System.Drawing.Size(1473, 0);
             // 
             // barDockControlBottom
             // 
@@ -715,7 +655,7 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 659);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1375, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1473, 0);
             // 
             // barDockControlLeft
             // 
@@ -729,7 +669,7 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1375, 0);
+            this.barDockControlRight.Location = new System.Drawing.Point(1473, 0);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 659);
             // 
@@ -741,7 +681,7 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             this.standaloneBarDockControl2.Location = new System.Drawing.Point(0, 0);
             this.standaloneBarDockControl2.Manager = this.barManager1;
             this.standaloneBarDockControl2.Name = "standaloneBarDockControl2";
-            this.standaloneBarDockControl2.Size = new System.Drawing.Size(1375, 0);
+            this.standaloneBarDockControl2.Size = new System.Drawing.Size(895, 0);
             this.standaloneBarDockControl2.Text = "standaloneBarDockControl2";
             // 
             // NewItemBtn
@@ -851,7 +791,7 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             this.xtraTabControl2.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControl2.Name = "xtraTabControl2";
             this.xtraTabControl2.SelectedTabPage = this.xtraTabPage15;
-            this.xtraTabControl2.Size = new System.Drawing.Size(1375, 244);
+            this.xtraTabControl2.Size = new System.Drawing.Size(568, 599);
             this.xtraTabControl2.TabIndex = 0;
             this.xtraTabControl2.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage15,
@@ -865,7 +805,7 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             this.xtraTabPage15.Controls.Add(this.gridControl2);
             this.xtraTabPage15.ImageOptions.ImageIndex = 9;
             this.xtraTabPage15.Name = "xtraTabPage15";
-            this.xtraTabPage15.Size = new System.Drawing.Size(1373, 208);
+            this.xtraTabPage15.Size = new System.Drawing.Size(566, 563);
             this.xtraTabPage15.Text = "Позиції";
             // 
             // gridControl2
@@ -878,13 +818,23 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             this.repositoryItemCalcEdit1,
             this.repositoryItemImageComboBox33,
             this.repositoryItemImageComboBox2});
-            this.gridControl2.Size = new System.Drawing.Size(1373, 208);
+            this.gridControl2.Size = new System.Drawing.Size(566, 563);
             this.gridControl2.TabIndex = 16;
             this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.WaybillDetGridView});
             // 
             // WaybillDetGridView
             // 
+            this.WaybillDetGridView.Appearance.FooterPanel.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.WaybillDetGridView.Appearance.FooterPanel.Options.UseFont = true;
+            this.WaybillDetGridView.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.WaybillDetGridView.Appearance.HeaderPanel.Options.UseFont = true;
+            this.WaybillDetGridView.AppearancePrint.FooterPanel.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.WaybillDetGridView.AppearancePrint.FooterPanel.Options.UseFont = true;
+            this.WaybillDetGridView.AppearancePrint.GroupFooter.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.WaybillDetGridView.AppearancePrint.GroupFooter.Options.UseFont = true;
+            this.WaybillDetGridView.AppearancePrint.GroupRow.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.WaybillDetGridView.AppearancePrint.GroupRow.Options.UseFont = true;
             this.WaybillDetGridView.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.WaybillDetGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn9,
@@ -917,7 +867,7 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             this.gridColumn9.Name = "gridColumn9";
             this.gridColumn9.Visible = true;
             this.gridColumn9.VisibleIndex = 1;
-            this.gridColumn9.Width = 50;
+            this.gridColumn9.Width = 51;
             // 
             // gridColumn10
             // 
@@ -926,7 +876,7 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.Visible = true;
             this.gridColumn10.VisibleIndex = 2;
-            this.gridColumn10.Width = 233;
+            this.gridColumn10.Width = 241;
             // 
             // gridColumn11
             // 
@@ -938,7 +888,7 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Custom)});
             this.gridColumn11.Visible = true;
             this.gridColumn11.VisibleIndex = 3;
-            this.gridColumn11.Width = 55;
+            this.gridColumn11.Width = 70;
             // 
             // repositoryItemCalcEdit1
             // 
@@ -955,7 +905,7 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             this.gridColumn12.Name = "gridColumn12";
             this.gridColumn12.Visible = true;
             this.gridColumn12.VisibleIndex = 4;
-            this.gridColumn12.Width = 59;
+            this.gridColumn12.Width = 49;
             // 
             // gridColumn13
             // 
@@ -965,19 +915,19 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             this.gridColumn13.FieldName = "Price";
             this.gridColumn13.Name = "gridColumn13";
             this.gridColumn13.Visible = true;
-            this.gridColumn13.VisibleIndex = 7;
-            this.gridColumn13.Width = 66;
+            this.gridColumn13.VisibleIndex = 5;
+            this.gridColumn13.Width = 77;
             // 
             // gridColumn37
             // 
-            this.gridColumn37.Caption = "Сума в валюті";
+            this.gridColumn37.Caption = "Всього";
             this.gridColumn37.FieldName = "Total";
             this.gridColumn37.Name = "gridColumn37";
             this.gridColumn37.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Total", "{0:0.##}")});
             this.gridColumn37.Visible = true;
-            this.gridColumn37.VisibleIndex = 8;
-            this.gridColumn37.Width = 74;
+            this.gridColumn37.VisibleIndex = 6;
+            this.gridColumn37.Width = 69;
             // 
             // gridColumn39
             // 
@@ -991,8 +941,6 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             this.gridColumn115.Caption = "Ціна";
             this.gridColumn115.FieldName = "BasePrice";
             this.gridColumn115.Name = "gridColumn115";
-            this.gridColumn115.Visible = true;
-            this.gridColumn115.VisibleIndex = 5;
             this.gridColumn115.Width = 59;
             // 
             // gridColumn41
@@ -1051,8 +999,6 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             this.gridColumn150.Caption = "Знижка, %";
             this.gridColumn150.FieldName = "Discount";
             this.gridColumn150.Name = "gridColumn150";
-            this.gridColumn150.Visible = true;
-            this.gridColumn150.VisibleIndex = 6;
             // 
             // gridColumn14
             // 
@@ -1089,7 +1035,7 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             this.xtraTabPage1.ImageOptions.ImageIndex = 10;
             this.xtraTabPage1.Name = "xtraTabPage1";
             this.xtraTabPage1.PageVisible = false;
-            this.xtraTabPage1.Size = new System.Drawing.Size(1373, 191);
+            this.xtraTabPage1.Size = new System.Drawing.Size(512, 557);
             this.xtraTabPage1.Text = "Інформація про накладну";
             // 
             // vGridControl1
@@ -1120,7 +1066,7 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             this.row9,
             this.row18,
             this.category2});
-            this.vGridControl1.Size = new System.Drawing.Size(1373, 191);
+            this.vGridControl1.Size = new System.Drawing.Size(512, 557);
             this.vGridControl1.TabIndex = 1;
             // 
             // repositoryItemImageComboBox12
@@ -1182,9 +1128,9 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             // ChangeWaybillKagentBtnEdit
             // 
             this.ChangeWaybillKagentBtnEdit.AutoHeight = false;
-            editorButtonImageOptions4.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions4.Image")));
+            editorButtonImageOptions2.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions2.Image")));
             this.ChangeWaybillKagentBtnEdit.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions4, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject13, serializableAppearanceObject14, serializableAppearanceObject15, serializableAppearanceObject16, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.ChangeWaybillKagentBtnEdit.Name = "ChangeWaybillKagentBtnEdit";
             this.ChangeWaybillKagentBtnEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.repositoryItemButtonEdit1_ButtonClick);
             // 
@@ -1376,7 +1322,7 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             this.xtraTabPage2.ImageOptions.ImageIndex = 11;
             this.xtraTabPage2.Name = "xtraTabPage2";
             this.xtraTabPage2.PageVisible = false;
-            this.xtraTabPage2.Size = new System.Drawing.Size(1373, 191);
+            this.xtraTabPage2.Size = new System.Drawing.Size(512, 557);
             this.xtraTabPage2.Text = "Зв\'язані документи";
             // 
             // ucRelDocGrid1
@@ -1385,7 +1331,7 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             this.ucRelDocGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucRelDocGrid1.Location = new System.Drawing.Point(0, 0);
             this.ucRelDocGrid1.Name = "ucRelDocGrid1";
-            this.ucRelDocGrid1.Size = new System.Drawing.Size(1373, 191);
+            this.ucRelDocGrid1.Size = new System.Drawing.Size(512, 557);
             this.ucRelDocGrid1.TabIndex = 1;
             // 
             // xtraTabPage24
@@ -1394,7 +1340,7 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             this.xtraTabPage24.ImageOptions.ImageIndex = 12;
             this.xtraTabPage24.Name = "xtraTabPage24";
             this.xtraTabPage24.PageVisible = false;
-            this.xtraTabPage24.Size = new System.Drawing.Size(1373, 191);
+            this.xtraTabPage24.Size = new System.Drawing.Size(512, 557);
             this.xtraTabPage24.Text = "Оплата по документу";
             // 
             // ucDocumentPaymentGrid
@@ -1402,7 +1348,7 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             this.ucDocumentPaymentGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucDocumentPaymentGrid.Location = new System.Drawing.Point(0, 0);
             this.ucDocumentPaymentGrid.Name = "ucDocumentPaymentGrid";
-            this.ucDocumentPaymentGrid.Size = new System.Drawing.Size(1373, 191);
+            this.ucDocumentPaymentGrid.Size = new System.Drawing.Size(512, 557);
             this.ucDocumentPaymentGrid.TabIndex = 0;
             // 
             // styleController1
@@ -1446,14 +1392,14 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             this.windowsUIButtonPanel.AppearanceButton.Pressed.Options.UseFont = true;
             this.windowsUIButtonPanel.AppearanceButton.Pressed.Options.UseForeColor = true;
             this.windowsUIButtonPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(73)))), ((int)(((byte)(88)))));
-            windowsUIButtonImageOptions10.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions10.SvgImage")));
-            windowsUIButtonImageOptions11.ImageUri.Uri = "Refresh;Size32x32;GrayScaled";
-            windowsUIButtonImageOptions11.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions11.SvgImage")));
-            windowsUIButtonImageOptions12.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions12.SvgImage")));
+            windowsUIButtonImageOptions4.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions4.SvgImage")));
+            windowsUIButtonImageOptions5.ImageUri.Uri = "Refresh;Size32x32;GrayScaled";
+            windowsUIButtonImageOptions5.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions5.SvgImage")));
+            windowsUIButtonImageOptions6.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions6.SvgImage")));
             this.windowsUIButtonPanel.Buttons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Попередній перегляд", true, windowsUIButtonImageOptions10, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", 0, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Оновити список", true, windowsUIButtonImageOptions11, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", 1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Експорт в Excel", true, windowsUIButtonImageOptions12, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", 2, true, null, true, false, true, null, -1, false)});
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Попередній перегляд", true, windowsUIButtonImageOptions4, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", 0, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Оновити список", true, windowsUIButtonImageOptions5, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", 1, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Експорт в Excel", true, windowsUIButtonImageOptions6, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", 2, true, null, true, false, true, null, -1, false)});
             this.windowsUIButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.windowsUIButtonPanel.EnableImageTransparency = true;
             this.windowsUIButtonPanel.Location = new System.Drawing.Point(0, 599);
@@ -1461,7 +1407,7 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             this.windowsUIButtonPanel.MaximumSize = new System.Drawing.Size(0, 60);
             this.windowsUIButtonPanel.MinimumSize = new System.Drawing.Size(60, 60);
             this.windowsUIButtonPanel.Name = "windowsUIButtonPanel";
-            this.windowsUIButtonPanel.Size = new System.Drawing.Size(1375, 60);
+            this.windowsUIButtonPanel.Size = new System.Drawing.Size(1473, 60);
             this.windowsUIButtonPanel.TabIndex = 6;
             this.windowsUIButtonPanel.Text = "windowsUIButtonPanel";
             this.windowsUIButtonPanel.UseButtonBackgroundImages = false;
@@ -1479,7 +1425,7 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             this.Controls.Add(this.barDockControlTop);
             this.LookAndFeel.TouchUIMode = DevExpress.Utils.DefaultBoolean.True;
             this.Name = "ucTabletWayBillCustomerOrder";
-            this.Size = new System.Drawing.Size(1375, 659);
+            this.Size = new System.Drawing.Size(1473, 659);
             this.Load += new System.EventHandler(this.WayBillInUserControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2.Panel1)).EndInit();
             this.splitContainerControl2.Panel1.ResumeLayout(false);
@@ -1568,20 +1514,12 @@ namespace SP_Sklad.Interfaces.Tablet.UI
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
-        private DevExpress.XtraGrid.Columns.GridColumn WbSummPayGridColumn;
-        private DevExpress.XtraGrid.Columns.GridColumn WbBalansGridColumn;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn40;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn42;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn44;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn45;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn104;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn108;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn109;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn110;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn113;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn114;
-        private DevExpress.XtraGrid.Columns.GridColumn colPersonName;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox42;
         private DevExpress.XtraVerticalGrid.VGridControl vGridControl1;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox12;

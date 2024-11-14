@@ -378,13 +378,14 @@ namespace SP_Sklad.WBDetForm
             }
             _db.SaveChanges();
 
-            try
+
+            if (RSVCheckBox.Checked && !_db.WMatTurn.Any(w => w.SourceId == _wbd.PosId) && _db.UserAccessWh.Any(a => a.UserId == DBHelper.CurrentUser.UserId && a.WId == _wbd.WId && a.UseReceived))
             {
-                if (RSVCheckBox.Checked && !_db.WMatTurn.Any(w => w.SourceId == _wbd.PosId) && _db.UserAccessWh.Any(a => a.UserId == DBHelper.CurrentUser.UserId && a.WId == _wbd.WId && a.UseReceived))
+                using (var db = new BaseEntities())
                 {
                     foreach (var item in pos_in.Where(w => w.Amount > 0))
                     {
-                        _db.WMatTurn.Add(new WMatTurn
+                        db.WMatTurn.Add(new WMatTurn
                         {
                             PosId = item.PosId,
                             WId = _wbd.WId.Value,
@@ -395,17 +396,22 @@ namespace SP_Sklad.WBDetForm
                             SourceId = _wbd.PosId
                         });
                     }
-                }
 
-                _db.Save(_wb.WbillId);
-                Close();
+                    try
+                    {
+                        db.Save(_wb.WbillId);
+                    }
+                    catch (System.Data.Entity.Infrastructure.DbUpdateException exp)
+                    {
+                        db.UndoAllChanges();
+                        var b_exp = exp.GetBaseException();
+
+                        XtraMessageBox.Show((b_exp != null ? b_exp.Message : exp.Message), "Залишки по партіям не актуальні", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
             }
-            catch (System.Data.Entity.Infrastructure.DbUpdateException exp)
-            {
-                _db.UndoAllChanges();
-                var b_exp = exp.GetBaseException();
-                XtraMessageBox.Show((b_exp != null ? b_exp.Message : exp.Message), "Залишки по партіям не актуальні", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+
+            Close();
         }
 
         private void WHComboBox_EditValueChanged(object sender, EventArgs e)

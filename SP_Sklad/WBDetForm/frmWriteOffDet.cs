@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
 using SkladEngine.DBFunction;
 using SkladEngine.DBFunction.Models;
 using SP_Sklad.Common;
@@ -277,32 +278,36 @@ namespace SP_Sklad.WBDetForm
 
             if (RSVCheckBox.Checked && !_db.WMatTurn.Any(w => w.SourceId == _wbd.PosId) && _db.UserAccessWh.Any(a => a.UserId == DBHelper.CurrentUser.UserId && a.WId == _wbd.WId && a.UseReceived))
             {
-                foreach (var item in pos_in.Where(w => w.Amount > 0))
+                using (var db = new BaseEntities())
                 {
-                    _db.WMatTurn.Add(new WMatTurn
+                    foreach (var item in pos_in.Where(w => w.Amount > 0))
                     {
-                        PosId = item.PosId,
-                        WId = item.WId,
-                        MatId = item.MatId,
-                        OnDate = _wbd.OnDate.Value,
-                        TurnType = 2,
-                        Amount = Convert.ToDecimal(item.Amount),
-                        SourceId = _wbd.PosId
-                    });
+                        db.WMatTurn.Add(new WMatTurn
+                        {
+                            PosId = item.PosId,
+                            WId = item.WId,
+                            MatId = item.MatId,
+                            OnDate = _wbd.OnDate.Value,
+                            TurnType = 2,
+                            Amount = Convert.ToDecimal(item.Amount),
+                            SourceId = _wbd.PosId
+                        });
 
+                    }
+
+                    try
+                    {
+                        db.SaveChanges();
+                        Close();
+                    }
+                    catch (System.Data.Entity.Infrastructure.DbUpdateException exp)
+                    {
+                        db.UndoAllChanges();
+                        var b_exp = exp.GetBaseException();
+
+                        XtraMessageBox.Show((b_exp != null ? b_exp.Message : exp.Message), "Залишки по партіям не актуальні", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
-            }
-
-            try
-            {
-                _db.SaveChanges();
-                Close();
-            }
-            catch (System.Data.Entity.Infrastructure.DbUpdateException exp)
-            {
-                _db.UndoAllChanges();
-
-                throw exp;
             }
         }
 

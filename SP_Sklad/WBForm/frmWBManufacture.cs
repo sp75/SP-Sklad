@@ -26,6 +26,7 @@ namespace SP_Sklad.WBForm
     public partial class frmWBManufacture : DevExpress.XtraEditors.XtraForm
     {
         private const int _wtype = -20;
+        private const int _FunId = 68;
 
         BaseEntities _db { get; set; }
         public int? _wbill_id { get; set; }
@@ -65,6 +66,8 @@ namespace SP_Sklad.WBForm
                 AutoCalcRecipe = s.Materials.Measures.AutoCalcRecipe,
                 IndustrialProcessing = s.IndustrialProcessing
             }).ToList();
+
+            RecipeComboBox.Properties.Buttons[1].Enabled = _db.UserTreeAccess.Any(w => w.Id == 53 && w.UserId == DBHelper.CurrentUser.UserId && w.CanView == 1);
 
             if (_wbill_id == null)
             {

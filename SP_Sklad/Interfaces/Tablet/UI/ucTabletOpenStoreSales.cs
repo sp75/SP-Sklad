@@ -23,7 +23,8 @@ namespace SP_Sklad.Interfaces.Tablet.UI
         public ucTabletOpenStoreSales()
         {
             InitializeComponent();
-          
+
+            windowsUIButtonPanel.BackColor = new Color();
         }
 
         void windowsUIButtonPanel_ButtonClick(object sender, DevExpress.XtraBars.Docking2010.ButtonEventArgs e)

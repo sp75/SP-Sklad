@@ -44,6 +44,8 @@ namespace SP_Sklad.Interfaces.Tablet.UI
         public ucTabletWayBillCustomerOrder()
         {
             InitializeComponent();
+
+            windowsUIButtonPanel.BackColor = new Color();
         }
         protected override void OnCreateControl()
         {
@@ -204,14 +206,7 @@ namespace SP_Sklad.Interfaces.Tablet.UI
 
                 user_access = new BaseEntities().UserAccess.FirstOrDefault(w => w.FunId == fun_id && w.UserId == UserSession.UserId);
 
-                WbBalansGridColumn.Visible = (DBHelper.CurrentUser.ShowBalance == 1);
-                WbBalansGridColumn.OptionsColumn.ShowInCustomizationForm = WbBalansGridColumn.Visible;
-
-                WbSummPayGridColumn.Visible = WbBalansGridColumn.Visible;
-                WbSummPayGridColumn.OptionsColumn.ShowInCustomizationForm = WbBalansGridColumn.Visible;
-
-                gridColumn44.Caption = "Сума в нац. валюті, " + DBHelper.NationalCurrency.ShortName;
-
+             
                 user_settings = new UserSettingsRepository(DBHelper.CurrentUser.UserId, new BaseEntities());
                 WbGridView.Appearance.Row.Font = new Font(user_settings.GridFontName, (float)user_settings.GridFontSize);
                 WaybillDetGridView.Appearance.Row.Font = new Font(user_settings.GridFontName, (float)user_settings.GridFontSize);

@@ -122,6 +122,7 @@
             // 
             // accordionControl1
             // 
+            this.accordionControl1.AllowItemSelection = true;
             this.accordionControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.accordionControl1.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.accordionControlElement1,
@@ -140,6 +141,7 @@
             this.accordionControl1.Size = new System.Drawing.Size(48, 644);
             this.accordionControl1.TabIndex = 1;
             this.accordionControl1.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
+            this.accordionControl1.ElementClick += new DevExpress.XtraBars.Navigation.ElementClickEventHandler(this.accordionControl1_ElementClick);
             // 
             // accordionControlElement1
             // 
@@ -149,6 +151,7 @@
             this.accordionControlElement6,
             this.accordionControlElement7,
             this.accordionControlElement15});
+            this.accordionControlElement1.Expanded = true;
             this.accordionControlElement1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionControlElement1.ImageOptions.Image")));
             this.accordionControlElement1.Name = "accordionControlElement1";
             this.accordionControlElement1.Text = "Документи";
@@ -255,10 +258,10 @@
             // 
             // accordionControlElement15
             // 
-            this.accordionControlElement15.ImageOptions.Image = global::SP_Sklad.Properties.Resources.wb_order_in;
+            this.accordionControlElement15.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("accordionControlElement15.ImageOptions.SvgImage")));
             this.accordionControlElement15.Name = "accordionControlElement15";
             this.accordionControlElement15.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.accordionControlElement15.Text = "Замовлення від клієнта";
+            this.accordionControlElement15.Text = "Замовлення магазинів";
             this.accordionControlElement15.Click += new System.EventHandler(this.accordionControlElement15_Click);
             // 
             // accordionControlElement17
@@ -347,12 +350,7 @@
             // 
             // accordionControlElement45
             // 
-            this.accordionControlElement45.HeaderTemplate.AddRange(new DevExpress.XtraBars.Navigation.HeaderElementInfo[] {
-            new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.Image),
-            new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.Text),
-            new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.ContextButtons),
-            new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.HeaderControl)});
-            this.accordionControlElement45.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionControlElement45.ImageOptions.Image")));
+            this.accordionControlElement45.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("accordionControlElement45.ImageOptions.SvgImage")));
             this.accordionControlElement45.Name = "accordionControlElement45";
             this.accordionControlElement45.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accordionControlElement45.Text = "Продажі";
