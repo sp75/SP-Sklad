@@ -9,6 +9,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
@@ -91,7 +92,8 @@ namespace SP_Sklad.EditForm
                     NDS = 0,
                     GrpId = _mat_grp,
                     DecPlaces = 4,
-                    UpdatedBy = UserSession.UserId
+                    UpdatedBy = UserSession.UserId,
+                    Artikul = _db.GetArtikul().FirstOrDefault()?.ToString()
                 });
                 
                 _db.SaveChanges();

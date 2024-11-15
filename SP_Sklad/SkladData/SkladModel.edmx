@@ -7886,6 +7886,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </CollectionType>
           </ReturnType>
         </Function>
+        <Function Name="GetArtikul" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GetAvgPrice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="pos_id" Type="int" Mode="In" />
           <ReturnType>
@@ -15186,6 +15187,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <FunctionImport Name="GetUserInterfaces" IsComposable="true" ReturnType="Collection(BaseModel.GetUserInterfaces_Result)">
           <Parameter Name="user_id" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="GetArtikul" ReturnType="Collection(Int64)" />
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -31654,6 +31656,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetArtikul" FunctionName="BaseModel.Store.GetArtikul" />
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

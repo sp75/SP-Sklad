@@ -2733,5 +2733,10 @@ namespace SP_Sklad.SkladData
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetUserInterfaces_Result>("[BaseEntities].[GetUserInterfaces](@user_id)", user_idParameter);
         }
+    
+        public virtual ObjectResult<Nullable<long>> GetArtikul()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<long>>("GetArtikul");
+        }
     }
 }
