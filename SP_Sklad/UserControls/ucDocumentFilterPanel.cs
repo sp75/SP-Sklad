@@ -164,6 +164,8 @@ namespace SP_Sklad.UserControls
         {
             if (wbStartDate.ContainsFocus)
             {
+                PeriodComboBoxEdit.SelectedIndex = 0;
+
                 OnFilterChangedEvent?.Invoke(sender, e);
             }
         }
@@ -188,6 +190,8 @@ namespace SP_Sklad.UserControls
         {
             if (wbEndDate.ContainsFocus)
             {
+                PeriodComboBoxEdit.SelectedIndex = 0;
+
                 OnFilterChangedEvent?.Invoke(sender, e);
             }
         }

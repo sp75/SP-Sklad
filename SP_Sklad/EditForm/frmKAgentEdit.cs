@@ -1101,5 +1101,13 @@ namespace SP_Sklad.EditForm
         {
             barButtonItem5.PerformClick();
         }
+
+        private void textEdit46_ButtonClick(object sender, ButtonPressedEventArgs e)
+        {
+            if(e.Button.Index == 1)
+            {
+                textEdit46.EditValue = _ka.KaId;
+            }
+        }
     }
 }

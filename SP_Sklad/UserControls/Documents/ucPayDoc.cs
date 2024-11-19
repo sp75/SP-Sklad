@@ -28,11 +28,11 @@ namespace SP_Sklad.UserControls
         public int fun_id { get; set; }
         public string reg_layout_path { get; set; } //= "ucPayDoc\\PayDocGridView";
         BaseEntities _db { get; set; }
-        public BarButtonItem ExtEditBtn { get; set; }
-        public BarButtonItem ExtDeleteBtn { get; set; }
-        public BarButtonItem ExtExecuteBtn { get; set; }
-        public BarButtonItem ExtCopyBtn { get; set; }
-        public BarButtonItem ExtPrintBtn { get; set; }
+    //    public BarButtonItem ExtEditBtn { get; set; }
+   //     public BarButtonItem ExtDeleteBtn { get; set; }
+    //    public BarButtonItem ExtExecuteBtn { get; set; }
+   //     public BarButtonItem ExtCopyBtn { get; set; }
+   //     public BarButtonItem ExtPrintBtn { get; set; }
 
         private v_PayDoc focused_row => PayDocGridView.GetFocusedRow() is NotLoadedObject ? null : PayDocGridView.GetFocusedRow() as v_PayDoc;
 
@@ -220,6 +220,8 @@ namespace SP_Sklad.UserControls
         {
             if (PDStartDate.ContainsFocus)
             {
+                PeriodComboBoxEdit.SelectedIndex = 0;
+
                 GetData();
             }
         }
@@ -228,6 +230,8 @@ namespace SP_Sklad.UserControls
         {
             if (PDEndDate.ContainsFocus)
             {
+                PeriodComboBoxEdit.SelectedIndex = 0;
+
                 GetData();
             }
         }
@@ -244,11 +248,11 @@ namespace SP_Sklad.UserControls
         {
             xtraTabControl4_SelectedPageChanged(null, null);
 
-            ExtDeleteBtn.Enabled = false;
-            ExtExecuteBtn.Enabled = false;
-            ExtEditBtn.Enabled = false;
-            ExtCopyBtn.Enabled = false;
-            ExtPrintBtn.Enabled = false;
+            DeleteItemBtn.Enabled = false;
+            ExecuteItemBtn.Enabled = false;
+            EditItemBtn.Enabled = false;
+            CopyItemBtn.Enabled = false;
+            PrintItemBtn.Enabled = false;
 
             if (focused_row == null)
             {
@@ -257,21 +261,15 @@ namespace SP_Sklad.UserControls
 
             bool isModify = (focused_row != null && (DBHelper.CashDesks.Any(a => a.CashId == focused_row.CashId) || focused_row.CashId == null));
 
-            ExtDeleteBtn.Enabled = (focused_row != null && focused_row.Checked == 0 && user_access?.CanDelete == 1);
-            ExtExecuteBtn.Enabled = (focused_row != null && user_access?.CanPost == 1 && isModify);
-            ExtEditBtn.Enabled = (focused_row != null && user_access?.CanModify == 1 && isModify);
-            ExtCopyBtn.Enabled = (focused_row != null && user_access?.CanModify == 1 && isModify);
-            ExtPrintBtn.Enabled = (focused_row != null);
+            DeleteItemBtn.Enabled = (focused_row != null && focused_row.Checked == 0 && user_access?.CanDelete == 1);
+            ExecuteItemBtn.Enabled = (focused_row != null && user_access?.CanPost == 1 && isModify);
+            EditItemBtn.Enabled = (focused_row != null && user_access?.CanModify == 1 && isModify);
+            CopyItemBtn.Enabled = (focused_row != null && user_access?.CanModify == 1 && isModify);
+            PrintItemBtn.Enabled = (focused_row != null);
         }
 
         private void PMGridPopupMenu_BeforePopup(object sender, CancelEventArgs e)
         {
-            DeleteItemBtn.Enabled = ExtDeleteBtn.Enabled;
-            ExecuteItemBtn.Enabled = ExtExecuteBtn.Enabled;
-            EditItemBtn.Enabled = ExtEditBtn.Enabled;
-            CopyItemBtn.Enabled = ExtCopyBtn.Enabled;
-            PrintItemBtn.Enabled = ExtPrintBtn.Enabled;
-
             WbHistoryBtn.Enabled = IHelper.GetUserAccess(39)?.CanView == 1;
         }
 

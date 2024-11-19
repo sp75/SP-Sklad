@@ -590,11 +590,6 @@
             // ucPayDocIn
             // 
             this.ucPayDocIn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucPayDocIn.ExtCopyBtn = this.CopyItemBtn;
-            this.ucPayDocIn.ExtDeleteBtn = this.DeleteItemBtn;
-            this.ucPayDocIn.ExtEditBtn = this.EditItemBtn;
-            this.ucPayDocIn.ExtExecuteBtn = this.ExecuteItemBtn;
-            this.ucPayDocIn.ExtPrintBtn = this.PrintItemBtn;
             this.ucPayDocIn.fun_id = 26;
             this.ucPayDocIn.Location = new System.Drawing.Point(0, 0);
             this.ucPayDocIn.Name = "ucPayDocIn";
@@ -613,11 +608,6 @@
             // ucPayDocOut
             // 
             this.ucPayDocOut.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucPayDocOut.ExtCopyBtn = this.CopyItemBtn;
-            this.ucPayDocOut.ExtDeleteBtn = this.DeleteItemBtn;
-            this.ucPayDocOut.ExtEditBtn = this.EditItemBtn;
-            this.ucPayDocOut.ExtExecuteBtn = this.ExecuteItemBtn;
-            this.ucPayDocOut.ExtPrintBtn = this.PrintItemBtn;
             this.ucPayDocOut.fun_id = 25;
             this.ucPayDocOut.Location = new System.Drawing.Point(0, 0);
             this.ucPayDocOut.Name = "ucPayDocOut";
@@ -636,11 +626,6 @@
             // ucPayDocExtOut
             // 
             this.ucPayDocExtOut.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucPayDocExtOut.ExtCopyBtn = this.CopyItemBtn;
-            this.ucPayDocExtOut.ExtDeleteBtn = this.DeleteItemBtn;
-            this.ucPayDocExtOut.ExtEditBtn = this.EditItemBtn;
-            this.ucPayDocExtOut.ExtExecuteBtn = this.ExecuteItemBtn;
-            this.ucPayDocExtOut.ExtPrintBtn = this.PrintItemBtn;
             this.ucPayDocExtOut.fun_id = 52;
             this.ucPayDocExtOut.Location = new System.Drawing.Point(0, 0);
             this.ucPayDocExtOut.Name = "ucPayDocExtOut";
@@ -659,11 +644,6 @@
             // ucPriceList
             // 
             this.ucPriceList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucPriceList.ExtCopyBtn = this.CopyItemBtn;
-            this.ucPriceList.ExtDeleteBtn = this.DeleteItemBtn;
-            this.ucPriceList.ExtEditBtn = this.EditItemBtn;
-            this.ucPriceList.ExtExecuteBtn = this.ExecuteItemBtn;
-            this.ucPriceList.ExtPrintBtn = this.PrintItemBtn;
             this.ucPriceList.Location = new System.Drawing.Point(0, 0);
             this.ucPriceList.Name = "ucPriceList";
             this.ucPriceList.Size = new System.Drawing.Size(1138, 695);
@@ -679,11 +659,6 @@
             // ucPayDoc
             // 
             this.ucPayDoc.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucPayDoc.ExtCopyBtn = this.CopyItemBtn;
-            this.ucPayDoc.ExtDeleteBtn = this.DeleteItemBtn;
-            this.ucPayDoc.ExtEditBtn = this.EditItemBtn;
-            this.ucPayDoc.ExtExecuteBtn = this.ExecuteItemBtn;
-            this.ucPayDoc.ExtPrintBtn = this.PrintItemBtn;
             this.ucPayDoc.fun_id = -1;
             this.ucPayDoc.Location = new System.Drawing.Point(0, 0);
             this.ucPayDoc.Name = "ucPayDoc";
@@ -774,14 +749,10 @@
             // 
             // expeditionUserControl
             // 
-            this.expeditionUserControl.CopyBtn = this.CopyItemBtn;
-            this.expeditionUserControl.DeleteBtn = this.DeleteItemBtn;
+
             this.expeditionUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.expeditionUserControl.EditBtn = this.EditItemBtn;
-            this.expeditionUserControl.ExecuteBtn = this.ExecuteItemBtn;
             this.expeditionUserControl.Location = new System.Drawing.Point(0, 0);
             this.expeditionUserControl.Name = "expeditionUserControl";
-            this.expeditionUserControl.PrintBtn = this.PrintItemBtn;
             this.expeditionUserControl.Size = new System.Drawing.Size(1138, 695);
             this.expeditionUserControl.TabIndex = 0;
             // 

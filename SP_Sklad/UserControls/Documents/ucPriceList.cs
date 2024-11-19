@@ -26,11 +26,6 @@ namespace SP_Sklad.UserControls
         private int fun_id = 37;
         private string reg_layout_path = "ucPriceList\\PriceListGridView";
         BaseEntities _db { get; set; }
-        public BarButtonItem ExtEditBtn { get; set; }
-        public BarButtonItem ExtDeleteBtn { get; set; }
-        public BarButtonItem ExtExecuteBtn { get; set; }
-        public BarButtonItem ExtCopyBtn { get; set; }
-        public BarButtonItem ExtPrintBtn { get; set; }
 
         private v_PriceList focused_row => PriceListGridView.GetFocusedRow() is NotLoadedObject ? null : PriceListGridView.GetFocusedRow() as v_PriceList;
 
@@ -139,11 +134,6 @@ namespace SP_Sklad.UserControls
             }
         }
 
-        public void ExecuteItem()
-        {
-            ;
-        }
-
         public void PrintItem()
         {
             PrintDoc.Show(focused_row.Id, 10, _db);
@@ -209,32 +199,24 @@ namespace SP_Sklad.UserControls
         {
             xtraTabControl3_SelectedPageChanged(null, null);
 
-            ExtDeleteBtn.Enabled = false;
-            ExtExecuteBtn.Enabled = false;
-            ExtEditBtn.Enabled = false;
-            ExtCopyBtn.Enabled = false;
-            ExtPrintBtn.Enabled = false;
+            DeleteItemBtn.Enabled = false;
+            EditItemBtn.Enabled = false;
+            CopyItemBtn.Enabled = false;
+            PrintItemBtn.Enabled = false;
 
             if (focused_row == null)
             {
                 return;
             }
 
-            ExtDeleteBtn.Enabled = (focused_row != null && user_access.CanDelete == 1);
-            ExtExecuteBtn.Enabled = false;
-            ExtEditBtn.Enabled = (focused_row != null && user_access.CanModify == 1 );
-            ExtCopyBtn.Enabled = (focused_row != null && user_access.CanModify == 1);
-            ExtPrintBtn.Enabled = (focused_row != null);
+            DeleteItemBtn.Enabled = (focused_row != null && user_access.CanDelete == 1);
+            EditItemBtn.Enabled = (focused_row != null && user_access.CanModify == 1 );
+            CopyItemBtn.Enabled = (focused_row != null && user_access.CanModify == 1);
+            PrintItemBtn.Enabled = (focused_row != null);
         }
 
         private void GridPopupMenu_BeforePopup(object sender, CancelEventArgs e)
         {
-            DeleteItemBtn.Enabled = ExtDeleteBtn.Enabled;
-            ExecuteItemBtn.Enabled = ExtExecuteBtn.Enabled;
-            EditItemBtn.Enabled = ExtEditBtn.Enabled;
-            CopyItemBtn.Enabled = ExtCopyBtn.Enabled;
-            PrintItemBtn.Enabled = ExtPrintBtn.Enabled;
-
             WbHistoryBtn.Enabled = IHelper.GetUserAccess(39)?.CanView == 1;
         }
 
@@ -293,8 +275,7 @@ namespace SP_Sklad.UserControls
 
         private void ExecuteItemBtn_ItemClick(object sender, ItemClickEventArgs e)
         {
-            ExecuteItem();
-            GetData();
+           
         }
 
         private void EditItemBtn_ItemClick(object sender, ItemClickEventArgs e)

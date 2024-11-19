@@ -486,8 +486,8 @@
             this.BarImageList.Images.SetKeyName(4, "refresh_office");
             this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.xls_export, "xls_export", typeof(global::SP_Sklad.Properties.Resources), 5);
             this.BarImageList.Images.SetKeyName(5, "xls_export");
-            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.kontragent_balans, "kontragent_balans", typeof(global::SP_Sklad.Properties.Resources), 6);
-            this.BarImageList.Images.SetKeyName(6, "kontragent_balans");
+            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.balans_businessman, "balans_businessman", typeof(global::SP_Sklad.Properties.Resources), 6);
+            this.BarImageList.Images.SetKeyName(6, "balans_businessman");
             this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.order_info, "order_info", typeof(global::SP_Sklad.Properties.Resources), 7);
             this.BarImageList.Images.SetKeyName(7, "order_info");
             this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.price_lict, "price_lict", typeof(global::SP_Sklad.Properties.Resources), 8);

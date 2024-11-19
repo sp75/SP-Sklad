@@ -135,6 +135,18 @@
   <metadata name="styleController1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="editorButtonImageOptions2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAAL3RFWHRUaXRsZQBDYWxlbmRh
+        cjtTY2hlZHVsZXI7Q2xvY2s7V29yaztUaW1lO1NjYWxlO0WO4IgAAADYSURBVDhPzZIxDoMwDEUjFiQO
+        wJxepULlIPQEXVlzj05cpTeoxFG60f8tG5koYelSpCc7399OCISU0vYLfzIATyAq7rnXa3kuCJY7HeFk
+        gBLWadg81Fy9iBkYbQCj5KaD3uWNy49HygdojGAGL/DRyHVE71UGKNbkYfMCnmAEnUaul/f9djmcgEOI
+        5TBxJ5pb1WyjVvU5HyAGzRsYeNyxVKfOuoklaOI7d9kAgTrrImaGsxPsUGddmpzBD+hhyO/Amo93UOHB
+        W4ap+hVAlN1qwECq/8E6DeELM85T6+Q87t8AAAAASUVORK5CYII=
+</value>
+  </data>
   <metadata name="imageCollection2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>303, 20</value>
   </metadata>

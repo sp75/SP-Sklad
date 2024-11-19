@@ -27,11 +27,6 @@ namespace SP_Sklad.UserControls
         private string reg_layout_path = "ucExpedition\\ExpeditionsGridView";
 
         BaseEntities _db { get; set; }
-        public BarButtonItem EditBtn { get; set; }
-        public BarButtonItem DeleteBtn { get; set; }
-        public BarButtonItem ExecuteBtn { get; set; }
-        public BarButtonItem CopyBtn { get; set; }
-        public BarButtonItem PrintBtn { get; set; }
 
         public v_Expedition row_exp => ExpeditionsGridView.GetFocusedRow() is NotLoadedObject ? null : ExpeditionsGridView.GetFocusedRow() as v_Expedition;
         public v_ExpeditionDet row_smp_det => ExpeditionDetGridView.GetFocusedRow() as v_ExpeditionDet;
@@ -79,7 +74,27 @@ namespace SP_Sklad.UserControls
             ExpeditionsGridControl.DataSource = null;
             ExpeditionsGridControl.DataSource = ExpeditionsSource;
 
+            SetWBEditorBarBtn();
+        }
+
+        private void SetWBEditorBarBtn()
+        {
             GetDetailData();
+
+            if (row_exp != null)
+            {
+                ucRelDocGrid1.GetRelDoc(row_exp.Id);
+            }
+            else
+            {
+                ucRelDocGrid1.GetRelDoc(Guid.Empty);
+            }
+
+            DeleteItemBtn.Enabled = (row_exp != null && row_exp.Checked == 0 && user_access.CanDelete == 1);
+            ExecuteItemBtn.Enabled = (row_exp != null && user_access.CanPost == 1);
+            EditItemBtn.Enabled = (row_exp != null && row_exp.Checked == 0 && user_access.CanModify == 1);
+            CopyItemBtn.Enabled = (row_exp != null && user_access.CanModify == 1);
+            PrintItemBtn.Enabled = (row_exp != null);
         }
 
         public void NewItem()
@@ -164,22 +179,10 @@ namespace SP_Sklad.UserControls
 
         private void SettingMaterialPricesGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
         {
-            DeleteBtn.Enabled = (row_exp != null && row_exp.Checked == 0 && user_access.CanDelete == 1);
-            ExecuteBtn.Enabled = (row_exp != null && user_access.CanPost == 1);
-            EditBtn.Enabled = (row_exp != null && row_exp.Checked == 0 && user_access.CanModify == 1);
-            CopyBtn.Enabled = (row_exp != null && user_access.CanModify == 1);
-            PrintBtn.Enabled = (row_exp != null);
+            SetWBEditorBarBtn();
 
-            GetDetailData();
-
-            if (row_exp != null)
-            {
-                ucRelDocGrid1.GetRelDoc(row_exp.Id);
-            }
-            else
-            {
-                ucRelDocGrid1.GetRelDoc(Guid.Empty);
-            }
+            if (row_exp?.Checked == 0) ExecuteItemBtn.ImageIndex = 13;
+            else ExecuteItemBtn.ImageIndex = 4;
         }
 
         public void FindItem(Guid id, DateTime on_date)
@@ -219,7 +222,7 @@ namespace SP_Sklad.UserControls
 
          private void SettingMaterialPricesGridView_DoubleClick(object sender, EventArgs e)
         {
-            EditBtn.PerformClick();
+            EditItemBtn.PerformClick();
         }
 
         private void SettingMaterialPricesGridView_AsyncCompleted(object sender, EventArgs e)
@@ -293,7 +296,7 @@ namespace SP_Sklad.UserControls
 
         private void DeleteItemBtn_ItemClick(object sender, ItemClickEventArgs e)
         {
-            DeleteBtn.PerformClick();
+            DeleteItem();
         }
 
         private void RefrechItemBtn_ItemClick(object sender, ItemClickEventArgs e)
@@ -303,7 +306,7 @@ namespace SP_Sklad.UserControls
 
         private void ExecuteItemBtn_ItemClick(object sender, ItemClickEventArgs e)
         {
-            ExecuteBtn.PerformClick();
+            ExecuteItem();
         }
 
         private void PrintItemBtn_ItemClick(object sender, ItemClickEventArgs e)
@@ -313,7 +316,7 @@ namespace SP_Sklad.UserControls
 
         private void EditItemBtn_ItemClick(object sender, ItemClickEventArgs e)
         {
-             EditBtn.PerformClick();
+            EditItem();
         }
 
         private void SettingMaterialPricesDetGrid_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
@@ -340,11 +343,7 @@ namespace SP_Sklad.UserControls
 
         private void ExpeditionsPopupMenu_BeforePopup(object sender, CancelEventArgs e)
         {
-            DeleteItemBtn.Enabled = DeleteBtn.Enabled;
-            ExecuteItemBtn.Enabled = ExecuteBtn.Enabled;
-            EditItemBtn.Enabled =  EditBtn.Enabled ;
-            CopyItemBtn.Enabled = CopyBtn.Enabled ;
-            PrintItemBtn.Enabled = PrintBtn.Enabled;
+
         }
 
         private void barButtonItem14_ItemClick(object sender, ItemClickEventArgs e)
