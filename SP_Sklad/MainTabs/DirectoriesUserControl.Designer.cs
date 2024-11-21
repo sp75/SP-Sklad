@@ -89,6 +89,7 @@
             this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
             this.SetPriceBtnItem = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.DirTreeList = new DevExpress.XtraTreeList.TreeList();
@@ -275,7 +276,6 @@
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             this.dragDropEvents1 = new DevExpress.Utils.DragDrop.DragDropEvents(this.components);
             this.dragDropEvents2 = new DevExpress.Utils.DragDrop.DragDropEvents(this.components);
-            this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridImageList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
@@ -1022,6 +1022,13 @@
             this.barButtonItem9.ImageOptions.ImageIndex = 13;
             this.barButtonItem9.Name = "barButtonItem9";
             // 
+            // barButtonItem10
+            // 
+            this.barButtonItem10.Caption = "Ціни на товри";
+            this.barButtonItem10.Id = 49;
+            this.barButtonItem10.Name = "barButtonItem10";
+            this.barButtonItem10.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem10_ItemClick);
+            // 
             // panelControl1
             // 
             this.panelControl1.Controls.Add(this.splitContainerControl1);
@@ -1269,6 +1276,8 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(84, "delivery");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.percent, "percent", typeof(global::SP_Sklad.Properties.Resources), 85);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(85, "percent");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.promotion, "promotion", typeof(global::SP_Sklad.Properties.Resources), 86);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(86, "promotion");
             this.UserTreeImgList.ParentControl = this;
             // 
             // mainContentTab
@@ -2994,13 +3003,6 @@
             this.dragDropEvents2.DragOver += new DevExpress.Utils.DragDrop.DragOverEventHandler(this.dragDropEvents2_DragOver);
             this.dragDropEvents2.DragDrop += new DevExpress.Utils.DragDrop.DragDropEventHandler(this.dragDropEvents2_DragDrop);
             this.dragDropEvents2.EndDragDrop += new DevExpress.Utils.DragDrop.EndDragDropEventHandler(this.dragDropEvents2_EndDragDrop);
-            // 
-            // barButtonItem10
-            // 
-            this.barButtonItem10.Caption = "Ціни на товри";
-            this.barButtonItem10.Id = 49;
-            this.barButtonItem10.Name = "barButtonItem10";
-            this.barButtonItem10.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem10_ItemClick);
             // 
             // DirectoriesUserControl
             // 

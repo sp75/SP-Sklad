@@ -1335,6 +1335,34 @@
           <Property Name="Total" Type="numeric" Precision="15" Scale="2" />
           <Property Name="Notes" Type="nvarchar" MaxLength="500" />
         </EntityType>
+        <EntityType Name="PromotionKagent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PromotionId" Type="uniqueidentifier" />
+          <Property Name="KaId" Type="int" />
+        </EntityType>
+        <EntityType Name="Promotions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Num" Type="nvarchar" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="Checked" Type="int" />
+          <Property Name="MatId" Type="int" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="250" />
+          <Property Name="PersonId" Type="int" />
+          <Property Name="UpdatedAt" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="DocType" Type="int" />
+          <Property Name="SessionId" Type="uniqueidentifier" />
+          <Property Name="Price" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="Discount" Type="numeric" Precision="15" Scale="2" />
+        </EntityType>
         <EntityType Name="RawMaterialManagement">
           <Key>
             <PropertyRef Name="Id" />
@@ -3577,6 +3605,44 @@ warning 6002: The table/view 'sp_base.dbo.v_ProjectManagementDet' does not have 
           <Property Name="Notes" Type="nvarchar" MaxLength="500" />
           <Property Name="Balans" Type="numeric" Precision="35" Scale="8" />
           <Property Name="SummPay" Type="numeric" Precision="35" Scale="8" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_PromotionKagent' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_PromotionKagent">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="KaName" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="PromotionId" Type="uniqueidentifier" />
+          <Property Name="KaId" Type="int" />
+          <Property Name="KaName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="KaGrpName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_Promotions' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_Promotions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Num" Type="nvarchar" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="Checked" Type="int" />
+          <Property Name="MatId" Type="int" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="250" />
+          <Property Name="PersonId" Type="int" />
+          <Property Name="UpdatedAt" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="DocType" Type="int" />
+          <Property Name="SessionId" Type="uniqueidentifier" />
+          <Property Name="Price" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="Discount" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="MatName" Type="nvarchar" MaxLength="255" />
+          <Property Name="Artikul" Type="nvarchar" MaxLength="255" />
+          <Property Name="PersonName" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_RawMaterialManagement' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -6810,6 +6876,34 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Principal>
             <Dependent Role="ProjectManagementDet">
               <PropertyRef Name="ProjectManagementId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PromotionKagent_Kagent">
+          <End Role="Kagent" Type="Self.Kagent" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PromotionKagent" Type="Self.PromotionKagent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="PromotionKagent">
+              <PropertyRef Name="KaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PromotionKagent_Promotions">
+          <End Role="Promotions" Type="Self.Promotions" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PromotionKagent" Type="Self.PromotionKagent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Promotions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PromotionKagent">
+              <PropertyRef Name="PromotionId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -10200,6 +10294,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySet Name="ProfileDocSetting" EntityType="Self.ProfileDocSetting" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProjectManagement" EntityType="Self.ProjectManagement" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProjectManagementDet" EntityType="Self.ProjectManagementDet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PromotionKagent" EntityType="Self.PromotionKagent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Promotions" EntityType="Self.Promotions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RawMaterialManagement" EntityType="Self.RawMaterialManagement" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RawMaterialManagementDet" EntityType="Self.RawMaterialManagementDet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RawMaterialType" EntityType="Self.RawMaterialType" Schema="dbo" store:Type="Tables" />
@@ -11373,6 +11469,37 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_ProjectManagementDet].[Balans] AS [Balans], 
     [v_ProjectManagementDet].[SummPay] AS [SummPay]
     FROM [dbo].[v_ProjectManagementDet] AS [v_ProjectManagementDet]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_PromotionKagent" EntityType="Self.v_PromotionKagent" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_PromotionKagent].[Id] AS [Id], 
+    [v_PromotionKagent].[PromotionId] AS [PromotionId], 
+    [v_PromotionKagent].[KaId] AS [KaId], 
+    [v_PromotionKagent].[KaName] AS [KaName], 
+    [v_PromotionKagent].[KaGrpName] AS [KaGrpName]
+    FROM [dbo].[v_PromotionKagent] AS [v_PromotionKagent]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_Promotions" EntityType="Self.v_Promotions" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_Promotions].[Id] AS [Id], 
+    [v_Promotions].[Num] AS [Num], 
+    [v_Promotions].[Name] AS [Name], 
+    [v_Promotions].[StartDate] AS [StartDate], 
+    [v_Promotions].[EndDate] AS [EndDate], 
+    [v_Promotions].[Checked] AS [Checked], 
+    [v_Promotions].[MatId] AS [MatId], 
+    [v_Promotions].[Notes] AS [Notes], 
+    [v_Promotions].[PersonId] AS [PersonId], 
+    [v_Promotions].[UpdatedAt] AS [UpdatedAt], 
+    [v_Promotions].[UpdatedBy] AS [UpdatedBy], 
+    [v_Promotions].[DocType] AS [DocType], 
+    [v_Promotions].[SessionId] AS [SessionId], 
+    [v_Promotions].[Price] AS [Price], 
+    [v_Promotions].[Discount] AS [Discount], 
+    [v_Promotions].[MatName] AS [MatName], 
+    [v_Promotions].[Artikul] AS [Artikul], 
+    [v_Promotions].[PersonName] AS [PersonName]
+    FROM [dbo].[v_Promotions] AS [v_Promotions]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_RawMaterialManagement" EntityType="Self.v_RawMaterialManagement" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -12996,6 +13123,14 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <AssociationSet Name="FK_ProjectManagementDet_ProjectManagement" Association="Self.FK_ProjectManagementDet_ProjectManagement">
             <End Role="ProjectManagement" EntitySet="ProjectManagement" />
             <End Role="ProjectManagementDet" EntitySet="ProjectManagementDet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PromotionKagent_Kagent" Association="Self.FK_PromotionKagent_Kagent">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="PromotionKagent" EntitySet="PromotionKagent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PromotionKagent_Promotions" Association="Self.FK_PromotionKagent_Promotions">
+            <End Role="Promotions" EntitySet="Promotions" />
+            <End Role="PromotionKagent" EntitySet="PromotionKagent" />
           </AssociationSet>
           <AssociationSet Name="FK_RawMaterialManagementDet_Materials" Association="Self.FK_RawMaterialManagementDet_Materials">
             <End Role="Materials" EntitySet="Materials" />
@@ -15188,6 +15323,18 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Parameter Name="user_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetArtikul" ReturnType="Collection(Int64)" />
+          <EntitySet Name="PromotionKagent" EntityType="BaseModel.PromotionKagent" />
+          <EntitySet Name="Promotions" EntityType="BaseModel.Promotions" />
+          <AssociationSet Name="FK_PromotionKagent_Kagent" Association="BaseModel.FK_PromotionKagent_Kagent">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="PromotionKagent" EntitySet="PromotionKagent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PromotionKagent_Promotions" Association="BaseModel.FK_PromotionKagent_Promotions">
+            <End Role="Promotions" EntitySet="Promotions" />
+            <End Role="PromotionKagent" EntitySet="PromotionKagent" />
+          </AssociationSet>
+          <EntitySet Name="v_Promotions" EntityType="BaseModel.v_Promotions" />
+          <EntitySet Name="v_PromotionKagent" EntityType="BaseModel.v_PromotionKagent" />
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -22276,6 +22423,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="DiscountManagementDet" Relationship="BaseModel.FK_DiscountManagementDet_Kagent" FromRole="Kagent" ToRole="DiscountManagementDet" />
           <NavigationProperty Name="AttachedFiles" Relationship="BaseModel.FK_AttachedFiles_Kagent" FromRole="Kagent" ToRole="AttachedFiles" />
           <NavigationProperty Name="MaterialSupplier" Relationship="BaseModel.FK_MaterialSupplier_Kagent" FromRole="Kagent" ToRole="MaterialSupplier" />
+          <NavigationProperty Name="PromotionKagent" Relationship="BaseModel.FK_PromotionKagent_Kagent" FromRole="Kagent" ToRole="PromotionKagent" />
         </EntityType>
         <Association Name="FK_Cars_Kagent">
           <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1">
@@ -24988,6 +25136,99 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
           <Property Type="Int32" Name="Allow" Nullable="false" />
         </ComplexType>
+        <EntityType Name="PromotionKagent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PromotionId" Type="Guid" />
+          <Property Name="KaId" Type="Int32" />
+          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_PromotionKagent_Kagent" FromRole="PromotionKagent" ToRole="Kagent" />
+          <NavigationProperty Name="Promotions" Relationship="BaseModel.FK_PromotionKagent_Promotions" FromRole="PromotionKagent" ToRole="Promotions" />
+        </EntityType>
+        <EntityType Name="Promotions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Num" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="Checked" Type="Int32" />
+          <Property Name="MatId" Type="Int32" />
+          <Property Name="Notes" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="PersonId" Type="Int32" />
+          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="DocType" Type="Int32" />
+          <Property Name="SessionId" Type="Guid" />
+          <Property Name="Price" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Discount" Type="Decimal" Precision="15" Scale="2" />
+          <NavigationProperty Name="PromotionKagent" Relationship="BaseModel.FK_PromotionKagent_Promotions" FromRole="Promotions" ToRole="PromotionKagent" />
+        </EntityType>
+        <Association Name="FK_PromotionKagent_Kagent">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.PromotionKagent" Role="PromotionKagent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="PromotionKagent">
+              <PropertyRef Name="KaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PromotionKagent_Promotions">
+          <End Type="BaseModel.Promotions" Role="Promotions" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.PromotionKagent" Role="PromotionKagent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Promotions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PromotionKagent">
+              <PropertyRef Name="PromotionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="v_Promotions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Num" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="Checked" Type="Int32" />
+          <Property Name="MatId" Type="Int32" />
+          <Property Name="Notes" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="PersonId" Type="Int32" />
+          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="DocType" Type="Int32" />
+          <Property Name="SessionId" Type="Guid" />
+          <Property Name="Price" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Discount" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="MatName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Artikul" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PersonName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="v_PromotionKagent">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="KaName" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="PromotionId" Type="Guid" />
+          <Property Name="KaId" Type="Int32" />
+          <Property Name="KaName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="KaGrpName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -31657,6 +31898,71 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="GetArtikul" FunctionName="BaseModel.Store.GetArtikul" />
+          <EntitySetMapping Name="PromotionKagent">
+            <EntityTypeMapping TypeName="BaseModel.PromotionKagent">
+              <MappingFragment StoreEntitySet="PromotionKagent">
+                <ScalarProperty Name="KaId" ColumnName="KaId" />
+                <ScalarProperty Name="PromotionId" ColumnName="PromotionId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Promotions">
+            <EntityTypeMapping TypeName="BaseModel.Promotions">
+              <MappingFragment StoreEntitySet="Promotions">
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+                <ScalarProperty Name="DocType" ColumnName="DocType" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_Promotions">
+            <EntityTypeMapping TypeName="BaseModel.v_Promotions">
+              <MappingFragment StoreEntitySet="v_Promotions">
+                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+                <ScalarProperty Name="Artikul" ColumnName="Artikul" />
+                <ScalarProperty Name="MatName" ColumnName="MatName" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+                <ScalarProperty Name="DocType" ColumnName="DocType" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_PromotionKagent">
+            <EntityTypeMapping TypeName="BaseModel.v_PromotionKagent">
+              <MappingFragment StoreEntitySet="v_PromotionKagent">
+                <ScalarProperty Name="KaGrpName" ColumnName="KaGrpName" />
+                <ScalarProperty Name="KaName" ColumnName="KaName" />
+                <ScalarProperty Name="KaId" ColumnName="KaId" />
+                <ScalarProperty Name="PromotionId" ColumnName="PromotionId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

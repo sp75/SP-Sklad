@@ -188,12 +188,16 @@ namespace SP_Sklad.MainTabs
             {
                 wbContentTab.SelectedTabPageIndex = 25;
             }
+            else if(focused_tree_node.FunId == 107)
+            {
+                wbContentTab.SelectedTabPageIndex = 26;
+            }
             else
             {
                 wbContentTab.SelectedTabPageIndex = focused_tree_node.GType.Value;
             }
 
-            if(focused_tree_node.Id == 31 || focused_tree_node.FunId == 97 || focused_tree_node.FunId == 106 || focused_tree_node.FunId == 64 || focused_tree_node.FunId == 103 || focused_tree_node.FunId == 26 || focused_tree_node.FunId == 25 || focused_tree_node.FunId == 52 || focused_tree_node.FunId == 37)
+            if(focused_tree_node.Id == 31 || focused_tree_node.FunId == 97 || focused_tree_node.FunId == 106 || focused_tree_node.FunId == 64 || focused_tree_node.FunId == 103 || focused_tree_node.FunId == 26 || focused_tree_node.FunId == 25 || focused_tree_node.FunId == 52 || focused_tree_node.FunId == 37 || focused_tree_node.FunId == 107)
             {
                 bar1.Visible = false;
             }

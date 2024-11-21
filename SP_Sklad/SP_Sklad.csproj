@@ -1098,6 +1098,12 @@
     <Compile Include="SkladData\ProjectManagementDet.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\PromotionKagent.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\Promotions.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\RawMaterialManagement.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -1452,6 +1458,12 @@
     <Compile Include="SkladData\v_ProjectManagementDet.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\v_PromotionKagent.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\v_Promotions.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\v_RawMaterialManagement.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -1616,6 +1628,12 @@
     </Compile>
     <Compile Include="Interfaces\Tablet\UI\ucTabletWayBillCustomerOrder.Designer.cs">
       <DependentUpon>ucTabletWayBillCustomerOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Documents\ucPromotions.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Documents\ucPromotions.Designer.cs">
+      <DependentUpon>ucPromotions.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\OpenStore\ucOpenStoreCashRegisterSyncMonitor.cs">
       <SubType>UserControl</SubType>
@@ -2483,6 +2501,12 @@
     <Compile Include="TradeForm\frmCashierWorkplace.Designer.cs">
       <DependentUpon>frmCashierWorkplace.cs</DependentUpon>
     </Compile>
+    <Compile Include="WBForm\frmPromotions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WBForm\frmPromotions.Designer.cs">
+      <DependentUpon>frmPromotions.cs</DependentUpon>
+    </Compile>
     <Compile Include="WBForm\frmWaybillCorrection.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2812,6 +2836,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Interfaces\Tablet\UI\ucTabletWayBillCustomerOrder.resx">
       <DependentUpon>ucTabletWayBillCustomerOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Documents\ucPromotions.resx">
+      <DependentUpon>ucPromotions.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\OpenStore\ucOpenStoreCashRegisterSyncMonitor.resx">
       <DependentUpon>ucOpenStoreCashRegisterSyncMonitor.cs</DependentUpon>
@@ -3236,6 +3263,9 @@
     <EmbeddedResource Include="TradeForm\frmCashierWorkplace.resx">
       <DependentUpon>frmCashierWorkplace.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="WBForm\frmPromotions.resx">
+      <DependentUpon>frmPromotions.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WBForm\frmWaybillCorrection.resx">
       <DependentUpon>frmWaybillCorrection.cs</DependentUpon>
     </EmbeddedResource>
@@ -3417,6 +3447,8 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.ProductionPlans.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.ProductionPlansList_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.ProjectManagement.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.PromotionKagent.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.Promotions.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.RawMaterialManagement.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.RawMaterialManagementDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.ReportSortedFields.datasource" />
@@ -3463,6 +3495,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_ProductionMonitor.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_ProductionPlanDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_ProjectManagementDet.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.v_PromotionKagent.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_RawMaterialManagementDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_Services.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_SettingMaterialPrices.datasource" />
@@ -4065,6 +4098,9 @@
     <None Include="Resources\money_edit.png" />
     <None Include="Resources\user_documens.png" />
     <None Include="Resources\user_settings.png" />
+    <None Include="Resources\discount.png" />
+    <None Include="Resources\promotion.png" />
+    <None Include="Resources\calculator.png" />
     <Content Include="TempLate\FontsForBilling\FREE3OF9.TXT" />
     <Content Include="warehouse.ico" />
   </ItemGroup>

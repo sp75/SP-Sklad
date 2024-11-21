@@ -20,52 +20,56 @@ using System.Collections;
 
 namespace SP_Sklad.UserControls
 {
-    public partial class ucSettingMaterialPrices : DevExpress.XtraEditors.XtraUserControl
+    public partial class ucPromotions : DevExpress.XtraEditors.XtraUserControl
     {
         private int fun_id = 97;
-        private string reg_layout_path = "ucSettingMaterialPrices\\SettingMaterialPricesGridView";
-        BaseEntities _db { get; set; }
+        private string reg_layout_path = "ucPromotions\\PromotionsGridView";
 
-        public v_SettingMaterialPrices row_smp => SettingMaterialPricesGridView.GetFocusedRow() is NotLoadedObject ? null : SettingMaterialPricesGridView.GetFocusedRow() as v_SettingMaterialPrices;
-        public v_SettingMaterialPricesDet row_smp_det => SettingMaterialPricesDetGrid.GetFocusedRow() as v_SettingMaterialPricesDet;
+        public v_Promotions row_smp => PromotionsGridView.GetFocusedRow() is NotLoadedObject ? null : PromotionsGridView.GetFocusedRow() as v_Promotions;
+
 
         private UserAccess user_access { get; set; }
 
         private int prev_rowHandle = 0;
         int row = 0;
         bool restore = false;
-        public ucSettingMaterialPrices()
+        public ucPromotions()
         {
             InitializeComponent();
         }
+
+
         protected override void OnCreateControl()
         {
-            base.OnCreateControl();
+            if (!DesignMode)
+            {
+                base.OnCreateControl();
 
-            this.ParentForm.FormClosing += new FormClosingEventHandler(ParentForm_FormClosing);
+                this.ParentForm.FormClosing += new FormClosingEventHandler(ParentForm_FormClosing);
+            }
         }
 
         void ParentForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            SettingMaterialPricesGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + reg_layout_path);
+            PromotionsGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + reg_layout_path);
         }
 
         public void GetData()
         {
-            prev_rowHandle = SettingMaterialPricesGridView.FocusedRowHandle;
+            prev_rowHandle = PromotionsGridView.FocusedRowHandle;
 
-            row = SettingMaterialPricesGridView.FocusedRowHandle;
+            row = PromotionsGridView.FocusedRowHandle;
             restore = true;
 
-            SettingMaterialPricesGridControl.DataSource = null;
-            SettingMaterialPricesGridControl.DataSource = SettingMaterialPricesSource;
+            PromotionsGridControl.DataSource = null;
+            PromotionsGridControl.DataSource = SettingMaterialPricesSource;
 
             GetDetailData();
         }
 
         public void NewItem()
         {
-            using (var frm = new frmSettingMaterialPrices())
+            using (var frm = new frmPromotions())
             {
                 frm.ShowDialog();
             }
@@ -73,7 +77,7 @@ namespace SP_Sklad.UserControls
 
         public void EditItem()
         {
-            using (var smp_frm = new frmSettingMaterialPrices(row_smp.Id))
+            using (var smp_frm = new frmPromotions(row_smp.Id))
             {
                 smp_frm.ShowDialog();
             }
@@ -81,13 +85,16 @@ namespace SP_Sklad.UserControls
 
         public void DeleteItem()
         {
-            var smp = _db.SettingMaterialPrices.Find(row_smp.Id);
-            if (smp != null)
+            using (var db = new BaseEntities())
             {
-                if (XtraMessageBox.Show($"Ви дійсно бажаєте видалити документ #{smp.Num}", "Видалення документа", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                var smp = db.Promotions.Find(row_smp.Id);
+                if (smp != null)
                 {
-                    _db.SettingMaterialPrices.Remove(smp);
-                    _db.SaveChanges();
+                    if (XtraMessageBox.Show($"Ви дійсно бажаєте видалити документ #{smp.Num}", "Видалення документа", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                    {
+                        db.Promotions.Remove(smp);
+                        db.SaveChanges();
+                    }
                 }
             }
         }
@@ -99,41 +106,38 @@ namespace SP_Sklad.UserControls
                 return;
             }
 
-            var smp = _db.SettingMaterialPrices.Find(row_smp.Id);
-
-            if (smp == null)
+            using (var db = new BaseEntities())
             {
-                MessageBox.Show(Resources.not_find_wb);
-                return;
-            }
-            if (smp.SessionId != null)
-            {
-                MessageBox.Show(Resources.deadlock);
-                return;
-            }
+                var smp = db.Promotions.Find(row_smp.Id);
+
+                if (smp == null)
+                {
+                    MessageBox.Show(Resources.not_find_wb);
+                    return;
+                }
+                if (smp.SessionId != null)
+                {
+                    MessageBox.Show(Resources.deadlock);
+                    return;
+                }
 
 
-            if (smp.OnDate.Date < DBHelper.ServerDateTime().Date)
-            {
-                XtraMessageBox.Show("Проводити та сторнувати цей документ заборонено", "Провести документ", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
+                if (smp.Checked == 1)
+                {
+                    smp.Checked = 0;
+                }
+                else
+                {
+                    smp.Checked = 1;
+                }
 
-            if (smp.Checked == 1)
-            {
-                smp.Checked = 0;
+                db.SaveChanges();
             }
-            else
-            {
-                smp.Checked = 1;
-            }
-
-            _db.SaveChanges();
         }
 
         public void CopyItem()
         {
-            using (var frm = new frmMessageBox("Інформація", Resources.wb_copy))
+         /*   using (var frm = new frmMessageBox("Інформація", Resources.wb_copy))
             {
                 if (!frm.user_settings.NotShowMessageCopyDocuments && frm.ShowDialog() != DialogResult.Yes)
                 {
@@ -146,17 +150,17 @@ namespace SP_Sklad.UserControls
             using (var smp_frm = new frmSettingMaterialPrices(pl_id))
             {
                 smp_frm.ShowDialog();
-            }
+            }*/
         }
 
         public void PrintItem()
         {
-            PrintDoc.SettingMaterialPricesReport(row_smp.Id, _db);
+        //    PrintDoc.SettingMaterialPricesReport(row_smp.Id, _db);
         }
 
         public void ExportToExcel()
         {
-            IHelper.ExportToXlsx(SettingMaterialPricesGridControl);
+            IHelper.ExportToXlsx(PromotionsGridControl);
         }
 
         private void SettingMaterialPricesGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
@@ -168,6 +172,9 @@ namespace SP_Sklad.UserControls
             PrintItemBtn.Enabled = (row_smp != null);
             PrintItemBtn2.Enabled = (row_smp != null);
 
+            if (row_smp?.Checked == 0) ExecuteItemBtn.ImageIndex = 14;
+            else ExecuteItemBtn.ImageIndex = 6;
+
             GetDetailData();
         }
 
@@ -176,24 +183,23 @@ namespace SP_Sklad.UserControls
         {
             if (row_smp != null)
             {
-                SettingMaterialPricesDetBS.DataSource = DB.SkladBase().v_SettingMaterialPricesDet.AsNoTracking().OrderBy(o=> o.Num).Where(w => w.SettingMaterialPricesId == row_smp.Id).ToList();
+                PromotionKagentGridControl.DataSource = DB.SkladBase().v_PromotionKagent.Where(w => w.PromotionId == row_smp.Id).ToList();
             }
             else
             {
-                SettingMaterialPricesDetBS.DataSource = null;
+                PromotionKagentGridControl.DataSource = null;
             }
         }
 
         System.IO.Stream wh_layout_stream = new System.IO.MemoryStream();
         private void SettingMaterialPricesUserControl_Load(object sender, EventArgs e)
         {
-            SettingMaterialPricesGridView.SaveLayoutToStream(wh_layout_stream);
-            SettingMaterialPricesGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + reg_layout_path);
+            PromotionsGridView.SaveLayoutToStream(wh_layout_stream);
+            PromotionsGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + reg_layout_path);
 
             if (!DesignMode)
             {
-                _db = new BaseEntities();
-                user_access = _db.UserAccess.FirstOrDefault(w => w.FunId == fun_id && w.UserId == UserSession.UserId);
+                user_access = new BaseEntities().UserAccess.FirstOrDefault(w => w.FunId == fun_id && w.UserId == UserSession.UserId);
             }
         }
 
@@ -204,7 +210,7 @@ namespace SP_Sklad.UserControls
 
         private void SettingMaterialPricesSource_GetQueryable(object sender, DevExpress.Data.Linq.GetQueryableEventArgs e)
         {
-            var list = DB.SkladBase().v_SettingMaterialPrices.AsQueryable();
+            var list = DB.SkladBase().v_Promotions.AsQueryable();
             e.QueryableSource = list;
         }
 
@@ -215,8 +221,8 @@ namespace SP_Sklad.UserControls
                 return;
             }
 
-            SettingMaterialPricesGridView.TopRowIndex = row;
-            SettingMaterialPricesGridView.FocusedRowHandle = row;
+            PromotionsGridView.TopRowIndex = row;
+            PromotionsGridView.FocusedRowHandle = row;
             restore = false;
         }
 
@@ -274,25 +280,25 @@ namespace SP_Sklad.UserControls
 
         private void HistoryBtnItem_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (row_smp_det != null)
+            if (row_smp != null)
             {
-                new frmMaterialPriceHIstory(row_smp_det.MatId).ShowDialog();
+                new frmMaterialPriceHIstory(row_smp.MatId.Value).ShowDialog();
             }
         }
 
         private void barButtonItem5_ItemClick(object sender, ItemClickEventArgs e)
         {
-            IHelper.ShowTurnMaterial(row_smp_det.MatId);
+            IHelper.ShowTurnMaterial(row_smp.MatId);
         }
 
         private void MatIfoBtnItem_ItemClick(object sender, ItemClickEventArgs e)
         {
-            IHelper.ShowMatInfo(row_smp_det.MatId);
+            IHelper.ShowMatInfo(row_smp.MatId);
         }
 
         private void barButtonItem6_ItemClick(object sender, ItemClickEventArgs e)
         {
-            IHelper.ShowMatRSV(row_smp_det.MatId, DB.SkladBase());
+            IHelper.ShowMatRSV(row_smp.MatId, DB.SkladBase());
         }
 
         private void barButtonItem1_ItemClick(object sender, ItemClickEventArgs e)
@@ -302,7 +308,7 @@ namespace SP_Sklad.UserControls
 
         private void barButtonItem3_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var dataForReport = new Dictionary<string, IList>();
+        /*    var dataForReport = new Dictionary<string, IList>();
 
             var pl = _db.SettingMaterialPrices.Where(w => w.PTypeId == row_smp.PTypeId).OrderByDescending(o => o.OnDate).Take(1).Select(s => new { PriceTypesName = s.PriceTypes.Name, s.PTypeId, s.OnDate, s.Num }).ToList();
             var pl_d = _db.v_SummarySettingMaterialPrices.Where(w => w.PTypeId == row_smp.PTypeId).ToList();
@@ -327,7 +333,7 @@ namespace SP_Sklad.UserControls
             dataForReport.Add("MatGroup", mat_grp);
             dataForReport.Add("_realation_", realation);
 
-            IHelper.Print(dataForReport, "SummarySettingMaterialPrices.xlsx");
+            IHelper.Print(dataForReport, "SummarySettingMaterialPrices.xlsx");*/
         }
 
         private void CopyItemBtn_ItemClick(object sender, ItemClickEventArgs e)
@@ -338,7 +344,7 @@ namespace SP_Sklad.UserControls
 
         private void repositoryItemButtonEdit1_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
-            new frmMaterilPrices(row_smp.PTypeId).ShowDialog();
+         //   new frmMaterilPrices(row_smp.PTypeId).ShowDialog();
         }
 
         private void barButtonItem14_ItemClick(object sender, ItemClickEventArgs e)

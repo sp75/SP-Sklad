@@ -423,6 +423,10 @@
         <EntityTypeShape EntityType="BaseModel.UserInterfaces" Width="1.5" PointX="41.5" PointY="22.625" />
         <AssociationConnector Association="BaseModel.FK_UserInterfaces_Interfaces" />
         <AssociationConnector Association="BaseModel.FK_UserInterfaces_Users" />
+        <EntityTypeShape EntityType="BaseModel.PromotionKagent" Width="1.5" PointX="44.5" PointY="31.5" />
+        <EntityTypeShape EntityType="BaseModel.Promotions" Width="1.5" PointX="42.25" PointY="17.5" />
+        <AssociationConnector Association="BaseModel.FK_PromotionKagent_Kagent" />
+        <AssociationConnector Association="BaseModel.FK_PromotionKagent_Promotions" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="66" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="0.75" PointY="4.125" />
@@ -478,6 +482,8 @@
         <EntityTypeShape EntityType="BaseModel.v_MaterialBarCodes" Width="1.5" PointX="7.375" PointY="26.75" />
         <EntityTypeShape EntityType="BaseModel.v_WhPosRemains" Width="1.5" PointX="27.375" PointY="21.75" />
         <EntityTypeShape EntityType="BaseModel.v_UserDocs" Width="1.5" PointX="27.375" PointY="27.75" />
+        <EntityTypeShape EntityType="BaseModel.v_Promotions" Width="1.5" PointX="7.375" PointY="29.75" />
+        <EntityTypeShape EntityType="BaseModel.v_PromotionKagent" Width="1.5" PointX="28.375" PointY="8.75" />
       </Diagram>
       <Diagram DiagramId="8b08ca94632048c3b594ad7efc11006d" Name="Report" >
         <EntityTypeShape EntityType="BaseModel.v_Report_55" Width="1.5" PointX="0.75" PointY="0.75" />

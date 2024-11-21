@@ -372,6 +372,8 @@ namespace SP_Sklad.UserControls
             CopyItemBtn.Enabled = (wb_focused_row != null && user_access.CanModify == 1);
             PrintItemBtn.Enabled = (wb_focused_row != null);
 
+            if (wb_focused_row?.Checked == 1) ExecuteItemBtn.ImageIndex = 6;
+            else ExecuteItemBtn.ImageIndex = 16;
         }
 
         private void xtraTabControl2_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
@@ -510,9 +512,6 @@ namespace SP_Sklad.UserControls
             {
                 XtraMessageBox.Show("Документ не створено!", "Створення документу на введення залишків", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-
-
-
 
         }
     }

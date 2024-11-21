@@ -96,6 +96,7 @@
             this.ucDiscountManagement = new SP_Sklad.UserControls.ucDiscountManagement();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.ucDeliveryManagement = new SP_Sklad.UserControls.ucRoutesManagement();
+            this.xtraTabPage4 = new DevExpress.XtraTab.XtraTabPage();
             this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
@@ -113,6 +114,7 @@
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.bar4 = new DevExpress.XtraBars.Bar();
             this.bar5 = new DevExpress.XtraBars.Bar();
+            this.ucPromotions1 = new SP_Sklad.UserControls.ucPromotions();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -155,6 +157,7 @@
             this.xtraTabPage21.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
             this.xtraTabPage2.SuspendLayout();
+            this.xtraTabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BarImageList)).BeginInit();
             this.SuspendLayout();
@@ -391,6 +394,8 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(84, "delivery");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.percent, "percent", typeof(global::SP_Sklad.Properties.Resources), 85);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(85, "percent");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.promotion, "promotion", typeof(global::SP_Sklad.Properties.Resources), 86);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(86, "promotion");
             this.UserTreeImgList.ParentControl = this;
             // 
             // wbContentTab
@@ -429,7 +434,8 @@
             this.xtraTabPage20,
             this.xtraTabPage21,
             this.xtraTabPage1,
-            this.xtraTabPage2});
+            this.xtraTabPage2,
+            this.xtraTabPage4});
             // 
             // xtraTabPage6
             // 
@@ -749,7 +755,6 @@
             // 
             // expeditionUserControl
             // 
-
             this.expeditionUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.expeditionUserControl.Location = new System.Drawing.Point(0, 0);
             this.expeditionUserControl.Name = "expeditionUserControl";
@@ -990,6 +995,13 @@
             this.ucDeliveryManagement.Size = new System.Drawing.Size(1138, 695);
             this.ucDeliveryManagement.TabIndex = 0;
             // 
+            // xtraTabPage4
+            // 
+            this.xtraTabPage4.Controls.Add(this.ucPromotions1);
+            this.xtraTabPage4.Name = "xtraTabPage4";
+            this.xtraTabPage4.Size = new System.Drawing.Size(1138, 695);
+            this.xtraTabPage4.Text = "Акції";
+            // 
             // standaloneBarDockControl1
             // 
             this.standaloneBarDockControl1.AutoSize = true;
@@ -1205,6 +1217,14 @@
             this.bar5.OptionsBar.UseWholeRow = true;
             this.bar5.Text = "Custom 5";
             // 
+            // ucPromotions1
+            // 
+            this.ucPromotions1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucPromotions1.Location = new System.Drawing.Point(0, 0);
+            this.ucPromotions1.Name = "ucPromotions1";
+            this.ucPromotions1.Size = new System.Drawing.Size(1138, 695);
+            this.ucPromotions1.TabIndex = 0;
+            // 
             // DocsUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1261,6 +1281,7 @@
             this.xtraTabPage21.ResumeLayout(false);
             this.xtraTabPage1.ResumeLayout(false);
             this.xtraTabPage2.ResumeLayout(false);
+            this.xtraTabPage4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BarImageList)).EndInit();
             this.ResumeLayout(false);
@@ -1353,5 +1374,7 @@
         private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
         private UserControls.ucRoutesManagement ucDeliveryManagement;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage4;
+        private UserControls.ucPromotions ucPromotions1;
     }
 }

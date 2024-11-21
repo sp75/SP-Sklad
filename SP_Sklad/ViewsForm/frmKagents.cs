@@ -26,6 +26,23 @@ namespace SP_Sklad.ViewsForm
             }
         }
 
+        public List<GetKagentList_Result> SelectedRows
+        {
+            get
+            {
+                var result = new List<GetKagentList_Result>();
+
+                foreach (var item in KontragentGroupGridView.GetSelectedRows())
+                {
+                    var row = KontragentGroupGridView.GetRow(item) as GetKagentList_Result;
+
+                    result.Add(row);
+                }
+
+                return result;
+            }
+        }
+
         public frmKagents(int KaKind, string okpo)
         {
             InitializeComponent();

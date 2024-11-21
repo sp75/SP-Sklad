@@ -113,6 +113,7 @@
             this.KontragentGroupGridView.OptionsBehavior.Editable = false;
             this.KontragentGroupGridView.OptionsBehavior.ReadOnly = true;
             this.KontragentGroupGridView.OptionsFind.AlwaysVisible = true;
+            this.KontragentGroupGridView.OptionsSelection.MultiSelect = true;
             this.KontragentGroupGridView.OptionsView.ShowAutoFilterRow = true;
             this.KontragentGroupGridView.OptionsView.ShowDetailButtons = false;
             this.KontragentGroupGridView.DoubleClick += new System.EventHandler(this.KontragentGroupGridView_DoubleClick);

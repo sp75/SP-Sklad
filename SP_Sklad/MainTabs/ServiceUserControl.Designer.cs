@@ -1233,6 +1233,8 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(84, "delivery");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.percent, "percent", typeof(global::SP_Sklad.Properties.Resources), 85);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(85, "percent");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.promotion, "promotion", typeof(global::SP_Sklad.Properties.Resources), 86);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(86, "promotion");
             this.UserTreeImgList.ParentControl = this;
             // 
             // mainContentTab
@@ -2761,7 +2763,6 @@
             this.xtraTabPage9.Name = "xtraTabPage9";
             this.xtraTabPage9.Size = new System.Drawing.Size(960, 573);
             this.xtraTabPage9.Text = "Додаткові";
-
             // 
             // AttachedFilesPathEdit
             // 
