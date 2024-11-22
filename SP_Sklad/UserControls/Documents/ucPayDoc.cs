@@ -266,6 +266,9 @@ namespace SP_Sklad.UserControls
             EditItemBtn.Enabled = (focused_row != null && user_access?.CanModify == 1 && isModify);
             CopyItemBtn.Enabled = (focused_row != null && user_access?.CanModify == 1 && isModify);
             PrintItemBtn.Enabled = (focused_row != null);
+
+            if (focused_row?.Checked == 0) ExecuteItemBtn.ImageIndex = 18;
+            else ExecuteItemBtn.ImageIndex = 6;
         }
 
         private void PMGridPopupMenu_BeforePopup(object sender, CancelEventArgs e)
