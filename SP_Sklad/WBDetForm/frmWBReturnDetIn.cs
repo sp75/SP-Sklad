@@ -313,10 +313,11 @@ namespace SP_Sklad.WBDetForm
 
         private void frmWBReturnDetIn_Shown(object sender, EventArgs e)
         {
+            AmountEdit.Properties.Buttons[2].Visible = DBHelper.WeighingScales_1 != null;
+
             GetOk();
             this.Text = this.Text + " " + MatComboBox.Text;
             AmountEdit.Focus();
-
         }
 
           private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
