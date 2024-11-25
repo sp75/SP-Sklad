@@ -438,7 +438,7 @@ namespace SP.Reports
         {
             var typ_id = KontragentTyp != null ? KontragentTyp.Id : -1;
 
-            var kagents = _db.REP_5_6(OnDate, KontragentGroup.Id, typ_id).Where(w => w.Saldo > 0).ToList().Select((s, index) => new
+            var kagents = _db.REP_5_6(OnDate, KontragentGroup.Id, typ_id).Where(w => w.Saldo > 0).ToList().OrderBy(o=> o.Name).Select((s, index) => new
             {
                 N = index + 1,
                 s.Name,
@@ -453,7 +453,7 @@ namespace SP.Reports
         }
         private void REP_6()
         {
-            var kagents = _db.REP_5_6(OnDate, KontragentGroup.Id, -1).Where(w => w.Saldo < 0).ToList().Select((s, index) => new
+            var kagents = _db.REP_5_6(OnDate, KontragentGroup.Id, -1).Where(w => w.Saldo < 0).ToList().OrderBy(o => o.Name).Select((s, index) => new
             {
                 N = index + 1,
                 s.Name,
