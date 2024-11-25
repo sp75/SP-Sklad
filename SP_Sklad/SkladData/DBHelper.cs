@@ -610,7 +610,7 @@ order by wbd.ondate desc
         public static bool CheckExpedition(int wbill_id, BaseEntities db)
         {
             bool r = true;
-            var query = db.ExpeditionDet.Where(w=> w.WbillId == wbill_id).ToList();
+            var query = db.ExpeditionDet.Where(w=> w.WbillId == wbill_id && w.Checked == 1).ToList();
 
             if (query.Any())
             {
