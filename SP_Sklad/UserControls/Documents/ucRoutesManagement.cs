@@ -214,7 +214,7 @@ namespace SP_Sklad.UserControls
 
         private void RoutesGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
         {
-            EditItemBtn.Enabled = (row_route != null && user_access.CanModify == 1);
+            EditItemBtn.Enabled = (row_route != null && user_access?.CanModify == 1);
 
             GetDetailData();
         }
