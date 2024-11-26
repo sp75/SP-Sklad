@@ -388,6 +388,10 @@
             this.GridImageList.Images.SetKeyName(33, "production_planning");
             this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.money_edit, "money_edit", typeof(global::SP_Sklad.Properties.Resources), 34);
             this.GridImageList.Images.SetKeyName(34, "money_edit");
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.actives, "actives", typeof(global::SP_Sklad.Properties.Resources), 35);
+            this.GridImageList.Images.SetKeyName(35, "actives");
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.discount, "discount", typeof(global::SP_Sklad.Properties.Resources), 36);
+            this.GridImageList.Images.SetKeyName(36, "discount");
             // 
             // PersonDocListSource
             // 
@@ -475,7 +479,8 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Фiнансовi операцiї (переміщення грошей)", 9, 27),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Фiнансовi операцiї (коригування залишку)", 18, 34),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Експедиція", 32, 25),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 33, 28)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 33, 28),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Акції", 36, 36)});
             this.repositoryItemImageComboBox1.Name = "repositoryItemImageComboBox1";
             this.repositoryItemImageComboBox1.SmallImages = this.GridImageList;
             // 
