@@ -168,6 +168,9 @@ namespace SP_Sklad.UserControls
             PrintItemBtn.Enabled = (row_smp != null);
             PrintItemBtn2.Enabled = (row_smp != null);
 
+            if (row_smp?.Checked == 0) ExecuteItemBtn.ImageIndex = 17;
+            else ExecuteItemBtn.ImageIndex = 6;
+
             GetDetailData();
         }
 
