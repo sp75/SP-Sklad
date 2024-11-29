@@ -411,7 +411,7 @@
             // 
             // ExecuteItemBtn
             // 
-            this.ExecuteItemBtn.Caption = "Розпочати виробництво";
+            this.ExecuteItemBtn.Caption = "Розпочати/відмінити виробництво";
             this.ExecuteItemBtn.Id = 5;
             this.ExecuteItemBtn.ImageOptions.ImageIndex = 4;
             this.ExecuteItemBtn.Name = "ExecuteItemBtn";
@@ -726,20 +726,20 @@
             // 
             this.BarImageList.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("BarImageList.ImageStream")));
             this.BarImageList.TransparentColor = System.Drawing.Color.Transparent;
-            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.additem_3, "additem_3", typeof(global::SP_Sklad.Properties.Resources), 0);
-            this.BarImageList.Images.SetKeyName(0, "additem_3");
+            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.add_file, "add_file", typeof(global::SP_Sklad.Properties.Resources), 0);
+            this.BarImageList.Images.SetKeyName(0, "add_file");
             this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.copy_2, "copy_2", typeof(global::SP_Sklad.Properties.Resources), 1);
             this.BarImageList.Images.SetKeyName(1, "copy_2");
-            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.edit_2, "edit_2", typeof(global::SP_Sklad.Properties.Resources), 2);
-            this.BarImageList.Images.SetKeyName(2, "edit_2");
-            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.delete_16x16, "delete_16x16", typeof(global::SP_Sklad.Properties.Resources), 3);
-            this.BarImageList.Images.SetKeyName(3, "delete_16x16");
-            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.execute_16x16_red, "execute_16x16_red", typeof(global::SP_Sklad.Properties.Resources), 4);
-            this.BarImageList.Images.SetKeyName(4, "execute_16x16_red");
+            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.edit_3, "edit_3", typeof(global::SP_Sklad.Properties.Resources), 2);
+            this.BarImageList.Images.SetKeyName(2, "edit_3");
+            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.close, "close", typeof(global::SP_Sklad.Properties.Resources), 3);
+            this.BarImageList.Images.SetKeyName(3, "close");
+            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.check_file_red, "check_file_red", typeof(global::SP_Sklad.Properties.Resources), 4);
+            this.BarImageList.Images.SetKeyName(4, "check_file_red");
             this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.preview_2, "preview_2", typeof(global::SP_Sklad.Properties.Resources), 5);
             this.BarImageList.Images.SetKeyName(5, "preview_2");
-            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.refresh, "refresh", typeof(global::SP_Sklad.Properties.Resources), 6);
-            this.BarImageList.Images.SetKeyName(6, "refresh");
+            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.refresh_office, "refresh_office", typeof(global::SP_Sklad.Properties.Resources), 6);
+            this.BarImageList.Images.SetKeyName(6, "refresh_office");
             this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.xls_export, "xls_export", typeof(global::SP_Sklad.Properties.Resources), 7);
             this.BarImageList.Images.SetKeyName(7, "xls_export");
             this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.WBWriteOn_4, "WBWriteOn_4", typeof(global::SP_Sklad.Properties.Resources), 8);
@@ -758,6 +758,8 @@
             this.BarImageList.Images.SetKeyName(14, "product_info_3");
             this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.product_reserved_1, "product_reserved_1", typeof(global::SP_Sklad.Properties.Resources), 15);
             this.BarImageList.Images.SetKeyName(15, "product_reserved_1");
+            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.check_file, "check_file", typeof(global::SP_Sklad.Properties.Resources), 16);
+            this.BarImageList.Images.SetKeyName(16, "check_file");
             // 
             // StopProcesBtn
             // 

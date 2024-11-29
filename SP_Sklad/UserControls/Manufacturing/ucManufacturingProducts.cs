@@ -443,10 +443,14 @@ namespace SP_Sklad.MainTabs
             DeleteItemBtn.Enabled = (focused_row != null && focused_row.Checked == 0 && user_access.CanDelete == 1);
             EditItemBtn.Enabled = (focused_row != null && focused_row.Checked == 0 && user_access.CanModify == 1);
             CopyItemBtn.Enabled = (focused_row != null && user_access.CanInsert == 1);
-            ExecuteItemBtn.Enabled = (focused_row != null && user_access.CanPost == 1);
+            ExecuteItemBtn.Enabled = (focused_row != null && user_access.CanPost == 1 && (focused_row.Checked == 0 || focused_row.Checked == 2));
             PrintItemBtn.Enabled = (focused_row != null);
             AddTechProcBtn.Enabled = (focused_row != null && focused_row.Checked != 1 && user_access.CanModify == 1);
             AddIntermediateWeighing.Enabled = (focused_row != null && focused_row.Checked == 0 && intermediate_weighing_access?.CanInsert == 1);
+
+
+            if (focused_row?.Checked == 0) ExecuteItemBtn.ImageIndex = 16;
+            else ExecuteItemBtn.ImageIndex = 4;
         }
 
         private void barButtonItem3_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

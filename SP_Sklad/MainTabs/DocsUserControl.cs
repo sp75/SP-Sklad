@@ -54,7 +54,7 @@ namespace SP_Sklad.MainTabs
                 return;
             }
             
-            bar1.Visible = true;
+        //    bar1.Visible = true;
 
             NewItemBtn.Enabled = (focused_tree_node != null && focused_tree_node.CanInsert == 1);
 
@@ -197,10 +197,11 @@ namespace SP_Sklad.MainTabs
                 wbContentTab.SelectedTabPageIndex = focused_tree_node.GType.Value;
             }
 
-            if(focused_tree_node.Id == 31 || focused_tree_node.FunId == 97 || focused_tree_node.FunId == 106 || focused_tree_node.FunId == 64 || focused_tree_node.FunId == 103 || focused_tree_node.FunId == 26 || focused_tree_node.FunId == 25 || focused_tree_node.FunId == 52 || focused_tree_node.FunId == 37 || focused_tree_node.FunId == 107)
+            if(focused_tree_node.Id == 31 || focused_tree_node.FunId == 97 || focused_tree_node.FunId == 106 || focused_tree_node.FunId == 64 || focused_tree_node.FunId == 103 || focused_tree_node.FunId == 26 || focused_tree_node.FunId == 25 || focused_tree_node.FunId == 52 || focused_tree_node.FunId == 37 || focused_tree_node.FunId == 107 || focused_tree_node.FunId == 77 || focused_tree_node.FunId == 78 || focused_tree_node.FunId == 65 || focused_tree_node.FunId == 94)
             {
                 bar1.Visible = false;
             }
+            else bar1.Visible = true;
 
             RefrechItemBtn.PerformClick();
 

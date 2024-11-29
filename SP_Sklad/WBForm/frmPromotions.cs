@@ -81,7 +81,7 @@ namespace SP_Sklad.WBForm
         {
             prom.UpdatedAt = DateTime.Now;
             prom.UpdatedBy = DBHelper.CurrentUser.UserId;
-            prom.Checked = 1;
+     //       prom.Checked = 1;
 
             _db.SaveChanges();
 

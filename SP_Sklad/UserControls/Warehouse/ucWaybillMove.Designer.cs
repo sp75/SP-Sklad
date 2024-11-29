@@ -236,8 +236,8 @@
             this.imageCollection1.Images.SetKeyName(4, "edit_3");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.close, "close", typeof(global::SP_Sklad.Properties.Resources), 5);
             this.imageCollection1.Images.SetKeyName(5, "close");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.execute_16x16_red, "execute_16x16_red", typeof(global::SP_Sklad.Properties.Resources), 6);
-            this.imageCollection1.Images.SetKeyName(6, "execute_16x16_red");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.check_file_red, "check_file_red", typeof(global::SP_Sklad.Properties.Resources), 6);
+            this.imageCollection1.Images.SetKeyName(6, "check_file_red");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.preview_2, "preview_2", typeof(global::SP_Sklad.Properties.Resources), 7);
             this.imageCollection1.Images.SetKeyName(7, "preview_2");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.refresh_office, "refresh_office", typeof(global::SP_Sklad.Properties.Resources), 8);
@@ -256,6 +256,8 @@
             this.imageCollection1.Images.SetKeyName(14, "xls_export");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.move_stock, "move_stock", typeof(global::SP_Sklad.Properties.Resources), 15);
             this.imageCollection1.Images.SetKeyName(15, "move_stock");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.check_file, "check_file", typeof(global::SP_Sklad.Properties.Resources), 16);
+            this.imageCollection1.Images.SetKeyName(16, "check_file");
             // 
             // gridColumn2
             // 

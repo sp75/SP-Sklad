@@ -79,6 +79,7 @@
             this.gridColumn105 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn106 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn107 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemImageEdit();
             this.repositoryItemImageComboBox3 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
@@ -466,7 +467,8 @@
             this.gridColumn103,
             this.gridColumn105,
             this.gridColumn106,
-            this.gridColumn107});
+            this.gridColumn107,
+            this.gridColumn1});
             this.PayDocGridView.GridControl = this.PayDocGridControl;
             this.PayDocGridView.Name = "PayDocGridView";
             this.PayDocGridView.OptionsBehavior.AllowIncrementalSearch = true;
@@ -657,6 +659,12 @@
             this.gridColumn107.Visible = true;
             this.gridColumn107.VisibleIndex = 11;
             // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "Відповідальний";
+            this.gridColumn1.FieldName = "PersonName";
+            this.gridColumn1.Name = "gridColumn1";
+            // 
             // repositoryItemImageEdit2
             // 
             this.repositoryItemImageEdit2.AutoHeight = false;
@@ -846,7 +854,7 @@
             // 
             // vGridControl2
             // 
-            this.vGridControl2.Cursor = System.Windows.Forms.Cursors.Default;
+            this.vGridControl2.Cursor = System.Windows.Forms.Cursors.SizeNS;
             this.vGridControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vGridControl2.Location = new System.Drawing.Point(0, 0);
             this.vGridControl2.Name = "vGridControl2";
@@ -905,7 +913,6 @@
             // 
             // editorRow3
             // 
-            this.editorRow3.Height = 16;
             this.editorRow3.Name = "editorRow3";
             this.editorRow3.Properties.Caption = "Адреса";
             this.editorRow3.Properties.FieldName = "Address";
@@ -918,7 +925,6 @@
             // 
             // editorRow6
             // 
-            this.editorRow6.Height = 16;
             this.editorRow6.Name = "editorRow6";
             this.editorRow6.Properties.Caption = "Статус документа";
             this.editorRow6.Properties.FieldName = "Checked";
@@ -1110,5 +1116,6 @@
         private DevExpress.XtraEditors.ComboBoxEdit PeriodComboBoxEdit;
         public DevExpress.XtraEditors.LookUpEdit PDKagentList;
         private DevExpress.XtraBars.Bar bar1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
     }
 }

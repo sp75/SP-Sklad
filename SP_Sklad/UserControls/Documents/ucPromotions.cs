@@ -137,7 +137,7 @@ namespace SP_Sklad.UserControls
 
         public void CopyItem()
         {
-         /*   using (var frm = new frmMessageBox("Інформація", Resources.wb_copy))
+            using (var frm = new frmMessageBox("Інформація", Resources.wb_copy))
             {
                 if (!frm.user_settings.NotShowMessageCopyDocuments && frm.ShowDialog() != DialogResult.Yes)
                 {
@@ -145,12 +145,40 @@ namespace SP_Sklad.UserControls
                 }
             }
 
-            var pl_id = DB.SkladBase().CopySettingMaterialPrice(row_smp.Id).FirstOrDefault();
-
-            using (var smp_frm = new frmSettingMaterialPrices(pl_id))
+            using (var db = DB.SkladBase())
             {
-                smp_frm.ShowDialog();
-            }*/
+                var pr = db.Promotions.Find(row_smp.Id);
+
+                var new_pr = db.Promotions.Add(new Promotions
+                {
+                    Id = Guid.NewGuid(),
+                    Checked = 0,
+                    DocType = 36,
+                    EndDate = pr.EndDate,
+                    MatId = pr.MatId,
+                    Name = pr.Name,
+                    Notes = pr.Notes,
+                    Num = new BaseEntities().GetDocNum("promotion").FirstOrDefault(),
+                    PersonId = DBHelper.CurrentUser.KaId,
+                    Price = pr.Price,
+                    StartDate = pr.StartDate,
+                    UpdatedAt = DateTime.Now,
+                    UpdatedBy = DBHelper.CurrentUser.UserId,
+                    Discount = pr.Discount
+                });
+
+                foreach (var item in db.PromotionKagent.Where(w => w.PromotionId == row_smp.Id))
+                {
+                    new_pr.PromotionKagent.Add(new PromotionKagent { KaId = item.KaId, PromotionId = new_pr.Id });
+                }
+                db.SaveChanges();
+
+                using (var smp_frm = new frmPromotions(new_pr.Id) { is_new_record = true })
+                {
+                    smp_frm.ShowDialog();
+                }
+            }
+
         }
 
         public void PrintItem()

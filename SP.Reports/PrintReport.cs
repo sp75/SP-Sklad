@@ -479,7 +479,8 @@ namespace SP.Reports
                 s.AvgPrice,
                 s.OutGrpId,
                 s.GrpName,
-                s.GrpNum
+                s.GrpNum,
+                s.MatId
             }).OrderBy(o => o.MatName).ToList();
 
             var mat_grp = mat.GroupBy(g => new { g.GrpName, g.OutGrpId, g.GrpNum }).Select(s => new

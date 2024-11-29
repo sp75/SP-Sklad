@@ -26,11 +26,6 @@ namespace SP_Sklad.UserControls
         public int fun_id { get; set; }
         private string reg_layout_path = "ucKAgentAdjustment\\KAgentAdjustmentGridView";
         BaseEntities _db { get; set; }
-        public BarButtonItem ExtEditBtn { get; set; }
-        public BarButtonItem ExtDeleteBtn { get; set; }
-        public BarButtonItem ExtExecuteBtn { get; set; }
-        public BarButtonItem ExtCopyBtn { get; set; }
-        public BarButtonItem ExtPrintBtn { get; set; }
 
         public v_KAgentAdjustment focused_row => KAgentAdjustmentGridView.GetFocusedRow() is NotLoadedObject ? null : KAgentAdjustmentGridView.GetFocusedRow() as v_KAgentAdjustment;
 
@@ -193,32 +188,29 @@ namespace SP_Sklad.UserControls
         {
             xtraTabControl4_SelectedPageChanged(null, null);
 
-            ExtDeleteBtn.Enabled = false;
-            ExtExecuteBtn.Enabled = false;
-            ExtEditBtn.Enabled = false;
-            ExtCopyBtn.Enabled = false;
-            ExtPrintBtn.Enabled = false;
+            DeleteItemBtn.Enabled = false;
+            ExecuteItemBtn.Enabled = false;
+            EditItemBtn.Enabled = false;
+            CopyItemBtn.Enabled = false;
+            PrintItemBtn.Enabled = false;
 
             if (focused_row == null)
             {
                 return;
             }
 
-            ExtDeleteBtn.Enabled = (focused_row != null && focused_row.Checked == 0 && user_access.CanDelete == 1);
-            ExtExecuteBtn.Enabled = (focused_row != null && user_access.CanPost == 1);
-            ExtEditBtn.Enabled = (focused_row != null && user_access.CanModify == 1 && focused_row.Checked == 0);
-            ExtCopyBtn.Enabled = (focused_row != null && user_access.CanModify == 1);
-            ExtPrintBtn.Enabled = (focused_row != null);
+            DeleteItemBtn.Enabled = (focused_row != null && focused_row.Checked == 0 && user_access.CanDelete == 1);
+            ExecuteItemBtn.Enabled = (focused_row != null && user_access.CanPost == 1);
+            EditItemBtn.Enabled = (focused_row != null && user_access.CanModify == 1 && focused_row.Checked == 0);
+            CopyItemBtn.Enabled = (focused_row != null && user_access.CanModify == 1);
+            PrintItemBtn.Enabled = (focused_row != null);
+
+            if (focused_row?.Checked == 0) ExecuteItemBtn.ImageIndex = 16;
+            else ExecuteItemBtn.ImageIndex = 6;
         }
 
         private void PMGridPopupMenu_BeforePopup(object sender, CancelEventArgs e)
         {
-            DeleteItemBtn.Enabled = ExtDeleteBtn.Enabled;
-            ExecuteItemBtn.Enabled = ExtExecuteBtn.Enabled;
-            EditItemBtn.Enabled = ExtEditBtn.Enabled;
-            CopyItemBtn.Enabled = ExtCopyBtn.Enabled;
-            PrintItemBtn.Enabled = ExtPrintBtn.Enabled;
-
             WbHistoryBtn.Enabled = IHelper.GetUserAccess(39)?.CanView == 1;
         }
 

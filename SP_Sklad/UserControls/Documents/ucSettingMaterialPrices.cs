@@ -174,7 +174,6 @@ namespace SP_Sklad.UserControls
             GetDetailData();
         }
 
-
         private void GetDetailData()
         {
             if (row_smp != null)

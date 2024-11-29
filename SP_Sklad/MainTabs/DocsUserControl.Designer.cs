@@ -791,11 +791,6 @@
             // ucWBOrdersOut
             // 
             this.ucWBOrdersOut.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucWBOrdersOut.ExtCopyBtn = this.CopyItemBtn;
-            this.ucWBOrdersOut.ExtDeleteBtn = this.DeleteItemBtn;
-            this.ucWBOrdersOut.ExtEditBtn = this.EditItemBtn;
-            this.ucWBOrdersOut.ExtExecuteBtn = this.ExecuteItemBtn;
-            this.ucWBOrdersOut.ExtPrintBtn = this.PrintItemBtn;
             this.ucWBOrdersOut.Location = new System.Drawing.Point(0, 0);
             this.ucWBOrdersOut.Name = "ucWBOrdersOut";
             this.ucWBOrdersOut.Size = new System.Drawing.Size(1138, 695);
@@ -866,11 +861,6 @@
             // ucServicesIn
             // 
             this.ucServicesIn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucServicesIn.ExtCopyBtn = this.CopyItemBtn;
-            this.ucServicesIn.ExtDeleteBtn = this.DeleteItemBtn;
-            this.ucServicesIn.ExtEditBtn = this.EditItemBtn;
-            this.ucServicesIn.ExtExecuteBtn = this.ExecuteItemBtn;
-            this.ucServicesIn.ExtPrintBtn = this.PrintItemBtn;
             this.ucServicesIn.Location = new System.Drawing.Point(0, 0);
             this.ucServicesIn.Name = "ucServicesIn";
             this.ucServicesIn.Size = new System.Drawing.Size(1138, 695);
@@ -926,11 +916,6 @@
             // ucKAgentAdjustmentIn
             // 
             this.ucKAgentAdjustmentIn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucKAgentAdjustmentIn.ExtCopyBtn = this.CopyItemBtn;
-            this.ucKAgentAdjustmentIn.ExtDeleteBtn = this.DeleteItemBtn;
-            this.ucKAgentAdjustmentIn.ExtEditBtn = this.EditItemBtn;
-            this.ucKAgentAdjustmentIn.ExtExecuteBtn = this.ExecuteItemBtn;
-            this.ucKAgentAdjustmentIn.ExtPrintBtn = this.PrintItemBtn;
             this.ucKAgentAdjustmentIn.fun_id = 77;
             this.ucKAgentAdjustmentIn.Location = new System.Drawing.Point(0, 0);
             this.ucKAgentAdjustmentIn.Name = "ucKAgentAdjustmentIn";
@@ -948,11 +933,6 @@
             // ucKAgentAdjustmentOut
             // 
             this.ucKAgentAdjustmentOut.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucKAgentAdjustmentOut.ExtCopyBtn = this.CopyItemBtn;
-            this.ucKAgentAdjustmentOut.ExtDeleteBtn = this.DeleteItemBtn;
-            this.ucKAgentAdjustmentOut.ExtEditBtn = this.EditItemBtn;
-            this.ucKAgentAdjustmentOut.ExtExecuteBtn = this.ExecuteItemBtn;
-            this.ucKAgentAdjustmentOut.ExtPrintBtn = this.PrintItemBtn;
             this.ucKAgentAdjustmentOut.fun_id = 78;
             this.ucKAgentAdjustmentOut.Location = new System.Drawing.Point(0, 0);
             this.ucKAgentAdjustmentOut.Name = "ucKAgentAdjustmentOut";

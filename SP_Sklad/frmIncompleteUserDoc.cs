@@ -69,8 +69,11 @@ namespace SP_Sklad
 
         private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var dir = DocumentGridView.GetFocusedRow() as GetDocList_Result;
-            PrintDoc.Show(focused_kagent.DocId, focused_kagent.DocType.Value, DB.SkladBase());
+            if (focused_kagent != null)
+            {
+
+                PrintDoc.Show(focused_kagent.DocId, focused_kagent.DocType.Value, DB.SkladBase());
+            }
         }
 
         private void barButtonItem5_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

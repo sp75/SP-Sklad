@@ -376,6 +376,9 @@ namespace SP_Sklad.UserControls
             EditItemBtn.Enabled = (wb_focused_row != null && user_access?.CanModify == 1);
             CopyItemBtn.Enabled = (wb_focused_row != null && user_access?.CanModify == 1);
             PrintItemBtn.Enabled = (wb_focused_row != null);
+
+            if (wb_focused_row?.Checked == 0) ExecuteItemBtn.ImageIndex = 16;
+            else ExecuteItemBtn.ImageIndex = 6;
         }
 
         private void xtraTabControl2_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)

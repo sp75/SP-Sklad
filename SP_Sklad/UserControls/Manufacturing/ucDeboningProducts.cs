@@ -365,8 +365,12 @@ namespace SP_Sklad.MainTabs
             DeleteItemBtn.Enabled = (focused_row != null && focused_row.Checked == 0 && user_access.CanDelete == 1);
             EditItemBtn.Enabled = (focused_row != null && focused_row.Checked == 0 && user_access.CanModify == 1);
             CopyItemBtn.Enabled = (user_access.CanInsert == 1 && focused_row != null);
-            ExecuteItemBtn.Enabled = (focused_row != null && user_access.CanPost == 1);
+            ExecuteItemBtn.Enabled = (focused_row != null && user_access.CanPost == 1 && (focused_row.Checked == 0 || focused_row.Checked == 2));
             PrintItemBtn.Enabled = (focused_row != null);
+
+            if (focused_row?.Checked == 0) ExecuteItemBtn.ImageIndex = 13;
+            else ExecuteItemBtn.ImageIndex = 4;
+
         }
 
 

@@ -105,6 +105,7 @@
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.GgridDataSource = new DevExpress.Data.Linq.LinqInstantFeedbackSource();
             this.GridPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.bar1 = new DevExpress.XtraBars.Bar();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl8.Panel1)).BeginInit();
             this.splitContainerControl8.Panel1.SuspendLayout();
@@ -136,7 +137,7 @@
             this.splitContainerControl8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainerControl8.FixedPanel = DevExpress.XtraEditors.SplitFixedPanel.Panel2;
             this.splitContainerControl8.Horizontal = false;
-            this.splitContainerControl8.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerControl8.Location = new System.Drawing.Point(0, 24);
             this.splitContainerControl8.Name = "splitContainerControl8";
             // 
             // splitContainerControl8.Panel1
@@ -151,7 +152,7 @@
             // 
             this.splitContainerControl8.Panel2.Controls.Add(this.xtraTabControl4);
             this.splitContainerControl8.Panel2.Text = "Panel2";
-            this.splitContainerControl8.Size = new System.Drawing.Size(1344, 784);
+            this.splitContainerControl8.Size = new System.Drawing.Size(1344, 760);
             this.splitContainerControl8.SplitterPosition = 301;
             this.splitContainerControl8.TabIndex = 3;
             this.splitContainerControl8.Text = "splitContainerControl8";
@@ -165,7 +166,7 @@
             this.KAgentAdjustmentGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox13,
             this.repositoryItemImageComboBox17});
-            this.KAgentAdjustmentGridControl.Size = new System.Drawing.Size(1344, 419);
+            this.KAgentAdjustmentGridControl.Size = new System.Drawing.Size(1344, 395);
             this.KAgentAdjustmentGridControl.TabIndex = 5;
             this.KAgentAdjustmentGridControl.UseEmbeddedNavigator = true;
             this.KAgentAdjustmentGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -231,20 +232,20 @@
             this.imageCollection1.Images.SetKeyName(0, "new_document");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.checked_green, "checked_green", typeof(global::SP_Sklad.Properties.Resources), 1);
             this.imageCollection1.Images.SetKeyName(1, "checked_green");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.additem_3, "additem_3", typeof(global::SP_Sklad.Properties.Resources), 2);
-            this.imageCollection1.Images.SetKeyName(2, "additem_3");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.add_file, "add_file", typeof(global::SP_Sklad.Properties.Resources), 2);
+            this.imageCollection1.Images.SetKeyName(2, "add_file");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.copy_2, "copy_2", typeof(global::SP_Sklad.Properties.Resources), 3);
             this.imageCollection1.Images.SetKeyName(3, "copy_2");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.edit_2, "edit_2", typeof(global::SP_Sklad.Properties.Resources), 4);
-            this.imageCollection1.Images.SetKeyName(4, "edit_2");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.delete_16x16, "delete_16x16", typeof(global::SP_Sklad.Properties.Resources), 5);
-            this.imageCollection1.Images.SetKeyName(5, "delete_16x16");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.execute_16x16_red, "execute_16x16_red", typeof(global::SP_Sklad.Properties.Resources), 6);
-            this.imageCollection1.Images.SetKeyName(6, "execute_16x16_red");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.edit_3, "edit_3", typeof(global::SP_Sklad.Properties.Resources), 4);
+            this.imageCollection1.Images.SetKeyName(4, "edit_3");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.close, "close", typeof(global::SP_Sklad.Properties.Resources), 5);
+            this.imageCollection1.Images.SetKeyName(5, "close");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.check_file_red, "check_file_red", typeof(global::SP_Sklad.Properties.Resources), 6);
+            this.imageCollection1.Images.SetKeyName(6, "check_file_red");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.preview_2, "preview_2", typeof(global::SP_Sklad.Properties.Resources), 7);
             this.imageCollection1.Images.SetKeyName(7, "preview_2");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.refresh, "refresh", typeof(global::SP_Sklad.Properties.Resources), 8);
-            this.imageCollection1.Images.SetKeyName(8, "refresh");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.refresh_office, "refresh_office", typeof(global::SP_Sklad.Properties.Resources), 8);
+            this.imageCollection1.Images.SetKeyName(8, "refresh_office");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.showproduct_16x16, "showproduct_16x16", typeof(global::SP_Sklad.Properties.Resources), 9);
             this.imageCollection1.Images.SetKeyName(9, "showproduct_16x16");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.wb_info, "wb_info", typeof(global::SP_Sklad.Properties.Resources), 10);
@@ -253,12 +254,14 @@
             this.imageCollection1.Images.SetKeyName(11, "RelDoc3");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.def_settings_grid, "def_settings_grid", typeof(global::SP_Sklad.Properties.Resources), 12);
             this.imageCollection1.Images.SetKeyName(12, "def_settings_grid");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.refresh, "refresh", typeof(global::SP_Sklad.Properties.Resources), 13);
-            this.imageCollection1.Images.SetKeyName(13, "refresh");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.xls_export, "xls_export", typeof(global::SP_Sklad.Properties.Resources), 13);
+            this.imageCollection1.Images.SetKeyName(13, "xls_export");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.credit_adjustmen, "credit_adjustmen", typeof(global::SP_Sklad.Properties.Resources), 14);
             this.imageCollection1.Images.SetKeyName(14, "credit_adjustmen");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.debt_adjustment, "debt_adjustment", typeof(global::SP_Sklad.Properties.Resources), 15);
             this.imageCollection1.Images.SetKeyName(15, "debt_adjustment");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.check_file, "check_file", typeof(global::SP_Sklad.Properties.Resources), 16);
+            this.imageCollection1.Images.SetKeyName(16, "check_file");
             // 
             // gridColumn54
             // 
@@ -364,7 +367,10 @@
             this.ucDocumentFilterPanel.KagentImageIndex = 1;
             this.ucDocumentFilterPanel.KagentPanelVisible = false;
             this.ucDocumentFilterPanel.Location = new System.Drawing.Point(0, 0);
+            this.ucDocumentFilterPanel.mainLabelControlImageIndex = 0;
+            this.ucDocumentFilterPanel.mainLabelControlText = "Title";
             this.ucDocumentFilterPanel.Name = "ucDocumentFilterPanel";
+            this.ucDocumentFilterPanel.panelLabelControlVisible = false;
             this.ucDocumentFilterPanel.Size = new System.Drawing.Size(1344, 54);
             this.ucDocumentFilterPanel.TabIndex = 8;
             this.ucDocumentFilterPanel.Title = "Постачальник";
@@ -383,6 +389,8 @@
             // 
             // barManager1
             // 
+            this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
+            this.bar1});
             this.barManager1.DockControls.Add(this.barDockControlTop);
             this.barManager1.DockControls.Add(this.barDockControlBottom);
             this.barManager1.DockControls.Add(this.barDockControlLeft);
@@ -412,7 +420,7 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1344, 0);
+            this.barDockControlTop.Size = new System.Drawing.Size(1344, 24);
             // 
             // barDockControlBottom
             // 
@@ -426,24 +434,24 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 784);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 760);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1344, 0);
+            this.barDockControlRight.Location = new System.Drawing.Point(1344, 24);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 784);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 760);
             // 
             // standaloneBarDockControl3
             // 
             this.standaloneBarDockControl3.AutoSize = true;
             this.standaloneBarDockControl3.CausesValidation = false;
             this.standaloneBarDockControl3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.standaloneBarDockControl3.Location = new System.Drawing.Point(0, 0);
+            this.standaloneBarDockControl3.Location = new System.Drawing.Point(0, 24);
             this.standaloneBarDockControl3.Manager = this.barManager1;
             this.standaloneBarDockControl3.Name = "standaloneBarDockControl3";
             this.standaloneBarDockControl3.Size = new System.Drawing.Size(1344, 0);
@@ -454,7 +462,7 @@
             this.standaloneBarDockControl4.AutoSize = true;
             this.standaloneBarDockControl4.CausesValidation = false;
             this.standaloneBarDockControl4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.standaloneBarDockControl4.Location = new System.Drawing.Point(0, 0);
+            this.standaloneBarDockControl4.Location = new System.Drawing.Point(0, 24);
             this.standaloneBarDockControl4.Manager = this.barManager1;
             this.standaloneBarDockControl4.Name = "standaloneBarDockControl4";
             this.standaloneBarDockControl4.Size = new System.Drawing.Size(1344, 0);
@@ -478,6 +486,7 @@
             this.NewItemBtn.ImageOptions.ImageIndex = 2;
             this.NewItemBtn.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.Insert);
             this.NewItemBtn.Name = "NewItemBtn";
+            this.NewItemBtn.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.NewItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.NewItemBtn_ItemClick);
             // 
             // CopyItemBtn
@@ -540,6 +549,7 @@
             // 
             // RestoreSettingsGridBtn
             // 
+            this.RestoreSettingsGridBtn.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
             this.RestoreSettingsGridBtn.Caption = "Встановити налаштування сітки по замовчуванню";
             this.RestoreSettingsGridBtn.Id = 34;
             this.RestoreSettingsGridBtn.ImageOptions.ImageIndex = 12;
@@ -550,6 +560,7 @@
             // 
             this.ExportToExcelBtn.Caption = "Експорт в Excel...";
             this.ExportToExcelBtn.Id = 35;
+            this.ExportToExcelBtn.ImageOptions.ImageIndex = 13;
             this.ExportToExcelBtn.Name = "ExportToExcelBtn";
             this.ExportToExcelBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ExportToExcelBtn_ItemClick);
             // 
@@ -902,6 +913,7 @@
             // 
             // ucRelDocGrid3
             // 
+            this.ucRelDocGrid3._access_token = null;
             this.ucRelDocGrid3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucRelDocGrid3.Location = new System.Drawing.Point(0, 0);
             this.ucRelDocGrid3.Name = "ucRelDocGrid3";
@@ -938,6 +950,27 @@
             this.GridPopupMenu.Manager = this.barManager1;
             this.GridPopupMenu.Name = "GridPopupMenu";
             this.GridPopupMenu.BeforePopup += new System.ComponentModel.CancelEventHandler(this.PMGridPopupMenu_BeforePopup);
+            // 
+            // bar1
+            // 
+            this.bar1.BarName = "Custom 1";
+            this.bar1.DockCol = 0;
+            this.bar1.DockRow = 0;
+            this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.NewItemBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.CopyItemBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.EditItemBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.DeleteItemBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.RefrechItemBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.ExecuteItemBtn, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.PrintItemBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.ExportToExcelBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.RestoreSettingsGridBtn)});
+            this.bar1.OptionsBar.AllowQuickCustomization = false;
+            this.bar1.OptionsBar.DrawDragBorder = false;
+            this.bar1.OptionsBar.UseWholeRow = true;
+            this.bar1.Text = "Custom 1";
             // 
             // ucKAgentAdjustment
             // 
@@ -1060,5 +1093,6 @@
         private DevExpress.XtraTab.XtraTabPage xtraTabPage18;
         private ucRelDocGrid ucRelDocGrid3;
         private ucDocumentFilterPanel ucDocumentFilterPanel;
+        private DevExpress.XtraBars.Bar bar1;
     }
 }
