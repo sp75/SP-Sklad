@@ -93,6 +93,7 @@
     <Compile Include="Models\Views\MatComboBoxItem.cs" />
     <Compile Include="Models\Views\not_use_rec_mat.cs" />
     <Compile Include="Models\Views\rep_22.cs" />
+    <Compile Include="Models\Views\rep_50.cs" />
     <Compile Include="Models\Views\rep_56.cs" />
     <Compile Include="Models\Views\RouteComboBoxItem.cs" />
     <Compile Include="Models\Views\use_rec_mat.cs" />

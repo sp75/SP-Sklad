@@ -423,6 +423,7 @@ namespace SP_Sklad
                     KontragentPanel.Visible = true;
                     GroupKontragentPanel.Visible = true;
                     MatGroupBox.Visible = true;
+                    btnShowGrid.Visible = true;
                     break;
 
                 case 52:
@@ -449,7 +450,8 @@ namespace SP_Sklad
                     break;
             }
 
-            btnSortColumn.Visible =  DB.SkladBase().ReportSortedFields.Any(w => w.RepId == rep_id);
+            
+            barButtonItem1.Enabled = DB.SkladBase().ReportSortedFields.Any(w => w.RepId == rep_id);
         }
 
         private void frmReport_Load(object sender, EventArgs e)
@@ -470,7 +472,7 @@ namespace SP_Sklad
             if (OutDocGroupBox.Visible) checkEdit4.Checked = true;
 
             Height = 0;
-            Height = Height + panelControl2.Size.Height + panel1.Size.Height + 10;
+            Height = Height + panelControl2.Size.Height + panel1.Size.Height + 20;
 
             if (OnDateGroupBox.Visible)
             {
@@ -902,6 +904,14 @@ namespace SP_Sklad
             if(e.Button.Index == 1)
             {
                 GrpComboBox.EditValue = IHelper.ShowDirectList(GrpComboBox.EditValue, 19);
+            }
+        }
+
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            using (var frm = new frmEditSortingReport(_rep_id))
+            {
+                frm.ShowDialog();
             }
         }
     }

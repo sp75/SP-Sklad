@@ -97,12 +97,28 @@ namespace SP.Reports
 
                 case 39:
                     var sort_list = GetSortedList(_rep_id);
-
                     result = _db.REP_39(StartDate, EndDate, MatGroup.GrpId, Kagent.KaId, KontragentGroup.Id).OrderBy(sort_list).ToList();
                     break;
 
+                case 50:
+                    result = _db.REP_50(StartDate, EndDate, Kagent.KaId, KontragentGroup.Id, MatGroup.GrpId, Material.MatId).OrderBy(GetSortedList(_rep_id)).Select(s => new rep_50
+                    {
+                        MatId = s.MatId,
+                        MatName = s.MatName,
+                        MeasureName = s.MeasureName,
+                        MatGrpName = s.MatGrpName,
+                        KaName = s.KaName,
+                        AmountOut = s.AmountOut,
+                        TotalOut = s.TotalOut,
+                        OrderedAmount = s.OrderedAmount,
+                        OrderedTotal = s.OrderedTotal,
+                        ReturnAmount = s.ReturnAmount,
+                        ReturnTotal = s.ReturnTotal
+                    }).ToList();
+                    break;
+
                 case 56:
-                    result = _db.v_WaybillDet.Where(w => w.Defective == 1 && ((w.PosParent ?? 0) == 0) && w.WType == 6 && w.WbChecked == 1 && w.WbOnDate >= StartDate && w.WbOnDate <= EndDate).OrderBy(o=> o.OnDate)
+                    result = _db.v_WaybillDet.Where(w => w.Defective == 1 && ((w.PosParent ?? 0) == 0) && w.WType == 6 && w.WbChecked == 1 && w.WbOnDate >= StartDate && w.WbOnDate <= EndDate).OrderBy(o => o.OnDate)
                         .Select(s => new rep_56
                         {
                             WbNum = s.WbNum,

@@ -129,7 +129,13 @@ namespace SP_Sklad.MainTabs
                 case 1:
                     FinTreeList.DataSource = new BaseEntities().GetSaldoDetTree(DBHelper.CurrentUser.UserId, focused_tree_node.Id, DateTime.Now).ToList();
                     FinTreeList.FocusedNode = FinTreeList.Nodes.FirstNode;
-                    gridControl1.DataSource = new BaseEntities().MoneyOnDateByUser(DateTime.Now, UserSession.UserId).GroupBy(g => new { g.Currency }).Select(s => new { s.Key.Currency, Saldo = s.Sum(m => m.Saldo) }).ToList();
+                    gridControl1.DataSource = new BaseEntities().MoneyOnDateByUser(DateTime.Now, UserSession.UserId).GroupBy(g => new {g.CurrId, g.Currency })
+                        .Select(s => new
+                        {
+                            s.Key.CurrId,
+                            s.Key.Currency,
+                            Saldo = s.Sum(m => m.Saldo)
+                        }).OrderBy(o=> o.CurrId).ToList();
                     break;
 
                 case 2:

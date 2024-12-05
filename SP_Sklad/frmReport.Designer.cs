@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReport));
             DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReport));
             DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
@@ -58,7 +58,6 @@
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.btnShowGrid = new DevExpress.XtraEditors.SimpleButton();
-            this.btnSortColumn = new DevExpress.XtraEditors.SimpleButton();
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.RoutePanel = new System.Windows.Forms.Panel();
@@ -150,6 +149,18 @@
             this.OnDateDBEdit = new DevExpress.XtraEditors.DateEdit();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.xtraScrollableControl1 = new DevExpress.XtraEditors.XtraScrollableControl();
+            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.standaloneBarDockControl3 = new DevExpress.XtraBars.StandaloneBarDockControl();
+            this.standaloneBarDockControl4 = new DevExpress.XtraBars.StandaloneBarDockControl();
+            this.standaloneBarDockControl5 = new DevExpress.XtraBars.StandaloneBarDockControl();
+            this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
+            this.standaloneBarDockControl2 = new DevExpress.XtraBars.StandaloneBarDockControl();
+            this.bar1 = new DevExpress.XtraBars.Bar();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
@@ -222,6 +233,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.OnDateDBEdit.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OnDateDBEdit.Properties)).BeginInit();
             this.xtraScrollableControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             this.SuspendLayout();
             // 
             // styleController1
@@ -232,7 +244,6 @@
             // panelControl2
             // 
             this.panelControl2.Controls.Add(this.btnShowGrid);
-            this.panelControl2.Controls.Add(this.btnSortColumn);
             this.panelControl2.Controls.Add(this.OkButton);
             this.panelControl2.Controls.Add(this.simpleButton1);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -247,26 +258,13 @@
             this.btnShowGrid.ImageOptions.Image = global::SP_Sklad.Properties.Resources.table_16x16;
             this.btnShowGrid.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
             this.btnShowGrid.ImageOptions.ImageToTextIndent = 5;
-            this.btnShowGrid.Location = new System.Drawing.Point(126, 10);
+            this.btnShowGrid.Location = new System.Drawing.Point(10, 10);
             this.btnShowGrid.Name = "btnShowGrid";
             this.btnShowGrid.Size = new System.Drawing.Size(142, 30);
             this.btnShowGrid.TabIndex = 5;
             this.btnShowGrid.Text = "Показати списком";
             this.btnShowGrid.Visible = false;
             this.btnShowGrid.Click += new System.EventHandler(this.simpleButton5_Click);
-            // 
-            // btnSortColumn
-            // 
-            this.btnSortColumn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSortColumn.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSortColumn.ImageOptions.Image")));
-            this.btnSortColumn.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.btnSortColumn.ImageOptions.ImageToTextIndent = 5;
-            this.btnSortColumn.Location = new System.Drawing.Point(8, 10);
-            this.btnSortColumn.Name = "btnSortColumn";
-            this.btnSortColumn.Size = new System.Drawing.Size(112, 30);
-            this.btnSortColumn.TabIndex = 4;
-            this.btnSortColumn.Text = "Сортування";
-            this.btnSortColumn.Click += new System.EventHandler(this.simpleButton4_Click);
             // 
             // OkButton
             // 
@@ -293,7 +291,7 @@
             this.RoutePanel.Controls.Add(this.RouteLookUpEdit);
             this.RoutePanel.Controls.Add(this.labelControl24);
             this.RoutePanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.RoutePanel.Location = new System.Drawing.Point(0, -188);
+            this.RoutePanel.Location = new System.Drawing.Point(0, 586);
             this.RoutePanel.Name = "RoutePanel";
             this.RoutePanel.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.RoutePanel.Size = new System.Drawing.Size(464, 47);
@@ -331,7 +329,7 @@
             this.KaKindPanel.Controls.Add(this.KaKindLookUpEdit);
             this.KaKindPanel.Controls.Add(this.labelControl23);
             this.KaKindPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.KaKindPanel.Location = new System.Drawing.Point(0, -517);
+            this.KaKindPanel.Location = new System.Drawing.Point(0, 257);
             this.KaKindPanel.Name = "KaKindPanel";
             this.KaKindPanel.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.KaKindPanel.Size = new System.Drawing.Size(464, 47);
@@ -369,7 +367,7 @@
             this.DriverPanel.Controls.Add(this.DriversLookUpEdit);
             this.DriverPanel.Controls.Add(this.labelControl22);
             this.DriverPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.DriverPanel.Location = new System.Drawing.Point(0, 0);
+            this.DriverPanel.Location = new System.Drawing.Point(0, 774);
             this.DriverPanel.Name = "DriverPanel";
             this.DriverPanel.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.DriverPanel.Size = new System.Drawing.Size(464, 47);
@@ -409,7 +407,7 @@
             this.CarPanel.Controls.Add(this.CarsLookUpEdit);
             this.CarPanel.Controls.Add(this.labelControl21);
             this.CarPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.CarPanel.Location = new System.Drawing.Point(0, -47);
+            this.CarPanel.Location = new System.Drawing.Point(0, 727);
             this.CarPanel.Name = "CarPanel";
             this.CarPanel.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.CarPanel.Size = new System.Drawing.Size(464, 47);
@@ -448,7 +446,7 @@
             this.CashDesksPanel.Controls.Add(this.CashEditComboBox);
             this.CashDesksPanel.Controls.Add(this.labelControl20);
             this.CashDesksPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.CashDesksPanel.Location = new System.Drawing.Point(0, -94);
+            this.CashDesksPanel.Location = new System.Drawing.Point(0, 680);
             this.CashDesksPanel.Name = "CashDesksPanel";
             this.CashDesksPanel.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.CashDesksPanel.Size = new System.Drawing.Size(464, 47);
@@ -488,7 +486,7 @@
             this.wmatturnStatusPanel.Controls.Add(this.wmatturnStatus);
             this.wmatturnStatusPanel.Controls.Add(this.labelControl19);
             this.wmatturnStatusPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.wmatturnStatusPanel.Location = new System.Drawing.Point(0, 141);
+            this.wmatturnStatusPanel.Location = new System.Drawing.Point(0, 915);
             this.wmatturnStatusPanel.Name = "wmatturnStatusPanel";
             this.wmatturnStatusPanel.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.wmatturnStatusPanel.Size = new System.Drawing.Size(464, 47);
@@ -526,7 +524,7 @@
             this.PersonPanel.Controls.Add(this.PersonLookUpEdit);
             this.PersonPanel.Controls.Add(this.labelControl18);
             this.PersonPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PersonPanel.Location = new System.Drawing.Point(0, -141);
+            this.PersonPanel.Location = new System.Drawing.Point(0, 633);
             this.PersonPanel.Name = "PersonPanel";
             this.PersonPanel.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.PersonPanel.Size = new System.Drawing.Size(464, 47);
@@ -565,7 +563,7 @@
             this.DocTypeGroupBox2.Controls.Add(this.OutDocGroupBox);
             this.DocTypeGroupBox2.Controls.Add(this.InDocGroupBox);
             this.DocTypeGroupBox2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.DocTypeGroupBox2.Location = new System.Drawing.Point(0, 188);
+            this.DocTypeGroupBox2.Location = new System.Drawing.Point(0, 962);
             this.DocTypeGroupBox2.Name = "DocTypeGroupBox2";
             this.DocTypeGroupBox2.Size = new System.Drawing.Size(464, 258);
             this.DocTypeGroupBox2.TabIndex = 38;
@@ -703,7 +701,7 @@
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.textEdit1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 446);
+            this.panel1.Location = new System.Drawing.Point(0, 1220);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(464, 83);
             this.panel1.TabIndex = 41;
@@ -735,7 +733,7 @@
             this.StatusPanel.Controls.Add(this.wbStatusList);
             this.StatusPanel.Controls.Add(this.labelControl16);
             this.StatusPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.StatusPanel.Location = new System.Drawing.Point(0, -235);
+            this.StatusPanel.Location = new System.Drawing.Point(0, 539);
             this.StatusPanel.Name = "StatusPanel";
             this.StatusPanel.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.StatusPanel.Size = new System.Drawing.Size(464, 47);
@@ -773,7 +771,7 @@
             this.DocTypeGroupBox.Controls.Add(this.DocTypeEdit);
             this.DocTypeGroupBox.Controls.Add(this.labelControl15);
             this.DocTypeGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.DocTypeGroupBox.Location = new System.Drawing.Point(0, 47);
+            this.DocTypeGroupBox.Location = new System.Drawing.Point(0, 821);
             this.DocTypeGroupBox.Name = "DocTypeGroupBox";
             this.DocTypeGroupBox.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.DocTypeGroupBox.Size = new System.Drawing.Size(464, 47);
@@ -810,7 +808,7 @@
             this.ChargeGroupBox.Controls.Add(this.ChTypeEdit);
             this.ChargeGroupBox.Controls.Add(this.labelControl14);
             this.ChargeGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ChargeGroupBox.Location = new System.Drawing.Point(0, 94);
+            this.ChargeGroupBox.Location = new System.Drawing.Point(0, 868);
             this.ChargeGroupBox.Name = "ChargeGroupBox";
             this.ChargeGroupBox.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.ChargeGroupBox.Size = new System.Drawing.Size(464, 47);
@@ -848,7 +846,7 @@
             this.GroupKontragentPanel.Controls.Add(this.GrpKagentLookUpEdit);
             this.GroupKontragentPanel.Controls.Add(this.labelControl17);
             this.GroupKontragentPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.GroupKontragentPanel.Location = new System.Drawing.Point(0, -470);
+            this.GroupKontragentPanel.Location = new System.Drawing.Point(0, 304);
             this.GroupKontragentPanel.Name = "GroupKontragentPanel";
             this.GroupKontragentPanel.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.GroupKontragentPanel.Size = new System.Drawing.Size(464, 47);
@@ -886,7 +884,7 @@
             this.KontragentPanel.Controls.Add(this.KagentComboBox);
             this.KontragentPanel.Controls.Add(this.labelControl12);
             this.KontragentPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.KontragentPanel.Location = new System.Drawing.Point(0, -423);
+            this.KontragentPanel.Location = new System.Drawing.Point(0, 351);
             this.KontragentPanel.Name = "KontragentPanel";
             this.KontragentPanel.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.KontragentPanel.Size = new System.Drawing.Size(464, 47);
@@ -926,7 +924,7 @@
             this.MatGroupBox.Controls.Add(this.labelControl13);
             this.MatGroupBox.Controls.Add(this.MatComboBox);
             this.MatGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.MatGroupBox.Location = new System.Drawing.Point(0, -376);
+            this.MatGroupBox.Location = new System.Drawing.Point(0, 398);
             this.MatGroupBox.Name = "MatGroupBox";
             this.MatGroupBox.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.MatGroupBox.Size = new System.Drawing.Size(464, 47);
@@ -967,7 +965,7 @@
             this.GRPGroupBox.Controls.Add(this.GrpComboBox);
             this.GRPGroupBox.Controls.Add(this.labelControl11);
             this.GRPGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.GRPGroupBox.Location = new System.Drawing.Point(0, -282);
+            this.GRPGroupBox.Location = new System.Drawing.Point(0, 492);
             this.GRPGroupBox.Name = "GRPGroupBox";
             this.GRPGroupBox.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.GRPGroupBox.Size = new System.Drawing.Size(464, 47);
@@ -1016,7 +1014,7 @@
             this.WHGroupBox.Controls.Add(this.WhComboBox);
             this.WHGroupBox.Controls.Add(this.labelControl10);
             this.WHGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.WHGroupBox.Location = new System.Drawing.Point(0, -329);
+            this.WHGroupBox.Location = new System.Drawing.Point(0, 445);
             this.WHGroupBox.Name = "WHGroupBox";
             this.WHGroupBox.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.WHGroupBox.Size = new System.Drawing.Size(464, 47);
@@ -1060,7 +1058,7 @@
             this.PeriodGroupBox.Controls.Add(this.PerYearPanel);
             this.PeriodGroupBox.Controls.Add(this.panel2);
             this.PeriodGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PeriodGroupBox.Location = new System.Drawing.Point(0, -727);
+            this.PeriodGroupBox.Location = new System.Drawing.Point(0, 47);
             this.PeriodGroupBox.Name = "PeriodGroupBox";
             this.PeriodGroupBox.Size = new System.Drawing.Size(464, 210);
             this.PeriodGroupBox.TabIndex = 31;
@@ -1346,10 +1344,15 @@
             // 
             // OnDateGroupBox
             // 
+            this.OnDateGroupBox.Controls.Add(this.standaloneBarDockControl1);
+            this.OnDateGroupBox.Controls.Add(this.standaloneBarDockControl2);
+            this.OnDateGroupBox.Controls.Add(this.standaloneBarDockControl3);
+            this.OnDateGroupBox.Controls.Add(this.standaloneBarDockControl4);
+            this.OnDateGroupBox.Controls.Add(this.standaloneBarDockControl5);
             this.OnDateGroupBox.Controls.Add(this.OnDateDBEdit);
             this.OnDateGroupBox.Controls.Add(this.labelControl3);
             this.OnDateGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.OnDateGroupBox.Location = new System.Drawing.Point(0, -774);
+            this.OnDateGroupBox.Location = new System.Drawing.Point(0, 0);
             this.OnDateGroupBox.Name = "OnDateGroupBox";
             this.OnDateGroupBox.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.OnDateGroupBox.Size = new System.Drawing.Size(464, 47);
@@ -1410,10 +1413,137 @@
             this.xtraScrollableControl1.Controls.Add(this.PeriodGroupBox);
             this.xtraScrollableControl1.Controls.Add(this.OnDateGroupBox);
             this.xtraScrollableControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xtraScrollableControl1.Location = new System.Drawing.Point(0, 0);
+            this.xtraScrollableControl1.Location = new System.Drawing.Point(0, 24);
             this.xtraScrollableControl1.Name = "xtraScrollableControl1";
-            this.xtraScrollableControl1.Size = new System.Drawing.Size(481, 529);
+            this.xtraScrollableControl1.Size = new System.Drawing.Size(481, 505);
             this.xtraScrollableControl1.TabIndex = 32;
+            // 
+            // barManager1
+            // 
+            this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
+            this.bar1});
+            this.barManager1.DockControls.Add(this.barDockControlTop);
+            this.barManager1.DockControls.Add(this.barDockControlBottom);
+            this.barManager1.DockControls.Add(this.barDockControlLeft);
+            this.barManager1.DockControls.Add(this.barDockControlRight);
+            this.barManager1.DockControls.Add(this.standaloneBarDockControl1);
+            this.barManager1.DockControls.Add(this.standaloneBarDockControl2);
+            this.barManager1.DockControls.Add(this.standaloneBarDockControl3);
+            this.barManager1.DockControls.Add(this.standaloneBarDockControl4);
+            this.barManager1.DockControls.Add(this.standaloneBarDockControl5);
+            this.barManager1.Form = this;
+            this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+            this.barButtonItem1});
+            this.barManager1.MaxItemId = 20;
+            // 
+            // standaloneBarDockControl3
+            // 
+            this.standaloneBarDockControl3.AutoSize = true;
+            this.standaloneBarDockControl3.CausesValidation = false;
+            this.standaloneBarDockControl3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.standaloneBarDockControl3.Location = new System.Drawing.Point(5, 5);
+            this.standaloneBarDockControl3.Manager = this.barManager1;
+            this.standaloneBarDockControl3.Name = "standaloneBarDockControl3";
+            this.standaloneBarDockControl3.Size = new System.Drawing.Size(454, 0);
+            this.standaloneBarDockControl3.Text = "standaloneBarDockControl3";
+            // 
+            // standaloneBarDockControl4
+            // 
+            this.standaloneBarDockControl4.AutoSize = true;
+            this.standaloneBarDockControl4.CausesValidation = false;
+            this.standaloneBarDockControl4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.standaloneBarDockControl4.Location = new System.Drawing.Point(5, 5);
+            this.standaloneBarDockControl4.Manager = this.barManager1;
+            this.standaloneBarDockControl4.Name = "standaloneBarDockControl4";
+            this.standaloneBarDockControl4.Size = new System.Drawing.Size(454, 0);
+            this.standaloneBarDockControl4.Text = "standaloneBarDockControl4";
+            // 
+            // standaloneBarDockControl5
+            // 
+            this.standaloneBarDockControl5.AutoSize = true;
+            this.standaloneBarDockControl5.CausesValidation = false;
+            this.standaloneBarDockControl5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.standaloneBarDockControl5.Location = new System.Drawing.Point(5, 5);
+            this.standaloneBarDockControl5.Manager = this.barManager1;
+            this.standaloneBarDockControl5.Name = "standaloneBarDockControl5";
+            this.standaloneBarDockControl5.Size = new System.Drawing.Size(454, 0);
+            this.standaloneBarDockControl5.Text = "standaloneBarDockControl5";
+            // 
+            // barDockControlTop
+            // 
+            this.barDockControlTop.CausesValidation = false;
+            this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlTop.Manager = this.barManager1;
+            this.barDockControlTop.Size = new System.Drawing.Size(481, 24);
+            // 
+            // barDockControlBottom
+            // 
+            this.barDockControlBottom.CausesValidation = false;
+            this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 580);
+            this.barDockControlBottom.Manager = this.barManager1;
+            this.barDockControlBottom.Size = new System.Drawing.Size(481, 0);
+            // 
+            // barDockControlLeft
+            // 
+            this.barDockControlLeft.CausesValidation = false;
+            this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
+            this.barDockControlLeft.Manager = this.barManager1;
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 556);
+            // 
+            // barDockControlRight
+            // 
+            this.barDockControlRight.CausesValidation = false;
+            this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.barDockControlRight.Location = new System.Drawing.Point(481, 24);
+            this.barDockControlRight.Manager = this.barManager1;
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 556);
+            // 
+            // standaloneBarDockControl1
+            // 
+            this.standaloneBarDockControl1.AutoSize = true;
+            this.standaloneBarDockControl1.CausesValidation = false;
+            this.standaloneBarDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.standaloneBarDockControl1.Location = new System.Drawing.Point(5, 5);
+            this.standaloneBarDockControl1.Manager = this.barManager1;
+            this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
+            this.standaloneBarDockControl1.Size = new System.Drawing.Size(454, 0);
+            this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
+            // 
+            // standaloneBarDockControl2
+            // 
+            this.standaloneBarDockControl2.AutoSize = true;
+            this.standaloneBarDockControl2.CausesValidation = false;
+            this.standaloneBarDockControl2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.standaloneBarDockControl2.Location = new System.Drawing.Point(5, 5);
+            this.standaloneBarDockControl2.Manager = this.barManager1;
+            this.standaloneBarDockControl2.Name = "standaloneBarDockControl2";
+            this.standaloneBarDockControl2.Size = new System.Drawing.Size(454, 0);
+            this.standaloneBarDockControl2.Text = "standaloneBarDockControl2";
+            // 
+            // bar1
+            // 
+            this.bar1.BarName = "Custom 1";
+            this.bar1.DockCol = 0;
+            this.bar1.DockRow = 0;
+            this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1)});
+            this.bar1.OptionsBar.AllowQuickCustomization = false;
+            this.bar1.OptionsBar.DrawDragBorder = false;
+            this.bar1.OptionsBar.UseWholeRow = true;
+            this.bar1.Text = "Custom 1";
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "Сортування";
+            this.barButtonItem1.Id = 19;
+            this.barButtonItem1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
+            this.barButtonItem1.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
+            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
             // frmReport
             // 
@@ -1422,6 +1552,10 @@
             this.ClientSize = new System.Drawing.Size(481, 580);
             this.Controls.Add(this.xtraScrollableControl1);
             this.Controls.Add(this.panelControl2);
+            this.Controls.Add(this.barDockControlLeft);
+            this.Controls.Add(this.barDockControlRight);
+            this.Controls.Add(this.barDockControlBottom);
+            this.Controls.Add(this.barDockControlTop);
             this.IconOptions.Image = global::SP_Sklad.Properties.Resources.report_16x16;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -1526,7 +1660,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.OnDateDBEdit.Properties)).EndInit();
             this.xtraScrollableControl1.ResumeLayout(false);
             this.xtraScrollableControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -1598,7 +1734,6 @@
         public System.Windows.Forms.Panel PersonPanel;
         private DevExpress.XtraEditors.LookUpEdit PersonLookUpEdit;
         private DevExpress.XtraEditors.LabelControl labelControl18;
-        private DevExpress.XtraEditors.SimpleButton btnSortColumn;
         private DevExpress.XtraEditors.CheckEdit checkEdit9;
         public System.Windows.Forms.Panel wmatturnStatusPanel;
         public DevExpress.XtraEditors.LookUpEdit wmatturnStatus;
@@ -1627,5 +1762,17 @@
         private DevExpress.XtraEditors.SimpleButton btnShowGrid;
         private DevExpress.XtraEditors.CheckEdit checkEdit11;
         private DevExpress.XtraEditors.XtraScrollableControl xtraScrollableControl1;
+        private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl1;
+        private DevExpress.XtraBars.BarManager barManager1;
+        private DevExpress.XtraBars.Bar bar1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarDockControl barDockControlTop;
+        private DevExpress.XtraBars.BarDockControl barDockControlBottom;
+        private DevExpress.XtraBars.BarDockControl barDockControlLeft;
+        private DevExpress.XtraBars.BarDockControl barDockControlRight;
+        private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl2;
+        private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl3;
+        private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl4;
+        private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl5;
     }
 }
