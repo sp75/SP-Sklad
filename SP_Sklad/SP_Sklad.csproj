@@ -753,9 +753,6 @@
     <Compile Include="SkladData\GetMatChange_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\GetMatExtra_Result.cs">
-      <DependentUpon>SkladModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="SkladData\GetMatGroupPriceTypes_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>

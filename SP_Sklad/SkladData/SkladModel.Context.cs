@@ -454,56 +454,6 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_RECALC_MATREMAINS", mATIDParameter, oNDATEParameter, aFTERDELParameter);
         }
     
-        public virtual int SP_RECALC_MONEY_SALDO(Nullable<System.DateTime> oNDATE, Nullable<int> aCCID, Nullable<int> cASHID, Nullable<int> cURRID, Nullable<int> sALDOTYPE)
-        {
-            var oNDATEParameter = oNDATE.HasValue ?
-                new ObjectParameter("ONDATE", oNDATE) :
-                new ObjectParameter("ONDATE", typeof(System.DateTime));
-    
-            var aCCIDParameter = aCCID.HasValue ?
-                new ObjectParameter("ACCID", aCCID) :
-                new ObjectParameter("ACCID", typeof(int));
-    
-            var cASHIDParameter = cASHID.HasValue ?
-                new ObjectParameter("CASHID", cASHID) :
-                new ObjectParameter("CASHID", typeof(int));
-    
-            var cURRIDParameter = cURRID.HasValue ?
-                new ObjectParameter("CURRID", cURRID) :
-                new ObjectParameter("CURRID", typeof(int));
-    
-            var sALDOTYPEParameter = sALDOTYPE.HasValue ?
-                new ObjectParameter("SALDOTYPE", sALDOTYPE) :
-                new ObjectParameter("SALDOTYPE", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_RECALC_MONEY_SALDO", oNDATEParameter, aCCIDParameter, cASHIDParameter, cURRIDParameter, sALDOTYPEParameter);
-        }
-    
-        public virtual int SP_RECALC_MONEY_SALDO_EX(Nullable<System.DateTime> oNDATE, Nullable<int> aCCID, Nullable<int> cASHID, Nullable<int> cURRID, Nullable<int> sALDOTYPE)
-        {
-            var oNDATEParameter = oNDATE.HasValue ?
-                new ObjectParameter("ONDATE", oNDATE) :
-                new ObjectParameter("ONDATE", typeof(System.DateTime));
-    
-            var aCCIDParameter = aCCID.HasValue ?
-                new ObjectParameter("ACCID", aCCID) :
-                new ObjectParameter("ACCID", typeof(int));
-    
-            var cASHIDParameter = cASHID.HasValue ?
-                new ObjectParameter("CASHID", cASHID) :
-                new ObjectParameter("CASHID", typeof(int));
-    
-            var cURRIDParameter = cURRID.HasValue ?
-                new ObjectParameter("CURRID", cURRID) :
-                new ObjectParameter("CURRID", typeof(int));
-    
-            var sALDOTYPEParameter = sALDOTYPE.HasValue ?
-                new ObjectParameter("SALDOTYPE", sALDOTYPE) :
-                new ObjectParameter("SALDOTYPE", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_RECALC_MONEY_SALDO_EX", oNDATEParameter, aCCIDParameter, cASHIDParameter, cURRIDParameter, sALDOTYPEParameter);
-        }
-    
         public virtual int SP_RECALC_POSREMAINS(Nullable<int> pOSID, Nullable<int> mATID, Nullable<int> wID, Nullable<System.DateTime> oNDATE, Nullable<int> aFTERDEL)
         {
             var pOSIDParameter = pOSID.HasValue ?
@@ -680,36 +630,6 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("wbill_id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteAllReservePosition", wbill_idParameter);
-        }
-    
-        [EdmFunction("BaseEntities", "GetMatExtra")]
-        public virtual IQueryable<GetMatExtra_Result> GetMatExtra(Nullable<int> matId, Nullable<int> pTypeId, Nullable<System.DateTime> onDate, Nullable<decimal> price, Nullable<int> in_CurrId, Nullable<decimal> onValue)
-        {
-            var matIdParameter = matId.HasValue ?
-                new ObjectParameter("MatId", matId) :
-                new ObjectParameter("MatId", typeof(int));
-    
-            var pTypeIdParameter = pTypeId.HasValue ?
-                new ObjectParameter("PTypeId", pTypeId) :
-                new ObjectParameter("PTypeId", typeof(int));
-    
-            var onDateParameter = onDate.HasValue ?
-                new ObjectParameter("OnDate", onDate) :
-                new ObjectParameter("OnDate", typeof(System.DateTime));
-    
-            var priceParameter = price.HasValue ?
-                new ObjectParameter("Price", price) :
-                new ObjectParameter("Price", typeof(decimal));
-    
-            var in_CurrIdParameter = in_CurrId.HasValue ?
-                new ObjectParameter("in_CurrId", in_CurrId) :
-                new ObjectParameter("in_CurrId", typeof(int));
-    
-            var onValueParameter = onValue.HasValue ?
-                new ObjectParameter("OnValue", onValue) :
-                new ObjectParameter("OnValue", typeof(decimal));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetMatExtra_Result>("[BaseEntities].[GetMatExtra](@MatId, @PTypeId, @OnDate, @Price, @in_CurrId, @OnValue)", matIdParameter, pTypeIdParameter, onDateParameter, priceParameter, in_CurrIdParameter, onValueParameter);
         }
     
         public virtual ObjectResult<GetOrderedInSuppliers_Result> GetOrderedInSuppliers(Nullable<int> wbill_id)

@@ -8214,24 +8214,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </CollectionType>
           </ReturnType>
         </Function>
-        <Function Name="GetMatExtra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="MatId" Type="int" Mode="In" />
-          <Parameter Name="PTypeId" Type="int" Mode="In" />
-          <Parameter Name="OnDate" Type="datetime" Mode="In" />
-          <Parameter Name="Price" Type="numeric" Mode="In" />
-          <Parameter Name="in_CurrId" Type="int" Mode="In" />
-          <Parameter Name="OnValue" Type="numeric" Mode="In" />
-          <ReturnType>
-            <CollectionType>
-              <RowType>
-                <Property Name="Extra" Type="numeric" Precision="15" Scale="4" />
-                <Property Name="WithNds" Type="int" />
-                <Property Name="CurrId" Type="int" />
-                <Property Name="CurrName" Type="varchar" MaxLength="24" />
-              </RowType>
-            </CollectionType>
-          </ReturnType>
-        </Function>
         <Function Name="GetMatGroupPriceTypes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="grp_id" Type="int" Mode="In" />
           <ReturnType>
@@ -10005,20 +9987,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Parameter Name="MATID" Type="int" Mode="In" />
           <Parameter Name="ONDATE" Type="datetime" Mode="In" />
           <Parameter Name="AFTERDEL" Type="int" Mode="In" />
-        </Function>
-        <Function Name="SP_RECALC_MONEY_SALDO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="ONDATE" Type="datetime" Mode="In" />
-          <Parameter Name="ACCID" Type="int" Mode="In" />
-          <Parameter Name="CASHID" Type="int" Mode="In" />
-          <Parameter Name="CURRID" Type="int" Mode="In" />
-          <Parameter Name="SALDOTYPE" Type="int" Mode="In" />
-        </Function>
-        <Function Name="SP_RECALC_MONEY_SALDO_EX" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="ONDATE" Type="datetime" Mode="In" />
-          <Parameter Name="ACCID" Type="int" Mode="In" />
-          <Parameter Name="CASHID" Type="int" Mode="In" />
-          <Parameter Name="CURRID" Type="int" Mode="In" />
-          <Parameter Name="SALDOTYPE" Type="int" Mode="In" />
         </Function>
         <Function Name="SP_RECALC_POSREMAINS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="POSID" Type="int" Mode="In" />
@@ -13527,20 +13495,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <Parameter Name="ONDATE" Mode="In" Type="DateTime" />
             <Parameter Name="AFTERDEL" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="SP_RECALC_MONEY_SALDO">
-            <Parameter Name="ONDATE" Mode="In" Type="DateTime" />
-            <Parameter Name="ACCID" Mode="In" Type="Int32" />
-            <Parameter Name="CASHID" Mode="In" Type="Int32" />
-            <Parameter Name="CURRID" Mode="In" Type="Int32" />
-            <Parameter Name="SALDOTYPE" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="SP_RECALC_MONEY_SALDO_EX">
-            <Parameter Name="ONDATE" Mode="In" Type="DateTime" />
-            <Parameter Name="ACCID" Mode="In" Type="Int32" />
-            <Parameter Name="CASHID" Mode="In" Type="Int32" />
-            <Parameter Name="CURRID" Mode="In" Type="Int32" />
-            <Parameter Name="SALDOTYPE" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="SP_RECALC_POSREMAINS">
             <Parameter Name="POSID" Mode="In" Type="Int32" />
             <Parameter Name="MATID" Mode="In" Type="Int32" />
@@ -13607,14 +13561,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySet Name="CommonParams" EntityType="BaseModel.CommonParams" />
           <FunctionImport Name="DeleteAllReservePosition">
           <Parameter Name="wbill_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="GetMatExtra" IsComposable="true" ReturnType="Collection(BaseModel.GetMatExtra_Result)">
-            <Parameter Name="MatId" Mode="In" Type="Int32" />
-            <Parameter Name="PTypeId" Mode="In" Type="Int32" />
-            <Parameter Name="OnDate" Mode="In" Type="DateTime" />
-            <Parameter Name="Price" Mode="In" Type="Decimal" />
-            <Parameter Name="in_CurrId" Mode="In" Type="Int32" />
-            <Parameter Name="OnValue" Mode="In" Type="Decimal" />
           </FunctionImport>
           <EntitySet Name="ReturnRel" EntityType="BaseModel.ReturnRel" />
           <FunctionImport Name="GetOrderedInSuppliers" ReturnType="Collection(BaseModel.GetOrderedInSuppliers_Result)">
@@ -15759,12 +15705,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="ProgramName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="AttachedFilesPath" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
-        <ComplexType Name="GetMatExtra_Result">
-          <Property Type="Decimal" Name="Extra" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Int32" Name="WithNds" Nullable="true" />
-          <Property Type="Int32" Name="CurrId" Nullable="true" />
-          <Property Type="String" Name="CurrName" Nullable="true" MaxLength="24" />
-        </ComplexType>
         <EntityType Name="ReturnRel">
           <Key>
             <PropertyRef Name="Id" />
@@ -25456,8 +25396,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <FunctionImportMapping FunctionImportName="SP_ORDER_UPD_RSV" FunctionName="BaseModel.Store.SP_ORDER_UPD_RSV" />
           <FunctionImportMapping FunctionImportName="SP_RECALC_DOC_SALDO" FunctionName="BaseModel.Store.SP_RECALC_DOC_SALDO" />
           <FunctionImportMapping FunctionImportName="SP_RECALC_MATREMAINS" FunctionName="BaseModel.Store.SP_RECALC_MATREMAINS" />
-          <FunctionImportMapping FunctionImportName="SP_RECALC_MONEY_SALDO" FunctionName="BaseModel.Store.SP_RECALC_MONEY_SALDO" />
-          <FunctionImportMapping FunctionImportName="SP_RECALC_MONEY_SALDO_EX" FunctionName="BaseModel.Store.SP_RECALC_MONEY_SALDO_EX" />
           <FunctionImportMapping FunctionImportName="SP_RECALC_POSREMAINS" FunctionName="BaseModel.Store.SP_RECALC_POSREMAINS" />
           <FunctionImportMapping FunctionImportName="SP_RECALC_REMAINS" FunctionName="BaseModel.Store.SP_RECALC_REMAINS" />
           <FunctionImportMapping FunctionImportName="SP_RECALC_REMAINS_EX" FunctionName="BaseModel.Store.SP_RECALC_REMAINS_EX" />
@@ -25600,16 +25538,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="DeleteAllReservePosition" FunctionName="BaseModel.Store.DeleteAllReservePosition" />
-          <FunctionImportMapping FunctionImportName="GetMatExtra" FunctionName="BaseModel.Store.GetMatExtra">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.GetMatExtra_Result">
-                <ScalarProperty Name="Extra" ColumnName="Extra" />
-                <ScalarProperty Name="WithNds" ColumnName="WithNds" />
-                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
-                <ScalarProperty Name="CurrName" ColumnName="CurrName" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <EntitySetMapping Name="ReturnRel">
             <EntityTypeMapping TypeName="BaseModel.ReturnRel">
               <MappingFragment StoreEntitySet="ReturnRel">

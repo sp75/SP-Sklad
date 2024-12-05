@@ -294,6 +294,11 @@ namespace SP_Sklad.EditForm
 
         private void DirTreeList_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
         {
+            if(e.Node == null)
+            {
+                return;
+            }
+
             _db.SaveChanges();
             
             var focused_tree_node = DirTreeList.GetDataRecordByNode(e.Node) as CatalogTreeList;
