@@ -53,7 +53,7 @@ namespace SP_Sklad.ViewsForm
 
         private void frmKaGroup_Load(object sender, EventArgs e)
         {
-            KontragentBS.DataSource = DBHelper.KagentsWorkerList.Where(w => (w.KaKind == _KaKind || _KaKind == -1) && (w.OKPO == _okpo || _okpo == "")).ToList();
+            KontragentBS.DataSource = DBHelper.KagentsWorkerList.Where(w => (w.KaKind == _KaKind || _KaKind == -1) && (w.OKPO == _okpo || _okpo == "") ).ToList();
         }
 
         private void frmKaGroup_FormClosed(object sender, FormClosedEventArgs e)
