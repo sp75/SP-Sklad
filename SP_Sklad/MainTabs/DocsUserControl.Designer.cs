@@ -97,6 +97,7 @@
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.ucDeliveryManagement = new SP_Sklad.UserControls.ucRoutesManagement();
             this.xtraTabPage4 = new DevExpress.XtraTab.XtraTabPage();
+            this.ucPromotions1 = new SP_Sklad.UserControls.ucPromotions();
             this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
@@ -114,7 +115,6 @@
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.bar4 = new DevExpress.XtraBars.Bar();
             this.bar5 = new DevExpress.XtraBars.Bar();
-            this.ucPromotions1 = new SP_Sklad.UserControls.ucPromotions();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -557,7 +557,6 @@
             this.DeleteItemBtn.Caption = "Видалити";
             this.DeleteItemBtn.Id = 3;
             this.DeleteItemBtn.ImageOptions.ImageIndex = 3;
-            this.DeleteItemBtn.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Delete));
             this.DeleteItemBtn.Name = "DeleteItemBtn";
             this.DeleteItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.DeleteItemBtn_ItemClick);
             // 
@@ -574,7 +573,6 @@
             this.ExecuteItemBtn.Caption = "Провести";
             this.ExecuteItemBtn.Id = 5;
             this.ExecuteItemBtn.ImageOptions.ImageIndex = 5;
-            this.ExecuteItemBtn.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.F2);
             this.ExecuteItemBtn.Name = "ExecuteItemBtn";
             this.ExecuteItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ExecuteItemBtn_ItemClick);
             // 
@@ -982,6 +980,14 @@
             this.xtraTabPage4.Size = new System.Drawing.Size(1138, 695);
             this.xtraTabPage4.Text = "Акції";
             // 
+            // ucPromotions1
+            // 
+            this.ucPromotions1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucPromotions1.Location = new System.Drawing.Point(0, 0);
+            this.ucPromotions1.Name = "ucPromotions1";
+            this.ucPromotions1.Size = new System.Drawing.Size(1138, 695);
+            this.ucPromotions1.TabIndex = 0;
+            // 
             // standaloneBarDockControl1
             // 
             this.standaloneBarDockControl1.AutoSize = true;
@@ -1047,7 +1053,6 @@
             this.NewItemBtn.Caption = "Додати";
             this.NewItemBtn.Id = 0;
             this.NewItemBtn.ImageOptions.ImageIndex = 0;
-            this.NewItemBtn.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.Insert);
             this.NewItemBtn.Name = "NewItemBtn";
             this.NewItemBtn.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.NewItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.NewItemBtn_ItemClick);
@@ -1196,14 +1201,6 @@
             this.bar5.OptionsBar.DrawDragBorder = false;
             this.bar5.OptionsBar.UseWholeRow = true;
             this.bar5.Text = "Custom 5";
-            // 
-            // ucPromotions1
-            // 
-            this.ucPromotions1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucPromotions1.Location = new System.Drawing.Point(0, 0);
-            this.ucPromotions1.Name = "ucPromotions1";
-            this.ucPromotions1.Size = new System.Drawing.Size(1138, 695);
-            this.ucPromotions1.TabIndex = 0;
             // 
             // DocsUserControl
             // 

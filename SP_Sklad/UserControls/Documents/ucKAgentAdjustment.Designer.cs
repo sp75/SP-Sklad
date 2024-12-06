@@ -49,13 +49,7 @@
             this.ucDocumentFilterPanel = new SP_Sklad.UserControls.ucDocumentFilterPanel();
             this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
-            this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
-            this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
-            this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
-            this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.standaloneBarDockControl3 = new DevExpress.XtraBars.StandaloneBarDockControl();
-            this.standaloneBarDockControl4 = new DevExpress.XtraBars.StandaloneBarDockControl();
-            this.standaloneBarDockControl2 = new DevExpress.XtraBars.StandaloneBarDockControl();
+            this.bar1 = new DevExpress.XtraBars.Bar();
             this.NewItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.CopyItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.EditItemBtn = new DevExpress.XtraBars.BarButtonItem();
@@ -63,9 +57,16 @@
             this.RefrechItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.ExecuteItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.PrintItemBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.WbHistoryBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.RestoreSettingsGridBtn = new DevExpress.XtraBars.BarButtonItem();
             this.ExportToExcelBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.RestoreSettingsGridBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.standaloneBarDockControl3 = new DevExpress.XtraBars.StandaloneBarDockControl();
+            this.standaloneBarDockControl4 = new DevExpress.XtraBars.StandaloneBarDockControl();
+            this.standaloneBarDockControl2 = new DevExpress.XtraBars.StandaloneBarDockControl();
+            this.WbHistoryBtn = new DevExpress.XtraBars.BarButtonItem();
             this.xtraTabControl4 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage16 = new DevExpress.XtraTab.XtraTabPage();
             this.gridControl5 = new DevExpress.XtraGrid.GridControl();
@@ -105,7 +106,6 @@
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.GgridDataSource = new DevExpress.Data.Linq.LinqInstantFeedbackSource();
             this.GridPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.bar1 = new DevExpress.XtraBars.Bar();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl8.Panel1)).BeginInit();
             this.splitContainerControl8.Panel1.SuspendLayout();
@@ -414,6 +414,103 @@
             this.ExportToExcelBtn});
             this.barManager1.MaxItemId = 36;
             // 
+            // bar1
+            // 
+            this.bar1.BarName = "Custom 1";
+            this.bar1.DockCol = 0;
+            this.bar1.DockRow = 0;
+            this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.NewItemBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.CopyItemBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.EditItemBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.DeleteItemBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.RefrechItemBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.ExecuteItemBtn, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.PrintItemBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.ExportToExcelBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.RestoreSettingsGridBtn)});
+            this.bar1.OptionsBar.AllowQuickCustomization = false;
+            this.bar1.OptionsBar.DrawDragBorder = false;
+            this.bar1.OptionsBar.UseWholeRow = true;
+            this.bar1.Text = "Custom 1";
+            // 
+            // NewItemBtn
+            // 
+            this.NewItemBtn.Caption = "Додати";
+            this.NewItemBtn.Id = 0;
+            this.NewItemBtn.ImageOptions.ImageIndex = 2;
+            this.NewItemBtn.Name = "NewItemBtn";
+            this.NewItemBtn.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.NewItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.NewItemBtn_ItemClick);
+            // 
+            // CopyItemBtn
+            // 
+            this.CopyItemBtn.Caption = "Створити копію документа";
+            this.CopyItemBtn.Id = 1;
+            this.CopyItemBtn.ImageOptions.ImageIndex = 3;
+            this.CopyItemBtn.Name = "CopyItemBtn";
+            this.CopyItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.CopyItemBtn_ItemClick);
+            // 
+            // EditItemBtn
+            // 
+            this.EditItemBtn.Caption = "Властивості";
+            this.EditItemBtn.Id = 2;
+            this.EditItemBtn.ImageOptions.ImageIndex = 4;
+            this.EditItemBtn.Name = "EditItemBtn";
+            this.EditItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.EditItemBtn_ItemClick);
+            // 
+            // DeleteItemBtn
+            // 
+            this.DeleteItemBtn.Caption = "Видалити";
+            this.DeleteItemBtn.Id = 3;
+            this.DeleteItemBtn.ImageOptions.ImageIndex = 5;
+            this.DeleteItemBtn.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Delete));
+            this.DeleteItemBtn.Name = "DeleteItemBtn";
+            this.DeleteItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.DeleteItemBtn_ItemClick);
+            // 
+            // RefrechItemBtn
+            // 
+            this.RefrechItemBtn.Caption = "Обновити";
+            this.RefrechItemBtn.Id = 4;
+            this.RefrechItemBtn.ImageOptions.ImageIndex = 8;
+            this.RefrechItemBtn.Name = "RefrechItemBtn";
+            this.RefrechItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.RefrechItemBtn_ItemClick);
+            // 
+            // ExecuteItemBtn
+            // 
+            this.ExecuteItemBtn.Caption = "Провести";
+            this.ExecuteItemBtn.Id = 5;
+            this.ExecuteItemBtn.ImageOptions.ImageIndex = 6;
+            this.ExecuteItemBtn.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.F2);
+            this.ExecuteItemBtn.Name = "ExecuteItemBtn";
+            this.ExecuteItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ExecuteItemBtn_ItemClick);
+            // 
+            // PrintItemBtn
+            // 
+            this.PrintItemBtn.Caption = "Друк/Попередній перегляд";
+            this.PrintItemBtn.Id = 6;
+            this.PrintItemBtn.ImageOptions.ImageIndex = 7;
+            this.PrintItemBtn.Name = "PrintItemBtn";
+            this.PrintItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.PrintItemBtn_ItemClick);
+            // 
+            // ExportToExcelBtn
+            // 
+            this.ExportToExcelBtn.Caption = "Експорт в Excel...";
+            this.ExportToExcelBtn.Id = 35;
+            this.ExportToExcelBtn.ImageOptions.ImageIndex = 13;
+            this.ExportToExcelBtn.Name = "ExportToExcelBtn";
+            this.ExportToExcelBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ExportToExcelBtn_ItemClick);
+            // 
+            // RestoreSettingsGridBtn
+            // 
+            this.RestoreSettingsGridBtn.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.RestoreSettingsGridBtn.Caption = "Встановити налаштування сітки по замовчуванню";
+            this.RestoreSettingsGridBtn.Id = 34;
+            this.RestoreSettingsGridBtn.ImageOptions.ImageIndex = 12;
+            this.RestoreSettingsGridBtn.Name = "RestoreSettingsGridBtn";
+            this.RestoreSettingsGridBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.RestoreSettingsGridBtn_ItemClick);
+            // 
             // barDockControlTop
             // 
             this.barDockControlTop.CausesValidation = false;
@@ -479,66 +576,6 @@
             this.standaloneBarDockControl2.Size = new System.Drawing.Size(1344, 0);
             this.standaloneBarDockControl2.Text = "standaloneBarDockControl2";
             // 
-            // NewItemBtn
-            // 
-            this.NewItemBtn.Caption = "Додати";
-            this.NewItemBtn.Id = 0;
-            this.NewItemBtn.ImageOptions.ImageIndex = 2;
-            this.NewItemBtn.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.Insert);
-            this.NewItemBtn.Name = "NewItemBtn";
-            this.NewItemBtn.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            this.NewItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.NewItemBtn_ItemClick);
-            // 
-            // CopyItemBtn
-            // 
-            this.CopyItemBtn.Caption = "Створити копію документа";
-            this.CopyItemBtn.Id = 1;
-            this.CopyItemBtn.ImageOptions.ImageIndex = 3;
-            this.CopyItemBtn.Name = "CopyItemBtn";
-            this.CopyItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.CopyItemBtn_ItemClick);
-            // 
-            // EditItemBtn
-            // 
-            this.EditItemBtn.Caption = "Властивості";
-            this.EditItemBtn.Id = 2;
-            this.EditItemBtn.ImageOptions.ImageIndex = 4;
-            this.EditItemBtn.Name = "EditItemBtn";
-            this.EditItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.EditItemBtn_ItemClick);
-            // 
-            // DeleteItemBtn
-            // 
-            this.DeleteItemBtn.Caption = "Видалити";
-            this.DeleteItemBtn.Id = 3;
-            this.DeleteItemBtn.ImageOptions.ImageIndex = 5;
-            this.DeleteItemBtn.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Delete));
-            this.DeleteItemBtn.Name = "DeleteItemBtn";
-            this.DeleteItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.DeleteItemBtn_ItemClick);
-            // 
-            // RefrechItemBtn
-            // 
-            this.RefrechItemBtn.Caption = "Обновити";
-            this.RefrechItemBtn.Id = 4;
-            this.RefrechItemBtn.ImageOptions.ImageIndex = 8;
-            this.RefrechItemBtn.Name = "RefrechItemBtn";
-            this.RefrechItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.RefrechItemBtn_ItemClick);
-            // 
-            // ExecuteItemBtn
-            // 
-            this.ExecuteItemBtn.Caption = "Провести";
-            this.ExecuteItemBtn.Id = 5;
-            this.ExecuteItemBtn.ImageOptions.ImageIndex = 6;
-            this.ExecuteItemBtn.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.F2);
-            this.ExecuteItemBtn.Name = "ExecuteItemBtn";
-            this.ExecuteItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ExecuteItemBtn_ItemClick);
-            // 
-            // PrintItemBtn
-            // 
-            this.PrintItemBtn.Caption = "Друк/Попередній перегляд";
-            this.PrintItemBtn.Id = 6;
-            this.PrintItemBtn.ImageOptions.ImageIndex = 7;
-            this.PrintItemBtn.Name = "PrintItemBtn";
-            this.PrintItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.PrintItemBtn_ItemClick);
-            // 
             // WbHistoryBtn
             // 
             this.WbHistoryBtn.Caption = "Історія змін в документі";
@@ -546,23 +583,6 @@
             this.WbHistoryBtn.ImageOptions.ImageIndex = 13;
             this.WbHistoryBtn.Name = "WbHistoryBtn";
             this.WbHistoryBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.WbHistoryBtn_ItemClick);
-            // 
-            // RestoreSettingsGridBtn
-            // 
-            this.RestoreSettingsGridBtn.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
-            this.RestoreSettingsGridBtn.Caption = "Встановити налаштування сітки по замовчуванню";
-            this.RestoreSettingsGridBtn.Id = 34;
-            this.RestoreSettingsGridBtn.ImageOptions.ImageIndex = 12;
-            this.RestoreSettingsGridBtn.Name = "RestoreSettingsGridBtn";
-            this.RestoreSettingsGridBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.RestoreSettingsGridBtn_ItemClick);
-            // 
-            // ExportToExcelBtn
-            // 
-            this.ExportToExcelBtn.Caption = "Експорт в Excel...";
-            this.ExportToExcelBtn.Id = 35;
-            this.ExportToExcelBtn.ImageOptions.ImageIndex = 13;
-            this.ExportToExcelBtn.Name = "ExportToExcelBtn";
-            this.ExportToExcelBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ExportToExcelBtn_ItemClick);
             // 
             // xtraTabControl4
             // 
@@ -950,27 +970,6 @@
             this.GridPopupMenu.Manager = this.barManager1;
             this.GridPopupMenu.Name = "GridPopupMenu";
             this.GridPopupMenu.BeforePopup += new System.ComponentModel.CancelEventHandler(this.PMGridPopupMenu_BeforePopup);
-            // 
-            // bar1
-            // 
-            this.bar1.BarName = "Custom 1";
-            this.bar1.DockCol = 0;
-            this.bar1.DockRow = 0;
-            this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
-            this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.NewItemBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.CopyItemBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.EditItemBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.DeleteItemBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.RefrechItemBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.ExecuteItemBtn, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.PrintItemBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.ExportToExcelBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.RestoreSettingsGridBtn)});
-            this.bar1.OptionsBar.AllowQuickCustomization = false;
-            this.bar1.OptionsBar.DrawDragBorder = false;
-            this.bar1.OptionsBar.UseWholeRow = true;
-            this.bar1.Text = "Custom 1";
             // 
             // ucKAgentAdjustment
             // 

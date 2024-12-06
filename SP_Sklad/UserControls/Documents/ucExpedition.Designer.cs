@@ -460,7 +460,6 @@
             this.NewItemBtn.Caption = "Додати";
             this.NewItemBtn.Id = 0;
             this.NewItemBtn.ImageOptions.ImageIndex = 3;
-            this.NewItemBtn.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.Insert);
             this.NewItemBtn.Name = "NewItemBtn";
             this.NewItemBtn.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.NewItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.NewItemBtn_ItemClick);

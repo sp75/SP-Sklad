@@ -143,9 +143,8 @@ namespace SP_Sklad.MainTabs
                     MoneyMoveListBS.DataSource = new BaseEntities().MoneyMoveList((int)PayDocTypeEdit.EditValue, wbStartDate.DateTime, wbEndDate.DateTime.Date.AddDays(1), (int)wbStatusList.EditValue, DBHelper.CurrentUser.KaId).ToList();
                     RefreshBtnBar();
                     break;
-                case 3:
-                    // CurActivesBS.DataSource = new BaseEntities().GetActives(DateTime.Now.Date,DateTime.Now.Date).OrderByDescending(o=> o.OnDate).FirstOrDefault();  //v_Actives.Where(w => w.OnDate == d).ToList();
 
+                case 3:
                     var result = GetActives();
 
                     break;
