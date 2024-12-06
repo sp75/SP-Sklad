@@ -533,7 +533,7 @@
             this.NewItemBtn.Caption = "Додати";
             this.NewItemBtn.Id = 0;
             this.NewItemBtn.ImageOptions.ImageIndex = 2;
-            this.NewItemBtn.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.Insert);
+            
             this.NewItemBtn.Name = "NewItemBtn";
             this.NewItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.NewItemBtn_ItemClick);
             // 
@@ -558,7 +558,7 @@
             this.DeleteItemBtn.Caption = "Видалити";
             this.DeleteItemBtn.Id = 3;
             this.DeleteItemBtn.ImageOptions.ImageIndex = 5;
-            this.DeleteItemBtn.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Delete));
+    
             this.DeleteItemBtn.Name = "DeleteItemBtn";
             this.DeleteItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.DeleteItemBtn_ItemClick);
             // 
@@ -575,7 +575,7 @@
             this.ExecuteItemBtn.Caption = "Провести";
             this.ExecuteItemBtn.Id = 5;
             this.ExecuteItemBtn.ImageOptions.ImageIndex = 6;
-            this.ExecuteItemBtn.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.F2);
+     
             this.ExecuteItemBtn.Name = "ExecuteItemBtn";
             this.ExecuteItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ExecuteItemBtn_ItemClick);
             // 
