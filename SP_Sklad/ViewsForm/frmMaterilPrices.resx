@@ -120,6 +120,9 @@
   <metadata name="barManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>19, 21</value>
   </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>59</value>
+  </metadata>
   <metadata name="BarImageList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>147, 22</value>
   </metadata>
@@ -132,7 +135,19 @@
         a2VuPWIwM2Y1ZjdmMTFkNTBhM2EFAQAAAChEZXZFeHByZXNzLlV0aWxzLkltYWdlQ29sbGVjdGlvblN0
         cmVhbWVyAgAAAAlJbWFnZVNpemUERGF0YQQHE1N5c3RlbS5EcmF3aW5nLlNpemUDAAAAAgIAAAAF/P//
         /xNTeXN0ZW0uRHJhd2luZy5TaXplAgAAAAV3aWR0aAZoZWlnaHQAAAgIAwAAABAAAAAQAAAACQUAAAAP
-        BQAAAAAAAAACCw==
+        BQAAABQCAAACEAIAAIlQTkcNChoKAAAADUlIRFIAAAAQAAAAEAgGAAAAH/P/YQAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGySURBVDhPvVK/S8NAFK4iigiC4OyfIA4xV7DoakEdklz8
+        OZlc0FE6CeKl16E4ipODONjmopuLa8FZEMRBc2l17KaLv7Xxrj1tK1QKgh88wvve+7577y6x/0MUdUzg
+        Qtfk9kkPPLrslmx7sPLBtOOxd+ewFImwvOKzLLUPiwarDQZvkm4PYnTLD4/bMsAF3kxDTabV3R3K9qS4
+        bPtFgrzSi6z+AG9GfnFfNNt+uIOjqNP2WVbkiLI7O3c9MgbxEKJhUiqa4dDiljypFjQ8F1/LYw9O/ioB
+        jPQGgPhe0cmWlNSBPJaqCdkT8sM5fmkX1ZyPi3JXSWCmdQDdCoAkUjTyJGU12DSY4gYV8VQoH+iCm989
+        G0Q+O7Uom40ba72qkd4UYhEqxM3PuHgQ9PPdC7YXrqgmjgsO6G4+sZAdAAaZASZJxQ2C6wZus8GomRkf
+        Xkr1xQ2sKjouc6oDaOTja2TVIOtAJ+mWBqqZIbzwwC+oIoSCUzT3/VvADfgKoqeFQcN4CiTVn0TRcIOB
+        +/sEAGYQP/kFaO7rKMS3guNPdcNNHkWokCwDw12t9YjAparw74jFPgECQRnKrWfpEgAAAABJRU5ErkJg
+        ggs=
 </value>
   </data>
+  <metadata name="SettingMaterialPricesDetPopupMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>273, 23</value>
+  </metadata>
 </root>

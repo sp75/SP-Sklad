@@ -79,6 +79,7 @@ namespace SP_Sklad.EditForm
             {
                 _mat_id = _db.CopyMaterial(_copy_mat_id).FirstOrDefault();
                 _mat = _db.Materials.Find(_mat_id);
+                _mat.Artikul = _db.GetArtikul().FirstOrDefault()?.ToString();
             }
             else if (_mat_id == null)
             {

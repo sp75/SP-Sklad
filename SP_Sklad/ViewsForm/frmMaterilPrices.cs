@@ -167,5 +167,27 @@ namespace SP_Sklad.ViewsForm
 
             IHelper.Print(dataForReport, "SummarySettingMaterialPrices.xlsx");
         }
+
+        private void SummarySettingMaterialPricesGrid_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
+        {
+            if (e.HitInfo.InRow)
+            {
+                Point p2 = Control.MousePosition;
+                SettingMaterialPricesDetPopupMenu.ShowPopup(p2);
+            }
+        }
+
+        private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (focused_row != null)
+            {
+                new frmMaterialPriceHIstory(focused_row.MatId).ShowDialog();
+            }
+        }
+
+        private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            IHelper.ShowMatInfo(focused_row.MatId);
+        }
     }
 }

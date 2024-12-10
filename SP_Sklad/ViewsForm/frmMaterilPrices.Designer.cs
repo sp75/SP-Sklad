@@ -50,14 +50,10 @@
             this.standaloneBarDockControl5 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.standaloneBarDockControl7 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.BarImageList = new DevExpress.Utils.ImageCollection(this.components);
-            this.NewItemBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.CopyItemBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.EditItemBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.DeleteItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem12 = new DevExpress.XtraBars.BarButtonItem();
-            this.SelectAllBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.SummarySettingMaterialPricesGridControl = new DevExpress.XtraGrid.GridControl();
             this.SummarySettingMaterialPricesGrid = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colMaterial = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -74,6 +70,7 @@
             this.bandedGridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.SettingMaterialPricesDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).BeginInit();
@@ -83,6 +80,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.SummarySettingMaterialPricesGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SettingMaterialPricesDetPopupMenu)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -102,20 +100,16 @@
             this.barManager1.Form = this;
             this.barManager1.Images = this.BarImageList;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.NewItemBtn,
-            this.CopyItemBtn,
-            this.EditItemBtn,
-            this.DeleteItemBtn,
             this.RefrechItemBtn,
             this.barButtonItem4,
             this.barButtonItem5,
-            this.barButtonItem12,
             this.barButtonItem11,
             this.barEditItem2,
-            this.SelectAllBtn,
             this.barEditItem1,
-            this.barButtonItem1});
-            this.barManager1.MaxItemId = 59;
+            this.barButtonItem1,
+            this.barButtonItem2,
+            this.barButtonItem3});
+            this.barManager1.MaxItemId = 61;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.BarCodeBtnEdit,
             this.repositoryItemDateEdit1});
@@ -308,35 +302,9 @@
             this.BarImageList.Images.SetKeyName(1, "xls_export");
             this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.preview_2, "preview_2", typeof(global::SP_Sklad.Properties.Resources), 2);
             this.BarImageList.Images.SetKeyName(2, "preview_2");
-            // 
-            // NewItemBtn
-            // 
-            this.NewItemBtn.Caption = "Додати";
-            this.NewItemBtn.Id = 0;
-            this.NewItemBtn.ImageOptions.ImageIndex = 19;
-            this.NewItemBtn.Name = "NewItemBtn";
-            this.NewItemBtn.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            // 
-            // CopyItemBtn
-            // 
-            this.CopyItemBtn.Caption = "Додати на підставі";
-            this.CopyItemBtn.Id = 1;
-            this.CopyItemBtn.ImageOptions.ImageIndex = 27;
-            this.CopyItemBtn.Name = "CopyItemBtn";
-            // 
-            // EditItemBtn
-            // 
-            this.EditItemBtn.Caption = "Властивості";
-            this.EditItemBtn.Id = 2;
-            this.EditItemBtn.ImageOptions.ImageIndex = 26;
-            this.EditItemBtn.Name = "EditItemBtn";
-            // 
-            // DeleteItemBtn
-            // 
-            this.DeleteItemBtn.Caption = "Видалити";
-            this.DeleteItemBtn.Id = 3;
-            this.DeleteItemBtn.ImageOptions.ImageIndex = 16;
-            this.DeleteItemBtn.Name = "DeleteItemBtn";
+            this.BarImageList.Images.SetKeyName(3, "high-productivity-icon.png");
+            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.product_info_3, "product_info_3", typeof(global::SP_Sklad.Properties.Resources), 4);
+            this.BarImageList.Images.SetKeyName(4, "product_info_3");
             // 
             // barButtonItem4
             // 
@@ -352,19 +320,21 @@
             this.barButtonItem5.ImageOptions.ImageIndex = 11;
             this.barButtonItem5.Name = "barButtonItem5";
             // 
-            // barButtonItem12
+            // barButtonItem2
             // 
-            this.barButtonItem12.Caption = "Знайти на складі";
-            this.barButtonItem12.Id = 32;
-            this.barButtonItem12.ImageOptions.ImageIndex = 22;
-            this.barButtonItem12.Name = "barButtonItem12";
+            this.barButtonItem2.Caption = "Історія змін ціни";
+            this.barButtonItem2.Id = 59;
+            this.barButtonItem2.ImageOptions.ImageIndex = 3;
+            this.barButtonItem2.Name = "barButtonItem2";
+            this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
             // 
-            // SelectAllBtn
+            // barButtonItem3
             // 
-            this.SelectAllBtn.Caption = "Виділити всі рядки";
-            this.SelectAllBtn.Id = 54;
-            this.SelectAllBtn.ImageOptions.ImageIndex = 31;
-            this.SelectAllBtn.Name = "SelectAllBtn";
+            this.barButtonItem3.Caption = "Інформація про товар";
+            this.barButtonItem3.Id = 60;
+            this.barButtonItem3.ImageOptions.ImageIndex = 4;
+            this.barButtonItem3.Name = "barButtonItem3";
+            this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
             // 
             // SummarySettingMaterialPricesGridControl
             // 
@@ -410,6 +380,7 @@
             this.SummarySettingMaterialPricesGrid.OptionsClipboard.PasteMode = DevExpress.Export.PasteMode.Append;
             this.SummarySettingMaterialPricesGrid.OptionsSelection.MultiSelect = true;
             this.SummarySettingMaterialPricesGrid.OptionsView.ShowGroupPanel = false;
+            this.SummarySettingMaterialPricesGrid.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.SummarySettingMaterialPricesGrid_PopupMenuShowing);
             // 
             // colMaterial
             // 
@@ -551,6 +522,14 @@
             this.repositoryItemLookUpEdit1.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoSearch;
             this.repositoryItemLookUpEdit1.ValueMember = "MatId";
             // 
+            // SettingMaterialPricesDetPopupMenu
+            // 
+            this.SettingMaterialPricesDetPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2)});
+            this.SettingMaterialPricesDetPopupMenu.Manager = this.barManager1;
+            this.SettingMaterialPricesDetPopupMenu.Name = "SettingMaterialPricesDetPopupMenu";
+            // 
             // frmMaterilPrices
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -583,6 +562,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.SummarySettingMaterialPricesGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SettingMaterialPricesDetPopupMenu)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -591,10 +571,6 @@
         #endregion
         private DevExpress.XtraBars.BarManager barManager1;
         private DevExpress.XtraBars.Bar bar1;
-        private DevExpress.XtraBars.BarButtonItem NewItemBtn;
-        private DevExpress.XtraBars.BarButtonItem CopyItemBtn;
-        private DevExpress.XtraBars.BarButtonItem EditItemBtn;
-        private DevExpress.XtraBars.BarButtonItem DeleteItemBtn;
         private DevExpress.XtraBars.BarButtonItem RefrechItemBtn;
         private DevExpress.XtraBars.BarButtonItem barButtonItem11;
         private DevExpress.XtraBars.BarEditItem barEditItem2;
@@ -611,8 +587,6 @@
         private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl5;
         private DevExpress.XtraBars.BarButtonItem barButtonItem4;
         private DevExpress.XtraBars.BarButtonItem barButtonItem5;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem12;
-        private DevExpress.XtraBars.BarButtonItem SelectAllBtn;
         private DevExpress.Utils.ImageCollection BarImageList;
         private DevExpress.XtraBars.BarEditItem barEditItem1;
         private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repositoryItemDateEdit1;
@@ -633,5 +607,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn bandedGridColumn2;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
+        private DevExpress.XtraBars.PopupMenu SettingMaterialPricesDetPopupMenu;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
     }
 }

@@ -40,6 +40,8 @@ namespace SP.Base.Models
         [Display(Name = "Відгружено, сума")]
         public Nullable<decimal> TotalOut { get; set; }
 
+        [Key]
+        [Column(Order = 3)]
         [Display(Name = "Відвантажив")]
         public string PersonName { get; set; }
 

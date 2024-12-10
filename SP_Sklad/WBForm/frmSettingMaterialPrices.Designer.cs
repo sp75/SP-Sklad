@@ -265,7 +265,7 @@
             this.addButtonItem.DropDownControl = this.popupMenu1;
             this.addButtonItem.Id = 44;
             this.addButtonItem.ImageOptions.ImageIndex = 3;
-          
+            this.addButtonItem.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.Insert);
             this.addButtonItem.Name = "addButtonItem";
             this.addButtonItem.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.addButtonItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.addButtonItem_ItemClick);
