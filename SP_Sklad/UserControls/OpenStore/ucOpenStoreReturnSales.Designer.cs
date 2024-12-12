@@ -493,7 +493,8 @@
             new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "TOTAL", this.colTotal, "{0:0.00}")});
             this.WhPosRemainsGridView.Name = "WhPosRemainsGridView";
             this.WhPosRemainsGridView.OptionsBehavior.AllowIncrementalSearch = true;
-            this.WhPosRemainsGridView.OptionsBehavior.Editable = false;
+            this.WhPosRemainsGridView.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseDownFocused;
+            this.WhPosRemainsGridView.OptionsBehavior.ReadOnly = true;
             this.WhPosRemainsGridView.OptionsView.ShowFooter = true;
             this.WhPosRemainsGridView.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.bandedGridColumn1, DevExpress.Data.ColumnSortOrder.Ascending)});

@@ -1,6 +1,6 @@
 ﻿namespace SP_Sklad.ViewsForm
 {
-    partial class frmKagentMaterilPrices
+    partial class frmCurrentMaterilPrices
     {
         /// <summary>
         /// Required designer variable.
@@ -29,18 +29,15 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmKagentMaterilPrices));
-            this.KagentMaterilPricesGrid = new DevExpress.XtraGrid.GridControl();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCurrentMaterilPrices));
+            this.MaterilPricesGrid = new DevExpress.XtraGrid.GridControl();
             this.KagentMaterilPricesSource = new DevExpress.Data.Linq.LinqInstantFeedbackSource();
-            this.KagentMaterilPricesGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.MaterilPricesGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colMatId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMatName = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colKaId = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colKaName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colPrice = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colDiscount = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colPriceTypeName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
@@ -67,56 +64,53 @@
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem12 = new DevExpress.XtraBars.BarButtonItem();
             this.SelectAllBtn = new DevExpress.XtraBars.BarButtonItem();
-            ((System.ComponentModel.ISupportInitialize)(this.KagentMaterilPricesGrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.KagentMaterilPricesGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MaterilPricesGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MaterilPricesGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BarCodeBtnEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BarImageList)).BeginInit();
             this.SuspendLayout();
             // 
-            // KagentMaterilPricesGrid
+            // MaterilPricesGrid
             // 
-            this.KagentMaterilPricesGrid.DataSource = this.KagentMaterilPricesSource;
-            this.KagentMaterilPricesGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.KagentMaterilPricesGrid.EmbeddedNavigator.Buttons.Append.Visible = false;
-            this.KagentMaterilPricesGrid.EmbeddedNavigator.Buttons.CancelEdit.Visible = false;
-            this.KagentMaterilPricesGrid.EmbeddedNavigator.Buttons.Edit.Visible = false;
-            this.KagentMaterilPricesGrid.EmbeddedNavigator.Buttons.EndEdit.Visible = false;
-            this.KagentMaterilPricesGrid.EmbeddedNavigator.Buttons.Remove.Visible = false;
-            this.KagentMaterilPricesGrid.Location = new System.Drawing.Point(0, 24);
-            this.KagentMaterilPricesGrid.MainView = this.KagentMaterilPricesGridView;
-            this.KagentMaterilPricesGrid.Name = "KagentMaterilPricesGrid";
-            this.KagentMaterilPricesGrid.Size = new System.Drawing.Size(1331, 493);
-            this.KagentMaterilPricesGrid.TabIndex = 19;
-            this.KagentMaterilPricesGrid.UseEmbeddedNavigator = true;
-            this.KagentMaterilPricesGrid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.KagentMaterilPricesGridView});
+            this.MaterilPricesGrid.DataSource = this.KagentMaterilPricesSource;
+            this.MaterilPricesGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MaterilPricesGrid.EmbeddedNavigator.Buttons.Append.Visible = false;
+            this.MaterilPricesGrid.EmbeddedNavigator.Buttons.CancelEdit.Visible = false;
+            this.MaterilPricesGrid.EmbeddedNavigator.Buttons.Edit.Visible = false;
+            this.MaterilPricesGrid.EmbeddedNavigator.Buttons.EndEdit.Visible = false;
+            this.MaterilPricesGrid.EmbeddedNavigator.Buttons.Remove.Visible = false;
+            this.MaterilPricesGrid.Location = new System.Drawing.Point(0, 24);
+            this.MaterilPricesGrid.MainView = this.MaterilPricesGridView;
+            this.MaterilPricesGrid.Name = "MaterilPricesGrid";
+            this.MaterilPricesGrid.Size = new System.Drawing.Size(1331, 493);
+            this.MaterilPricesGrid.TabIndex = 19;
+            this.MaterilPricesGrid.UseEmbeddedNavigator = true;
+            this.MaterilPricesGrid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.MaterilPricesGridView});
             // 
             // KagentMaterilPricesSource
             // 
             this.KagentMaterilPricesSource.AreSourceRowsThreadSafe = true;
-            this.KagentMaterilPricesSource.DesignTimeElementType = typeof(SP_Sklad.SkladData.v_KagentMaterilPrices);
-            this.KagentMaterilPricesSource.KeyExpression = "MatId;KaId";
+            this.KagentMaterilPricesSource.DesignTimeElementType = typeof(SP_Sklad.SkladData.v_MaterilPrices);
+            this.KagentMaterilPricesSource.KeyExpression = "MatId;PTypeId";
             this.KagentMaterilPricesSource.GetQueryable += new System.EventHandler<DevExpress.Data.Linq.GetQueryableEventArgs>(this.KagentMaterilPricesSource_GetQueryable);
             // 
-            // KagentMaterilPricesGridView
+            // MaterilPricesGridView
             // 
-            this.KagentMaterilPricesGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.MaterilPricesGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colMatId,
             this.colMatName,
-            this.colKaId,
-            this.colKaName,
             this.colPrice,
-            this.colDiscount,
             this.gridColumn1,
-            this.gridColumn2,
+            this.colPriceTypeName,
             this.gridColumn3});
-            this.KagentMaterilPricesGridView.GridControl = this.KagentMaterilPricesGrid;
-            this.KagentMaterilPricesGridView.Name = "KagentMaterilPricesGridView";
-            this.KagentMaterilPricesGridView.OptionsBehavior.AllowIncrementalSearch = true;
-            this.KagentMaterilPricesGridView.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseDownFocused;
-            this.KagentMaterilPricesGridView.OptionsView.ShowFooter = true;
-            this.KagentMaterilPricesGridView.AsyncCompleted += new System.EventHandler(this.KagentMaterilPricesGridView_AsyncCompleted);
+            this.MaterilPricesGridView.GridControl = this.MaterilPricesGrid;
+            this.MaterilPricesGridView.Name = "MaterilPricesGridView";
+            this.MaterilPricesGridView.OptionsBehavior.AllowIncrementalSearch = true;
+            this.MaterilPricesGridView.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseDownFocused;
+            this.MaterilPricesGridView.OptionsView.ShowFooter = true;
+            this.MaterilPricesGridView.AsyncCompleted += new System.EventHandler(this.KagentMaterilPricesGridView_AsyncCompleted);
             // 
             // colMatId
             // 
@@ -131,24 +125,8 @@
             this.colMatName.FieldName = "MatName";
             this.colMatName.Name = "colMatName";
             this.colMatName.Visible = true;
-            this.colMatName.VisibleIndex = 1;
+            this.colMatName.VisibleIndex = 0;
             this.colMatName.Width = 196;
-            // 
-            // colKaId
-            // 
-            this.colKaId.Caption = "Код контрагента";
-            this.colKaId.FieldName = "KaId";
-            this.colKaId.Name = "colKaId";
-            this.colKaId.Width = 105;
-            // 
-            // colKaName
-            // 
-            this.colKaName.Caption = "Контрагент";
-            this.colKaName.FieldName = "KaName";
-            this.colKaName.Name = "colKaName";
-            this.colKaName.Visible = true;
-            this.colKaName.VisibleIndex = 0;
-            this.colKaName.Width = 279;
             // 
             // colPrice
             // 
@@ -158,19 +136,8 @@
             this.colPrice.FieldName = "Price";
             this.colPrice.Name = "colPrice";
             this.colPrice.Visible = true;
-            this.colPrice.VisibleIndex = 5;
+            this.colPrice.VisibleIndex = 4;
             this.colPrice.Width = 72;
-            // 
-            // colDiscount
-            // 
-            this.colDiscount.Caption = "Знижка, %";
-            this.colDiscount.DisplayFormat.FormatString = "0.00";
-            this.colDiscount.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.colDiscount.FieldName = "Discount";
-            this.colDiscount.Name = "colDiscount";
-            this.colDiscount.Visible = true;
-            this.colDiscount.VisibleIndex = 6;
-            this.colDiscount.Width = 91;
             // 
             // gridColumn1
             // 
@@ -178,17 +145,17 @@
             this.gridColumn1.FieldName = "MatGrpName";
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 3;
+            this.gridColumn1.VisibleIndex = 2;
             this.gridColumn1.Width = 170;
             // 
-            // gridColumn2
+            // colPriceTypeName
             // 
-            this.gridColumn2.Caption = "Група контрагентів";
-            this.gridColumn2.FieldName = "KaGrpName";
-            this.gridColumn2.Name = "gridColumn2";
-            this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 4;
-            this.gridColumn2.Width = 152;
+            this.colPriceTypeName.Caption = "Цінова катерогія";
+            this.colPriceTypeName.FieldName = "PriceTypeName";
+            this.colPriceTypeName.Name = "colPriceTypeName";
+            this.colPriceTypeName.Visible = true;
+            this.colPriceTypeName.VisibleIndex = 3;
+            this.colPriceTypeName.Width = 152;
             // 
             // gridColumn3
             // 
@@ -196,7 +163,7 @@
             this.gridColumn3.FieldName = "Artikul";
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 2;
+            this.gridColumn3.VisibleIndex = 1;
             // 
             // barManager1
             // 
@@ -445,7 +412,7 @@
             this.SelectAllBtn.ImageOptions.ImageIndex = 31;
             this.SelectAllBtn.Name = "SelectAllBtn";
             // 
-            // frmKagentMaterilPrices
+            // frmCurrentMaterilPrices
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -456,19 +423,19 @@
             this.Controls.Add(this.standaloneBarDockControl4);
             this.Controls.Add(this.standaloneBarDockControl5);
             this.Controls.Add(this.standaloneBarDockControl7);
-            this.Controls.Add(this.KagentMaterilPricesGrid);
+            this.Controls.Add(this.MaterilPricesGrid);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.IconOptions.Image = global::SP_Sklad.Properties.Resources.pricing;
-            this.Name = "frmKagentMaterilPrices";
+            this.Name = "frmCurrentMaterilPrices";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Актуальні ціни на товари по контрагентам";
+            this.Text = "Актуальні ціни на товари по ціновим категоріям";
             this.Shown += new System.EventHandler(this.frmKagentMaterilPrices_Shown);
-            ((System.ComponentModel.ISupportInitialize)(this.KagentMaterilPricesGrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.KagentMaterilPricesGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MaterilPricesGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MaterilPricesGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BarCodeBtnEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BarImageList)).EndInit();
@@ -478,17 +445,14 @@
         }
 
         #endregion
-        private DevExpress.XtraGrid.GridControl KagentMaterilPricesGrid;
-        public DevExpress.XtraGrid.Views.Grid.GridView KagentMaterilPricesGridView;
+        private DevExpress.XtraGrid.GridControl MaterilPricesGrid;
+        public DevExpress.XtraGrid.Views.Grid.GridView MaterilPricesGridView;
         private DevExpress.Data.Linq.LinqInstantFeedbackSource KagentMaterilPricesSource;
         private DevExpress.XtraGrid.Columns.GridColumn colMatId;
         private DevExpress.XtraGrid.Columns.GridColumn colMatName;
-        private DevExpress.XtraGrid.Columns.GridColumn colKaId;
-        private DevExpress.XtraGrid.Columns.GridColumn colKaName;
         private DevExpress.XtraGrid.Columns.GridColumn colPrice;
-        private DevExpress.XtraGrid.Columns.GridColumn colDiscount;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraGrid.Columns.GridColumn colPriceTypeName;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         private DevExpress.XtraBars.BarManager barManager1;
         private DevExpress.XtraBars.Bar bar1;

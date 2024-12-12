@@ -1419,7 +1419,7 @@ namespace SP_Sklad.MainTabs
         private void barButtonItem10_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             var row = (PriceTypesGridView.GetFocusedRow() as PriceTypesView);
-            new frmMaterilPrices(row?.PTypeId).ShowDialog();
+            new frmCurrentMaterilPrices(PTypeId: row?.PTypeId).ShowDialog();
         }
     }
 }

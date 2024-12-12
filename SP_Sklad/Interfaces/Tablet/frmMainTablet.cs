@@ -148,5 +148,20 @@ namespace SP_Sklad.Interfaces.Tablet
                 e.Handled = true;
             }
         }
+
+        private void accordionControlElement48_Click(object sender, EventArgs e)
+        {
+            accordionControl1.SelectElement((AccordionControlElement)sender);
+
+            var control = mainContainer.Controls["ucTabletOpenStorePaymentsSummary"];
+
+            if (!mainContainer.Controls.Contains(control))
+            {
+                control = new ucTabletOpenStorePaymentsSummary() { Dock = DockStyle.Fill };
+                mainContainer.Controls.Add(control);
+            }
+
+            control.BringToFront();
+        }
     }
 }

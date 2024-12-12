@@ -2248,8 +2248,8 @@ warning 6002: The table/view 'sp_base.dbo.v_Actives' does not have a primary key
           <Property Name="WhSumm" Type="numeric" Precision="15" Scale="2" />
           <Property Name="Creditors" Type="numeric" Precision="38" Scale="2" />
           <Property Name="Debitors" Type="numeric" Precision="38" Scale="2" />
-          <Property Name="Cash" Type="numeric" Precision="38" Scale="2" />
-          <Property Name="CashLess" Type="numeric" Precision="38" Scale="2" />
+          <Property Name="Cash" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="CashLess" Type="numeric" Precision="15" Scale="2" />
           <Property Name="Active" Type="numeric" Precision="38" Scale="2" />
         </EntityType>
         <!--Errors Found During Generation:
@@ -3049,6 +3049,7 @@ warning 6002: The table/view 'sp_base.dbo.v_KagentMaterilPrices' does not have a
             <PropertyRef Name="KaName" />
             <PropertyRef Name="MatGrpName" />
             <PropertyRef Name="PriceTypeName" />
+            <PropertyRef Name="KType" />
           </Key>
           <Property Name="MatId" Type="int" Nullable="false" />
           <Property Name="KaId" Type="int" Nullable="false" />
@@ -3061,6 +3062,7 @@ warning 6002: The table/view 'sp_base.dbo.v_KagentMaterilPrices' does not have a
           <Property Name="KaGrpName" Type="nvarchar" MaxLength="50" />
           <Property Name="PriceTypeName" Type="varchar" MaxLength="64" Nullable="false" />
           <Property Name="Artikul" Type="nvarchar" MaxLength="255" />
+          <Property Name="KType" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_KAgentPrices' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -3238,6 +3240,23 @@ warning 6002: The table/view 'sp_base.dbo.v_Materials' does not have a primary k
           <Property Name="TypeId" Type="int" />
           <Property Name="TypeName" Type="nvarchar" MaxLength="50" />
           <Property Name="LabelDescr" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_MaterilPrices' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_MaterilPrices">
+          <Key>
+            <PropertyRef Name="MatId" />
+            <PropertyRef Name="PTypeId" />
+            <PropertyRef Name="MatGrpName" />
+            <PropertyRef Name="PriceTypeName" />
+          </Key>
+          <Property Name="MatId" Type="int" Nullable="false" />
+          <Property Name="Price" Type="numeric" Precision="15" Scale="8" />
+          <Property Name="PTypeId" Type="int" Nullable="false" />
+          <Property Name="MatName" Type="nvarchar" MaxLength="255" />
+          <Property Name="MatGrpName" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="PriceTypeName" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="Artikul" Type="nvarchar" MaxLength="255" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_MatRecipe' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -3840,9 +3859,9 @@ warning 6002: The table/view 'sp_base.dbo.v_UserDocs' does not have a primary ke
         <EntityType Name="v_UserDocs">
           <Key>
             <PropertyRef Name="DocId" />
+            <PropertyRef Name="PersonName" />
             <PropertyRef Name="Checked" />
             <PropertyRef Name="OnDate" />
-            <PropertyRef Name="PersonName" />
           </Key>
           <Property Name="DocId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="DocType" Type="int" />
@@ -7778,9 +7797,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_WBDAP_POSID">
-          <End Role="WaybillDet" Type="Self.WaybillDet" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
+          <End Role="WaybillDet" Type="Self.WaybillDet" Multiplicity="1" />
           <End Role="WayBillDetAddProps" Type="Self.WayBillDetAddProps" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="WaybillDet">
@@ -9206,14 +9223,14 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <ReturnType>
             <CollectionType>
               <RowType>
-                <Property Name="Id" Type="int" Nullable="false" />
-                <Property Name="SaldoType" Type="int" Nullable="false" />
-                <Property Name="OnDate" Type="datetime" Nullable="false" />
+                <Property Name="Id" Type="int" />
+                <Property Name="SaldoType" Type="int" />
                 <Property Name="AccId" Type="int" />
                 <Property Name="CurrId" Type="int" Nullable="false" />
-                <Property Name="Saldo" Type="numeric" Precision="15" Scale="2" Nullable="false" />
                 <Property Name="CashId" Type="int" />
+                <Property Name="Saldo" Type="numeric" Precision="15" Scale="2" />
                 <Property Name="SaldoDef" Type="numeric" Precision="15" Scale="2" />
+                <Property Name="OnDate" Type="date" />
                 <Property Name="Currency" Type="nvarchar" MaxLength="30" Nullable="false" />
               </RowType>
             </CollectionType>
@@ -9225,14 +9242,14 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <ReturnType>
             <CollectionType>
               <RowType>
-                <Property Name="Id" Type="int" Nullable="false" />
-                <Property Name="SaldoType" Type="int" Nullable="false" />
-                <Property Name="OnDate" Type="datetime" Nullable="false" />
+                <Property Name="Id" Type="int" />
+                <Property Name="SaldoType" Type="int" />
                 <Property Name="AccId" Type="int" />
                 <Property Name="CurrId" Type="int" Nullable="false" />
-                <Property Name="Saldo" Type="numeric" Precision="15" Scale="2" Nullable="false" />
                 <Property Name="CashId" Type="int" />
+                <Property Name="Saldo" Type="numeric" Precision="15" Scale="2" />
                 <Property Name="SaldoDef" Type="numeric" Precision="15" Scale="2" />
+                <Property Name="OnDate" Type="date" />
                 <Property Name="Currency" Type="nvarchar" MaxLength="30" Nullable="false" />
               </RowType>
             </CollectionType>
@@ -9566,12 +9583,12 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <Property Name="AmountOrd" Type="numeric" Precision="38" Scale="4" />
                 <Property Name="TotalOrd" Type="numeric" Precision="38" Scale="2" />
                 <Property Name="KaId" Type="int" />
-                <Property Name="KaName" Type="nvarchar" MaxLength="64" Nullable="false" />
+                <Property Name="KaName" Type="nvarchar" MaxLength="100" Nullable="false" />
                 <Property Name="MsrName" Type="nvarchar" MaxLength="6" Nullable="false" />
                 <Property Name="BarCode" Type="nvarchar" MaxLength="64" />
                 <Property Name="AmountOut" Type="numeric" Precision="38" Scale="4" />
                 <Property Name="TotalOut" Type="numeric" Precision="38" Scale="2" />
-                <Property Name="PersonName" Type="nvarchar" MaxLength="64" />
+                <Property Name="PersonName" Type="nvarchar" MaxLength="100" />
               </RowType>
             </CollectionType>
           </ReturnType>
@@ -11042,7 +11059,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_KagentMaterilPrices].[MatGrpName] AS [MatGrpName], 
     [v_KagentMaterilPrices].[KaGrpName] AS [KaGrpName], 
     [v_KagentMaterilPrices].[PriceTypeName] AS [PriceTypeName], 
-    [v_KagentMaterilPrices].[Artikul] AS [Artikul]
+    [v_KagentMaterilPrices].[Artikul] AS [Artikul], 
+    [v_KagentMaterilPrices].[KType] AS [KType]
     FROM [dbo].[v_KagentMaterilPrices] AS [v_KagentMaterilPrices]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_KAgentPrices" EntityType="Self.v_KAgentPrices" store:Type="Views" store:Schema="dbo">
@@ -11174,6 +11192,17 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_Materials].[TypeName] AS [TypeName], 
     [v_Materials].[LabelDescr] AS [LabelDescr]
     FROM [dbo].[v_Materials] AS [v_Materials]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_MaterilPrices" EntityType="Self.v_MaterilPrices" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_MaterilPrices].[MatId] AS [MatId], 
+    [v_MaterilPrices].[Price] AS [Price], 
+    [v_MaterilPrices].[PTypeId] AS [PTypeId], 
+    [v_MaterilPrices].[MatName] AS [MatName], 
+    [v_MaterilPrices].[MatGrpName] AS [MatGrpName], 
+    [v_MaterilPrices].[PriceTypeName] AS [PriceTypeName], 
+    [v_MaterilPrices].[Artikul] AS [Artikul]
+    FROM [dbo].[v_MaterilPrices] AS [v_MaterilPrices]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_MatRecipe" EntityType="Self.v_MatRecipe" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -15281,6 +15310,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           </AssociationSet>
           <EntitySet Name="v_Promotions" EntityType="BaseModel.v_Promotions" />
           <EntitySet Name="v_PromotionKagent" EntityType="BaseModel.v_PromotionKagent" />
+          <EntitySet Name="v_MaterilPrices" EntityType="BaseModel.v_MaterilPrices" />
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -18266,8 +18296,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="Decimal" Name="WhSumm" Precision="15" Scale="2" />
           <Property Type="Decimal" Name="Creditors" Precision="38" Scale="2" />
           <Property Type="Decimal" Name="Debitors" Precision="38" Scale="2" />
-          <Property Type="Decimal" Name="Cash" Precision="38" Scale="2" />
-          <Property Type="Decimal" Name="CashLess" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="Cash" Precision="15" Scale="2" />
+          <Property Type="Decimal" Name="CashLess" Precision="15" Scale="2" />
           <Property Type="Decimal" Name="Active" Precision="38" Scale="2" />
         </EntityType>
         <EntityType Name="v_WorkDate">
@@ -22188,6 +22218,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <PropertyRef Name="KaName" />
             <PropertyRef Name="MatGrpName" />
             <PropertyRef Name="PriceTypeName" />
+            <PropertyRef Name="KType" />
           </Key>
           <Property Name="MatId" Type="Int32" Nullable="false" />
           <Property Name="KaId" Type="Int32" Nullable="false" />
@@ -22200,6 +22231,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="KaGrpName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="PriceTypeName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
           <Property Name="Artikul" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="KType" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="v_ProjectManagementDet">
           <Key>
@@ -25168,6 +25200,21 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="KaId" Type="Int32" />
           <Property Name="KaName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="KaGrpName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="v_MaterilPrices">
+          <Key>
+            <PropertyRef Name="MatId" />
+            <PropertyRef Name="PTypeId" />
+            <PropertyRef Name="MatGrpName" />
+            <PropertyRef Name="PriceTypeName" />
+          </Key>
+          <Property Name="MatId" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="15" Scale="8" />
+          <Property Name="PTypeId" Type="Int32" Nullable="false" />
+          <Property Name="MatName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MatGrpName" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="PriceTypeName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="Artikul" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -30075,6 +30122,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_KagentMaterilPrices">
             <EntityTypeMapping TypeName="BaseModel.v_KagentMaterilPrices">
               <MappingFragment StoreEntitySet="v_KagentMaterilPrices">
+                <ScalarProperty Name="KType" ColumnName="KType" />
                 <ScalarProperty Name="Artikul" ColumnName="Artikul" />
                 <ScalarProperty Name="PriceTypeName" ColumnName="PriceTypeName" />
                 <ScalarProperty Name="KaGrpName" ColumnName="KaGrpName" />
@@ -31888,6 +31936,19 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <ScalarProperty Name="KaId" ColumnName="KaId" />
                 <ScalarProperty Name="PromotionId" ColumnName="PromotionId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_MaterilPrices">
+            <EntityTypeMapping TypeName="BaseModel.v_MaterilPrices">
+              <MappingFragment StoreEntitySet="v_MaterilPrices">
+                <ScalarProperty Name="Artikul" ColumnName="Artikul" />
+                <ScalarProperty Name="PriceTypeName" ColumnName="PriceTypeName" />
+                <ScalarProperty Name="MatGrpName" ColumnName="MatGrpName" />
+                <ScalarProperty Name="MatName" ColumnName="MatName" />
+                <ScalarProperty Name="PTypeId" ColumnName="PTypeId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

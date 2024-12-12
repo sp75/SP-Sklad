@@ -859,6 +859,8 @@
             this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.copy_object, "copy_object", typeof(global::SP_Sklad.Properties.Resources), 27);
             this.BarImageList.Images.SetKeyName(27, "copy_object");
             this.BarImageList.Images.SetKeyName(28, "add_16x16.png");
+            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.pricing, "pricing", typeof(global::SP_Sklad.Properties.Resources), 29);
+            this.BarImageList.Images.SetKeyName(29, "pricing");
             // 
             // RenameMatGroupBarButtonItem
             // 
@@ -1008,7 +1010,7 @@
             // 
             // SetPriceBtnItem
             // 
-            this.SetPriceBtnItem.Caption = "Встановити ціни";
+            this.SetPriceBtnItem.Caption = "Створити документ на встановлення цін";
             this.SetPriceBtnItem.Id = 47;
             this.SetPriceBtnItem.ImageOptions.ImageIndex = 2;
             this.SetPriceBtnItem.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("SetPriceBtnItem.ImageOptions.LargeImage")));
@@ -1024,8 +1026,9 @@
             // 
             // barButtonItem10
             // 
-            this.barButtonItem10.Caption = "Ціни на товри";
+            this.barButtonItem10.Caption = "Ціни на товри по ціновій категорії";
             this.barButtonItem10.Id = 49;
+            this.barButtonItem10.ImageOptions.ImageIndex = 29;
             this.barButtonItem10.Name = "barButtonItem10";
             this.barButtonItem10.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem10_ItemClick);
             // 
@@ -2985,10 +2988,10 @@
             // 
             this.PriceTypesPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.NewItemBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.EditItemBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.DeleteItemBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.SetPriceBtnItem, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem10)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem10),
+            new DevExpress.XtraBars.LinkPersistInfo(this.EditItemBtn, true)});
             this.PriceTypesPopupMenu.Manager = this.barManager1;
             this.PriceTypesPopupMenu.Name = "PriceTypesPopupMenu";
             this.PriceTypesPopupMenu.BeforePopup += new System.ComponentModel.CancelEventHandler(this.PriceTypesPopupMenu_BeforePopup);

@@ -264,6 +264,15 @@ order by  ma.ondate desc */
                 var wbd = _db.WaybillDet.FirstOrDefault(w => w.PosId == wbd_row.PosId);
                 if (wbd != null)
                 {
+                    if (wbd_row.PosType == 2)
+                    {
+                    //    var wbl_make = _db.WaybillList.Find(wbd.WayBillDetAddProps.WbMaked);
+                        var dr = _db.DocRels.Where(w => (w.OriginatorId == wbd.WaybillList.Id && w.RelOriginatorId == wbd.WayBillDetAddProps.WaybillList.Id) || (w.OriginatorId == wbd.WayBillDetAddProps.WaybillList.Id && w.RelOriginatorId == wbd.WaybillList.Id)).ToList();
+                        if (dr != null)
+                        {
+                            _db.DocRels.RemoveRange(dr);
+                        }
+                    }
                     _db.WaybillDet.Remove(wbd);
                 }
                 _db.Save(wb.WbillId);

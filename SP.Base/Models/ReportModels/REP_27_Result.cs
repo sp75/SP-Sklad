@@ -18,6 +18,9 @@ namespace SP.Base.Models
 
         [Display(Name = "Назва товару")]
         public string MatName { get; set; }
+        
+        [Display(Name = "Група товарів")]
+        public string GrpName { get; set; }
 
         [Display(Name = "Замовлено, к-сть")]
         public decimal? AmountOrd { get; set; }
@@ -27,6 +30,9 @@ namespace SP.Base.Models
 
         [Display(Name = "Контрагент")]
         public string KaName { get; set; }
+
+        [Display(Name = "Група контрагентів")]
+        public string KaGrpName { get; set; }
 
         [Display(Name = "Од. вим.")]
         public string MsrName { get; set; }

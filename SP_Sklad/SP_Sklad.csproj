@@ -1416,6 +1416,9 @@
     <Compile Include="SkladData\v_Materials.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\v_MaterilPrices.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\v_MatRecipe.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -1637,6 +1640,12 @@
     </Compile>
     <Compile Include="UserControls\OpenStore\ucOpenStoreCashRegisterSyncMonitor.Designer.cs">
       <DependentUpon>ucOpenStoreCashRegisterSyncMonitor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Tablet\UI\ucTabletOpenStorePaymentsSummary.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Tablet\UI\ucTabletOpenStorePaymentsSummary.Designer.cs">
+      <DependentUpon>ucTabletOpenStorePaymentsSummary.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\OpenStore\ucOpenStoreSalesSummary.cs">
       <SubType>UserControl</SubType>
@@ -1995,11 +2004,17 @@
     <Compile Include="UserControls\Warehouse\ucWhMat.Designer.cs">
       <DependentUpon>ucWhMat.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewsForm\frmMaterilPrices.cs">
+    <Compile Include="ViewsForm\frmCurrentMaterilPrices.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ViewsForm\frmMaterilPrices.Designer.cs">
-      <DependentUpon>frmMaterilPrices.cs</DependentUpon>
+    <Compile Include="ViewsForm\frmCurrentMaterilPrices.Designer.cs">
+      <DependentUpon>frmCurrentMaterilPrices.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewsForm\frmSummarySettingMaterialPrices.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewsForm\frmSummarySettingMaterialPrices.Designer.cs">
+      <DependentUpon>frmSummarySettingMaterialPrices.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewsForm\frmOpenStoreCashRegisterSyncMonitor.cs">
       <SubType>Form</SubType>
@@ -2840,6 +2855,9 @@
     <EmbeddedResource Include="UserControls\OpenStore\ucOpenStoreCashRegisterSyncMonitor.resx">
       <DependentUpon>ucOpenStoreCashRegisterSyncMonitor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Tablet\UI\ucTabletOpenStorePaymentsSummary.resx">
+      <DependentUpon>ucTabletOpenStorePaymentsSummary.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\OpenStore\ucOpenStoreSalesSummary.resx">
       <DependentUpon>ucOpenStoreSalesSummary.cs</DependentUpon>
     </EmbeddedResource>
@@ -3014,8 +3032,11 @@
     <EmbeddedResource Include="UserControls\Warehouse\ucWhMat.resx">
       <DependentUpon>ucWhMat.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ViewsForm\frmMaterilPrices.resx">
-      <DependentUpon>frmMaterilPrices.cs</DependentUpon>
+    <EmbeddedResource Include="ViewsForm\frmCurrentMaterilPrices.resx">
+      <DependentUpon>frmCurrentMaterilPrices.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewsForm\frmSummarySettingMaterialPrices.resx">
+      <DependentUpon>frmSummarySettingMaterialPrices.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewsForm\frmOpenStoreCashRegisterSyncMonitor.resx">
       <DependentUpon>frmOpenStoreCashRegisterSyncMonitor.cs</DependentUpon>

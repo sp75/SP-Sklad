@@ -16,13 +16,13 @@ using SP_Sklad.Common;
 
 namespace SP_Sklad.ViewsForm
 {
-    public partial class frmMaterilPrices : DevExpress.XtraEditors.XtraForm
+    public partial class frmSummarySettingMaterialPrices : DevExpress.XtraEditors.XtraForm
     {
         private BaseEntities _db { get; set; }
         private int? _ptype_id { get; set; }
         public GetSummaryMaterialPrices_Result focused_row =>  (SummarySettingMaterialPricesGrid.GetFocusedRow() as GetSummaryMaterialPrices_Result);
 
-        public frmMaterilPrices(int? ptype_id = null)
+        public frmSummarySettingMaterialPrices(int? ptype_id = null)
         {
             InitializeComponent();
             _db = DB.SkladBase();
@@ -72,7 +72,7 @@ namespace SP_Sklad.ViewsForm
         private void frmKagentMaterilPrices_Shown(object sender, EventArgs e)
         {
             var p = _db.PriceTypes.FirstOrDefault(w => w.PTypeId == _ptype_id);
-            Text = $"Ціни на товари по ціновій категорії [{p.Name}]";
+            Text = $"Встановлені ціни на товари по ціновій категорії [{p.Name}]";
         }
 
         private void barButtonItem11_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

@@ -1,6 +1,6 @@
 ﻿namespace SP_Sklad.ViewsForm
 {
-    partial class frmMaterilPrices
+    partial class frmSummarySettingMaterialPrices
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMaterilPrices));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSummarySettingMaterialPrices));
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.barEditItem1 = new DevExpress.XtraBars.BarEditItem();
@@ -550,7 +550,7 @@
             this.Name = "frmMaterilPrices";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Ціни на товари по ціновій категорії";
+            this.Text = "Встановлені ціни на товари по ціновій категорії";
             this.Load += new System.EventHandler(this.frmMaterilPrices_Load);
             this.Shown += new System.EventHandler(this.frmKagentMaterilPrices_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();

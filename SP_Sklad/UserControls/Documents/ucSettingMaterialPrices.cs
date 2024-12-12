@@ -340,7 +340,7 @@ namespace SP_Sklad.UserControls
 
         private void repositoryItemButtonEdit1_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
-            new frmMaterilPrices(row_smp.PTypeId).ShowDialog();
+            new frmSummarySettingMaterialPrices(row_smp.PTypeId).ShowDialog();
         }
 
         private void barButtonItem14_ItemClick(object sender, ItemClickEventArgs e)

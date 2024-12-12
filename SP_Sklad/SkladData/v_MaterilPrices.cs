@@ -12,19 +12,14 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class v_KagentMaterilPrices
+    public partial class v_MaterilPrices
     {
         public int MatId { get; set; }
-        public int KaId { get; set; }
         public Nullable<decimal> Price { get; set; }
-        public Nullable<decimal> Discount { get; set; }
-        public Nullable<int> PTypeId { get; set; }
+        public int PTypeId { get; set; }
         public string MatName { get; set; }
-        public string KaName { get; set; }
         public string MatGrpName { get; set; }
-        public string KaGrpName { get; set; }
         public string PriceTypeName { get; set; }
         public string Artikul { get; set; }
-        public int KType { get; set; }
     }
 }

@@ -60,6 +60,7 @@
             this.accordionControlElement26 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement44 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement45 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.accordionControlElement48 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement27 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement28 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement29 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -94,9 +95,9 @@
             // mainContainer
             // 
             this.mainContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainContainer.Location = new System.Drawing.Point(48, 31);
+            this.mainContainer.Location = new System.Drawing.Point(250, 31);
             this.mainContainer.Name = "mainContainer";
-            this.mainContainer.Size = new System.Drawing.Size(1277, 644);
+            this.mainContainer.Size = new System.Drawing.Size(1075, 644);
             this.mainContainer.TabIndex = 0;
             // 
             // TabImageCollection
@@ -136,9 +137,8 @@
             this.accordionControl1.Images = this.TabImageCollection;
             this.accordionControl1.Location = new System.Drawing.Point(0, 31);
             this.accordionControl1.Name = "accordionControl1";
-            this.accordionControl1.OptionsMinimizing.State = DevExpress.XtraBars.Navigation.AccordionControlState.Minimized;
             this.accordionControl1.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Touch;
-            this.accordionControl1.Size = new System.Drawing.Size(48, 644);
+            this.accordionControl1.Size = new System.Drawing.Size(250, 644);
             this.accordionControl1.TabIndex = 1;
             this.accordionControl1.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
             this.accordionControl1.ElementClick += new DevExpress.XtraBars.Navigation.ElementClickEventHandler(this.accordionControl1_ElementClick);
@@ -342,7 +342,8 @@
             // accordionControlElement44
             // 
             this.accordionControlElement44.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
-            this.accordionControlElement45});
+            this.accordionControlElement45,
+            this.accordionControlElement48});
             this.accordionControlElement44.Expanded = true;
             this.accordionControlElement44.ImageOptions.ImageIndex = 7;
             this.accordionControlElement44.Name = "accordionControlElement44";
@@ -355,6 +356,14 @@
             this.accordionControlElement45.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accordionControlElement45.Text = "Продажі";
             this.accordionControlElement45.Click += new System.EventHandler(this.accordionControlElement45_Click);
+            // 
+            // accordionControlElement48
+            // 
+            this.accordionControlElement48.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("accordionControlElement48.ImageOptions.SvgImage")));
+            this.accordionControlElement48.Name = "accordionControlElement48";
+            this.accordionControlElement48.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.accordionControlElement48.Text = "Платежі";
+            this.accordionControlElement48.Click += new System.EventHandler(this.accordionControlElement48_Click);
             // 
             // accordionControlElement27
             // 
@@ -490,6 +499,7 @@
             // 
             this.accordionControlElement46.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.accordionControlElement47});
+            this.accordionControlElement46.Expanded = true;
             this.accordionControlElement46.ImageOptions.ImageIndex = 8;
             this.accordionControlElement46.Name = "accordionControlElement46";
             this.accordionControlElement46.Text = "Налаштування";
@@ -641,5 +651,6 @@
         private DevExpress.Utils.ImageCollection imageCollection1;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement46;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement47;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement48;
     }
 }
