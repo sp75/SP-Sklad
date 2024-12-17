@@ -245,6 +245,12 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
         {
             SaveGridLayouts();
 
+            if (exp != null)
+            {
+                exp.UpdatedAt = DateTime.Now;
+                exp.UpdatedBy = DBHelper.CurrentUser.UserId;
+            }
+
             _db.SaveChanges();
 
             _db.Dispose();

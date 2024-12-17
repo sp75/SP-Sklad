@@ -283,6 +283,7 @@ namespace SP_Sklad.UserControls
         private void NewItemBtn_ItemClick(object sender, ItemClickEventArgs e)
         {
             NewItem();
+            GetData();
         }
 
         private void SettingMaterialPricesGridView_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
@@ -297,6 +298,7 @@ namespace SP_Sklad.UserControls
         private void DeleteItemBtn_ItemClick(object sender, ItemClickEventArgs e)
         {
             DeleteItem();
+            GetData();
         }
 
         private void RefrechItemBtn_ItemClick(object sender, ItemClickEventArgs e)
@@ -307,6 +309,7 @@ namespace SP_Sklad.UserControls
         private void ExecuteItemBtn_ItemClick(object sender, ItemClickEventArgs e)
         {
             ExecuteItem();
+            GetData();
         }
 
         private void PrintItemBtn_ItemClick(object sender, ItemClickEventArgs e)
@@ -317,6 +320,7 @@ namespace SP_Sklad.UserControls
         private void EditItemBtn_ItemClick(object sender, ItemClickEventArgs e)
         {
             EditItem();
+            GetData();
         }
 
         private void SettingMaterialPricesDetGrid_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
@@ -362,6 +366,11 @@ namespace SP_Sklad.UserControls
                 return;
 
             ((BaseEntities)e.Tag).Dispose();
+        }
+
+        private void CopyItemBtn_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
         }
     }
 }

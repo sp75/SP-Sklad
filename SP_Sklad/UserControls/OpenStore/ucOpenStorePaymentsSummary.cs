@@ -69,7 +69,7 @@ namespace SP_Sklad.UserControls.Warehouse
             var sql = @"SELECT 
        [SAREAID]
       ,[SAREANAME]
-      ,sum([Total]) Total
+      ,sum([Price]) Total
 	  ,sum(case when [FiscalReceipt] = 0 then [Total] else 0 end) TotalNotFiscalReceipt
       ,sum(case when [FiscalReceipt] = 1 then [Total] else 0 end) TotalFiscalReceipt
 	  ,sum(case when SALESTYPE = 0 then [Total] else 0 end) TotalCash

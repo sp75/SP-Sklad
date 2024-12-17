@@ -6,21 +6,9 @@ using System.Data;
 using System.Globalization;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using SP_Sklad.SkladData;
 using SP_Sklad.EditForm;
 using SP_Sklad.Common;
-using DevExpress.XtraTreeList;
-using System.IO;
-using System.Diagnostics;
-using SP_Sklad.Properties;
-using DevExpress.XtraTreeList.Nodes;
-using DevExpress.XtraGrid.Views.Grid;
-using DevExpress.Data;
-using SkladEngine.DBFunction;
-using SP_Sklad.WBForm;
-using DevExpress.XtraGrid;
 using OpenStore.Tranzit.Base;
 
 namespace SP_Sklad.Interfaces.Tablet.UI
@@ -64,14 +52,14 @@ namespace SP_Sklad.Interfaces.Tablet.UI
         {
             var start_date = wbStartDate.DateTime.ToString("yyyyMMddHHmmss");
             var end_date = wbEndDate.DateTime.ToString("yyyyMMddHHmmss");
-            var tt = new BaseEntities().EmployeeKagent.Where(w => w.EmployeeId == DBHelper.CurrentUser.KaId).Select(s => s.Kagent1.OpenStoreAreaId).ToList();
+            var tt = new BaseEntities().EmployeeKagent.Where(w => w.EmployeeId == DBHelper.CurrentUser.KaId && w.Kagent1.OpenStoreAreaId != null).Select(s => s.Kagent1.OpenStoreAreaId).ToList();
 
             Tranzit_OSEntities objectContext = new Tranzit_OSEntities();
 
             var sql = @"SELECT 
        [SAREAID]
       ,[SAREANAME]
-      ,sum([Total]) Total
+      ,sum([Price]) Total
 	  ,sum(case when [FiscalReceipt] = 0 then [Total] else 0 end) TotalNotFiscalReceipt
       ,sum(case when [FiscalReceipt] = 1 then [Total] else 0 end) TotalFiscalReceipt
 	  ,sum(case when SALESTYPE = 0 then [Total] else 0 end) TotalCash

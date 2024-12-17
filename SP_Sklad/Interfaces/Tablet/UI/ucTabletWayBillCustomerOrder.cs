@@ -177,7 +177,7 @@ namespace SP_Sklad.Interfaces.Tablet.UI
         {
             BaseEntities objectContext = new BaseEntities();
             var ka = KagentList.GetSelectedDataRow() as Kontragent;
-            var tt = objectContext.EmployeeKagent.Where(w => w.EmployeeId == DBHelper.CurrentUser.KaId).Select(s => s.KaId).ToList();
+            var tt = objectContext.EmployeeKagent.Where(w => w.EmployeeId == DBHelper.CurrentUser.KaId && w.Kagent1.OpenStoreAreaId != null).Select(s => s.KaId).ToList();
             var list = objectContext.v_WayBillCustomerOrder.Where(w => w.WType == w_type && w.OnDate > wbStartDate.DateTime && w.OnDate <= wbEndDate.DateTime && (w.KaId == ka.KaId || ka.KaId == 0) && w.WorkerId == DBHelper.CurrentUser.KaId)
                 .Join(objectContext.EmployeeKagent.Where(eww => eww.EmployeeId == DBHelper.CurrentUser.KaId), wb => wb.KaId, ek => ek.KaId, (wb, ek) => wb);
             e.QueryableSource = list;

@@ -258,9 +258,9 @@ namespace SP_Sklad.WBForm
                 if (e.Column.FieldName == "Price")
                 {
                     wbtd.Price = Convert.ToDecimal(e.Value);
-                    if (wbtd.ProcurementPrice.HasValue)
+                    if (wbtd.ProcurementPrice.HasValue && wbtd.ProcurementPrice > 0)
                     {
-                        wbtd.Markup =  ( wbtd.Price - wbtd.ProcurementPrice) / wbtd.ProcurementPrice * 100;
+                        wbtd.Markup = (wbtd.Price - wbtd.ProcurementPrice) / wbtd.ProcurementPrice * 100;
                         focused_dr.Markup = wbtd.Markup;
                     }
                 }
@@ -314,7 +314,7 @@ namespace SP_Sklad.WBForm
                         CreatedAt = DBHelper.ServerDateTime(),
                         Price = focused_dr.Price,
                         ProcurementPrice = focused_dr.ProcurementPrice,
-                        Markup = focused_dr.ProcurementPrice.HasValue ? (focused_dr.Price - focused_dr.ProcurementPrice) / focused_dr.ProcurementPrice * 100 : null,
+                        Markup = focused_dr.ProcurementPrice.HasValue && focused_dr.ProcurementPrice > 0 ? (focused_dr.Price - focused_dr.ProcurementPrice) / focused_dr.ProcurementPrice * 100 : null,
                         SupplierId = _db.MaterialSupplier.Where(w => w.MatId == focused_dr.MatId).Any() ? (int?)_db.MaterialSupplier.Where(w => w.MatId == focused_dr.MatId).OrderByDescending(o => o.Def).Select(s => s.KaId).FirstOrDefault() : null
                 });
 
@@ -565,7 +565,7 @@ namespace SP_Sklad.WBForm
                     int? mat_id = dr[0] == DBNull.Value ? null : (int?)Convert.ToInt32(dr[0]);
                     string articul = dr[1] == DBNull.Value ? "" : Convert.ToString(dr[1]);
                     string bar_code= dr[2] == DBNull.Value ? "" : Convert.ToString(dr[2]);
-                    decimal? procurement_price = dr[3] == DBNull.Value ? null : (decimal?)Convert.ToDecimal (dr[3]);
+                    decimal? purchase_price = dr[3] == DBNull.Value ? null : (decimal?)Convert.ToDecimal (dr[3]);
                     decimal? price = dr[4] == DBNull.Value ? null : (decimal?)Convert.ToDecimal(dr[4]);
 
                     var material = _db.v_MaterialBarCodes.Where(w => w.MatId == mat_id || w.Artikul == articul || w.BarCode == bar_code).FirstOrDefault();
@@ -586,15 +586,15 @@ namespace SP_Sklad.WBForm
                                 SettingMaterialPricesId = _wbt_id.Value,
                                 CreatedAt = DBHelper.ServerDateTime(),
                                 Price = price.Value,
-                                Markup = procurement_price.HasValue ? (price.Value - procurement_price) / procurement_price * 100 : null,
-                                ProcurementPrice = procurement_price,
+                                Markup = purchase_price.HasValue && purchase_price > 0 ? (price.Value - purchase_price) / purchase_price * 100 : null,
+                                ProcurementPrice = purchase_price,
                                 SupplierId = _db.MaterialSupplier.Where(w => w.MatId == material.MatId).Any() ? (int?)_db.MaterialSupplier.Where(w => w.MatId == material.MatId).OrderByDescending(o => o.Def).Select(s => s.KaId).FirstOrDefault() : null
                             });
                         }
                         else
                         {
-                            det.Markup = procurement_price.HasValue ? (price.Value - procurement_price) / procurement_price * 100 : null;
-                            det.ProcurementPrice = procurement_price;
+                            det.Markup = purchase_price.HasValue && purchase_price > 0 ? (price.Value - purchase_price) / purchase_price * 100 : null;
+                            det.ProcurementPrice = purchase_price;
                             det.Price = price.Value;
                         }
 

@@ -326,11 +326,24 @@ namespace SP_Sklad.MainTabs
             var _db = DB.SkladBase();
 
             var ka = (from k in _db.KagentList
-                      join ek in _db.EnterpriseWorker on k.KaId equals ek.WorkerId into gj_ek
-                      from subfg in gj_ek.DefaultIfEmpty()
-                      join ew in _db.EnterpriseWorker on subfg.EnterpriseId equals ew.EnterpriseId into gj_ew
-                      from subfg2 in gj_ew.DefaultIfEmpty()
-                      where (subfg == null || subfg2.WorkerId == DBHelper.CurrentUser.KaId) 
+                          /*      join ek in _db.EnterpriseWorker on k.KaId equals ek.WorkerId into gj_ek
+                                from subfg in gj_ek.DefaultIfEmpty()
+                                join ew in _db.EnterpriseWorker on subfg.EnterpriseId equals ew.EnterpriseId into gj_ew
+                                from subfg2 in gj_ew.DefaultIfEmpty()
+                                where (subfg == null || subfg2.WorkerId == DBHelper.CurrentUser.KaId) */
+                          /*    where (from k2 in _db.Kagent
+                                        join ek in _db.EnterpriseWorker on k2.KaId equals ek.WorkerId into gj_ek
+                                        from subfg in gj_ek.DefaultIfEmpty()
+                                        join ew in _db.EnterpriseWorker on subfg.EnterpriseId equals ew.EnterpriseId into gj_ew
+                                        from subfg2 in gj_ew.DefaultIfEmpty()
+                                        where (subfg == null || subfg2.WorkerId == DBHelper.CurrentUser.KaId) && k2.KaId == k.KaId select k2.KaId).Any()*/
+                  where !(from ek in _db.EnterpriseWorker 
+                          where k.KaId == ek.WorkerId 
+                          select ek).Any() ||
+                         (from  ek in _db.EnterpriseWorker 
+                           join ew in _db.EnterpriseWorker on ek.EnterpriseId equals ew.EnterpriseId
+                           where ew.WorkerId == DBHelper.CurrentUser.KaId  && k.KaId == ek.WorkerId
+                           select ek).Any()
                       select new
                       {
                           k.KaId,
@@ -352,7 +365,7 @@ namespace SP_Sklad.MainTabs
                           k.WId,
                           k.Notes,
                           k.KAU
-                      }).Distinct();
+                      });//.Distinct();
 
             if (KType >= 0)
             {

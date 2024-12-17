@@ -52,30 +52,28 @@ namespace SP_Sklad.Interfaces.Tablet.UI
                 return;
             }*/
 
-            var tt = new BaseEntities().EmployeeKagent.Where(w => w.EmployeeId == DBHelper.CurrentUser.KaId).Select(s => s.Kagent1.OpenStoreAreaId).ToList();
+            var tt = new BaseEntities().EmployeeKagent.Where(w => w.EmployeeId == DBHelper.CurrentUser.KaId && w.Kagent1.OpenStoreAreaId != null).Select(s => s.Kagent1.OpenStoreAreaId).ToList();
 
             Tranzit_OSEntities objectContext = new Tranzit_OSEntities();
 
-            var sql = @"SELECT [SAREANAME]
-      ,[SAREAID]
+            var sql = @"SELECT [ARTNAME]
+      ,[ARTID]
+      ,[ARTCODE]
       ,avg([PRICE]) Price
       ,sum([AMOUNT]) Amount
       ,sum([TOTAL] ) Total
       ,[UNITNAME]
-      ,[ARTNAME]
-      ,[ARTID]
-      ,[ARTCODE]
       ,[GRPID]
       ,[GRPNAME]
   FROM [Tranzit_OS].[dbo].[v_Sales]
   where (SAREAID = {2} or {2} = -1) and [SALESTIME]  between '{0}' and '{1}' {3}
-  group by [SAREANAME]
-      ,[SAREAID],[UNITNAME]
-      ,[ARTNAME]
+  group by 
+       [ARTNAME]
       ,[ARTID]
       ,[ARTCODE]
       ,[GRPID]
-      ,[GRPNAME]";
+      ,[GRPNAME]
+      ,[UNITNAME]";
 
             var list = objectContext.Database.SqlQuery<SalesSummaryView>(string.Format(sql, start_date, end_date, area.SAREAID, tt.Any() ? $"and SAREAID in ({string.Join(", ", tt)})" : "")).ToList();
 
@@ -84,8 +82,7 @@ namespace SP_Sklad.Interfaces.Tablet.UI
 
         public class SalesSummaryView
         {
-            public string SAREANAME { get; set; }
-            public int SAREAID { get; set; }
+            public int ARTID { get; set; }
             public Nullable<decimal> Total { get; set; }
             public Nullable<decimal> Price { get; set; }
             public Nullable<decimal> Amount { get; set; }

@@ -73,6 +73,8 @@ namespace SP_Sklad.WBForm
             if (exp != null)
             {
                 ExpeditionBS.DataSource = exp;
+
+                exp.SessionId =  (Guid?)UserSession.SessionId;
             }
 
             GetDetail();
@@ -103,9 +105,17 @@ namespace SP_Sklad.WBForm
 
         private void frmPriceList_FormClosed(object sender, FormClosedEventArgs e)
         {
+            exp.SessionId = null;
+            exp.UpdatedBy = UserSession.UserId;
+            exp.UpdatedAt = DateTime.Now;
+
             if (is_new_record)
             {
                 _db.DeleteWhere<Expedition>(w => w.Id == _exp_id);
+            }
+            else
+            {
+                _db.SaveChanges();
             }
 
             _db.Dispose();
