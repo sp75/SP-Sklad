@@ -404,6 +404,8 @@
             this.simpleButton24 = new DevExpress.XtraEditors.SimpleButton();
             this.dropDownButton5 = new DevExpress.XtraEditors.DropDownButton();
             this.aspNetUsersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.textEdit41 = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl74 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.ImageList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
@@ -637,6 +639,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.calcEdit7.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit11.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.aspNetUsersBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit41.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // ImageList
@@ -1104,9 +1107,7 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.textEdit15);
             this.panel3.Controls.Add(this.textEdit14);
-            this.panel3.Controls.Add(this.labelControl19);
             this.panel3.Controls.Add(this.labelControl18);
             this.panel3.Controls.Add(this.checkEdit1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1119,7 +1120,7 @@
             // textEdit15
             // 
             this.textEdit15.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.KagentBindingSource, "INN", true));
-            this.textEdit15.Location = new System.Drawing.Point(344, 65);
+            this.textEdit15.Location = new System.Drawing.Point(344, 149);
             this.textEdit15.Name = "textEdit15";
             this.textEdit15.Size = new System.Drawing.Size(313, 22);
             this.textEdit15.StyleController = this.styleController1;
@@ -1136,7 +1137,7 @@
             // 
             // labelControl19
             // 
-            this.labelControl19.Location = new System.Drawing.Point(344, 43);
+            this.labelControl19.Location = new System.Drawing.Point(344, 127);
             this.labelControl19.Name = "labelControl19";
             this.labelControl19.Size = new System.Drawing.Size(202, 16);
             this.labelControl19.StyleController = this.styleController1;
@@ -1192,6 +1193,8 @@
             // 
             // panelControl5
             // 
+            this.panelControl5.Controls.Add(this.textEdit41);
+            this.panelControl5.Controls.Add(this.labelControl74);
             this.panelControl5.Controls.Add(this.textEdit5);
             this.panelControl5.Controls.Add(this.labelControl65);
             this.panelControl5.Controls.Add(this.labelControl20);
@@ -1207,15 +1210,15 @@
             // textEdit5
             // 
             this.textEdit5.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.KagentBindingSource, "OKPO", true));
-            this.textEdit5.Location = new System.Drawing.Point(518, 106);
+            this.textEdit5.Location = new System.Drawing.Point(344, 103);
             this.textEdit5.Name = "textEdit5";
-            this.textEdit5.Size = new System.Drawing.Size(139, 22);
+            this.textEdit5.Size = new System.Drawing.Size(313, 22);
             this.textEdit5.StyleController = this.styleController1;
             this.textEdit5.TabIndex = 45;
             // 
             // labelControl65
             // 
-            this.labelControl65.Location = new System.Drawing.Point(518, 84);
+            this.labelControl65.Location = new System.Drawing.Point(344, 81);
             this.labelControl65.Name = "labelControl65";
             this.labelControl65.Size = new System.Drawing.Size(46, 16);
             this.labelControl65.StyleController = this.styleController1;
@@ -1224,7 +1227,7 @@
             // 
             // labelControl20
             // 
-            this.labelControl20.Location = new System.Drawing.Point(15, 84);
+            this.labelControl20.Location = new System.Drawing.Point(15, 81);
             this.labelControl20.Name = "labelControl20";
             this.labelControl20.Size = new System.Drawing.Size(106, 16);
             this.labelControl20.StyleController = this.styleController1;
@@ -1235,7 +1238,7 @@
             // 
             this.dateEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.KagentBindingSource, "BirthDate", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.dateEdit1.EditValue = null;
-            this.dateEdit1.Location = new System.Drawing.Point(15, 106);
+            this.dateEdit1.Location = new System.Drawing.Point(15, 103);
             this.dateEdit1.Name = "dateEdit1";
             this.dateEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -1354,8 +1357,10 @@
             // 
             // panelControl4
             // 
+            this.panelControl4.Controls.Add(this.textEdit15);
             this.panelControl4.Controls.Add(this.labelControl11);
             this.panelControl4.Controls.Add(this.checkedComboBoxEdit2);
+            this.panelControl4.Controls.Add(this.labelControl19);
             this.panelControl4.Controls.Add(this.lookUpEdit3);
             this.panelControl4.Controls.Add(this.simpleButton5);
             this.panelControl4.Controls.Add(this.UsersLookUpEdit);
@@ -4457,6 +4462,24 @@
             // 
             this.aspNetUsersBindingSource.DataSource = typeof(SP_Sklad.SkladData.AspNetUsers);
             // 
+            // textEdit41
+            // 
+            this.textEdit41.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.KagentBindingSource, "INN", true));
+            this.textEdit41.Location = new System.Drawing.Point(344, 166);
+            this.textEdit41.Name = "textEdit41";
+            this.textEdit41.Size = new System.Drawing.Size(313, 22);
+            this.textEdit41.StyleController = this.styleController1;
+            this.textEdit41.TabIndex = 47;
+            // 
+            // labelControl74
+            // 
+            this.labelControl74.Location = new System.Drawing.Point(344, 144);
+            this.labelControl74.Name = "labelControl74";
+            this.labelControl74.Size = new System.Drawing.Size(202, 16);
+            this.labelControl74.StyleController = this.styleController1;
+            this.labelControl74.TabIndex = 46;
+            this.labelControl74.Text = "Індивідуальний податковий номер";
+            // 
             // frmKAgentEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4731,6 +4754,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.calcEdit7.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit11.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.aspNetUsersBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit41.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -5071,5 +5095,7 @@
         private DevExpress.XtraEditors.CheckedComboBoxEdit checkedComboBoxEdit2;
         private DevExpress.XtraEditors.LabelControl labelControl79;
         private DevExpress.XtraEditors.CalcEdit textEdit46;
+        private DevExpress.XtraEditors.TextEdit textEdit41;
+        private DevExpress.XtraEditors.LabelControl labelControl74;
     }
 }

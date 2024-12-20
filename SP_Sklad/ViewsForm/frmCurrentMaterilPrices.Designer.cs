@@ -108,6 +108,7 @@
             this.MaterilPricesGridView.GridControl = this.MaterilPricesGrid;
             this.MaterilPricesGridView.Name = "MaterilPricesGridView";
             this.MaterilPricesGridView.OptionsBehavior.AllowIncrementalSearch = true;
+            this.MaterilPricesGridView.OptionsBehavior.AutoExpandAllGroups = true;
             this.MaterilPricesGridView.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseDownFocused;
             this.MaterilPricesGridView.OptionsView.ShowFooter = true;
             this.MaterilPricesGridView.AsyncCompleted += new System.EventHandler(this.KagentMaterilPricesGridView_AsyncCompleted);

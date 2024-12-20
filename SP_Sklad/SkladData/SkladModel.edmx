@@ -156,6 +156,12 @@
           <Property Name="Number" Type="nvarchar" MaxLength="50" />
           <Property Name="DriverId" Type="int" />
           <Property Name="СarryingСapacity" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="WIN" Type="nvarchar" MaxLength="50" />
+          <Property Name="Year" Type="datetime" />
+          <Property Name="Length" Type="int" />
+          <Property Name="Width" Type="int" />
+          <Property Name="Height" Type="int" />
+          <Property Name="Weight" Type="numeric" Precision="15" Scale="4" />
         </EntityType>
         <EntityType Name="CashDesks">
           <Key>
@@ -486,6 +492,9 @@
           <Property Name="CarId" Type="uniqueidentifier" />
           <Property Name="DriverId" Type="int" />
           <Property Name="RouteId" Type="int" />
+          <Property Name="TotalKilograms" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="TotalTareWeight" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="TotalWeight" Type="numeric" Precision="16" Scale="4" StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="ExpeditionDet">
           <Key>
@@ -2538,14 +2547,14 @@ warning 6002: The table/view 'sp_base.dbo.v_Expedition' does not have a primary 
           <Property Name="UpdatedBy" Type="int" />
           <Property Name="SessionId" Type="uniqueidentifier" />
           <Property Name="CarId" Type="uniqueidentifier" />
-          <Property Name="TotalKilograms" Type="numeric" Precision="38" Scale="4" />
+          <Property Name="TotalKilograms" Type="numeric" Precision="15" Scale="4" />
           <Property Name="DriverName" Type="nvarchar" MaxLength="100" />
           <Property Name="DriverId" Type="int" />
           <Property Name="RouteId" Type="int" />
           <Property Name="RouteName" Type="nvarchar" MaxLength="50" />
           <Property Name="Duration" Type="datetime" />
-          <Property Name="TotalTareWeight" Type="numeric" Precision="38" Scale="4" />
-          <Property Name="TotalWeight" Type="numeric" Precision="38" Scale="4" />
+          <Property Name="TotalTareWeight" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="TotalWeight" Type="numeric" Precision="16" Scale="4" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_ExpeditionDet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -7797,7 +7806,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_WBDAP_POSID">
-          <End Role="WaybillDet" Type="Self.WaybillDet" Multiplicity="1" />
+          <End Role="WaybillDet" Type="Self.WaybillDet" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="WayBillDetAddProps" Type="Self.WayBillDetAddProps" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="WaybillDet">
@@ -9589,6 +9600,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <Property Name="AmountOut" Type="numeric" Precision="38" Scale="4" />
                 <Property Name="TotalOut" Type="numeric" Precision="38" Scale="2" />
                 <Property Name="PersonName" Type="nvarchar" MaxLength="100" />
+                <Property Name="KaGrpName" Type="nvarchar" MaxLength="50" />
+                <Property Name="GrpName" Type="nvarchar" MaxLength="128" Nullable="false" />
               </RowType>
             </CollectionType>
           </ReturnType>
@@ -20222,6 +20235,12 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_Cars_Kagent" FromRole="Cars" ToRole="Kagent" />
           <NavigationProperty Name="Expedition" Relationship="BaseModel.FK_Expedition_Cars" FromRole="Cars" ToRole="Expedition" />
           <Property Name="СarryingСapacity" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="WIN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Year" Type="DateTime" Precision="3" />
+          <Property Name="Length" Type="Int32" />
+          <Property Name="Width" Type="Int32" />
+          <Property Name="Height" Type="Int32" />
+          <Property Name="Weight" Type="Decimal" Precision="15" Scale="4" />
         </EntityType>
         <Association Name="FK_Routes_Cars">
           <End Type="BaseModel.Cars" Role="Cars" Multiplicity="0..1" />
@@ -23303,6 +23322,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="RouteId" Type="Int32" />
           <NavigationProperty Name="Cars" Relationship="BaseModel.FK_Expedition_Cars" FromRole="Expedition" ToRole="Cars" />
           <NavigationProperty Name="ExpeditionDet" Relationship="BaseModel.FK_ExpeditionDet_Expedition" FromRole="Expedition" ToRole="ExpeditionDet" />
+          <Property Name="TotalKilograms" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="TotalTareWeight" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="TotalWeight" Type="Decimal" Precision="16" Scale="4" annotation:StoreGeneratedPattern="Computed" />
         </EntityType>
         <Association Name="FK_Expedition_Cars">
           <End Type="BaseModel.Cars" Role="Cars" Multiplicity="0..1" />
@@ -23351,14 +23373,14 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="UpdatedBy" Type="Int32" />
           <Property Name="SessionId" Type="Guid" />
           <Property Name="CarId" Type="Guid" />
-          <Property Name="TotalKilograms" Type="Decimal" Precision="38" Scale="4" />
+          <Property Name="TotalKilograms" Type="Decimal" Precision="15" Scale="4" />
           <Property Name="DriverName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="DriverId" Type="Int32" />
           <Property Name="RouteId" Type="Int32" />
           <Property Name="RouteName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Duration" Type="DateTime" Precision="3" />
-          <Property Name="TotalTareWeight" Type="Decimal" Precision="38" Scale="4" />
-          <Property Name="TotalWeight" Type="Decimal" Precision="38" Scale="4" />
+          <Property Name="TotalTareWeight" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="TotalWeight" Type="Decimal" Precision="16" Scale="4" />
         </EntityType>
         <ComplexType Name="GetWayBillList_Result">
           <Property Type="Guid" Name="Id" Nullable="false" />
@@ -28700,6 +28722,12 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="Cars">
             <EntityTypeMapping TypeName="BaseModel.Cars">
               <MappingFragment StoreEntitySet="Cars">
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="Width" ColumnName="Width" />
+                <ScalarProperty Name="Length" ColumnName="Length" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="WIN" ColumnName="WIN" />
                 <ScalarProperty Name="СarryingСapacity" ColumnName="СarryingСapacity" />
                 <ScalarProperty Name="DriverId" ColumnName="DriverId" />
                 <ScalarProperty Name="Number" ColumnName="Number" />
@@ -30476,6 +30504,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="Expedition">
             <EntityTypeMapping TypeName="BaseModel.Expedition">
               <MappingFragment StoreEntitySet="Expedition">
+                <ScalarProperty Name="TotalWeight" ColumnName="TotalWeight" />
+                <ScalarProperty Name="TotalTareWeight" ColumnName="TotalTareWeight" />
+                <ScalarProperty Name="TotalKilograms" ColumnName="TotalKilograms" />
                 <ScalarProperty Name="RouteId" ColumnName="RouteId" />
                 <ScalarProperty Name="DriverId" ColumnName="DriverId" />
                 <ScalarProperty Name="CarId" ColumnName="CarId" />

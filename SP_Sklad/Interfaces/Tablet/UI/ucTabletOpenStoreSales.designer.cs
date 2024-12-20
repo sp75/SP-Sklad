@@ -29,9 +29,9 @@
         ///
         private void InitializeComponent()
         {
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions5 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions3 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucTabletOpenStoreSales));
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions6 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions4 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
             this.windowsUIButtonPanel = new DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -87,12 +87,12 @@
             this.windowsUIButtonPanel.AppearanceButton.Pressed.Options.UseFont = true;
             this.windowsUIButtonPanel.AppearanceButton.Pressed.Options.UseForeColor = true;
             this.windowsUIButtonPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(73)))), ((int)(((byte)(88)))));
-            windowsUIButtonImageOptions5.ImageUri.Uri = "Refresh;Size32x32;GrayScaled";
-            windowsUIButtonImageOptions5.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions5.SvgImage")));
-            windowsUIButtonImageOptions6.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions6.SvgImage")));
+            windowsUIButtonImageOptions3.ImageUri.Uri = "Refresh;Size32x32;GrayScaled";
+            windowsUIButtonImageOptions3.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions3.SvgImage")));
+            windowsUIButtonImageOptions4.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions4.SvgImage")));
             this.windowsUIButtonPanel.Buttons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Оновити список", true, windowsUIButtonImageOptions5, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", 0, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Експорт в Excel", true, windowsUIButtonImageOptions6, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", 1, true, null, true, false, true, null, -1, false)});
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Оновити список", true, windowsUIButtonImageOptions3, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", 0, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Експорт в Excel", true, windowsUIButtonImageOptions4, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", 1, true, null, true, false, true, null, -1, false)});
             this.windowsUIButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.windowsUIButtonPanel.EnableImageTransparency = true;
             this.windowsUIButtonPanel.Location = new System.Drawing.Point(0, 540);
@@ -149,6 +149,7 @@
             this.gridView1.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Total", this.bandedGridColumn4, "{0:0.00}")});
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.AlignGroupSummaryInGroupRow = DevExpress.Utils.DefaultBoolean.True;
             this.gridView1.OptionsBehavior.Editable = false;
             this.gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.gridView1.OptionsView.ColumnHeaderAutoHeight = DevExpress.Utils.DefaultBoolean.True;
@@ -165,7 +166,7 @@
             this.colMatName.FieldName = "ARTNAME";
             this.colMatName.Name = "colMatName";
             this.colMatName.Visible = true;
-            this.colMatName.VisibleIndex = 0;
+            this.colMatName.VisibleIndex = 1;
             this.colMatName.Width = 489;
             // 
             // repositoryItemMemoEdit1
@@ -179,7 +180,7 @@
             this.colArtikul.FieldName = "ARTCODE";
             this.colArtikul.Name = "colArtikul";
             this.colArtikul.Visible = true;
-            this.colArtikul.VisibleIndex = 1;
+            this.colArtikul.VisibleIndex = 2;
             this.colArtikul.Width = 165;
             // 
             // repositoryItemPopupContainerEdit1
@@ -195,7 +196,7 @@
             this.colMsrName.FieldName = "UNITNAME";
             this.colMsrName.Name = "colMsrName";
             this.colMsrName.Visible = true;
-            this.colMsrName.VisibleIndex = 3;
+            this.colMsrName.VisibleIndex = 4;
             // 
             // bandedGridColumn1
             // 
@@ -205,7 +206,7 @@
             this.bandedGridColumn1.FieldName = "Price";
             this.bandedGridColumn1.Name = "bandedGridColumn1";
             this.bandedGridColumn1.Visible = true;
-            this.bandedGridColumn1.VisibleIndex = 4;
+            this.bandedGridColumn1.VisibleIndex = 5;
             this.bandedGridColumn1.Width = 123;
             // 
             // bandedGridColumn2
@@ -214,7 +215,7 @@
             this.bandedGridColumn2.FieldName = "GRPNAME";
             this.bandedGridColumn2.Name = "bandedGridColumn2";
             this.bandedGridColumn2.Visible = true;
-            this.bandedGridColumn2.VisibleIndex = 3;
+            this.bandedGridColumn2.VisibleIndex = 0;
             this.bandedGridColumn2.Width = 156;
             // 
             // bandedGridColumn4
@@ -227,7 +228,7 @@
             this.bandedGridColumn4.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Total", "{0:0.##}")});
             this.bandedGridColumn4.Visible = true;
-            this.bandedGridColumn4.VisibleIndex = 5;
+            this.bandedGridColumn4.VisibleIndex = 6;
             this.bandedGridColumn4.Width = 128;
             // 
             // bandedGridColumn5
@@ -238,7 +239,7 @@
             this.bandedGridColumn5.FieldName = "Amount";
             this.bandedGridColumn5.Name = "bandedGridColumn5";
             this.bandedGridColumn5.Visible = true;
-            this.bandedGridColumn5.VisibleIndex = 2;
+            this.bandedGridColumn5.VisibleIndex = 3;
             this.bandedGridColumn5.Width = 128;
             // 
             // repositoryItemCheckEdit1

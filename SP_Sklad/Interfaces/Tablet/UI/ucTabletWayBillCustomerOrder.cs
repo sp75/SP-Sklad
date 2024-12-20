@@ -190,7 +190,7 @@ namespace SP_Sklad.Interfaces.Tablet.UI
         {
             WbGridView.SaveLayoutToStream(wh_layout_stream);
 
-            WbGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + reg_layout_path);
+   //         WbGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + reg_layout_path);
 
             if (!DesignMode)
             {

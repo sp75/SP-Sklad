@@ -32,6 +32,9 @@ namespace SP_Sklad.SkladData
         public Nullable<System.Guid> CarId { get; set; }
         public Nullable<int> DriverId { get; set; }
         public Nullable<int> RouteId { get; set; }
+        public Nullable<decimal> TotalKilograms { get; set; }
+        public Nullable<decimal> TotalTareWeight { get; set; }
+        public Nullable<decimal> TotalWeight { get; set; }
     
         public virtual Cars Cars { get; set; }
         public virtual ICollection<ExpeditionDet> ExpeditionDet { get; set; }

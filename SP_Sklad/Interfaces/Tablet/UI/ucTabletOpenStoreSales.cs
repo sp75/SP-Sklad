@@ -100,7 +100,7 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             var top_r = gridView1.TopRowIndex;
 
             gridControl1.DataSource = GetDataSource();
-            gridView1.ExpandAllGroups();
+       //     gridView1.ExpandAllGroups();
 
             gridView1.TopRowIndex = top_r;
             gridView1.FocusedRowHandle = h;

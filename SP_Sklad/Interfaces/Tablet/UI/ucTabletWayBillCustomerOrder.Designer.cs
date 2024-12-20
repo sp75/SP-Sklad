@@ -276,7 +276,10 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             this.gridColumn8});
             this.WbGridView.GridControl = this.WBGridControl;
             this.WbGridView.GroupCount = 1;
+            this.WbGridView.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "TotalAmount", this.gridColumn8, "{0:0.##}")});
             this.WbGridView.Name = "WbGridView";
+            this.WbGridView.OptionsBehavior.AlignGroupSummaryInGroupRow = DevExpress.Utils.DefaultBoolean.True;
             this.WbGridView.OptionsBehavior.AllowIncrementalSearch = true;
             this.WbGridView.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseDownFocused;
             this.WbGridView.OptionsBehavior.ReadOnly = true;
@@ -297,8 +300,6 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             this.gridColumn1.OptionsColumn.AllowSize = false;
             this.gridColumn1.OptionsColumn.FixedWidth = true;
             this.gridColumn1.OptionsColumn.ShowCaption = false;
-            this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 0;
             this.gridColumn1.Width = 25;
             // 
             // repositoryItemImageComboBox1
@@ -394,7 +395,7 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             this.gridColumn3.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "Num", "{0}")});
             this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 2;
+            this.gridColumn3.VisibleIndex = 1;
             this.gridColumn3.Width = 103;
             // 
             // gridColumn4
@@ -406,7 +407,7 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.Date;
             this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 3;
+            this.gridColumn4.VisibleIndex = 2;
             this.gridColumn4.Width = 155;
             // 
             // gridColumn5
@@ -415,7 +416,7 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             this.gridColumn5.FieldName = "KaName";
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 4;
+            this.gridColumn5.VisibleIndex = 0;
             this.gridColumn5.Width = 268;
             // 
             // gridColumn6
@@ -424,7 +425,7 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             this.gridColumn6.FieldName = "SummAll";
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 4;
+            this.gridColumn6.VisibleIndex = 3;
             this.gridColumn6.Width = 107;
             // 
             // gridColumn40
@@ -433,7 +434,7 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             this.gridColumn40.FieldName = "Notes";
             this.gridColumn40.Name = "gridColumn40";
             this.gridColumn40.Visible = true;
-            this.gridColumn40.VisibleIndex = 5;
+            this.gridColumn40.VisibleIndex = 4;
             this.gridColumn40.Width = 161;
             // 
             // gridColumn42
@@ -475,7 +476,7 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             this.gridColumn8.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "TotalAmount", "{0:0.##}")});
             this.gridColumn8.Visible = true;
-            this.gridColumn8.VisibleIndex = 6;
+            this.gridColumn8.VisibleIndex = 5;
             this.gridColumn8.Width = 121;
             // 
             // repositoryItemImageComboBox42
@@ -714,7 +715,6 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             this.DeleteItemBtn.Caption = "Видалити";
             this.DeleteItemBtn.Id = 3;
             this.DeleteItemBtn.ImageOptions.ImageIndex = 5;
-          
             this.DeleteItemBtn.Name = "DeleteItemBtn";
             this.DeleteItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.DeleteItemBtn_ItemClick);
             // 
@@ -731,7 +731,6 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             this.ExecuteItemBtn.Caption = "Відвантажити весь товар";
             this.ExecuteItemBtn.Id = 5;
             this.ExecuteItemBtn.ImageOptions.ImageIndex = 6;
-         
             this.ExecuteItemBtn.Name = "ExecuteItemBtn";
             this.ExecuteItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ExecuteItemBtn_ItemClick);
             // 
@@ -1034,7 +1033,7 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             this.xtraTabPage1.ImageOptions.ImageIndex = 10;
             this.xtraTabPage1.Name = "xtraTabPage1";
             this.xtraTabPage1.PageVisible = false;
-            this.xtraTabPage1.Size = new System.Drawing.Size(512, 557);
+            this.xtraTabPage1.Size = new System.Drawing.Size(566, 563);
             this.xtraTabPage1.Text = "Інформація про накладну";
             // 
             // vGridControl1
@@ -1065,7 +1064,7 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             this.row9,
             this.row18,
             this.category2});
-            this.vGridControl1.Size = new System.Drawing.Size(512, 557);
+            this.vGridControl1.Size = new System.Drawing.Size(566, 563);
             this.vGridControl1.TabIndex = 1;
             // 
             // repositoryItemImageComboBox12
@@ -1321,7 +1320,7 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             this.xtraTabPage2.ImageOptions.ImageIndex = 11;
             this.xtraTabPage2.Name = "xtraTabPage2";
             this.xtraTabPage2.PageVisible = false;
-            this.xtraTabPage2.Size = new System.Drawing.Size(512, 557);
+            this.xtraTabPage2.Size = new System.Drawing.Size(566, 563);
             this.xtraTabPage2.Text = "Зв\'язані документи";
             // 
             // ucRelDocGrid1
@@ -1330,7 +1329,7 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             this.ucRelDocGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucRelDocGrid1.Location = new System.Drawing.Point(0, 0);
             this.ucRelDocGrid1.Name = "ucRelDocGrid1";
-            this.ucRelDocGrid1.Size = new System.Drawing.Size(512, 557);
+            this.ucRelDocGrid1.Size = new System.Drawing.Size(566, 563);
             this.ucRelDocGrid1.TabIndex = 1;
             // 
             // xtraTabPage24
@@ -1339,7 +1338,7 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             this.xtraTabPage24.ImageOptions.ImageIndex = 12;
             this.xtraTabPage24.Name = "xtraTabPage24";
             this.xtraTabPage24.PageVisible = false;
-            this.xtraTabPage24.Size = new System.Drawing.Size(512, 557);
+            this.xtraTabPage24.Size = new System.Drawing.Size(566, 563);
             this.xtraTabPage24.Text = "Оплата по документу";
             // 
             // ucDocumentPaymentGrid
@@ -1347,7 +1346,7 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             this.ucDocumentPaymentGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucDocumentPaymentGrid.Location = new System.Drawing.Point(0, 0);
             this.ucDocumentPaymentGrid.Name = "ucDocumentPaymentGrid";
-            this.ucDocumentPaymentGrid.Size = new System.Drawing.Size(512, 557);
+            this.ucDocumentPaymentGrid.Size = new System.Drawing.Size(566, 563);
             this.ucDocumentPaymentGrid.TabIndex = 0;
             // 
             // styleController1

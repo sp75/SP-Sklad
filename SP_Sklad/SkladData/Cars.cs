@@ -25,6 +25,12 @@ namespace SP_Sklad.SkladData
         public string Number { get; set; }
         public Nullable<int> DriverId { get; set; }
         public Nullable<decimal> СarryingСapacity { get; set; }
+        public string WIN { get; set; }
+        public Nullable<System.DateTime> Year { get; set; }
+        public Nullable<int> Length { get; set; }
+        public Nullable<int> Width { get; set; }
+        public Nullable<int> Height { get; set; }
+        public Nullable<decimal> Weight { get; set; }
     
         public virtual ICollection<Routes> Routes { get; set; }
         public virtual Kagent Kagent { get; set; }
