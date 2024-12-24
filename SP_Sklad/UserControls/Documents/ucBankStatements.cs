@@ -26,11 +26,7 @@ namespace SP_Sklad.UserControls
         private string reg_layout_path = "ucBankStatements\\BankStatementsGridView";
 
         BaseEntities _db { get; set; }
-        public BarButtonItem ExtEditBtn { get; set; }
-        public BarButtonItem ExtDeleteBtn { get; set; }
-        public BarButtonItem ExtExecuteBtn { get; set; }
-        public BarButtonItem ExtCopyBtn { get; set; }
-        public BarButtonItem ExtPrintBtn { get; set; }
+
 
         public v_BankStatements bank_statements_row => BankStatementsGridView.GetFocusedRow() is NotLoadedObject ? null : BankStatementsGridView.GetFocusedRow() as v_BankStatements;
 
@@ -219,32 +215,29 @@ namespace SP_Sklad.UserControls
         {
             xtraTabControl6_SelectedPageChanged(null, null);
 
-            ExtDeleteBtn.Enabled = false;
-            ExtExecuteBtn.Enabled = false;
-            ExtEditBtn.Enabled = false;
-            ExtCopyBtn.Enabled = false;
-            ExtPrintBtn.Enabled = false;
+            DeleteItemBtn.Enabled = false;
+            ExecuteItemBtn.Enabled = false;
+            EditItemBtn.Enabled = false;
+            CopyItemBtn.Enabled = false;
+            PrintItemBtn.Enabled = false;
 
             if (bank_statements_row == null)
             {
                 return;
             }
 
-            ExtDeleteBtn.Enabled = (bank_statements_row != null && bank_statements_row.Checked == 0 && user_access.CanDelete == 1);
-            ExtExecuteBtn.Enabled = (bank_statements_row != null && user_access.CanPost == 1);
-            ExtEditBtn.Enabled = (bank_statements_row != null && user_access.CanModify == 1 && bank_statements_row.Checked == 0);
-            ExtCopyBtn.Enabled = (bank_statements_row != null && user_access.CanModify == 1);
-            ExtPrintBtn.Enabled = (bank_statements_row != null);
+            DeleteItemBtn.Enabled = (bank_statements_row != null && bank_statements_row.Checked == 0 && user_access.CanDelete == 1);
+            ExecuteItemBtn.Enabled = (bank_statements_row != null && user_access.CanPost == 1);
+            EditItemBtn.Enabled = (bank_statements_row != null && user_access.CanModify == 1 && bank_statements_row.Checked == 0);
+            CopyItemBtn.Enabled = (bank_statements_row != null && user_access.CanModify == 1);
+            PrintItemBtn.Enabled = (bank_statements_row != null);
+
+            if (bank_statements_row?.Checked == 0) ExecuteItemBtn.ImageIndex = 16;
+            else ExecuteItemBtn.ImageIndex = 6;
         }
 
         private void PMGridPopupMenu_BeforePopup(object sender, CancelEventArgs e)
         {
-            DeleteItemBtn.Enabled = ExtDeleteBtn.Enabled;
-            ExecuteItemBtn.Enabled = ExtExecuteBtn.Enabled;
-            EditItemBtn.Enabled = ExtEditBtn.Enabled;
-            CopyItemBtn.Enabled = ExtCopyBtn.Enabled;
-            PrintItemBtn.Enabled = ExtPrintBtn.Enabled;
-
             WbHistoryBtn.Enabled = IHelper.GetUserAccess(39)?.CanView == 1;
         }
 

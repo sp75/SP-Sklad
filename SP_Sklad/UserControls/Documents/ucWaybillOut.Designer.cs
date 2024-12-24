@@ -68,11 +68,7 @@
             this.ucDocumentFilterPanel = new SP_Sklad.UserControls.ucDocumentFilterPanel();
             this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
-            this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
-            this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
-            this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
-            this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.standaloneBarDockControl2 = new DevExpress.XtraBars.StandaloneBarDockControl();
+            this.bar1 = new DevExpress.XtraBars.Bar();
             this.NewItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.CopyItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.EditItemBtn = new DevExpress.XtraBars.BarButtonItem();
@@ -80,10 +76,15 @@
             this.RefrechItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.ExecuteItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.PrintItemBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.ExportToExcelBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.standaloneBarDockControl2 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.NewPayDocBtn = new DevExpress.XtraBars.BarButtonItem();
             this.WbHistoryBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
-            this.ExportToExcelBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.MoveToStoreWarehouseBtn = new DevExpress.XtraBars.BarButtonItem();
@@ -162,7 +163,7 @@
             this.splitContainerControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainerControl2.FixedPanel = DevExpress.XtraEditors.SplitFixedPanel.Panel2;
             this.splitContainerControl2.Horizontal = false;
-            this.splitContainerControl2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerControl2.Location = new System.Drawing.Point(0, 24);
             this.splitContainerControl2.Name = "splitContainerControl2";
             // 
             // splitContainerControl2.Panel1
@@ -177,7 +178,7 @@
             // 
             this.splitContainerControl2.Panel2.Controls.Add(this.xtraTabControl2);
             this.splitContainerControl2.Panel2.Text = "Panel2";
-            this.splitContainerControl2.Size = new System.Drawing.Size(1375, 659);
+            this.splitContainerControl2.Size = new System.Drawing.Size(1375, 635);
             this.splitContainerControl2.SplitterPosition = 227;
             this.splitContainerControl2.TabIndex = 1;
             this.splitContainerControl2.Text = "splitContainerControl2";
@@ -198,7 +199,7 @@
             this.repositoryItemImageComboBox1,
             this.CheckedItemImageComboBox,
             this.repositoryItemImageComboBox42});
-            this.WBGridControl.Size = new System.Drawing.Size(1375, 368);
+            this.WBGridControl.Size = new System.Drawing.Size(1375, 344);
             this.WBGridControl.TabIndex = 2;
             this.WBGridControl.UseEmbeddedNavigator = true;
             this.WBGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -292,8 +293,8 @@
             this.imageCollection1.Images.SetKeyName(4, "edit_3");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.close, "close", typeof(global::SP_Sklad.Properties.Resources), 5);
             this.imageCollection1.Images.SetKeyName(5, "close");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.execute_16x16_red, "execute_16x16_red", typeof(global::SP_Sklad.Properties.Resources), 6);
-            this.imageCollection1.Images.SetKeyName(6, "execute_16x16_red");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.check_file_red, "check_file_red", typeof(global::SP_Sklad.Properties.Resources), 6);
+            this.imageCollection1.Images.SetKeyName(6, "check_file_red");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.preview_2, "preview_2", typeof(global::SP_Sklad.Properties.Resources), 7);
             this.imageCollection1.Images.SetKeyName(7, "preview_2");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.refresh_office, "refresh_office", typeof(global::SP_Sklad.Properties.Resources), 8);
@@ -325,6 +326,8 @@
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.print_selected_documents, "print_selected_documents", typeof(global::SP_Sklad.Properties.Resources), 21);
             this.imageCollection1.Images.SetKeyName(21, "print_selected_documents");
             this.imageCollection1.Images.SetKeyName(22, "in_transit.png");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.check_file, "check_file", typeof(global::SP_Sklad.Properties.Resources), 23);
+            this.imageCollection1.Images.SetKeyName(23, "check_file");
             // 
             // gridColumn2
             // 
@@ -551,6 +554,8 @@
             // 
             // barManager1
             // 
+            this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
+            this.bar1});
             this.barManager1.DockControls.Add(this.barDockControlTop);
             this.barManager1.DockControls.Add(this.barDockControlBottom);
             this.barManager1.DockControls.Add(this.barDockControlLeft);
@@ -574,50 +579,28 @@
             this.barButtonItem2,
             this.barButtonItem3,
             this.MoveToStoreWarehouseBtn});
-            this.barManager1.MaxItemId = 39;
+            this.barManager1.MaxItemId = 40;
             // 
-            // barDockControlTop
+            // bar1
             // 
-            this.barDockControlTop.CausesValidation = false;
-            this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1375, 0);
-            // 
-            // barDockControlBottom
-            // 
-            this.barDockControlBottom.CausesValidation = false;
-            this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 659);
-            this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1375, 0);
-            // 
-            // barDockControlLeft
-            // 
-            this.barDockControlLeft.CausesValidation = false;
-            this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 659);
-            // 
-            // barDockControlRight
-            // 
-            this.barDockControlRight.CausesValidation = false;
-            this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1375, 0);
-            this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 659);
-            // 
-            // standaloneBarDockControl2
-            // 
-            this.standaloneBarDockControl2.AutoSize = true;
-            this.standaloneBarDockControl2.CausesValidation = false;
-            this.standaloneBarDockControl2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.standaloneBarDockControl2.Location = new System.Drawing.Point(0, 0);
-            this.standaloneBarDockControl2.Manager = this.barManager1;
-            this.standaloneBarDockControl2.Name = "standaloneBarDockControl2";
-            this.standaloneBarDockControl2.Size = new System.Drawing.Size(1375, 0);
-            this.standaloneBarDockControl2.Text = "standaloneBarDockControl2";
+            this.bar1.BarName = "Custom 1";
+            this.bar1.DockCol = 0;
+            this.bar1.DockRow = 0;
+            this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.NewItemBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.CopyItemBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.EditItemBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.DeleteItemBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.RefrechItemBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.ExecuteItemBtn, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.PrintItemBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.ExportToExcelBtn, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1)});
+            this.bar1.OptionsBar.AllowQuickCustomization = false;
+            this.bar1.OptionsBar.DrawDragBorder = false;
+            this.bar1.OptionsBar.UseWholeRow = true;
+            this.bar1.Text = "Custom 1";
             // 
             // NewItemBtn
             // 
@@ -625,6 +608,7 @@
             this.NewItemBtn.Id = 0;
             this.NewItemBtn.ImageOptions.ImageIndex = 2;
             this.NewItemBtn.Name = "NewItemBtn";
+            this.NewItemBtn.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.NewItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.NewItemBtn_ItemClick);
             // 
             // CopyItemBtn
@@ -648,7 +632,6 @@
             this.DeleteItemBtn.Caption = "Видалити";
             this.DeleteItemBtn.Id = 3;
             this.DeleteItemBtn.ImageOptions.ImageIndex = 5;
-    
             this.DeleteItemBtn.Name = "DeleteItemBtn";
             this.DeleteItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.DeleteItemBtn_ItemClick);
             // 
@@ -662,10 +645,9 @@
             // 
             // ExecuteItemBtn
             // 
-            this.ExecuteItemBtn.Caption = "Провести";
+            this.ExecuteItemBtn.Caption = "Провести/Сторнувати";
             this.ExecuteItemBtn.Id = 5;
             this.ExecuteItemBtn.ImageOptions.ImageIndex = 6;
-     
             this.ExecuteItemBtn.Name = "ExecuteItemBtn";
             this.ExecuteItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ExecuteItemBtn_ItemClick);
             // 
@@ -676,6 +658,66 @@
             this.PrintItemBtn.ImageOptions.ImageIndex = 7;
             this.PrintItemBtn.Name = "PrintItemBtn";
             this.PrintItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.PrintItemBtn_ItemClick);
+            // 
+            // ExportToExcelBtn
+            // 
+            this.ExportToExcelBtn.Caption = "Експорт списка в Excel...";
+            this.ExportToExcelBtn.Id = 35;
+            this.ExportToExcelBtn.ImageOptions.ImageIndex = 14;
+            this.ExportToExcelBtn.Name = "ExportToExcelBtn";
+            this.ExportToExcelBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ExportToExcelBtn_ItemClick);
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.barButtonItem1.Caption = "Встановити налаштування сітки по замовчуванню";
+            this.barButtonItem1.Id = 34;
+            this.barButtonItem1.ImageOptions.ImageIndex = 13;
+            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
+            // 
+            // barDockControlTop
+            // 
+            this.barDockControlTop.CausesValidation = false;
+            this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlTop.Manager = this.barManager1;
+            this.barDockControlTop.Size = new System.Drawing.Size(1375, 24);
+            // 
+            // barDockControlBottom
+            // 
+            this.barDockControlBottom.CausesValidation = false;
+            this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 659);
+            this.barDockControlBottom.Manager = this.barManager1;
+            this.barDockControlBottom.Size = new System.Drawing.Size(1375, 0);
+            // 
+            // barDockControlLeft
+            // 
+            this.barDockControlLeft.CausesValidation = false;
+            this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
+            this.barDockControlLeft.Manager = this.barManager1;
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 635);
+            // 
+            // barDockControlRight
+            // 
+            this.barDockControlRight.CausesValidation = false;
+            this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.barDockControlRight.Location = new System.Drawing.Point(1375, 24);
+            this.barDockControlRight.Manager = this.barManager1;
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 635);
+            // 
+            // standaloneBarDockControl2
+            // 
+            this.standaloneBarDockControl2.AutoSize = true;
+            this.standaloneBarDockControl2.CausesValidation = false;
+            this.standaloneBarDockControl2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.standaloneBarDockControl2.Location = new System.Drawing.Point(0, 0);
+            this.standaloneBarDockControl2.Manager = this.barManager1;
+            this.standaloneBarDockControl2.Name = "standaloneBarDockControl2";
+            this.standaloneBarDockControl2.Size = new System.Drawing.Size(1375, 0);
+            this.standaloneBarDockControl2.Text = "standaloneBarDockControl2";
             // 
             // NewPayDocBtn
             // 
@@ -692,22 +734,6 @@
             this.WbHistoryBtn.ImageOptions.ImageIndex = 15;
             this.WbHistoryBtn.Name = "WbHistoryBtn";
             this.WbHistoryBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.WbHistoryBtn_ItemClick);
-            // 
-            // barButtonItem1
-            // 
-            this.barButtonItem1.Caption = "Встановити налаштування сітки по замовчуванню";
-            this.barButtonItem1.Id = 34;
-            this.barButtonItem1.ImageOptions.ImageIndex = 13;
-            this.barButtonItem1.Name = "barButtonItem1";
-            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
-            // 
-            // ExportToExcelBtn
-            // 
-            this.ExportToExcelBtn.Caption = "Експорт списка в Excel...";
-            this.ExportToExcelBtn.Id = 35;
-            this.ExportToExcelBtn.ImageOptions.ImageIndex = 14;
-            this.ExportToExcelBtn.Name = "ExportToExcelBtn";
-            this.ExportToExcelBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ExportToExcelBtn_ItemClick);
             // 
             // barButtonItem2
             // 
@@ -1249,5 +1275,6 @@
         private ucDocumentFilterPanel ucDocumentFilterPanel;
         private DevExpress.Utils.ImageCollection imageCollection1;
         private DevExpress.XtraBars.BarButtonItem MoveToStoreWarehouseBtn;
+        private DevExpress.XtraBars.Bar bar1;
     }
 }

@@ -46,11 +46,6 @@
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.xtraTabPage7 = new DevExpress.XtraTab.XtraTabPage();
             this.ucWayBill = new SP_Sklad.UserControls.ucWayBill();
-            this.CopyItemBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.DeleteItemBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.EditItemBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.ExecuteItemBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.PrintItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.xtraTabPage8 = new DevExpress.XtraTab.XtraTabPage();
             this.ucPayDocIn = new SP_Sklad.UserControls.ucPayDoc();
             this.xtraTabPage9 = new DevExpress.XtraTab.XtraTabPage();
@@ -100,13 +95,16 @@
             this.ucPromotions1 = new SP_Sklad.UserControls.ucPromotions();
             this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
-            this.bar1 = new DevExpress.XtraBars.Bar();
             this.NewItemBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.CopyItemBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.EditItemBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.DeleteItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.RefrechItemBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.ExecuteItemBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.PrintItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem18 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem17 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem14 = new DevExpress.XtraBars.BarButtonItem();
-            this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -403,10 +401,10 @@
             this.wbContentTab.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.wbContentTab.BorderStylePage = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.wbContentTab.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.wbContentTab.Location = new System.Drawing.Point(0, 24);
+            this.wbContentTab.Location = new System.Drawing.Point(0, 0);
             this.wbContentTab.Name = "wbContentTab";
             this.wbContentTab.SelectedTabPage = this.xtraTabPage6;
-            this.wbContentTab.Size = new System.Drawing.Size(1140, 720);
+            this.wbContentTab.Size = new System.Drawing.Size(1140, 744);
             this.wbContentTab.TabIndex = 2;
             this.wbContentTab.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage6,
@@ -443,7 +441,7 @@
             this.xtraTabPage6.Controls.Add(this.groupControl3);
             this.xtraTabPage6.Controls.Add(this.groupControl2);
             this.xtraTabPage6.Name = "xtraTabPage6";
-            this.xtraTabPage6.Size = new System.Drawing.Size(1138, 695);
+            this.xtraTabPage6.Size = new System.Drawing.Size(1138, 719);
             this.xtraTabPage6.Text = "ViewList";
             // 
             // groupControl1
@@ -456,7 +454,7 @@
             this.groupControl1.GroupStyle = DevExpress.Utils.GroupStyle.Title;
             this.groupControl1.Location = new System.Drawing.Point(0, 400);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(1138, 295);
+            this.groupControl1.Size = new System.Drawing.Size(1138, 319);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "Звіти";
             // 
@@ -533,56 +531,11 @@
             // ucWayBill
             // 
             this.ucWayBill.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucWayBill.ExtCopyBtn = this.CopyItemBtn;
-            this.ucWayBill.ExtDeleteBtn = this.DeleteItemBtn;
-            this.ucWayBill.ExtEditBtn = this.EditItemBtn;
-            this.ucWayBill.ExtExecuteBtn = this.ExecuteItemBtn;
-            this.ucWayBill.ExtPrintBtn = this.PrintItemBtn;
             this.ucWayBill.Location = new System.Drawing.Point(0, 0);
             this.ucWayBill.Name = "ucWayBill";
             this.ucWayBill.Size = new System.Drawing.Size(1138, 695);
             this.ucWayBill.TabIndex = 0;
             this.ucWayBill.w_types = "";
-            // 
-            // CopyItemBtn
-            // 
-            this.CopyItemBtn.Caption = "Копію документа";
-            this.CopyItemBtn.Id = 1;
-            this.CopyItemBtn.ImageOptions.ImageIndex = 1;
-            this.CopyItemBtn.Name = "CopyItemBtn";
-            this.CopyItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.CopyItemBtn_ItemClick);
-            // 
-            // DeleteItemBtn
-            // 
-            this.DeleteItemBtn.Caption = "Видалити";
-            this.DeleteItemBtn.Id = 3;
-            this.DeleteItemBtn.ImageOptions.ImageIndex = 3;
-            this.DeleteItemBtn.Name = "DeleteItemBtn";
-            this.DeleteItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.DeleteItemBtn_ItemClick);
-            // 
-            // EditItemBtn
-            // 
-            this.EditItemBtn.Caption = "Властивості";
-            this.EditItemBtn.Id = 2;
-            this.EditItemBtn.ImageOptions.ImageIndex = 2;
-            this.EditItemBtn.Name = "EditItemBtn";
-            this.EditItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.EditItemBtn_ItemClick);
-            // 
-            // ExecuteItemBtn
-            // 
-            this.ExecuteItemBtn.Caption = "Провести";
-            this.ExecuteItemBtn.Id = 5;
-            this.ExecuteItemBtn.ImageOptions.ImageIndex = 5;
-            this.ExecuteItemBtn.Name = "ExecuteItemBtn";
-            this.ExecuteItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ExecuteItemBtn_ItemClick);
-            // 
-            // PrintItemBtn
-            // 
-            this.PrintItemBtn.Caption = "Друк/Попередній перегляд";
-            this.PrintItemBtn.Id = 6;
-            this.PrintItemBtn.ImageOptions.ImageIndex = 6;
-            this.PrintItemBtn.Name = "PrintItemBtn";
-            this.PrintItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.PrintItemBtn_ItemClick);
             // 
             // xtraTabPage8
             // 
@@ -699,11 +652,6 @@
             // ucBankStatements
             // 
             this.ucBankStatements.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucBankStatements.ExtCopyBtn = this.CopyItemBtn;
-            this.ucBankStatements.ExtDeleteBtn = this.DeleteItemBtn;
-            this.ucBankStatements.ExtEditBtn = this.EditItemBtn;
-            this.ucBankStatements.ExtExecuteBtn = this.ExecuteItemBtn;
-            this.ucBankStatements.ExtPrintBtn = this.PrintItemBtn;
             this.ucBankStatements.Location = new System.Drawing.Point(0, 0);
             this.ucBankStatements.Name = "ucBankStatements";
             this.ucBankStatements.Size = new System.Drawing.Size(1138, 695);
@@ -719,11 +667,6 @@
             // ucProjectManagement
             // 
             this.ucProjectManagement.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucProjectManagement.ExtCopyBtn = this.CopyItemBtn;
-            this.ucProjectManagement.ExtDeleteBtn = this.DeleteItemBtn;
-            this.ucProjectManagement.ExtEditBtn = this.EditItemBtn;
-            this.ucProjectManagement.ExtExecuteBtn = this.ExecuteItemBtn;
-            this.ucProjectManagement.ExtPrintBtn = this.PrintItemBtn;
             this.ucProjectManagement.Location = new System.Drawing.Point(0, 0);
             this.ucProjectManagement.Name = "ucProjectManagement";
             this.ucProjectManagement.Size = new System.Drawing.Size(1138, 695);
@@ -769,11 +712,6 @@
             // wayBillInUserControl
             // 
             this.wayBillInUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.wayBillInUserControl.ExtCopyBtn = this.CopyItemBtn;
-            this.wayBillInUserControl.ExtDeleteBtn = this.DeleteItemBtn;
-            this.wayBillInUserControl.ExtEditBtn = this.EditItemBtn;
-            this.wayBillInUserControl.ExtExecuteBtn = this.ExecuteItemBtn;
-            this.wayBillInUserControl.ExtPrintBtn = this.PrintItemBtn;
             this.wayBillInUserControl.Location = new System.Drawing.Point(0, 0);
             this.wayBillInUserControl.Name = "wayBillInUserControl";
             this.wayBillInUserControl.Size = new System.Drawing.Size(1138, 695);
@@ -804,11 +742,6 @@
             // ucWaybillOut
             // 
             this.ucWaybillOut.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucWaybillOut.ExtCopyBtn = this.CopyItemBtn;
-            this.ucWaybillOut.ExtDeleteBtn = this.DeleteItemBtn;
-            this.ucWaybillOut.ExtEditBtn = this.EditItemBtn;
-            this.ucWaybillOut.ExtExecuteBtn = this.ExecuteItemBtn;
-            this.ucWaybillOut.ExtPrintBtn = this.PrintItemBtn;
             this.ucWaybillOut.Location = new System.Drawing.Point(0, 0);
             this.ucWaybillOut.Name = "ucWaybillOut";
             this.ucWaybillOut.Size = new System.Drawing.Size(1138, 695);
@@ -824,11 +757,6 @@
             // ucInvoices
             // 
             this.ucInvoices.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucInvoices.ExtCopyBtn = this.CopyItemBtn;
-            this.ucInvoices.ExtDeleteBtn = this.DeleteItemBtn;
-            this.ucInvoices.ExtEditBtn = this.EditItemBtn;
-            this.ucInvoices.ExtExecuteBtn = this.ExecuteItemBtn;
-            this.ucInvoices.ExtPrintBtn = this.PrintItemBtn;
             this.ucInvoices.Location = new System.Drawing.Point(0, 0);
             this.ucInvoices.Name = "ucInvoices";
             this.ucInvoices.Size = new System.Drawing.Size(1138, 695);
@@ -874,11 +802,6 @@
             // ucWayBillReturnСustomers
             // 
             this.ucWayBillReturnСustomers.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucWayBillReturnСustomers.ExtCopyBtn = this.CopyItemBtn;
-            this.ucWayBillReturnСustomers.ExtDeleteBtn = this.DeleteItemBtn;
-            this.ucWayBillReturnСustomers.ExtEditBtn = this.EditItemBtn;
-            this.ucWayBillReturnСustomers.ExtExecuteBtn = this.ExecuteItemBtn;
-            this.ucWayBillReturnСustomers.ExtPrintBtn = this.PrintItemBtn;
             this.ucWayBillReturnСustomers.Location = new System.Drawing.Point(0, 0);
             this.ucWayBillReturnСustomers.Name = "ucWayBillReturnСustomers";
             this.ucWayBillReturnСustomers.Size = new System.Drawing.Size(1138, 695);
@@ -894,11 +817,6 @@
             // ucWaybillReturnSuppliers
             // 
             this.ucWaybillReturnSuppliers.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucWaybillReturnSuppliers.ExtCopyBtn = this.CopyItemBtn;
-            this.ucWaybillReturnSuppliers.ExtDeleteBtn = this.DeleteItemBtn;
-            this.ucWaybillReturnSuppliers.ExtEditBtn = this.EditItemBtn;
-            this.ucWaybillReturnSuppliers.ExtExecuteBtn = this.ExecuteItemBtn;
-            this.ucWaybillReturnSuppliers.ExtPrintBtn = this.PrintItemBtn;
             this.ucWaybillReturnSuppliers.Location = new System.Drawing.Point(0, 0);
             this.ucWaybillReturnSuppliers.Name = "ucWaybillReturnSuppliers";
             this.ucWaybillReturnSuppliers.Size = new System.Drawing.Size(1138, 695);
@@ -942,27 +860,22 @@
             // 
             this.xtraTabPage1.Controls.Add(this.ucDiscountManagement);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(1138, 695);
+            this.xtraTabPage1.Size = new System.Drawing.Size(1138, 719);
             this.xtraTabPage1.Text = "Управління знижка";
             // 
             // ucDiscountManagement
             // 
             this.ucDiscountManagement.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucDiscountManagement.ExtCopyBtn = this.CopyItemBtn;
-            this.ucDiscountManagement.ExtDeleteBtn = this.DeleteItemBtn;
-            this.ucDiscountManagement.ExtEditBtn = this.EditItemBtn;
-            this.ucDiscountManagement.ExtExecuteBtn = this.ExecuteItemBtn;
-            this.ucDiscountManagement.ExtPrintBtn = this.PrintItemBtn;
             this.ucDiscountManagement.Location = new System.Drawing.Point(0, 0);
             this.ucDiscountManagement.Name = "ucDiscountManagement";
-            this.ucDiscountManagement.Size = new System.Drawing.Size(1138, 695);
+            this.ucDiscountManagement.Size = new System.Drawing.Size(1138, 719);
             this.ucDiscountManagement.TabIndex = 0;
             // 
             // xtraTabPage2
             // 
             this.xtraTabPage2.Controls.Add(this.ucDeliveryManagement);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(1138, 695);
+            this.xtraTabPage2.Size = new System.Drawing.Size(1138, 719);
             this.xtraTabPage2.Text = "Доставка";
             // 
             // ucDeliveryManagement
@@ -970,14 +883,14 @@
             this.ucDeliveryManagement.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucDeliveryManagement.Location = new System.Drawing.Point(0, 0);
             this.ucDeliveryManagement.Name = "ucDeliveryManagement";
-            this.ucDeliveryManagement.Size = new System.Drawing.Size(1138, 695);
+            this.ucDeliveryManagement.Size = new System.Drawing.Size(1138, 719);
             this.ucDeliveryManagement.TabIndex = 0;
             // 
             // xtraTabPage4
             // 
             this.xtraTabPage4.Controls.Add(this.ucPromotions1);
             this.xtraTabPage4.Name = "xtraTabPage4";
-            this.xtraTabPage4.Size = new System.Drawing.Size(1138, 695);
+            this.xtraTabPage4.Size = new System.Drawing.Size(1138, 719);
             this.xtraTabPage4.Text = "Акції";
             // 
             // ucPromotions1
@@ -985,7 +898,7 @@
             this.ucPromotions1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucPromotions1.Location = new System.Drawing.Point(0, 0);
             this.ucPromotions1.Name = "ucPromotions1";
-            this.ucPromotions1.Size = new System.Drawing.Size(1138, 695);
+            this.ucPromotions1.Size = new System.Drawing.Size(1138, 719);
             this.ucPromotions1.TabIndex = 0;
             // 
             // standaloneBarDockControl1
@@ -996,14 +909,11 @@
             this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 0);
             this.standaloneBarDockControl1.Manager = this.barManager1;
             this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
-            this.standaloneBarDockControl1.Size = new System.Drawing.Size(1140, 24);
+            this.standaloneBarDockControl1.Size = new System.Drawing.Size(1140, 0);
             this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
             // 
             // barManager1
             // 
-            this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
-            this.bar1,
-            this.bar3});
             this.barManager1.DockControls.Add(this.barDockControlTop);
             this.barManager1.DockControls.Add(this.barDockControlBottom);
             this.barManager1.DockControls.Add(this.barDockControlLeft);
@@ -1024,30 +934,6 @@
             this.barButtonItem18});
             this.barManager1.MaxItemId = 34;
             // 
-            // bar1
-            // 
-            this.bar1.BarName = "Custom 3";
-            this.bar1.DockCol = 0;
-            this.bar1.DockRow = 0;
-            this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Standalone;
-            this.bar1.FloatLocation = new System.Drawing.Point(296, 142);
-            this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.NewItemBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.CopyItemBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.EditItemBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.DeleteItemBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.RefrechItemBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.ExecuteItemBtn, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.PrintItemBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem18, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem17),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem14)});
-            this.bar1.OptionsBar.AllowQuickCustomization = false;
-            this.bar1.OptionsBar.DrawDragBorder = false;
-            this.bar1.OptionsBar.UseWholeRow = true;
-            this.bar1.StandaloneBarDockControl = this.standaloneBarDockControl1;
-            this.bar1.Text = "Custom 3";
-            // 
             // NewItemBtn
             // 
             this.NewItemBtn.Caption = "Додати";
@@ -1057,6 +943,30 @@
             this.NewItemBtn.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.NewItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.NewItemBtn_ItemClick);
             // 
+            // CopyItemBtn
+            // 
+            this.CopyItemBtn.Caption = "Копію документа";
+            this.CopyItemBtn.Id = 1;
+            this.CopyItemBtn.ImageOptions.ImageIndex = 1;
+            this.CopyItemBtn.Name = "CopyItemBtn";
+            this.CopyItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.CopyItemBtn_ItemClick);
+            // 
+            // EditItemBtn
+            // 
+            this.EditItemBtn.Caption = "Властивості";
+            this.EditItemBtn.Id = 2;
+            this.EditItemBtn.ImageOptions.ImageIndex = 2;
+            this.EditItemBtn.Name = "EditItemBtn";
+            this.EditItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.EditItemBtn_ItemClick);
+            // 
+            // DeleteItemBtn
+            // 
+            this.DeleteItemBtn.Caption = "Видалити";
+            this.DeleteItemBtn.Id = 3;
+            this.DeleteItemBtn.ImageOptions.ImageIndex = 3;
+            this.DeleteItemBtn.Name = "DeleteItemBtn";
+            this.DeleteItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.DeleteItemBtn_ItemClick);
+            // 
             // RefrechItemBtn
             // 
             this.RefrechItemBtn.Caption = "Обновити";
@@ -1064,6 +974,22 @@
             this.RefrechItemBtn.ImageOptions.ImageIndex = 4;
             this.RefrechItemBtn.Name = "RefrechItemBtn";
             this.RefrechItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.RefrechItemBtn_ItemClick);
+            // 
+            // ExecuteItemBtn
+            // 
+            this.ExecuteItemBtn.Caption = "Провести";
+            this.ExecuteItemBtn.Id = 5;
+            this.ExecuteItemBtn.ImageOptions.ImageIndex = 5;
+            this.ExecuteItemBtn.Name = "ExecuteItemBtn";
+            this.ExecuteItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ExecuteItemBtn_ItemClick);
+            // 
+            // PrintItemBtn
+            // 
+            this.PrintItemBtn.Caption = "Друк/Попередній перегляд";
+            this.PrintItemBtn.Id = 6;
+            this.PrintItemBtn.ImageOptions.ImageIndex = 6;
+            this.PrintItemBtn.Name = "PrintItemBtn";
+            this.PrintItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.PrintItemBtn_ItemClick);
             // 
             // barButtonItem18
             // 
@@ -1088,18 +1014,6 @@
             this.barButtonItem14.ImageOptions.ImageIndex = 9;
             this.barButtonItem14.Name = "barButtonItem14";
             this.barButtonItem14.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem14_ItemClick);
-            // 
-            // bar3
-            // 
-            this.bar3.BarName = "Custom 2";
-            this.bar3.DockCol = 0;
-            this.bar3.DockRow = 0;
-            this.bar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Standalone;
-            this.bar3.FloatLocation = new System.Drawing.Point(626, 675);
-            this.bar3.OptionsBar.AllowQuickCustomization = false;
-            this.bar3.OptionsBar.DrawDragBorder = false;
-            this.bar3.OptionsBar.UseWholeRow = true;
-            this.bar3.Text = "Custom 2";
             // 
             // barDockControlTop
             // 
@@ -1284,7 +1198,6 @@
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
         private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl1;
-        private DevExpress.XtraBars.Bar bar1;
         private DevExpress.XtraBars.BarButtonItem NewItemBtn;
         private DevExpress.XtraBars.BarButtonItem CopyItemBtn;
         private DevExpress.XtraBars.BarButtonItem EditItemBtn;
@@ -1299,7 +1212,6 @@
         public DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage3;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage19;
-        private DevExpress.XtraBars.Bar bar3;
         private DevExpress.XtraBars.Bar bar4;
         private DevExpress.XtraBars.Bar bar5;
         private DevExpress.XtraEditors.StyleController styleController1;

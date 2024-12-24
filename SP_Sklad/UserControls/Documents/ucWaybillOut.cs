@@ -30,11 +30,6 @@ namespace SP_Sklad.UserControls
         int w_type = -1;
         private int fun_id = 23;
         private string reg_layout_path = "ucWaybillOut\\WbInGridView";
-        public BarButtonItem ExtEditBtn { get; set; }
-        public BarButtonItem ExtDeleteBtn { get; set; }
-        public BarButtonItem ExtExecuteBtn { get; set; }
-        public BarButtonItem ExtCopyBtn { get; set; }
-        public BarButtonItem ExtPrintBtn { get; set; }
 
         public v_WayBillOut wb_focused_row => WbGridView.GetFocusedRow() is NotLoadedObject ? null : WbGridView.GetFocusedRow() as v_WayBillOut;
 
@@ -323,22 +318,25 @@ namespace SP_Sklad.UserControls
         {
             xtraTabControl2_SelectedPageChanged(null, null);
 
-            ExtDeleteBtn.Enabled = false;
-            ExtExecuteBtn.Enabled = false;
-            ExtEditBtn.Enabled = false;
-            ExtCopyBtn.Enabled = false;
-            ExtPrintBtn.Enabled = false;
+            DeleteItemBtn.Enabled = false;
+            ExecuteItemBtn.Enabled = false;
+            EditItemBtn.Enabled = false;
+            CopyItemBtn.Enabled = false;
+            PrintItemBtn.Enabled = false;
 
             if (wb_focused_row == null)
             {
                 return;
             }
 
-            ExtDeleteBtn.Enabled = (wb_focused_row != null && wb_focused_row.Checked == 0 && user_access.CanDelete == 1);
-            ExtExecuteBtn.Enabled = (wb_focused_row != null && wb_focused_row.WType != 2 && wb_focused_row.WType != -16 && wb_focused_row.WType != 16 && user_access.CanPost == 1);
-            ExtEditBtn.Enabled = (wb_focused_row != null && user_access.CanModify == 1 && (wb_focused_row.Checked == 0 || (wb_focused_row.Checked == 1 && wb_focused_row.WType != -16 && wb_focused_row.WType != 16 )));
-            ExtCopyBtn.Enabled = (wb_focused_row != null && user_access.CanModify == 1);
-            ExtPrintBtn.Enabled = (wb_focused_row != null);
+            DeleteItemBtn.Enabled = (wb_focused_row != null && wb_focused_row.Checked == 0 && user_access.CanDelete == 1);
+            ExecuteItemBtn.Enabled = (wb_focused_row != null && wb_focused_row.WType != 2 && wb_focused_row.WType != -16 && wb_focused_row.WType != 16 && user_access.CanPost == 1);
+            EditItemBtn.Enabled = (wb_focused_row != null && user_access.CanModify == 1 && (wb_focused_row.Checked == 0 || (wb_focused_row.Checked == 1 && wb_focused_row.WType != -16 && wb_focused_row.WType != 16 )));
+            CopyItemBtn.Enabled = (wb_focused_row != null && user_access.CanModify == 1);
+            PrintItemBtn.Enabled = (wb_focused_row != null);
+
+            if (wb_focused_row?.Checked == 0) ExecuteItemBtn.ImageIndex = 23;
+            else ExecuteItemBtn.ImageIndex = 6;
         }
 
         private void xtraTabControl2_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
@@ -375,13 +373,6 @@ namespace SP_Sklad.UserControls
 
         private void WbListPopupMenu_BeforePopup(object sender, CancelEventArgs e)
         {
-            DeleteItemBtn.Enabled = ExtDeleteBtn.Enabled;
-            ExecuteItemBtn.Enabled = ExtExecuteBtn.Enabled;
-            EditItemBtn.Enabled = ExtEditBtn.Enabled;
-            CopyItemBtn.Enabled = ExtCopyBtn.Enabled;
-            PrintItemBtn.Enabled = ExtPrintBtn.Enabled;
-
-
             ChangeWaybillKagentBtnEdit.Enabled = (DBHelper.is_admin || DBHelper.is_buh) ;
             WbHistoryBtn.Enabled = IHelper.GetUserAccess(39)?.CanView == 1;
         }
@@ -398,7 +389,7 @@ namespace SP_Sklad.UserControls
 
         private void repositoryItemLookUpEdit3_EditValueChanged(object sender, EventArgs e)
         {
-            if (!ExtEditBtn.Enabled)
+            if (!EditItemBtn.Enabled)
             {
                 return;
             }
@@ -429,7 +420,7 @@ namespace SP_Sklad.UserControls
 
         private void repositoryItemLookUpEdit5_EditValueChanged(object sender, EventArgs e)
         {
-            if (!ExtEditBtn.Enabled)
+            if (!EditItemBtn.Enabled)
             {
                 return;
             }
@@ -612,5 +603,9 @@ namespace SP_Sklad.UserControls
          
         }
 
+        private void barButtonItem4_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            
+        }
     }
 }

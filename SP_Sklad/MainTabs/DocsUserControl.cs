@@ -54,8 +54,6 @@ namespace SP_Sklad.MainTabs
                 return;
             }
             
-        //    bar1.Visible = true;
-
             NewItemBtn.Enabled = (focused_tree_node != null && focused_tree_node.CanInsert == 1);
 
             DeleteItemBtn.Enabled = false;
@@ -197,12 +195,17 @@ namespace SP_Sklad.MainTabs
                 wbContentTab.SelectedTabPageIndex = focused_tree_node.GType.Value;
             }
 
-            if(focused_tree_node.Id == 31 || focused_tree_node.FunId == 97 || focused_tree_node.FunId == 106 || focused_tree_node.FunId == 64 || focused_tree_node.FunId == 103 || focused_tree_node.FunId == 26 || focused_tree_node.FunId == 25 || focused_tree_node.FunId == 52 || focused_tree_node.FunId == 37 || focused_tree_node.FunId == 107 || focused_tree_node.FunId == 77 || focused_tree_node.FunId == 78 || focused_tree_node.FunId == 65 || focused_tree_node.FunId == 94)
+     /*       if(focused_tree_node.Id == 31 || focused_tree_node.Id == 32 || focused_tree_node.FunId == 97 || focused_tree_node.FunId == 106 || focused_tree_node.FunId == 64 || focused_tree_node.FunId == 103 
+                || focused_tree_node.FunId == 26 || focused_tree_node.FunId == 25 || focused_tree_node.FunId == 52 || focused_tree_node.FunId == 37 || focused_tree_node.FunId == 107 
+                || focused_tree_node.FunId == 77 || focused_tree_node.FunId == 78 || focused_tree_node.FunId == 65 || focused_tree_node.FunId == 94 || focused_tree_node.FunId == 42
+                || focused_tree_node.FunId == 43 || focused_tree_node.FunId == 95 || focused_tree_node.FunId == 30 || focused_tree_node.FunId == 105 || focused_tree_node.FunId == 90
+                || focused_tree_node.FunId == 21 || focused_tree_node.FunId == 23)
             {
                 bar1.Visible = false;
             }
-            else bar1.Visible = true;
+            else bar1.Visible = true;*/
 
+       
             RefrechItemBtn.PerformClick();
 
             if (focused_tree_node.FunId != null)

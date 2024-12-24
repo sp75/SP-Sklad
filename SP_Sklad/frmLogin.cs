@@ -32,7 +32,7 @@ namespace SP_Sklad
     public partial class frmLogin : DevExpress.XtraEditors.XtraForm
     {
         private bool is_registered { get; set; }
-        private int user_id => (int)UserIDEdit.EditValue;
+        private int? user_id => (int?)UserIDEdit.EditValue;
         private string ip_address => UniqueID.GetPhysicalIPAdress();
         private string user_name => string.IsNullOrEmpty(Environment.UserDomainName) ? Environment.UserName : Environment.UserDomainName + "\\" + Environment.UserName;
         private string _kay_id { get; set; }
@@ -260,7 +260,7 @@ namespace SP_Sklad
 
             DBHelper.ClearDBHelper();
 
-            UserSession.UserId = user_id;
+            UserSession.UserId = user_id.Value;
             UserSession.SessionId = Guid.NewGuid();
             UserSession.EnterpriseId = Settings.Default.ent_id;
             UserSession.login_form = this;

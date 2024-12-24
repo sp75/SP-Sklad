@@ -28,11 +28,6 @@ namespace SP_Sklad.UserControls
         int w_type = -16;
         private int fun_id = 64;
         private string reg_layout_path = "ucWBOrdersIn\\WbGridView";
-    //    public BarButtonItem ExtEditBtn { get; set; }
-   //     public BarButtonItem ExtDeleteBtn { get; set; }
-   //     public BarButtonItem ExtExecuteBtn { get; set; }
-    //    public BarButtonItem ExtCopyBtn { get; set; }
-    //    public BarButtonItem ExtPrintBtn { get; set; }
 
         public v_WayBillCustomerOrder wb_focused_row => WbGridView.GetFocusedRow() is NotLoadedObject ? null : WbGridView.GetFocusedRow() as v_WayBillCustomerOrder;
 
@@ -340,6 +335,9 @@ namespace SP_Sklad.UserControls
             EditItemBtn.Enabled = (wb_focused_row != null && user_access.CanModify == 1 && wb_focused_row.Checked == 0);
             CopyItemBtn.Enabled = (wb_focused_row != null && user_access.CanModify == 1);
             PrintItemBtn.Enabled = (wb_focused_row != null);
+
+            if (wb_focused_row?.Checked == 0) ExecuteItemBtn.ImageIndex = 19;
+            else ExecuteItemBtn.ImageIndex = 6;
         }
 
         private void xtraTabControl2_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)

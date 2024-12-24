@@ -98,6 +98,7 @@
             this.tradeUserControl1 = new SP_Sklad.MainTabs.TradeUserControl();
             this.OpenStoreTabPage = new DevExpress.XtraTab.XtraTabPage();
             this.openStoreUserControl = new SP_Sklad.MainTabs.OpenStoreUserControl();
+            this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
@@ -169,9 +170,10 @@
             this.barButtonItem2,
             this.barButtonItem5,
             this.barButtonItem6,
-            this.barButtonItem7});
+            this.barButtonItem7,
+            this.barButtonItem8});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 44;
+            this.barManager1.MaxItemId = 45;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTimeEdit1,
             this.repositoryItemCalcEdit1,
@@ -421,6 +423,7 @@
             this.barSubItem5.Caption = "Сервіс";
             this.barSubItem5.Id = 37;
             this.barSubItem5.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem8),
             new DevExpress.XtraBars.LinkPersistInfo(this.WbMatTemplateBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.WbCorrListBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2),
@@ -616,6 +619,7 @@
             this.imageCollection1.Images.SetKeyName(19, "user_settings");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.system_report, "system_report", typeof(global::SP_Sklad.Properties.Resources), 20);
             this.imageCollection1.Images.SetKeyName(20, "system_report");
+            this.imageCollection1.Images.SetKeyName(21, "find_barcode.png");
             // 
             // repositoryItemTimeEdit1
             // 
@@ -855,6 +859,14 @@
             this.openStoreUserControl.Size = new System.Drawing.Size(1319, 591);
             this.openStoreUserControl.TabIndex = 0;
             // 
+            // barButtonItem8
+            // 
+            this.barButtonItem8.Caption = "Пошук документа";
+            this.barButtonItem8.Id = 44;
+            this.barButtonItem8.ImageOptions.ImageIndex = 21;
+            this.barButtonItem8.Name = "barButtonItem8";
+            this.barButtonItem8.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem8_ItemClick);
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -973,6 +985,7 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem5;
         private DevExpress.XtraBars.BarButtonItem barButtonItem6;
         private DevExpress.XtraBars.BarButtonItem barButtonItem7;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem8;
     }
 }
 

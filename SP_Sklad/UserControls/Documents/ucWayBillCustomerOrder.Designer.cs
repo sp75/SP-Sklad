@@ -290,8 +290,8 @@
             this.imageCollection1.Images.SetKeyName(4, "edit_3");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.close, "close", typeof(global::SP_Sklad.Properties.Resources), 5);
             this.imageCollection1.Images.SetKeyName(5, "close");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.execute_16x16_red, "execute_16x16_red", typeof(global::SP_Sklad.Properties.Resources), 6);
-            this.imageCollection1.Images.SetKeyName(6, "execute_16x16_red");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.check_file_red, "check_file_red", typeof(global::SP_Sklad.Properties.Resources), 6);
+            this.imageCollection1.Images.SetKeyName(6, "check_file_red");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.preview_2, "preview_2", typeof(global::SP_Sklad.Properties.Resources), 7);
             this.imageCollection1.Images.SetKeyName(7, "preview_2");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.refresh_office, "refresh_office", typeof(global::SP_Sklad.Properties.Resources), 8);
@@ -316,8 +316,10 @@
             this.imageCollection1.Images.SetKeyName(17, "checked_blue");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.pay_doc_in, "pay_doc_in", typeof(global::SP_Sklad.Properties.Resources), 18);
             this.imageCollection1.Images.SetKeyName(18, "pay_doc_in");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.xls_export, "xls_export", typeof(global::SP_Sklad.Properties.Resources), 19);
-            this.imageCollection1.Images.SetKeyName(19, "xls_export");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.check_file, "check_file", typeof(global::SP_Sklad.Properties.Resources), 19);
+            this.imageCollection1.Images.SetKeyName(19, "check_file");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.xls_export, "xls_export", typeof(global::SP_Sklad.Properties.Resources), 20);
+            this.imageCollection1.Images.SetKeyName(20, "xls_export");
             // 
             // gridColumn2
             // 
@@ -600,7 +602,6 @@
             this.DeleteItemBtn.Caption = "Видалити";
             this.DeleteItemBtn.Id = 3;
             this.DeleteItemBtn.ImageOptions.ImageIndex = 5;
-     
             this.DeleteItemBtn.Name = "DeleteItemBtn";
             this.DeleteItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.DeleteItemBtn_ItemClick);
             // 
@@ -617,7 +618,6 @@
             this.ExecuteItemBtn.Caption = "Відвантажити весь товар";
             this.ExecuteItemBtn.Id = 5;
             this.ExecuteItemBtn.ImageOptions.ImageIndex = 6;
-     
             this.ExecuteItemBtn.Name = "ExecuteItemBtn";
             this.ExecuteItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ExecuteItemBtn_ItemClick);
             // 
@@ -633,7 +633,7 @@
             // 
             this.ExportToExcelBtn.Caption = "Експорт в Excel...";
             this.ExportToExcelBtn.Id = 36;
-            this.ExportToExcelBtn.ImageOptions.ImageIndex = 19;
+            this.ExportToExcelBtn.ImageOptions.ImageIndex = 20;
             this.ExportToExcelBtn.Name = "ExportToExcelBtn";
             this.ExportToExcelBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ExportToExcelBtn_ItemClick);
             // 

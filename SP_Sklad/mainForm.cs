@@ -430,5 +430,31 @@ namespace SP_Sklad
         {
           new frmOpenStoreCashRegisterSyncMonitor().ShowDialog() ;
         }
+
+        private void barButtonItem8_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            using (var frm = new frmBarCode())
+            {
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    if (int.TryParse(frm.BarCodeEdit.Text, out int wbill_id))
+                    {
+                        var wb = new BaseEntities().WaybillList.FirstOrDefault(w => w.WbillId == wbill_id);
+                        if (wb != null)
+                        {
+                            FindDoc.Find(wb.Id, wb.WType, wb.OnDate);
+                        }
+                        else
+                        {
+                            XtraMessageBox.Show("Документ не знайдено!");
+                        }
+                    }
+                    else
+                    {
+                        XtraMessageBox.Show("Невірний формат штрихкода!");
+                    }
+                }
+            }
+        }
     }
 }
