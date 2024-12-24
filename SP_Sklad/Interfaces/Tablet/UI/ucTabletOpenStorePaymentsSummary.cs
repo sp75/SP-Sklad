@@ -60,11 +60,11 @@ namespace SP_Sklad.Interfaces.Tablet.UI
        [SAREAID]
       ,[SAREANAME]
       ,sum([Price]) Total
-	  ,sum(case when [FiscalReceipt] = 0 then [Total] else 0 end) TotalNotFiscalReceipt
-      ,sum(case when [FiscalReceipt] = 1 then [Total] else 0 end) TotalFiscalReceipt
-	  ,sum(case when SALESTYPE = 0 then [Total] else 0 end) TotalCash
-	  ,sum(case when SALESTYPE = 1 then [Total] else 0 end) TotalCashless
-	  ,sum(case when SALESTYPE = 4 then [Total] else 0 end) TotalCashNotFiscalReceipt
+	  ,sum(case when [FiscalReceipt] = 0 then [Price] else 0 end) TotalNotFiscalReceipt
+      ,sum(case when [FiscalReceipt] = 1 then [Price] else 0 end) TotalFiscalReceipt
+	  ,sum(case when SALESTYPE = 0 then [Price] else 0 end) TotalCash
+	  ,sum(case when SALESTYPE = 1 then [Price] else 0 end) TotalCashless
+	  ,sum(case when SALESTYPE = 4 then [Price] else 0 end) TotalCashNotFiscalReceipt
   FROM [v_Payment]
   where [SALESTIME]  between '{0}' and '{1}' and SALESTYPE in (0,1,4) {2}
   group by [SAREAID], [SAREANAME] ";
