@@ -230,7 +230,22 @@ namespace SP_Sklad.SkladData
                 return new List<Kontragent>() { new Kontragent { KaId = 0, Name = "Усі" } }.Concat(KagentsWorkerList.Select(s => new Kontragent
                 {
                     KaId = s.KaId,
-                    Name = s.Name
+                    Name = s.Name,
+                    WId = s.WId
+                })).ToList();
+            }
+        }
+
+        public static IEnumerable<Kontragent> EmployeeKagentList
+        {
+            get
+            {
+                return new List<Kontragent>() { new Kontragent { KaId = -1, Name = "Усі" } }.Concat(new BaseEntities().EmployeeKagent.Where(w => w.EmployeeId == DBHelper.CurrentUser.KaId).Select(s => new Kontragent
+                {
+                    KaId = s.Kagent1.KaId,
+                    Name = s.Kagent1.Name,
+                    WId = s.Kagent1.WId,
+                    OpenStoreAreaId = s.Kagent1.OpenStoreAreaId
                 })).ToList();
             }
         }
@@ -910,6 +925,8 @@ order by wbd.ondate desc
     {
         public int KaId { get; set; }
         public String Name { get; set; }
+        public int?  WId { get; set; }
+        public int? OpenStoreAreaId { get; set; }
     }
 
 }

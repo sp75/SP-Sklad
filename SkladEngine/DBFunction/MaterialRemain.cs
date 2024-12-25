@@ -106,6 +106,35 @@ group by pr.MatId, m.Name, m.Artikul, ms.ShortName, mg.Name, m.OpenStoreId, m.Ty
             }
         }
 
+        public List<GetMaterialsOnWh_Result> GetMaterialsOnWh(string wh_ids)
+        {
+            using (var db = SPDatabase.SPBase())
+            {
+                return db.Database.SqlQuery<GetMaterialsOnWh_Result>($@"
+SELECT   pr.MatId,
+         m.Name MatName,
+         ms.ShortName as MsrName,
+         m.Artikul,
+         sum( pr.remain) Remain,
+         sum( pr.Rsv ) Rsv,
+         sum( pr.ActualRemain ) CurRemain,
+         cast(sum( (pr.remain + pr.Ordered) * pr.AvgPrice) / sum( pr.remain + pr.Ordered) as NUMERIC(15, 2) ) AvgPrice,
+         mg.Name GrpName,
+	 	 cast( sum( (pr.remain + pr.Ordered) * pr.AvgPrice) as NUMERIC(15, 2) ) SumRemain,
+         m.OpenStoreId,
+         m.TypeId
+FROM  PosRemains AS pr 
+join ( SELECT PosId, MAX(OnDate) AS OnDate
+       FROM  dbo.PosRemains
+       GROUP BY PosId) AS x ON x.PosId = pr.PosId AND pr.OnDate = x.OnDate
+inner join Materials m on m.MatId =pr.MatId
+inner join Measures ms on ms.MId = m.MId
+inner join MatGroup mg ON m.GrpId = mg.GrpId 
+WHERE ( (pr.Remain > 0) OR (pr.Ordered > 0) ) and pr.WId in ( {wh_ids} )
+group by pr.MatId, m.Name, m.Artikul, ms.ShortName, mg.Name, m.OpenStoreId, m.TypeId").ToList();
+            }
+        }
+
         public List<GetMaterialsOnWh_Result> GetMaterialsOnWh(int wh_id, DateTime on_date)
         {
             using (var db = SPDatabase.SPBase())

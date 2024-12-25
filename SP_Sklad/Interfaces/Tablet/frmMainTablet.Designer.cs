@@ -302,29 +302,33 @@
             this.accordionControlElement24,
             this.accordionControlElement25,
             this.accordionControlElement26});
+            this.accordionControlElement21.Expanded = true;
             this.accordionControlElement21.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionControlElement21.ImageOptions.Image")));
             this.accordionControlElement21.Name = "accordionControlElement21";
             this.accordionControlElement21.Text = "Склад";
-            this.accordionControlElement21.Visible = false;
             this.accordionControlElement21.Click += new System.EventHandler(this.accordionControlElement21_Click);
             // 
             // accordionControlElement23
             // 
+            this.accordionControlElement23.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("accordionControlElement23.ImageOptions.SvgImage")));
             this.accordionControlElement23.Name = "accordionControlElement23";
             this.accordionControlElement23.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accordionControlElement23.Text = "Залишки на складах";
+            this.accordionControlElement23.Click += new System.EventHandler(this.accordionControlElement23_Click);
             // 
             // accordionControlElement22
             // 
             this.accordionControlElement22.Name = "accordionControlElement22";
             this.accordionControlElement22.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accordionControlElement22.Text = "Накладні переміщення";
+            this.accordionControlElement22.Visible = false;
             // 
             // accordionControlElement24
             // 
             this.accordionControlElement24.Name = "accordionControlElement24";
             this.accordionControlElement24.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accordionControlElement24.Text = "Введення залишків товарів";
+            this.accordionControlElement24.Visible = false;
             this.accordionControlElement24.Click += new System.EventHandler(this.accordionControlElement24_Click);
             // 
             // accordionControlElement25
@@ -332,12 +336,14 @@
             this.accordionControlElement25.Name = "accordionControlElement25";
             this.accordionControlElement25.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accordionControlElement25.Text = "Акти списання";
+            this.accordionControlElement25.Visible = false;
             // 
             // accordionControlElement26
             // 
             this.accordionControlElement26.Name = "accordionControlElement26";
             this.accordionControlElement26.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accordionControlElement26.Text = "Акти інвентарицації";
+            this.accordionControlElement26.Visible = false;
             // 
             // accordionControlElement44
             // 
@@ -506,7 +512,7 @@
             // 
             // accordionControlElement47
             // 
-            this.accordionControlElement47.ImageOptions.Image = global::SP_Sklad.Properties.Resources.user_settings;
+            this.accordionControlElement47.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("accordionControlElement47.ImageOptions.SvgImage")));
             this.accordionControlElement47.Name = "accordionControlElement47";
             this.accordionControlElement47.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accordionControlElement47.Text = "Додаткові";
