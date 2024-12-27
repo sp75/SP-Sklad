@@ -165,9 +165,6 @@ group by pr.MatId, m.Name, m.Artikul, ms.ShortName, mg.Name, m.OpenStoreId, m.Ty
             }
         }
 
-
-
-
         public GetRemainingMaterialInWh_Result GetRemainingMaterialInWh(int wh_id, int mat_id)
         {
             using (var db = SPDatabase.SPBase())

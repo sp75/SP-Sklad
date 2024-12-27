@@ -64,7 +64,7 @@ namespace SP_Sklad.UserControls.Warehouse
             _restore = restore;
 
             Tranzit_OSEntities objectContext = new Tranzit_OSEntities();
-            var list = objectContext.v_CashRegisterSyncMonitor.OrderBy(o=> o.SyncDate).ToList().Where(w => w.SyncDate > DateTime.Now.AddDays(-30)).ToList();
+            var list = objectContext.v_CashRegisterSyncMonitor.OrderBy(o=> o.SyncDate).ToList().Where(w => w.SyncDate > DateTime.Now.AddDays(-15)).ToList();
 
             PaymentGridControl.DataSource = list;
 
@@ -163,7 +163,7 @@ namespace SP_Sklad.UserControls.Warehouse
 
             var wh_row = PaymentGridView.GetRow(e.RowHandle) as v_CashRegisterSyncMonitor;
 
-            if (wh_row != null && wh_row.SyncDate < DateTime.Now.AddMinutes(-30))
+            if (wh_row != null && wh_row.SyncDate < DateTime.Now.AddMinutes(-15))
             {
                 e.Appearance.ForeColor = Color.Red;
             }

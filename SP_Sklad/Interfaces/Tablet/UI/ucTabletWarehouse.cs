@@ -42,23 +42,66 @@ namespace SP_Sklad.Interfaces.Tablet.UI
 
         }
 
-        private List<GetMaterialsOnWh_Result> GetDataSource()
+        private List<MaterialsOnWh> GetDataSource()
         {
             var area = KagentList.GetSelectedDataRow() as Kontragent;
             string wids = "";
+            List<int?> ka_ids = new List<int?>();
 
             if(area.KaId == -1)
             {
                 wids = string.Join(", ", DBHelper.EmployeeKagentList.Where(w => w.WId != null).Select(s => s.WId).ToList());
+                ka_ids = DBHelper.EmployeeKagentList.Where(w => w.WId != null && w.OpenStoreAreaId != null).Select(s => s.OpenStoreAreaId).ToList();
             }
             else
             {
                 wids = area.WId.ToString();
+                ka_ids.Add(area.OpenStoreAreaId);
             }
 
-            var list = new MaterialRemain(UserSession.UserId).GetMaterialsOnWh(string.Join(", ", wids));
+            Tranzit_OSEntities objectContext = new Tranzit_OSEntities();
+            var sales = objectContext.v_Sales.Where(w => w.SESSEND == null && ka_ids.Contains(w.SAREAID)).GroupBy(g => new { g.ARTID }).Select(s => new
+            {
+                s.Key.ARTID,
+                Amount = s.Sum(sa => sa.AMOUNT)
+            }).ToList();
+
+            var list = new MaterialRemain(UserSession.UserId).GetMaterialsOnWh(wids).Select(s => new MaterialsOnWh
+            {
+                Artikul = s.Artikul,
+                AvgPrice = s.AvgPrice,
+                CurRemain = s.CurRemain,
+                GrpName = s.GrpName,
+                MatId = s.MatId,
+                MatName = s.MatName,
+                MsrName = s.MsrName,
+                OpenStoreId = s.MatId,
+                Remain = s.Remain,
+                TypeId = s.TypeId,
+                Rsv = s.Rsv,
+                SumRemain = s.SumRemain,
+                AmountSold = sales.Where(w => w.ARTID == s.OpenStoreId).Select(ss => ss.Amount).FirstOrDefault() 
+            }).ToList(); ;
 
             return list;
+        }
+
+        public class MaterialsOnWh
+        {
+            public int MatId { get; set; }
+            public string MatName { get; set; }
+            public string MsrName { get; set; }
+            public decimal Remain { get; set; }
+            public decimal Rsv { get; set; }
+            public decimal CurRemain { get; set; }
+            public string Artikul { get; set; }
+            public decimal? AvgPrice { get; set; }
+            public string GrpName { get; set; }
+            public decimal? SumRemain { get; set; }
+            public int? OpenStoreId { get; set; }
+            public int? TypeId { get; set; }
+            public decimal? AmountSold { get; set; }
+            public decimal? TotalRemain => CurRemain - AmountSold;
         }
 
         public void RefreshGrid()
