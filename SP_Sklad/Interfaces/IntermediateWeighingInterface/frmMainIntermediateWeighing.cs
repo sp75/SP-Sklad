@@ -149,7 +149,7 @@ namespace SP_Sklad.IntermediateWeighingInterface
 
 
             var total = _db.IntermediateWeighing.Where(w => w.WbillId == intermediate_weighing_focused_row.WbillId).Sum(s => s.Amount);
-            var amount_by_recipe = _db.WayBillMake.FirstOrDefault(w => w.WbillId == intermediate_weighing_focused_row.WbillId).AmountByRecipe;
+            var amount_by_recipe = _db.WayBillMake.FirstOrDefault(w => w.WbillId == intermediate_weighing_focused_row.WbillId)?.AmountByRecipe;
 
             if ((total ?? 0) > (amount_by_recipe ?? 0))
             {
