@@ -93,52 +93,6 @@ namespace SP_Sklad.UserControls.Warehouse
             e.Tag = objectContext;*/
         }
 
-        private void WhPosRemainsGridView_AsyncCompleted(object sender, EventArgs e)
-        {
-            /*   if (row_smp == null || !_restore)
-               {
-                   return;
-               }
-
-               int rowHandle = WhPosRemainsGridView.LocateByValue("Id", prev_focused_id, OnRowSearchComplete);
-               if (rowHandle != DevExpress.Data.DataController.OperationInProgress)
-               {
-                   FocusRow(WhPosRemainsGridView, rowHandle);
-               }
-               else
-               {
-                   WhPosRemainsGridView.FocusedRowHandle = prev_rowHandle;
-               }
-
-               _restore = false;*/
-            PaymentGridView.ExpandAllGroups();
-        }
-
-        void OnRowSearchComplete(object rh)
-        {
-            int rowHandle = (int)rh;
-            if (PaymentGridView.IsValidRowHandle(rowHandle))
-            {
-                FocusRow(PaymentGridView, rowHandle);
-            }
-        }
-
-        public void FocusRow(GridView view, int rowHandle)
-        {
-    /*        view.TopRowIndex = prev_top_row_index == -1 ? rowHandle : prev_top_row_index;
-            view.FocusedRowHandle = rowHandle;
-            view.SelectRow(rowHandle);*/
-        }
-
-        private void WhPosRemainsGridView_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
-        {
-         /*   if (e.HitInfo.InRow)
-            {
-                Point p2 = Control.MousePosition;
-                PosBottomPopupMenu.ShowPopup(p2);
-            }*/
-        }
-
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
 

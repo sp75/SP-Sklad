@@ -540,6 +540,12 @@
     <Compile Include="Interfaces\Tablet\frmMainTablet.Designer.cs">
       <DependentUpon>frmMainTablet.cs</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\Tablet\UI\ucTabletReport27.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Tablet\UI\ucTabletReport27.designer.cs">
+      <DependentUpon>ucTabletReport27.cs</DependentUpon>
+    </Compile>
     <Compile Include="Interfaces\Tablet\UI\ucTabletWarehouse.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -2836,6 +2842,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Interfaces\Tablet\frmMainTablet.resx">
       <DependentUpon>frmMainTablet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Tablet\UI\ucTabletReport27.resx">
+      <DependentUpon>ucTabletReport27.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Interfaces\Tablet\UI\ucTabletWarehouse.resx">
       <DependentUpon>ucTabletWarehouse.cs</DependentUpon>

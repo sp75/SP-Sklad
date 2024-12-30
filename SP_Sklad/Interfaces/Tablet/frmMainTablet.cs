@@ -178,5 +178,20 @@ namespace SP_Sklad.Interfaces.Tablet
 
             control.BringToFront();
         }
+
+        private void accordionControlElement49_Click(object sender, EventArgs e)
+        {
+            accordionControl1.SelectElement((AccordionControlElement)sender);
+
+            var control = mainContainer.Controls["ucTabletReport27"];
+
+            if (!mainContainer.Controls.Contains(control))
+            {
+                control = new ucTabletReport27() { Dock = DockStyle.Fill };
+                mainContainer.Controls.Add(control);
+            }
+
+            control.BringToFront();
+        }
     }
 }

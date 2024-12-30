@@ -536,6 +536,7 @@
             this.wbEndDate.Properties.EditFormat.FormatString = "g";
             this.wbEndDate.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.wbEndDate.Properties.MaskSettings.Set("mask", "g");
+            this.wbEndDate.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.wbEndDate.Properties.VistaDisplayMode = DevExpress.Utils.DefaultBoolean.False;
             this.wbEndDate.Size = new System.Drawing.Size(167, 38);
             this.wbEndDate.StyleController = this.styleController1;
@@ -557,6 +558,7 @@
             this.wbStartDate.Properties.EditFormat.FormatString = "g";
             this.wbStartDate.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.wbStartDate.Properties.MaskSettings.Set("mask", "g");
+            this.wbStartDate.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.wbStartDate.Properties.VistaDisplayMode = DevExpress.Utils.DefaultBoolean.False;
             this.wbStartDate.Size = new System.Drawing.Size(167, 38);
             this.wbStartDate.StyleController = this.styleController1;
