@@ -46,6 +46,8 @@
             this.bandedGridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.repositoryItemCalcEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
             this.repositoryItemComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
@@ -55,8 +57,6 @@
             this.PeriodComboBoxEdit = new DevExpress.XtraEditors.ComboBoxEdit();
             this.wbEndDate = new DevExpress.XtraEditors.DateEdit();
             this.wbStartDate = new DevExpress.XtraEditors.DateEdit();
-            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).BeginInit();
@@ -99,7 +99,7 @@
             new DevExpress.XtraBars.Docking2010.WindowsUIButton("Експорт в Excel", true, windowsUIButtonImageOptions2, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", 1, true, null, true, false, true, null, -1, false)});
             this.windowsUIButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.windowsUIButtonPanel.EnableImageTransparency = true;
-            this.windowsUIButtonPanel.Location = new System.Drawing.Point(0, 605);
+            this.windowsUIButtonPanel.Location = new System.Drawing.Point(0, 663);
             this.windowsUIButtonPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.windowsUIButtonPanel.MaximumSize = new System.Drawing.Size(0, 60);
             this.windowsUIButtonPanel.MinimumSize = new System.Drawing.Size(60, 60);
@@ -122,7 +122,7 @@
             this.repositoryItemCalcEdit1,
             this.repositoryItemComboBox1,
             this.repositoryItemPopupContainerEdit1});
-            this.gridControl1.Size = new System.Drawing.Size(1466, 531);
+            this.gridControl1.Size = new System.Drawing.Size(1466, 589);
             this.gridControl1.TabIndex = 7;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -271,6 +271,26 @@
             this.gridColumn2.VisibleIndex = 3;
             this.gridColumn2.Width = 322;
             // 
+            // gridColumn3
+            // 
+            this.gridColumn3.Caption = "Різниця, к-сть";
+            this.gridColumn3.FieldName = "TotalAmount";
+            this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.Visible = true;
+            this.gridColumn3.VisibleIndex = 8;
+            this.gridColumn3.Width = 74;
+            // 
+            // gridColumn4
+            // 
+            this.gridColumn4.Caption = "Різниця, сума";
+            this.gridColumn4.FieldName = "TotalSum";
+            this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "TotalSum", "{0:0.##}")});
+            this.gridColumn4.Visible = true;
+            this.gridColumn4.VisibleIndex = 9;
+            this.gridColumn4.Width = 76;
+            // 
             // repositoryItemCheckEdit1
             // 
             this.repositoryItemCheckEdit1.AutoHeight = false;
@@ -411,26 +431,6 @@
             this.wbStartDate.TabIndex = 1;
             this.wbStartDate.EditValueChanged += new System.EventHandler(this.wbStartDate_EditValueChanged);
             // 
-            // gridColumn3
-            // 
-            this.gridColumn3.Caption = "Різниця, к-сть";
-            this.gridColumn3.FieldName = "TotalAmount";
-            this.gridColumn3.Name = "gridColumn3";
-            this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 8;
-            this.gridColumn3.Width = 74;
-            // 
-            // gridColumn4
-            // 
-            this.gridColumn4.Caption = "Різниця, сума";
-            this.gridColumn4.FieldName = "TotalSum";
-            this.gridColumn4.Name = "gridColumn4";
-            this.gridColumn4.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "TotalSum", "{0:0.##}")});
-            this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 9;
-            this.gridColumn4.Width = 76;
-            // 
             // ucTabletReport27
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -440,7 +440,7 @@
             this.Controls.Add(this.windowsUIButtonPanel);
             this.LookAndFeel.TouchUIMode = DevExpress.Utils.DefaultBoolean.True;
             this.Name = "ucTabletReport27";
-            this.Size = new System.Drawing.Size(1466, 665);
+            this.Size = new System.Drawing.Size(1466, 723);
             this.Load += new System.EventHandler(this.ucCurrentReturned_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
