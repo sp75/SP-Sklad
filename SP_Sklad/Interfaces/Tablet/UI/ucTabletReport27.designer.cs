@@ -153,11 +153,13 @@
             this.gridColumn4});
             this.gridView1.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFullFocus;
             this.gridView1.GridControl = this.gridControl1;
-            this.gridView1.GroupCount = 1;
+            this.gridView1.GroupCount = 2;
             this.gridView1.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Total", this.bandedGridColumn4, "{0:0.00}")});
+            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "TotalOrd", this.gridColumn1, "{0:0.00}"),
+            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "TotalOut", this.bandedGridColumn4, "{0:0.00}"),
+            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "TotalSum", this.gridColumn4, "{0:0.00}")});
             this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsBehavior.AlignGroupSummaryInGroupRow = DevExpress.Utils.DefaultBoolean.False;
+            this.gridView1.OptionsBehavior.AlignGroupSummaryInGroupRow = DevExpress.Utils.DefaultBoolean.True;
             this.gridView1.OptionsBehavior.Editable = false;
             this.gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.gridView1.OptionsView.ColumnHeaderAutoHeight = DevExpress.Utils.DefaultBoolean.True;
@@ -165,6 +167,7 @@
             this.gridView1.OptionsView.ShowFooter = true;
             this.gridView1.OptionsView.ShowIndicator = false;
             this.gridView1.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn2, DevExpress.Data.ColumnSortOrder.Ascending),
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.bandedGridColumn2, DevExpress.Data.ColumnSortOrder.Ascending)});
             // 
             // colMatName
@@ -174,7 +177,7 @@
             this.colMatName.FieldName = "MatName";
             this.colMatName.Name = "colMatName";
             this.colMatName.Visible = true;
-            this.colMatName.VisibleIndex = 1;
+            this.colMatName.VisibleIndex = 3;
             this.colMatName.Width = 318;
             // 
             // repositoryItemMemoEdit1
@@ -188,7 +191,7 @@
             this.colArtikul.FieldName = "Artikul";
             this.colArtikul.Name = "colArtikul";
             this.colArtikul.Visible = true;
-            this.colArtikul.VisibleIndex = 0;
+            this.colArtikul.VisibleIndex = 2;
             this.colArtikul.Width = 90;
             // 
             // repositoryItemPopupContainerEdit1
@@ -204,7 +207,7 @@
             this.colMsrName.FieldName = "MsrName";
             this.colMsrName.Name = "colMsrName";
             this.colMsrName.Visible = true;
-            this.colMsrName.VisibleIndex = 2;
+            this.colMsrName.VisibleIndex = 4;
             this.colMsrName.Width = 73;
             // 
             // bandedGridColumn1
@@ -215,16 +218,17 @@
             this.bandedGridColumn1.FieldName = "AmountOut";
             this.bandedGridColumn1.Name = "bandedGridColumn1";
             this.bandedGridColumn1.Visible = true;
-            this.bandedGridColumn1.VisibleIndex = 6;
+            this.bandedGridColumn1.VisibleIndex = 7;
             this.bandedGridColumn1.Width = 83;
             // 
             // bandedGridColumn2
             // 
             this.bandedGridColumn2.Caption = "Група товарів";
+            this.bandedGridColumn2.ColumnEdit = this.repositoryItemMemoEdit1;
             this.bandedGridColumn2.FieldName = "GrpName";
             this.bandedGridColumn2.Name = "bandedGridColumn2";
             this.bandedGridColumn2.Visible = true;
-            this.bandedGridColumn2.VisibleIndex = 0;
+            this.bandedGridColumn2.VisibleIndex = 1;
             this.bandedGridColumn2.Width = 146;
             // 
             // bandedGridColumn4
@@ -235,9 +239,9 @@
             this.bandedGridColumn4.FieldName = "TotalOut";
             this.bandedGridColumn4.Name = "bandedGridColumn4";
             this.bandedGridColumn4.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Total", "{0:0.##}")});
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "TotalOut", "{0:0.##}")});
             this.bandedGridColumn4.Visible = true;
-            this.bandedGridColumn4.VisibleIndex = 7;
+            this.bandedGridColumn4.VisibleIndex = 8;
             this.bandedGridColumn4.Width = 103;
             // 
             // bandedGridColumn5
@@ -248,7 +252,7 @@
             this.bandedGridColumn5.FieldName = "AmountOrd";
             this.bandedGridColumn5.Name = "bandedGridColumn5";
             this.bandedGridColumn5.Visible = true;
-            this.bandedGridColumn5.VisibleIndex = 4;
+            this.bandedGridColumn5.VisibleIndex = 5;
             this.bandedGridColumn5.Width = 91;
             // 
             // gridColumn1
@@ -259,16 +263,17 @@
             this.gridColumn1.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "TotalOrd", "{0:0.##}")});
             this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 5;
+            this.gridColumn1.VisibleIndex = 6;
             this.gridColumn1.Width = 88;
             // 
             // gridColumn2
             // 
             this.gridColumn2.Caption = "Контрагент";
+            this.gridColumn2.ColumnEdit = this.repositoryItemMemoEdit1;
             this.gridColumn2.FieldName = "KaName";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 3;
+            this.gridColumn2.VisibleIndex = 0;
             this.gridColumn2.Width = 322;
             // 
             // gridColumn3
@@ -277,7 +282,7 @@
             this.gridColumn3.FieldName = "TotalAmount";
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 8;
+            this.gridColumn3.VisibleIndex = 9;
             this.gridColumn3.Width = 74;
             // 
             // gridColumn4
@@ -288,7 +293,7 @@
             this.gridColumn4.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "TotalSum", "{0:0.##}")});
             this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 9;
+            this.gridColumn4.VisibleIndex = 10;
             this.gridColumn4.Width = 76;
             // 
             // repositoryItemCheckEdit1

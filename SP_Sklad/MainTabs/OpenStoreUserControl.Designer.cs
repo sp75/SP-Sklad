@@ -71,6 +71,7 @@
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox4 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.repositoryItemLookUpEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
@@ -84,7 +85,6 @@
             this.repositoryItemLookUpEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.repositoryItemLookUpEdit4 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BarImageList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExplorerPopupMenu)).BeginInit();
@@ -304,7 +304,7 @@
             this.DirTreeList.AppendNode(new object[] {
             "Чеки"}, -1, 1);
             this.DirTreeList.AppendNode(new object[] {
-            "Оплата"}, -1, 2, 2, -1, 0);
+            "Оплата"}, -1, 5, 5, -1, 0);
             this.DirTreeList.AppendNode(new object[] {
             "Повернення (чеки)"}, -1, 4, 4, -1);
             this.DirTreeList.AppendNode(new object[] {
@@ -356,8 +356,8 @@
             this.imageCollection1.Images.SetKeyName(3, "system_report");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.wb_return_sale, "wb_return_sale", typeof(global::SP_Sklad.Properties.Resources), 4);
             this.imageCollection1.Images.SetKeyName(4, "wb_return_sale");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.pay_wb_1, "pay_wb_1", typeof(global::SP_Sklad.Properties.Resources), 5);
-            this.imageCollection1.Images.SetKeyName(5, "pay_wb_1");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.pay_doc_in, "pay_doc_in", typeof(global::SP_Sklad.Properties.Resources), 5);
+            this.imageCollection1.Images.SetKeyName(5, "pay_doc_in");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.salessummary_16x16, "salessummary_16x16", typeof(global::SP_Sklad.Properties.Resources), 6);
             this.imageCollection1.Images.SetKeyName(6, "salessummary_16x16");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.purchase, "purchase", typeof(global::SP_Sklad.Properties.Resources), 7);
@@ -583,6 +583,14 @@
             this.gridColumn5.VisibleIndex = 4;
             this.gridColumn5.Width = 269;
             // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "Од. виміру";
+            this.gridColumn1.FieldName = "UNITNAME";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 4;
+            // 
             // repositoryItemImageComboBox4
             // 
             this.repositoryItemImageComboBox4.AutoHeight = false;
@@ -725,14 +733,6 @@
             // 
             this.gridView2.GridControl = this.gridControl1;
             this.gridView2.Name = "gridView2";
-            // 
-            // gridColumn1
-            // 
-            this.gridColumn1.Caption = "Од. виміру";
-            this.gridColumn1.FieldName = "UNITNAME";
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 4;
             // 
             // OpenStoreUserControl
             // 

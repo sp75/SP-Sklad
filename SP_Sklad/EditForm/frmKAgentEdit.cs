@@ -408,6 +408,8 @@ namespace SP_Sklad.EditForm
                 DialogResult = DialogResult.None;
                 EntCheckedComboBoxEdit.Focus();
                 OkButton.Focus();
+
+                return;
             }
            
             if(_ka.JobType != 5)

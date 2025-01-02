@@ -92,6 +92,7 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             this.WaybillDetGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemMemoEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit();
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCalcEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
             this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -171,6 +172,7 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             this.xtraTabPage15.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WaybillDetGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox33)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
@@ -816,7 +818,8 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             this.gridControl2.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCalcEdit1,
             this.repositoryItemImageComboBox33,
-            this.repositoryItemImageComboBox2});
+            this.repositoryItemImageComboBox2,
+            this.repositoryItemMemoEdit1});
             this.gridControl2.Size = new System.Drawing.Size(566, 563);
             this.gridControl2.TabIndex = 16;
             this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -855,6 +858,8 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             this.WaybillDetGridView.OptionsBehavior.AllowIncrementalSearch = true;
             this.WaybillDetGridView.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseDownFocused;
             this.WaybillDetGridView.OptionsBehavior.ReadOnly = true;
+            this.WaybillDetGridView.OptionsView.ColumnHeaderAutoHeight = DevExpress.Utils.DefaultBoolean.True;
+            this.WaybillDetGridView.OptionsView.RowAutoHeight = true;
             this.WaybillDetGridView.OptionsView.ShowFooter = true;
             this.WaybillDetGridView.OptionsView.ShowGroupPanel = false;
             this.WaybillDetGridView.CustomSummaryCalculate += new DevExpress.Data.CustomSummaryEventHandler(this.WaybillDetGridView_CustomSummaryCalculate);
@@ -871,11 +876,16 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             // gridColumn10
             // 
             this.gridColumn10.Caption = "Назва товару/послуги";
+            this.gridColumn10.ColumnEdit = this.repositoryItemMemoEdit1;
             this.gridColumn10.FieldName = "MatName";
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.Visible = true;
             this.gridColumn10.VisibleIndex = 2;
             this.gridColumn10.Width = 241;
+            // 
+            // repositoryItemMemoEdit1
+            // 
+            this.repositoryItemMemoEdit1.Name = "repositoryItemMemoEdit1";
             // 
             // gridColumn11
             // 
@@ -1454,6 +1464,7 @@ namespace SP_Sklad.Interfaces.Tablet.UI
             this.xtraTabPage15.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WaybillDetGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox33)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).EndInit();
@@ -1581,5 +1592,6 @@ namespace SP_Sklad.Interfaces.Tablet.UI
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn150;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn14;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox2;
+        private DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit repositoryItemMemoEdit1;
     }
 }

@@ -61,6 +61,8 @@ namespace SP_Sklad.UserControls.Warehouse
             public string SAREANAME { get; set; }
             public int SAREAID { get; set; }
             public Nullable<decimal> Total { get; set; }
+            public Nullable<decimal> NoFiscalSales { get; set; }
+            public Nullable<decimal> FiscalSales { get; set; }
             public Nullable<decimal> Price { get; set; }
             public Nullable<decimal> Amount { get; set; }
             public string UNITNAME { get; set; }
@@ -92,6 +94,8 @@ namespace SP_Sklad.UserControls.Warehouse
       ,avg([PRICE]) Price
       ,sum([AMOUNT]) Amount
       ,sum([TOTAL] ) Total
+      ,sum(case when FiscalReceipt = 0 then [TOTAL] else 0 end) NoFiscalSales
+	  ,sum(case when FiscalReceipt = 1 then [TOTAL] else 0 end) FiscalSales
       ,[UNITNAME]
       ,[ARTNAME]
       ,[ARTID]
