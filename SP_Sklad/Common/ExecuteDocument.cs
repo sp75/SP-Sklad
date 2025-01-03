@@ -291,5 +291,28 @@ namespace SP_Sklad.Common
             }
             _db.SaveChanges();
         }
+
+        public static void ExecuteExpedition(Expedition exp, BaseEntities _db)
+        {
+            exp.UpdatedAt = DateTime.Now;
+            exp.UpdatedBy = DBHelper.CurrentUser.UserId;
+
+            if (exp.Checked == 1)
+            {
+                foreach (var item in _db.v_ExpeditionDet.Where(w => w.ExpeditionId == exp.Id))
+                {
+                    if (item.RouteId.HasValue && item.Checked == 1)
+                    {
+                        var wb = _db.WaybillList.Find(item.WbillId);
+                        wb.ShipmentDate = exp.UpdatedAt.Value.AddTicks(item.RouteDuration ?? 0);
+                        wb.RouteId = exp.RouteId;
+                        wb.DriverId = exp.DriverId;
+                        wb.CarId = exp.CarId;
+                    }
+                }
+            }
+            _db.SaveChanges();
+        }
+
     }
 }

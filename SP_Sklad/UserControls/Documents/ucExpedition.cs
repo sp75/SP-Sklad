@@ -154,14 +154,16 @@ namespace SP_Sklad.UserControls
             {
                 exp.Checked = 1;
 
-                foreach (var item in _db.v_ExpeditionDet.Where(w => w.ExpeditionId == exp.Id))
-                {
-                    if (item.RouteId.HasValue && item.Checked == 1)
-                    {
-                        var exp_wb = _db.WaybillList.Find(item.WbillId);
-                        exp_wb.ShipmentDate = exp.OnDate.AddTicks(item.RouteDuration ?? 0);
-                    }
-                }
+                /*  foreach (var item in _db.v_ExpeditionDet.Where(w => w.ExpeditionId == exp.Id))
+                  {
+                      if (item.RouteId.HasValue && item.Checked == 1)
+                      {
+                          var exp_wb = _db.WaybillList.Find(item.WbillId);
+                          exp_wb.ShipmentDate = exp.OnDate.AddTicks(item.RouteDuration ?? 0);
+                      }
+                  }*/
+
+                ExecuteDocument.ExecuteExpedition(exp, _db);
             }
 
             _db.SaveChanges();

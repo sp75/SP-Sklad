@@ -82,7 +82,7 @@ namespace SP_Sklad.WBForm
 
         private void OkButton_Click(object sender, EventArgs e)
         {
-            exp.UpdatedAt = DateTime.Now;
+          /*  exp.UpdatedAt = DateTime.Now;
             exp.UpdatedBy = DBHelper.CurrentUser.UserId;
 
             if(exp.Checked == 1)
@@ -95,7 +95,10 @@ namespace SP_Sklad.WBForm
                         wb.ShipmentDate = exp.UpdatedAt.Value.AddTicks(item.RouteDuration ?? 0);
                     }
                 }
-            }
+            }*/
+
+            ExecuteDocument.ExecuteExpedition(exp, _db);
+
 
             _db.SaveChanges();
 

@@ -304,7 +304,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
         private void simpleButton5_Click(object sender, EventArgs e)
         {
             exp.Checked = 1;
-            exp.UpdatedAt = DBHelper.ServerDateTime();
+          /*  exp.UpdatedAt = DBHelper.ServerDateTime();
             exp.UpdatedBy = DBHelper.CurrentUser.UserId;
 
             foreach (var item in _db.v_ExpeditionDet.AsNoTracking().Where(w => w.ExpeditionId == exp.Id))
@@ -314,7 +314,9 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
                     var exp_wb = _db.WaybillList.Find(item.WbillId);
                     exp_wb.ShipmentDate = exp.UpdatedAt.Value.AddTicks(item.RouteDuration ?? 0);
                 }
-            }
+            }*/
+
+            ExecuteDocument.ExecuteExpedition(exp, _db);
 
             _db.SaveChanges();
 
